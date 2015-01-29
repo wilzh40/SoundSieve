@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		77B856F81A79E4BB00A51186 /* NewsViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856F71A79E4BB00A51186 /* NewsViewController .swift */; };
+		77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */; };
 		77CEFCEE1A79C041001B0A02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFCED1A79C041001B0A02 /* AppDelegate.swift */; };
 		77CEFCF11A79C041001B0A02 /* SwiftSkeleton.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFCEF1A79C041001B0A02 /* SwiftSkeleton.xcdatamodeld */; };
 		77CEFCF31A79C041001B0A02 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFCF21A79C041001B0A02 /* ViewController.swift */; };
@@ -85,6 +86,7 @@
 
 /* Begin PBXFileReference section */
 		77B856F71A79E4BB00A51186 /* NewsViewController .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewsViewController .swift"; sourceTree = "<group>"; };
+		77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		77CEFCE81A79C041001B0A02 /* SwiftSkeleton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSkeleton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CEFCEC1A79C041001B0A02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77CEFCED1A79C041001B0A02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				77CEFE211A79D5C6001B0A02 /* External */,
 				77CEFD101A79C057001B0A02 /* Source */,
 				77CEFCED1A79C041001B0A02 /* AppDelegate.swift */,
+				77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */,
 				77CEFCF21A79C041001B0A02 /* ViewController.swift */,
 				77CEFE2B1A79D78B001B0A02 /* Singleton.swift */,
 				77CEFCF41A79C041001B0A02 /* Main.storyboard */,
@@ -372,6 +375,7 @@
 				77B856F81A79E4BB00A51186 /* NewsViewController .swift in Sources */,
 				77CEFE2C1A79D78B001B0A02 /* Singleton.swift in Sources */,
 				77CEFE281A79D5CE001B0A02 /* DrawerBarButtonItem.swift in Sources */,
+				77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */,
 				77CEFE271A79D5CE001B0A02 /* AnimatedMenuButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

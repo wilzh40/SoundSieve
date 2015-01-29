@@ -17,6 +17,8 @@ class MenuViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ConnectionManager.testNetworking()
+        
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
@@ -28,7 +30,7 @@ class MenuViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
          let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "protoCell")
-        cell.textLabel?.text = tableData[indexPath.row] as String;
+        cell.textLabel?.text = tableData[indexPath.row] as? String;
         return cell
     }
 //    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
