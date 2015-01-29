@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import DrawerControllerKitchenSink
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77B856F81A79E4BB00A51186 /* NewsViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856F71A79E4BB00A51186 /* NewsViewController .swift */; };
 		77CEFCEE1A79C041001B0A02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFCED1A79C041001B0A02 /* AppDelegate.swift */; };
 		77CEFCF11A79C041001B0A02 /* SwiftSkeleton.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFCEF1A79C041001B0A02 /* SwiftSkeleton.xcdatamodeld */; };
 		77CEFCF31A79C041001B0A02 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFCF21A79C041001B0A02 /* ViewController.swift */; };
@@ -24,6 +25,8 @@
 		77CEFE281A79D5CE001B0A02 /* DrawerBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFE231A79D5CE001B0A02 /* DrawerBarButtonItem.swift */; };
 		77CEFE291A79D5CE001B0A02 /* DrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFE241A79D5CE001B0A02 /* DrawerController.swift */; };
 		77CEFE2A1A79D5CE001B0A02 /* DrawerVisualState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFE251A79D5CE001B0A02 /* DrawerVisualState.swift */; };
+		77CEFE2C1A79D78B001B0A02 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFE2B1A79D78B001B0A02 /* Singleton.swift */; };
+		77CEFE2E1A79DD46001B0A02 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFE2D1A79DD46001B0A02 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		77B856F71A79E4BB00A51186 /* NewsViewController .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewsViewController .swift"; sourceTree = "<group>"; };
 		77CEFCE81A79C041001B0A02 /* SwiftSkeleton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSkeleton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CEFCEC1A79C041001B0A02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77CEFCED1A79C041001B0A02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 		77CEFE231A79D5CE001B0A02 /* DrawerBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerBarButtonItem.swift; sourceTree = "<group>"; };
 		77CEFE241A79D5CE001B0A02 /* DrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DrawerController.swift; sourceTree = "<group>"; };
 		77CEFE251A79D5CE001B0A02 /* DrawerVisualState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerVisualState.swift; sourceTree = "<group>"; };
+		77CEFE2B1A79D78B001B0A02 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		77CEFE2D1A79DD46001B0A02 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,10 +152,12 @@
 		77CEFCEA1A79C041001B0A02 /* SwiftSkeleton */ = {
 			isa = PBXGroup;
 			children = (
+				77CEFE2F1A79DD4D001B0A02 /* ViewControllers */,
 				77CEFE211A79D5C6001B0A02 /* External */,
 				77CEFD101A79C057001B0A02 /* Source */,
 				77CEFCED1A79C041001B0A02 /* AppDelegate.swift */,
 				77CEFCF21A79C041001B0A02 /* ViewController.swift */,
+				77CEFE2B1A79D78B001B0A02 /* Singleton.swift */,
 				77CEFCF41A79C041001B0A02 /* Main.storyboard */,
 				77CEFCF71A79C041001B0A02 /* Images.xcassets */,
 				77CEFCF91A79C041001B0A02 /* LaunchScreen.xib */,
@@ -219,6 +227,15 @@
 			name = DrawerController;
 			path = External/DrawerController/KitchenSink/../DrawerController;
 			sourceTree = SOURCE_ROOT;
+		};
+		77CEFE2F1A79DD4D001B0A02 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				77CEFE2D1A79DD46001B0A02 /* MenuViewController.swift */,
+				77B856F71A79E4BB00A51186 /* NewsViewController .swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -350,7 +367,10 @@
 				77CEFCF11A79C041001B0A02 /* SwiftSkeleton.xcdatamodeld in Sources */,
 				77CEFE291A79D5CE001B0A02 /* DrawerController.swift in Sources */,
 				77CEFE2A1A79D5CE001B0A02 /* DrawerVisualState.swift in Sources */,
+				77CEFE2E1A79DD46001B0A02 /* MenuViewController.swift in Sources */,
 				77CEFCEE1A79C041001B0A02 /* AppDelegate.swift in Sources */,
+				77B856F81A79E4BB00A51186 /* NewsViewController .swift in Sources */,
+				77CEFE2C1A79D78B001B0A02 /* Singleton.swift in Sources */,
 				77CEFE281A79D5CE001B0A02 /* DrawerBarButtonItem.swift in Sources */,
 				77CEFE271A79D5CE001B0A02 /* AnimatedMenuButton.swift in Sources */,
 			);
@@ -564,6 +584,7 @@
 				77CEFD0C1A79C041001B0A02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77CEFD0D1A79C041001B0A02 /* Build configuration list for PBXNativeTarget "SwiftSkeletonTests" */ = {
 			isa = XCConfigurationList;
@@ -572,6 +593,7 @@
 				77CEFD0F1A79C041001B0A02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
