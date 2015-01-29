@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import DrawerControllerKitchenSink
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        
+        var storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        
+        var center = storyBoard.instantiateViewControllerWithIdentifier("Center") as UITableViewController
+        var centerController = UINavigationController(rootViewController: center)
+        
+        var menu = storyBoard.instantiateViewControllerWithIdentifier("Left") as UITableViewController
+        
+        var drawerCon = DrawerController(centerViewController: centerController, leftDrawerViewController: menu)
+        drawerCon.openDrawerGestureModeMask = OpenDrawerGestureMode.BezelPanningCenterView
+        drawerCon.closeDrawerGestureModeMask = CloseDrawerGestureMode.PanningCenterView
+        self.window?.rootViewController = drawerCon
+        self.window?.makeKeyAndVisible()
         return true
     }
 

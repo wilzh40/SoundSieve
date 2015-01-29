@@ -17,11 +17,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let URL = "http://httpbin.org/get"
+        let x = "/users/123"
+        let URL = "https://api.soundcloud.com" + x
+
 
         Alamofire.request(.GET, URL, parameters: ["foo": "bar"])
             .responseSwiftyJSON { (request, response, responseJSON, error) in
                 print(responseJSON)
+                print(error)
         }
     }
     
