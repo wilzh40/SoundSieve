@@ -29,7 +29,7 @@
 		77CEFE2A1A79D5CE001B0A02 /* DrawerVisualState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFE251A79D5CE001B0A02 /* DrawerVisualState.swift */; };
 		77CEFE2C1A79D78B001B0A02 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFE2B1A79D78B001B0A02 /* Singleton.swift */; };
 		77CEFE2E1A79DD46001B0A02 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFE2D1A79DD46001B0A02 /* MenuViewController.swift */; };
-		77E2B7391A7BEAD500E3C4BC /* MainNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E2B7381A7BEAD500E3C4BC /* MainNavController.swift */; };
+		77E2B73E1A7C16CC00E3C4BC /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +110,7 @@
 		77CEFE251A79D5CE001B0A02 /* DrawerVisualState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerVisualState.swift; sourceTree = "<group>"; };
 		77CEFE2B1A79D78B001B0A02 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		77CEFE2D1A79DD46001B0A02 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		77E2B7381A7BEAD500E3C4BC /* MainNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavController.swift; sourceTree = "<group>"; };
+		77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,9 +247,9 @@
 		77CEFE2F1A79DD4D001B0A02 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */,
 				77CEFE2D1A79DD46001B0A02 /* MenuViewController.swift */,
 				77B856F71A79E4BB00A51186 /* NewsViewController .swift */,
-				77E2B7381A7BEAD500E3C4BC /* MainNavController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -382,6 +382,7 @@
 			files = (
 				77CEFCF31A79C041001B0A02 /* ViewController.swift in Sources */,
 				77CEFCF11A79C041001B0A02 /* SwiftSkeleton.xcdatamodeld in Sources */,
+				77E2B73E1A7C16CC00E3C4BC /* CenterViewController.swift in Sources */,
 				77CEFE291A79D5CE001B0A02 /* DrawerController.swift in Sources */,
 				77B857011A7A9E3500A51186 /* Model.swift in Sources */,
 				77CEFE2A1A79D5CE001B0A02 /* DrawerVisualState.swift in Sources */,
@@ -392,7 +393,6 @@
 				77CEFE281A79D5CE001B0A02 /* DrawerBarButtonItem.swift in Sources */,
 				77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */,
 				77CEFE271A79D5CE001B0A02 /* AnimatedMenuButton.swift in Sources */,
-				77E2B7391A7BEAD500E3C4BC /* MainNavController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

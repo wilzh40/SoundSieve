@@ -8,11 +8,12 @@
 
 import Foundation
 import UIKit
-class NewsViewController: UITableViewController {
+class NewsViewController: CenterViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLeftMenuButton()
+        ConnectionManager.testNetworking()
 
     }
     func setupLeftMenuButton() {
@@ -24,4 +25,5 @@ class NewsViewController: UITableViewController {
               self.evo_drawerController?.toggleDrawerSide(.Left, animated: true, completion: nil)
         
     }
+
 }
