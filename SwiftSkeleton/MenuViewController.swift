@@ -18,6 +18,7 @@ class MenuViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ConnectionManager.testNetworking()
+       // ConnectionManager.getRedditList()
         
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -25,7 +26,7 @@ class MenuViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100;
+        return 200;
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -33,9 +34,9 @@ class MenuViewController: UITableViewController {
         cell.textLabel?.text = tableData[indexPath.row] as? String;
         return cell
     }
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        
-//    }
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+    }
    
     
 }

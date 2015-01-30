@@ -23,17 +23,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
-        var center = storyBoard.instantiateViewControllerWithIdentifier("Center") as UITableViewController
+        var center = storyBoard.instantiateViewControllerWithIdentifier("Center") as NewsViewController
         var centerController = UINavigationController(rootViewController: center)
         
+    
+        let button = UIBarButtonItem(title: "Super", style: .Plain, target: self, action: Selector("toggleMenu"))
+
+        centerController.navigationItem.setLeftBarButtonItem(button, animated: true)
+    
         var menu = storyBoard.instantiateViewControllerWithIdentifier("Left") as UITableViewController
         
         var drawerCon = DrawerController(centerViewController: centerController, leftDrawerViewController: menu)
+        drawerCon.navigationController?.navigationItem.setLeftBarButtonItem(button, animated: false)
         drawerCon.openDrawerGestureModeMask = OpenDrawerGestureMode.BezelPanningCenterView
         drawerCon.closeDrawerGestureModeMask = CloseDrawerGestureMode.PanningCenterView
         self.window?.rootViewController = drawerCon
         self.window?.makeKeyAndVisible()
+
         return true
+    }
+    
+    func toggleMenu() {
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {

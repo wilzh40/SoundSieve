@@ -28,14 +28,28 @@ class ConnectionManager {
         }
         return Static.instance
     }
-    class func testNetworking() {
-        
-        // Testting an http networking client for swift!
-        Alamofire.request(.GET, url)
-            .responseSwiftyJSON() { (request, response, data, error) in
+    
+    class func getRedditList() {
+        var subreddit = "dota2"
+        let URL = "www.reddit.com/search/" + subreddit + "/hot"
+        Alamofire.request(.GET, URL, parameters: ["limit":"25"])
+            .responseSwiftyJSON { (request, response, responseJSON, error) in
                 println(request)
-                println(response)
-                
+                println(responseJSON["args"])
+                if error != nil {
+                    println(error)
+                }
+        }
+    }
+    
+    class func testNetworking() {
+        let URL = "http://httpbin.org/get"
+
+        // Testting an http networking client for swift!
+        Alamofire.request(.GET, URL, parameters: ["foo": "bar"])
+            .responseSwiftyJSON { (request, response, responseJSON, error) in
+                println(request)
+                println(responseJSON["args"])
                 if error != nil {
                     println(error)
                 }
