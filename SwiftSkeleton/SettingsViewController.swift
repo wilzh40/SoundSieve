@@ -1,17 +1,17 @@
 //
-//  NewsViewController .swift
+//  SettingsViewController.swift
 //  SwiftSkeleton
 //
-//  Created by Wilson Zhao on 1/28/15.
+//  Created by Wilson Zhao on 2/3/15.
 //  Copyright (c) 2015 Innogen. All rights reserved.
 //
 
 import Foundation
 import UIKit
-class NewsViewController: CenterViewController, UITableViewDataSource, UITableViewDelegate {
+class SettingsViewController: CenterViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
 }

@@ -15,8 +15,19 @@ class CenterViewController: UITableViewController, ConnectionProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupLeftMenuButton()
         connectionManager.delegate = self
+        ConnectionManager.testNetworking()
+        
     }
-    
+    func setupLeftMenuButton() {
+        let leftDrawerButton = DrawerBarButtonItem(target: self, action: "toggleMenu")
+        self.navigationItem.setLeftBarButtonItem(leftDrawerButton, animated: true)
+        
+    }
+    func toggleMenu() {
+        self.evo_drawerController?.toggleDrawerSide(.Left, animated: true, completion: nil)
+        
+    }
 
 }

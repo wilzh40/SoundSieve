@@ -10,17 +10,22 @@ import Foundation
 import UIKit
 
 class MenuViewController: UITableViewController {
-    
-    var tableData:NSMutableArray = ["1","2","3"]
+      let singleton:Singleton = Singleton.sharedInstance
+      var tableData:NSMutableArray = ["Error"]
+ 
 
-    
+    func setupData() {
+        self.tableData = singleton.centerViewControllers
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupData()
         ConnectionManager.testNetworking()
        // ConnectionManager.getRedditList()
         
     }
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
     }
@@ -31,7 +36,9 @@ class MenuViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
          let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "protoCell")
-        cell.textLabel?.text = tableData[indexPath.row] as? String;
+        let vc:UIViewController = tableData[indexPath.row] as UIViewController
+
+        cell.textLabel?.text = vc.title
 
         return cell
     }

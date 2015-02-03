@@ -6,7 +6,31 @@
 //  Copyright (c) 2015 Innogen. All rights reserved.
 //
 import Foundation
+import UIKit
 class Singleton {
+    
+    // View Controllers
+    var centerViewControllers:NSMutableArray = []
+
+    
+    
+
+
+    
+     func setupData() {
+         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+         let newsViewController = storyBoard.instantiateViewControllerWithIdentifier("Center") as NewsViewController
+         let settingsViewController = storyBoard.instantiateViewControllerWithIdentifier("Settings") as SettingsViewController
+        self.centerViewControllers.addObject(newsViewController)
+        self.centerViewControllers.addObject(settingsViewController)
+
+
+        
+
+    }
+    
+    
+    
     
     class var sharedInstance : Singleton {
         struct Static {
@@ -15,4 +39,5 @@ class Singleton {
         return Static.instance
     }
     
+
 }

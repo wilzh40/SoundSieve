@@ -10,6 +10,7 @@
 		77B856F81A79E4BB00A51186 /* NewsViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856F71A79E4BB00A51186 /* NewsViewController .swift */; };
 		77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */; };
 		77B857011A7A9E3500A51186 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B857001A7A9E3500A51186 /* Model.swift */; };
+		77BFE9D61A814C5F00F1AAC1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BFE9D51A814C5F00F1AAC1 /* SettingsViewController.swift */; };
 		77CEFCEE1A79C041001B0A02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFCED1A79C041001B0A02 /* AppDelegate.swift */; };
 		77CEFCF11A79C041001B0A02 /* SwiftSkeleton.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFCEF1A79C041001B0A02 /* SwiftSkeleton.xcdatamodeld */; };
 		77CEFCF31A79C041001B0A02 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFCF21A79C041001B0A02 /* ViewController.swift */; };
@@ -90,6 +91,7 @@
 		77B856F71A79E4BB00A51186 /* NewsViewController .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewsViewController .swift"; sourceTree = "<group>"; };
 		77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		77B857001A7A9E3500A51186 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		77BFE9D51A814C5F00F1AAC1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		77CEFCE81A79C041001B0A02 /* SwiftSkeleton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSkeleton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CEFCEC1A79C041001B0A02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77CEFCED1A79C041001B0A02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +144,15 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		77BFE9D31A81482C00F1AAC1 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */,
+				77CEFE2B1A79D78B001B0A02 /* Singleton.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
 		77CEFCDF1A79C041001B0A02 = {
 			isa = PBXGroup;
 			children = (
@@ -171,9 +182,8 @@
 				77CEFE2F1A79DD4D001B0A02 /* ViewControllers */,
 				77CEFD101A79C057001B0A02 /* Source */,
 				77CEFCED1A79C041001B0A02 /* AppDelegate.swift */,
-				77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */,
 				77CEFCF21A79C041001B0A02 /* ViewController.swift */,
-				77CEFE2B1A79D78B001B0A02 /* Singleton.swift */,
+				77BFE9D31A81482C00F1AAC1 /* Core */,
 				77CEFCF41A79C041001B0A02 /* Main.storyboard */,
 				77CEFCF71A79C041001B0A02 /* Images.xcassets */,
 				77CEFCF91A79C041001B0A02 /* LaunchScreen.xib */,
@@ -249,6 +259,7 @@
 			children = (
 				77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */,
 				77CEFE2D1A79DD46001B0A02 /* MenuViewController.swift */,
+				77BFE9D51A814C5F00F1AAC1 /* SettingsViewController.swift */,
 				77B856F71A79E4BB00A51186 /* NewsViewController .swift */,
 			);
 			name = ViewControllers;
@@ -389,6 +400,7 @@
 				77CEFE2E1A79DD46001B0A02 /* MenuViewController.swift in Sources */,
 				77CEFCEE1A79C041001B0A02 /* AppDelegate.swift in Sources */,
 				77B856F81A79E4BB00A51186 /* NewsViewController .swift in Sources */,
+				77BFE9D61A814C5F00F1AAC1 /* SettingsViewController.swift in Sources */,
 				77CEFE2C1A79D78B001B0A02 /* Singleton.swift in Sources */,
 				77CEFE281A79D5CE001B0A02 /* DrawerBarButtonItem.swift in Sources */,
 				77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */,

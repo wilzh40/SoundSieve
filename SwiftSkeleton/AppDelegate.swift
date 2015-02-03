@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Singleton.sharedInstance.setupData()
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
@@ -40,6 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = drawerCon
         self.window?.makeKeyAndVisible()
 
+        
+        
+        
         return true
     }
     

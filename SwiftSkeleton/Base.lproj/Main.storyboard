@@ -28,12 +28,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48P-ba-XTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="59" y="240"/>
+            <point key="canvasLocation" x="-73" y="240"/>
         </scene>
-        <!--Root View Controller-->
+        <!--News-->
         <scene sceneID="7Gf-u9-Xl8">
             <objects>
-                <tableViewController storyboardIdentifier="Center" id="1mI-P4-HYU" customClass="NewsViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Center" title="News" id="1mI-P4-HYU" customClass="NewsViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mO6-ml-8gx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,7 +55,33 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Sg-ks-RwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="417" y="240"/>
+            <point key="canvasLocation" x="443" y="240"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="d5V-hC-zry">
+            <objects>
+                <tableViewController storyboardIdentifier="Settings" title="Settings" id="Onv-gg-qBu" customClass="SettingsViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="DmX-RS-Mob">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="yJH-Ug-pi0">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yJH-Ug-pi0" id="dox-KW-e0D">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Onv-gg-qBu" id="l5R-Cx-ikT"/>
+                            <outlet property="delegate" destination="Onv-gg-qBu" id="x4K-Rr-Nd6"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tVc-YS-cb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="787" y="240"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
