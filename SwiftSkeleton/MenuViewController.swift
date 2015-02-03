@@ -36,21 +36,24 @@ class MenuViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
          let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "protoCell")
-        let vc:UIViewController = tableData[indexPath.row] as UIViewController
+        let VC:UIViewController = tableData[indexPath.row] as UIViewController
 
-        cell.textLabel?.text = vc.title
+        cell.textLabel?.text = VC.title
 
         return cell
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // Chane the center view controller
-        switch (indexPath.row) {
-            case 0:
-                //let newCenterController:CenterViewController =
-            break
-        default:
-            break
-        }
+        // Change the center view controller
+        let newCenterVC = singleton.centerViewControllers[indexPath.row] as UIViewController
+
+        self.evo_drawerController?.setCenterViewController(newCenterVC, withCloseAnimation: true, completion: nil)
+//        switch (indexPath.row) {
+//            case 0:
+//                //let newCenterController:CenterViewController =
+//            break
+//        default:
+//            break
+//        }
         self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
         
     }

@@ -60,7 +60,7 @@
         <!--Settings-->
         <scene sceneID="d5V-hC-zry">
             <objects>
-                <tableViewController storyboardIdentifier="Settings" title="Settings" id="Onv-gg-qBu" customClass="SettingsViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Settings" id="Onv-gg-qBu" customClass="SettingsViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="DmX-RS-Mob">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,10 +78,27 @@
                             <outlet property="delegate" destination="Onv-gg-qBu" id="x4K-Rr-Nd6"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="nkG-gd-uNU"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVc-YS-cb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="787" y="240"/>
+            <point key="canvasLocation" x="799" y="-376"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="3Va-EI-aya">
+            <objects>
+                <navigationController storyboardIdentifier="Settings" title="Settings" id="Sup-F5-KqO" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="x4l-Yc-hrc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Onv-gg-qBu" kind="relationship" relationship="rootViewController" id="1Uf-tM-V1a"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nBd-nM-FtR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="443" y="-376"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
