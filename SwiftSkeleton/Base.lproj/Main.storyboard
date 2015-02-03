@@ -4,6 +4,22 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
+        <!--News-->
+        <scene sceneID="rMM-rV-j1j">
+            <objects>
+                <navigationController storyboardIdentifier="Center" title="News" id="7gu-OU-cK6" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RDZ-vL-bMk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="1mI-P4-HYU" kind="relationship" relationship="rootViewController" id="Ata-NS-2pt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Guz-6D-Bnc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="443" y="240"/>
+        </scene>
         <!--Menu View Controller-->
         <scene sceneID="J5x-gq-12a">
             <objects>
@@ -33,7 +49,7 @@
         <!--News-->
         <scene sceneID="7Gf-u9-Xl8">
             <objects>
-                <tableViewController storyboardIdentifier="Center" title="News" id="1mI-P4-HYU" customClass="NewsViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="News" id="1mI-P4-HYU" customClass="NewsViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mO6-ml-8gx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,11 +67,11 @@
                             <outlet property="delegate" destination="1mI-P4-HYU" id="ALi-qR-o3I"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="dZn-CW-YDF"/>
+                    <navigationItem key="navigationItem" title="News" id="dZn-CW-YDF"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Sg-ks-RwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="443" y="240"/>
+            <point key="canvasLocation" x="799" y="240"/>
         </scene>
         <!--Settings-->
         <scene sceneID="d5V-hC-zry">
@@ -78,7 +94,7 @@
                             <outlet property="delegate" destination="Onv-gg-qBu" id="x4K-Rr-Nd6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="nkG-gd-uNU"/>
+                    <navigationItem key="navigationItem" title="Settings" id="nkG-gd-uNU"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVc-YS-cb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

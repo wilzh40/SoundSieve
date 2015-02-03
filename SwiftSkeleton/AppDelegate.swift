@@ -24,12 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
-        var center = storyBoard.instantiateViewControllerWithIdentifier("Center") as NewsViewController
-        var centerController = UINavigationController(rootViewController: center)
+        var centerController = storyBoard.instantiateViewControllerWithIdentifier("Center") as UIViewController
+
         
     
         let button = UIBarButtonItem(title: "Super", style: .Plain, target: self, action: Selector("toggleMenu"))
-
         centerController.navigationItem.setLeftBarButtonItem(button, animated: true)
     
         var menu = storyBoard.instantiateViewControllerWithIdentifier("Left") as UITableViewController
