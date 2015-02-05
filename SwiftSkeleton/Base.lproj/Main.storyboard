@@ -23,7 +23,7 @@
         <!--Menu View Controller-->
         <scene sceneID="J5x-gq-12a">
             <objects>
-                <tableViewController storyboardIdentifier="Left" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vNe-dm-nii" customClass="MenuViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="vNe-dm-nii" customClass="MenuViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="01A-7T-BM0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,10 +41,27 @@
                             <outlet property="delegate" destination="vNe-dm-nii" id="BoY-fZ-YTM"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="u4c-J8-gW8"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48P-ba-XTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-73" y="240"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qjD-on-JxI">
+            <objects>
+                <navigationController storyboardIdentifier="Left" id="NGm-NW-sBa" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zWd-Vq-Ekf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vNe-dm-nii" kind="relationship" relationship="rootViewController" id="q2V-fW-rB9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="roy-zg-JHj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-425" y="240"/>
         </scene>
         <!--News-->
         <scene sceneID="7Gf-u9-Xl8">

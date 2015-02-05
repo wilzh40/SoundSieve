@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let button = UIBarButtonItem(title: "Super", style: .Plain, target: self, action: Selector("toggleMenu"))
         centerController.navigationItem.setLeftBarButtonItem(button, animated: true)
     
-        var menu = storyBoard.instantiateViewControllerWithIdentifier("Left") as UITableViewController
+        var menu = storyBoard.instantiateViewControllerWithIdentifier("Left") as UIViewController
         
         var drawerCon = DrawerController(centerViewController: centerController, leftDrawerViewController: menu)
         drawerCon.navigationController?.navigationItem.setLeftBarButtonItem(button, animated: false)

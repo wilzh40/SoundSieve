@@ -19,8 +19,8 @@ class Singleton {
     
      func setupData() {
          let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-         let newsVC = storyBoard.instantiateViewControllerWithIdentifier("Center")
-         let settingsVC = storyBoard.instantiateViewControllerWithIdentifier("Settings")
+         let newsVC = storyBoard.instantiateViewControllerWithIdentifier("Center") as UIViewController
+         let settingsVC = storyBoard.instantiateViewControllerWithIdentifier("Settings") as UIViewController
         self.centerViewControllers.addObject(newsVC)
         self.centerViewControllers.addObject(settingsVC)
 
