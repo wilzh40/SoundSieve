@@ -11,8 +11,6 @@ import Alamofire
 import SwiftyJSON
 import AlamofireSwiftyJSON
 // This is my local RESTFUL testing setup using node and express.js, as well as modular databse
-var apikey : String = "deEjldQkPV5fRpfyTC3L9xQpPe2VeBeS"
-var url : String = "https://www.kimonolabs.com/api/1wq466c8"
 
 
 protocol ConnectionProtocol {
@@ -29,18 +27,6 @@ class ConnectionManager {
         return Static.instance
     }
     
-    class func getRedditList() {
-        var subreddit = "dota2"
-        let URL = "www.reddit.com/search/" + subreddit + "/hot"
-        Alamofire.request(.GET, URL, parameters: ["limit":"25"])
-            .responseSwiftyJSON { (request, response, responseJSON, error) in
-                println(request)
-                println(responseJSON["args"])
-                if error != nil {
-                    println(error)
-                }
-        }
-    }
     
     class func testNetworking() {
         let URL = "http://httpbin.org/get"
