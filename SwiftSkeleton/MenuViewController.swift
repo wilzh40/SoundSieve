@@ -39,24 +39,43 @@ class MenuViewController: UITableViewController {
         let VC:UIViewController = tableData[indexPath.row] as UIViewController
 
         cell.textLabel?.text = VC.title
-
+        
         return cell
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Change the center view controller
         let newCenterVC = singleton.centerViewControllers[indexPath.row] as UIViewController
 
-        self.evo_drawerController?.setCenterViewController(newCenterVC, withCloseAnimation: true, completion: nil)
-//        switch (indexPath.row) {
-//            case 0:
-//                //let newCenterController:CenterViewController =
-//            break
-//        default:
-//            break
-//        }
-        self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
-        
+        if indexPath.row != singleton.currentCenterViewController {
+            
+            // Doesn't allow selection of the current VC
+            
+            self.evo_drawerController?.setCenterViewController(newCenterVC, withCloseAnimation: true, completion: nil)
+            self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+            singleton.currentCenterViewController = indexPath.row
+
+        }
+            
+    }
+
+    override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.row == singleton.currentCenterViewController {
+            return false
+        }
+        return true
     }
    
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        if indexPath.row == singleton.currentCenterViewController {
+            return nil
+        }
+        return indexPath
+    }
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == singleton.currentCenterViewController {
+            cell.alpha = 0.5
+        }
+      
+    }
     
 }

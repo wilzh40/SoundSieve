@@ -10,8 +10,8 @@ import UIKit
 class Singleton {
     
     // View Controllers
-    var centerViewControllers:NSMutableArray = []
-
+    var centerViewControllers: NSMutableArray = []
+    var currentCenterViewController: Int = 0
     
     
 
@@ -23,7 +23,7 @@ class Singleton {
          let settingsVC = storyBoard.instantiateViewControllerWithIdentifier("Settings") as UIViewController
         self.centerViewControllers.addObject(newsVC)
         self.centerViewControllers.addObject(settingsVC)
-
+        
 
         
 
