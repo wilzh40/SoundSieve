@@ -55,6 +55,7 @@ class MenuViewController: UITableViewController {
             singleton.currentCenterViewController = indexPath.row
 
         }
+        self.tableView.reloadData()
             
     }
 
