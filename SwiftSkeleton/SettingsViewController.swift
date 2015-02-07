@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class SettingsViewController: CenterViewController, UITableViewDataSource, UITableViewDelegate {
+class SettingsViewController: CenterViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

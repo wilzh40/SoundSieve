@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CenterViewController: UITableViewController, ConnectionProtocol {
+class CenterViewController: UIViewController, ConnectionProtocol {
     let singleton:Singleton = Singleton.sharedInstance
     let connectionManager:ConnectionManager = ConnectionManager.sharedInstance
     

@@ -13,12 +13,31 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="1mI-P4-HYU" kind="relationship" relationship="rootViewController" id="Ata-NS-2pt"/>
+                        <segue destination="sIy-NQ-Bi5" kind="relationship" relationship="rootViewController" id="Snz-5V-bBE"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Guz-6D-Bnc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="443" y="240"/>
+        </scene>
+        <!--SwipeToChoose-->
+        <scene sceneID="sgn-WJ-gBD">
+            <objects>
+                <viewController id="sIy-NQ-Bi5" customClass="MainViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X5W-m6-aXp"/>
+                        <viewControllerLayoutGuide type="bottom" id="oVg-oZ-xX4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VkX-AU-Nbw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="SwipeToChoose" id="cM1-g3-0Jf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9lZ-QW-Vvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="799" y="240"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="J5x-gq-12a">
@@ -53,33 +72,6 @@
             </objects>
             <point key="canvasLocation" x="-78" y="240"/>
         </scene>
-        <!--News-->
-        <scene sceneID="7Gf-u9-Xl8">
-            <objects>
-                <tableViewController title="News" id="1mI-P4-HYU" customClass="NewsViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mO6-ml-8gx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="AN9-al-ZrZ">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AN9-al-ZrZ" id="BHo-5F-egR">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="1mI-P4-HYU" id="wQb-au-dWB"/>
-                            <outlet property="delegate" destination="1mI-P4-HYU" id="ALi-qR-o3I"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="News" id="dZn-CW-YDF"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Sg-ks-RwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="799" y="240"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="d5V-hC-zry">
             <objects>
@@ -88,14 +80,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="yJH-Ug-pi0">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yJH-Ug-pi0" id="dox-KW-e0D">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="Onv-gg-qBu" id="l5R-Cx-ikT"/>
                             <outlet property="delegate" destination="Onv-gg-qBu" id="x4K-Rr-Nd6"/>

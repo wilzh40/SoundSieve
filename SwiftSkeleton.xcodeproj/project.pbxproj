@@ -17,7 +17,7 @@
 		77040B0D1A86CA3E0065D260 /* MDCSwipeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040AFF1A86CA3E0065D260 /* MDCSwipeResult.m */; };
 		77040B0E1A86CA3E0065D260 /* MDCSwipeToChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040B031A86CA3E0065D260 /* MDCSwipeToChooseView.m */; };
 		77040B0F1A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040B051A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m */; };
-		77B856F81A79E4BB00A51186 /* NewsViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856F71A79E4BB00A51186 /* NewsViewController .swift */; };
+		77B856F81A79E4BB00A51186 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856F71A79E4BB00A51186 /* MainViewController.swift */; };
 		77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */; };
 		77B857011A7A9E3500A51186 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B857001A7A9E3500A51186 /* Model.swift */; };
 		77BFE9D61A814C5F00F1AAC1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BFE9D51A814C5F00F1AAC1 /* SettingsViewController.swift */; };
@@ -117,7 +117,7 @@
 		77040B041A86CA3E0065D260 /* UIView+MDCSwipeToChoose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MDCSwipeToChoose.h"; sourceTree = "<group>"; };
 		77040B051A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MDCSwipeToChoose.m"; sourceTree = "<group>"; };
 		77040B111A86CB540065D260 /* SwiftSkeleton-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SwiftSkeleton-Bridging-Header.h"; path = "SwiftSkeleton/SwiftSkeleton-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		77B856F71A79E4BB00A51186 /* NewsViewController .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewsViewController .swift"; sourceTree = "<group>"; };
+		77B856F71A79E4BB00A51186 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		77B857001A7A9E3500A51186 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		77BFE9D51A814C5F00F1AAC1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -372,7 +372,7 @@
 				77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */,
 				77CEFE2D1A79DD46001B0A02 /* MenuViewController.swift */,
 				77BFE9D51A814C5F00F1AAC1 /* SettingsViewController.swift */,
-				77B856F71A79E4BB00A51186 /* NewsViewController .swift */,
+				77B856F71A79E4BB00A51186 /* MainViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -515,7 +515,7 @@
 				77CEFE2A1A79D5CE001B0A02 /* DrawerVisualState.swift in Sources */,
 				77CEFE2E1A79DD46001B0A02 /* MenuViewController.swift in Sources */,
 				77CEFCEE1A79C041001B0A02 /* AppDelegate.swift in Sources */,
-				77B856F81A79E4BB00A51186 /* NewsViewController .swift in Sources */,
+				77B856F81A79E4BB00A51186 /* MainViewController.swift in Sources */,
 				77040B0A1A86CA3E0065D260 /* MDCSwipeOptions.m in Sources */,
 				77040B0C1A86CA3E0065D260 /* MDCPanState.m in Sources */,
 				77040B071A86CA3E0065D260 /* MDCViewState.m in Sources */,
