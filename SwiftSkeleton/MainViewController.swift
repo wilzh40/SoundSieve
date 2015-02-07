@@ -14,6 +14,11 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //hacky part so navbar doesnt overshadow the thing
+        if self.respondsToSelector(Selector("edgesForExtendedLayout")) {
+            self.edgesForExtendedLayout = UIRectEdge.None
+        }
+        
         var options = MDCSwipeToChooseViewOptions()
         options.delegate = self
         options.likedText = "Keep"
