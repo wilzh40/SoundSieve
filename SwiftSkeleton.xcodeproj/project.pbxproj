@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77040B061A86CA3E0065D260 /* MDCGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040AE91A86CA3E0065D260 /* MDCGeometry.m */; };
+		77040B071A86CA3E0065D260 /* MDCViewState.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040AEC1A86CA3E0065D260 /* MDCViewState.m */; };
+		77040B081A86CA3E0065D260 /* UIColor+MDCRGB8Bit.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040AEE1A86CA3E0065D260 /* UIColor+MDCRGB8Bit.m */; };
+		77040B091A86CA3E0065D260 /* UIView+MDCBorderedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040AF11A86CA3E0065D260 /* UIView+MDCBorderedLabel.m */; };
+		77040B0A1A86CA3E0065D260 /* MDCSwipeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040AF71A86CA3E0065D260 /* MDCSwipeOptions.m */; };
+		77040B0B1A86CA3E0065D260 /* MDCSwipeToChooseViewOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040AF91A86CA3E0065D260 /* MDCSwipeToChooseViewOptions.m */; };
+		77040B0C1A86CA3E0065D260 /* MDCPanState.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040AFC1A86CA3E0065D260 /* MDCPanState.m */; };
+		77040B0D1A86CA3E0065D260 /* MDCSwipeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040AFF1A86CA3E0065D260 /* MDCSwipeResult.m */; };
+		77040B0E1A86CA3E0065D260 /* MDCSwipeToChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040B031A86CA3E0065D260 /* MDCSwipeToChooseView.m */; };
+		77040B0F1A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040B051A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m */; };
 		77B856F81A79E4BB00A51186 /* NewsViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856F71A79E4BB00A51186 /* NewsViewController .swift */; };
 		77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */; };
 		77B857011A7A9E3500A51186 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B857001A7A9E3500A51186 /* Model.swift */; };
@@ -82,6 +92,31 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		77040AE81A86CA3E0065D260 /* MDCGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCGeometry.h; sourceTree = "<group>"; };
+		77040AE91A86CA3E0065D260 /* MDCGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCGeometry.m; sourceTree = "<group>"; };
+		77040AEB1A86CA3E0065D260 /* MDCViewState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCViewState.h; sourceTree = "<group>"; };
+		77040AEC1A86CA3E0065D260 /* MDCViewState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCViewState.m; sourceTree = "<group>"; };
+		77040AED1A86CA3E0065D260 /* UIColor+MDCRGB8Bit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MDCRGB8Bit.h"; sourceTree = "<group>"; };
+		77040AEE1A86CA3E0065D260 /* UIColor+MDCRGB8Bit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MDCRGB8Bit.m"; sourceTree = "<group>"; };
+		77040AF01A86CA3E0065D260 /* UIView+MDCBorderedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MDCBorderedLabel.h"; sourceTree = "<group>"; };
+		77040AF11A86CA3E0065D260 /* UIView+MDCBorderedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MDCBorderedLabel.m"; sourceTree = "<group>"; };
+		77040AF21A86CA3E0065D260 /* MDCSwipeToChoose-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MDCSwipeToChoose-Prefix.pch"; sourceTree = "<group>"; };
+		77040AF41A86CA3E0065D260 /* MDCSwipeToChoose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCSwipeToChoose.h; sourceTree = "<group>"; };
+		77040AF61A86CA3E0065D260 /* MDCSwipeOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCSwipeOptions.h; sourceTree = "<group>"; };
+		77040AF71A86CA3E0065D260 /* MDCSwipeOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCSwipeOptions.m; sourceTree = "<group>"; };
+		77040AF81A86CA3E0065D260 /* MDCSwipeToChooseViewOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCSwipeToChooseViewOptions.h; sourceTree = "<group>"; };
+		77040AF91A86CA3E0065D260 /* MDCSwipeToChooseViewOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCSwipeToChooseViewOptions.m; sourceTree = "<group>"; };
+		77040AFB1A86CA3E0065D260 /* MDCPanState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCPanState.h; sourceTree = "<group>"; };
+		77040AFC1A86CA3E0065D260 /* MDCPanState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCPanState.m; sourceTree = "<group>"; };
+		77040AFD1A86CA3E0065D260 /* MDCSwipeDirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCSwipeDirection.h; sourceTree = "<group>"; };
+		77040AFE1A86CA3E0065D260 /* MDCSwipeResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCSwipeResult.h; sourceTree = "<group>"; };
+		77040AFF1A86CA3E0065D260 /* MDCSwipeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCSwipeResult.m; sourceTree = "<group>"; };
+		77040B011A86CA3E0065D260 /* MDCSwipeToChooseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCSwipeToChooseDelegate.h; sourceTree = "<group>"; };
+		77040B021A86CA3E0065D260 /* MDCSwipeToChooseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCSwipeToChooseView.h; sourceTree = "<group>"; };
+		77040B031A86CA3E0065D260 /* MDCSwipeToChooseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCSwipeToChooseView.m; sourceTree = "<group>"; };
+		77040B041A86CA3E0065D260 /* UIView+MDCSwipeToChoose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MDCSwipeToChoose.h"; sourceTree = "<group>"; };
+		77040B051A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MDCSwipeToChoose.m"; sourceTree = "<group>"; };
+		77040B111A86CB540065D260 /* SwiftSkeleton-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SwiftSkeleton-Bridging-Header.h"; path = "SwiftSkeleton/SwiftSkeleton-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		77B856F71A79E4BB00A51186 /* NewsViewController .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NewsViewController .swift"; sourceTree = "<group>"; };
 		77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		77B857001A7A9E3500A51186 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -126,6 +161,93 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		77040AE61A86CA3E0065D260 /* MDCSwipeToChoose */ = {
+			isa = PBXGroup;
+			children = (
+				77040AE71A86CA3E0065D260 /* Internal */,
+				77040AF21A86CA3E0065D260 /* MDCSwipeToChoose-Prefix.pch */,
+				77040AF31A86CA3E0065D260 /* Public */,
+			);
+			path = MDCSwipeToChoose;
+			sourceTree = "<group>";
+		};
+		77040AE71A86CA3E0065D260 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				77040AE81A86CA3E0065D260 /* MDCGeometry.h */,
+				77040AE91A86CA3E0065D260 /* MDCGeometry.m */,
+				77040AEA1A86CA3E0065D260 /* State */,
+				77040AED1A86CA3E0065D260 /* UIColor+MDCRGB8Bit.h */,
+				77040AEE1A86CA3E0065D260 /* UIColor+MDCRGB8Bit.m */,
+				77040AEF1A86CA3E0065D260 /* Views */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		77040AEA1A86CA3E0065D260 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				77040AEB1A86CA3E0065D260 /* MDCViewState.h */,
+				77040AEC1A86CA3E0065D260 /* MDCViewState.m */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		77040AEF1A86CA3E0065D260 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				77040AF01A86CA3E0065D260 /* UIView+MDCBorderedLabel.h */,
+				77040AF11A86CA3E0065D260 /* UIView+MDCBorderedLabel.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		77040AF31A86CA3E0065D260 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				77040AF41A86CA3E0065D260 /* MDCSwipeToChoose.h */,
+				77040AF51A86CA3E0065D260 /* Options */,
+				77040AFA1A86CA3E0065D260 /* State */,
+				77040B001A86CA3E0065D260 /* Views */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		77040AF51A86CA3E0065D260 /* Options */ = {
+			isa = PBXGroup;
+			children = (
+				77040AF61A86CA3E0065D260 /* MDCSwipeOptions.h */,
+				77040AF71A86CA3E0065D260 /* MDCSwipeOptions.m */,
+				77040AF81A86CA3E0065D260 /* MDCSwipeToChooseViewOptions.h */,
+				77040AF91A86CA3E0065D260 /* MDCSwipeToChooseViewOptions.m */,
+			);
+			path = Options;
+			sourceTree = "<group>";
+		};
+		77040AFA1A86CA3E0065D260 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				77040AFB1A86CA3E0065D260 /* MDCPanState.h */,
+				77040AFC1A86CA3E0065D260 /* MDCPanState.m */,
+				77040AFD1A86CA3E0065D260 /* MDCSwipeDirection.h */,
+				77040AFE1A86CA3E0065D260 /* MDCSwipeResult.h */,
+				77040AFF1A86CA3E0065D260 /* MDCSwipeResult.m */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		77040B001A86CA3E0065D260 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				77040B011A86CA3E0065D260 /* MDCSwipeToChooseDelegate.h */,
+				77040B021A86CA3E0065D260 /* MDCSwipeToChooseView.h */,
+				77040B031A86CA3E0065D260 /* MDCSwipeToChooseView.m */,
+				77040B041A86CA3E0065D260 /* UIView+MDCSwipeToChoose.h */,
+				77040B051A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		77B856FF1A7A9E1C00A51186 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +259,7 @@
 		77BFE9D31A81482C00F1AAC1 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				77040B111A86CB540065D260 /* SwiftSkeleton-Bridging-Header.h */,
 				77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */,
 				77CEFE2B1A79D78B001B0A02 /* Singleton.swift */,
 			);
@@ -225,6 +348,7 @@
 		77CEFE211A79D5C6001B0A02 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				77040AE61A86CA3E0065D260 /* MDCSwipeToChoose */,
 				77CEFE261A79D5CE001B0A02 /* DrawerController */,
 			);
 			name = External;
@@ -379,6 +503,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77040B0F1A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m in Sources */,
+				77040B081A86CA3E0065D260 /* UIColor+MDCRGB8Bit.m in Sources */,
+				77040B091A86CA3E0065D260 /* UIView+MDCBorderedLabel.m in Sources */,
+				77040B0E1A86CA3E0065D260 /* MDCSwipeToChooseView.m in Sources */,
 				77CEFCF31A79C041001B0A02 /* ViewController.swift in Sources */,
 				77CEFCF11A79C041001B0A02 /* SwiftSkeleton.xcdatamodeld in Sources */,
 				77E2B73E1A7C16CC00E3C4BC /* CenterViewController.swift in Sources */,
@@ -388,11 +516,17 @@
 				77CEFE2E1A79DD46001B0A02 /* MenuViewController.swift in Sources */,
 				77CEFCEE1A79C041001B0A02 /* AppDelegate.swift in Sources */,
 				77B856F81A79E4BB00A51186 /* NewsViewController .swift in Sources */,
+				77040B0A1A86CA3E0065D260 /* MDCSwipeOptions.m in Sources */,
+				77040B0C1A86CA3E0065D260 /* MDCPanState.m in Sources */,
+				77040B071A86CA3E0065D260 /* MDCViewState.m in Sources */,
 				77BFE9D61A814C5F00F1AAC1 /* SettingsViewController.swift in Sources */,
 				77CEFE2C1A79D78B001B0A02 /* Singleton.swift in Sources */,
 				77CEFE281A79D5CE001B0A02 /* DrawerBarButtonItem.swift in Sources */,
 				77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */,
+				77040B0D1A86CA3E0065D260 /* MDCSwipeResult.m in Sources */,
 				77CEFE271A79D5CE001B0A02 /* AnimatedMenuButton.swift in Sources */,
+				77040B061A86CA3E0065D260 /* MDCGeometry.m in Sources */,
+				77040B0B1A86CA3E0065D260 /* MDCSwipeToChooseViewOptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +667,8 @@
 				INFOPLIST_FILE = SwiftSkeleton/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSkeleton/SwiftSkeleton-Bridging-Header.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "SwiftSkeleton/SwiftSkeleton-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -548,6 +684,7 @@
 				INFOPLIST_FILE = SwiftSkeleton/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSkeleton/SwiftSkeleton-Bridging-Header.h";
 			};
 			name = Release;
 		};

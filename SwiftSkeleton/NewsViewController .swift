@@ -8,10 +8,12 @@
 
 import Foundation
 import UIKit
+//import MDCSwipeToChoose
 class NewsViewController: CenterViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
 
 }
