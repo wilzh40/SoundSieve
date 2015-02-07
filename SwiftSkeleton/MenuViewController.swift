@@ -31,7 +31,7 @@ class MenuViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 200;
+        return 100;
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -74,7 +74,8 @@ class MenuViewController: UITableViewController {
     }
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == singleton.currentCenterViewController {
-            cell.alpha = 0.5
+            cell.alpha = 0.4
+            cell.backgroundColor = UIColor.grayColor()
         }
       
     }
