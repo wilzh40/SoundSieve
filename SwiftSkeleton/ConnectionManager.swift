@@ -13,19 +13,36 @@ import AlamofireSwiftyJSON
 // This is my local RESTFUL testing setup using node and express.js, as well as modular databse
 
 
+let baseURL = "http://soundsieve.appspot.com/api/"
+
 protocol ConnectionProtocol {
     
 }
 class ConnectionManager {
     var delegate : ConnectionProtocol?
     
-    // Singleton
-    class var sharedInstance : ConnectionManager {
-        struct Static {
-            static let instance : ConnectionManager = ConnectionManager()
+   
+    class func getRandomTrack () {
+        let URL = baseURL + "randomTrack"
+        Alamofire.request(.GET, URL, parameters: ["foo": "bar"])
+            .responseSwiftyJSON { (request, response, responseJSON, error) in
+                println(request)
+                println(responseJSON)
+                if error != nil {
+                    println(error)
+                }
         }
-        return Static.instance
+        
+
     }
+    
+    class func getTrackStream (trackUrl:String) {
+        
+    }
+    
+    
+    
+    
     
     
     class func testNetworking() {
@@ -42,6 +59,14 @@ class ConnectionManager {
         }
         
     }
+    // Singleton
+    class var sharedInstance : ConnectionManager {
+        struct Static {
+            static let instance : ConnectionManager = ConnectionManager()
+        }
+        return Static.instance
+    }
+    
 
 }
 

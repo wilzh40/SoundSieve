@@ -21,10 +21,16 @@ class Track: NSObject {
     
     // Optional Variables (could be nil if not there)
     var genre: String?
-    var description: String?
+    var subtitle: String?
     var artwork_url: String?
     
-    
+    override init() {
+        self.title = "ExampleTitle"
+        self.id = 0
+        self.duration = 0
+        self.stream_url = "exampleUrl"
+        self.permalink_url = "exampleUrl"
+    }
 }
 
-class s
+

@@ -13,6 +13,10 @@ class Singleton {
     var centerViewControllers: NSMutableArray = []
     var currentCenterViewController: Int = 0
     
+    // Data 
+    
+    // Settings
+    
     
 
 
