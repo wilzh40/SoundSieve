@@ -41,17 +41,23 @@
                                     <action selector="buttonPressed:" destination="sIy-NQ-Bi5" eventType="touchUpInside" id="Jtd-oa-Aa1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdP-Eu-dag">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Pl-ng-FBc">
                                 <rect key="frame" x="254" y="400" width="50" height="50"/>
                                 <state key="normal" image="check">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="checkButtonPressed:" destination="sIy-NQ-Bi5" eventType="touchUpInside" id="DvW-Mq-MLg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwm-3n-ddD">
                                 <rect key="frame" x="16" y="400" width="50" height="50"/>
                                 <state key="normal" image="cross">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="xButtonPressed:" destination="sIy-NQ-Bi5" eventType="touchUpInside" id="0XD-u8-3Eq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -59,7 +65,7 @@
                     <navigationItem key="navigationItem" title="SwipeToChoose" id="cM1-g3-0Jf"/>
                     <connections>
                         <outlet property="XButton" destination="Mwm-3n-ddD" id="GAN-dx-c3r"/>
-                        <outlet property="checkButton" destination="AdP-Eu-dag" id="TRX-Zg-Efw"/>
+                        <outlet property="checkButton" destination="5Pl-ng-FBc" id="Nxo-CS-hyz"/>
                         <outlet property="pausePlayButton" destination="TcY-ff-CKO" id="6f3-3w-VS3"/>
                         <outlet property="xButton" destination="Mwm-3n-ddD" id="jAi-iE-nko"/>
                     </connections>

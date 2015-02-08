@@ -165,7 +165,17 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
             CGRectGetWidth(frontFrame),CGRectGetHeight(frontFrame))
         }
     
+    //Pause play function
     @IBAction func buttonPressed(sender: AnimatedStartButton) {
         sender.selected = !sender.selected
+    }
+
+    
+    @IBAction func checkButtonPressed(sender: UIButton) {
+        println("check pressed")
+    }
+
+    @IBAction func xButtonPressed(sender:UIButton) {
+        println("x pressed")
     }
 }
