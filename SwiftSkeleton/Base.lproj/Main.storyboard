@@ -27,7 +27,7 @@
                                     <action selector="buttonPressed:" destination="sIy-NQ-Bi5" eventType="touchUpInside" id="Jtd-oa-Aa1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwm-3n-ddD">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwm-3n-ddD">
                                 <rect key="frame" x="16" y="498" width="50" height="50"/>
                                 <state key="normal" image="music">
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -36,7 +36,7 @@
                                     <action selector="xButtonPressed:" destination="sIy-NQ-Bi5" eventType="touchUpInside" id="0XD-u8-3Eq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Pl-ng-FBc">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Pl-ng-FBc">
                                 <rect key="frame" x="254" y="498" width="50" height="50"/>
                                 <state key="normal" image="list-square">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
