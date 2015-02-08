@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -20,7 +20,7 @@
                                 <rect key="frame" x="123" y="485" width="75" height="75"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="play_button">
+                                <state key="normal" image="play_buttonblue">
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -29,7 +29,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwm-3n-ddD">
                                 <rect key="frame" x="16" y="498" width="50" height="50"/>
-                                <state key="normal" image="cross">
+                                <state key="normal" image="music">
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -38,7 +38,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Pl-ng-FBc">
                                 <rect key="frame" x="254" y="498" width="50" height="50"/>
-                                <state key="normal" image="check">
+                                <state key="normal" image="list-square">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -138,9 +138,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="check" width="410" height="410"/>
-        <image name="cross" width="410" height="410"/>
-        <image name="play_button" width="64" height="67"/>
+        <image name="list-square" width="410" height="410"/>
+        <image name="music" width="410" height="410"/>
+        <image name="play_buttonblue" width="64" height="67"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
