@@ -89,4 +89,8 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         self.tableView.reloadData()
     }
     
+    @IBAction func clearListPressed(sender: UIButton) {
+        singleton.clearSavedTracks()
+        singleton
+    }
 }
