@@ -24,9 +24,10 @@ class ChooseTrackView : MDCSwipeToChooseView {
         
         self.imageView.image = ConnectionManager.getImageFromURL(track.artwork_url!)
        
-        self.constructInfoView()
+        //self.constructInfoView()
     
         self.constructNameLabel()
+        self.addBackground()
 
     }
     required init(coder aDecoder: NSCoder)
@@ -37,18 +38,29 @@ class ChooseTrackView : MDCSwipeToChooseView {
     
     func constructNameLabel() {
        var leftPadding:CGFloat = 12
-        var topPadding:CGFloat = 17
+        var topPadding:CGFloat = 50
         frame = CGRectMake(leftPadding,
            topPadding,
-            CGRectGetWidth(self.frame),
-            CGRectGetHeight(self.frame) - topPadding)
+            CGRectGetWidth(self.bounds),
+            CGRectGetHeight(self.bounds) - topPadding)
         let nameLabel = UILabel(frame: frame)
+        nameLabel.font = UIFont(name: nameLabel.font.fontName, size: 20)
         nameLabel.text = track?.title
         self.addSubview(nameLabel)
-    
+        
         
     }
     
+    func addBackground() {
+        self.layer.borderColor = UIColor.clearColor().CGColor!
+        //self.backgroundColor = UIColor.blackColor()
+        var gradientMaskLayer:CAGradientLayer = CAGradientLayer()
+        gradientMaskLayer.frame = self.bounds
+        gradientMaskLayer.colors = [UIColor.clearColor().CGColor, UIColor.blackColor().CGColor,UIColor.blackColor().CGColor,UIColor.clearColor().CGColor]
+
+        gradientMaskLayer.locations = [0, 0,0.7,1]
+        self.imageView.layer.mask = gradientMaskLayer
+    }
     
     func constructInfoView() {
         var bottomHeight: CGFloat = 60

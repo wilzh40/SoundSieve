@@ -62,7 +62,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
     
     
     func populateTracks() {
-        for i in 1...5 {
+        for i in 0...5 {
             self.addTrack()
         }
         // Start with 5 tracks
@@ -81,9 +81,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
         }
         var options = MDCSwipeToChooseViewOptions()
         options.delegate = self
-        options.likedText = "Keep"
+        options.likedText = "nah"
         options.likedColor = UIColor.blueColor()
-        options.nopeText = "Not today"
+        options.nopeText = "yas"
         options.onPan = { state -> Void in
             if state.thresholdRatio == 1 && state.direction == MDCSwipeDirection.Left {
                 
@@ -152,7 +152,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
     }
     // View frames
     func frontCardViewFrame() -> CGRect {
-        let horizontalPadding: CGFloat = 30
+        let horizontalPadding: CGFloat = 25
         let topPadding: CGFloat = 60
         let bottomPadding: CGFloat = 200
         return CGRectMake(horizontalPadding, topPadding,CGRectGetWidth(self.view.frame) - (horizontalPadding),
