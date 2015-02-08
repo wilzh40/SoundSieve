@@ -22,14 +22,31 @@ class ConnectionManager {
     var delegate : ConnectionProtocol?
     
    
-    class func getRandomTrack (genre: String, limit: Int ) {
+    class func getRandomTracks (genre: String, limit: Int ) {
         let URL = baseURL + "randomTrack/" + genre
 
         Alamofire.request(.GET, URL)
             .responseSwiftyJSON { (request, response, responseJSON, error) in
                 println(request)
-                println(responseJSON)
-                
+                var tracks: NSMutableArray = []
+                for (index: String, child: JSON) in responseJSON {
+                    var track = Track()
+                    track.title = child["title"].string!
+                    println(track.title)
+                    track.id = child["id"].int!
+                    track.duration = child["duration"].int!
+                    track.genre = child["genre"].string!
+                    track.subtitle = child["description"].string!
+                    track.artwork_url = child["artwork_url"].string
+                    track.permalink_url = child["permalink_url"].string!
+                    track.stream_url = child["stream_url"].string!
+                    track.start_time = child["start_time"].int!
+
+                    tracks.addObject(track)
+
+
+                }
+                Singleton.sharedInstance.tracks = tracks
                 
                 
                 

@@ -17,7 +17,7 @@ class Singleton {
     let audioPlayer:STKAudioPlayer = STKAudioPlayer()
     
     // Data 
-    
+    var tracks: NSMutableArray = []
     // Settings
     
     
@@ -26,7 +26,7 @@ class Singleton {
     
      func setupData() {
         //RandomTracks
-        ConnectionManager.getRandomTrack("techno", limit: 100)
+        ConnectionManager.getRandomTracks("techno", limit: 100)
         
         //VCs
          let storyBoard = UIStoryboard(name: "Main", bundle: nil)
