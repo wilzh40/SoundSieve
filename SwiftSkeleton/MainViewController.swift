@@ -266,10 +266,12 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
 
     
     @IBAction func checkButtonPressed(sender: UIButton) {
-        self.frontCardView?.mdc_swipe(MDCSwipeDirection.Right)
+        //self.frontCardView?.mdc_swipe(MDCSwipeDirection.Right)
+        self.evo_drawerController?.openDrawerSide(DrawerSide.Right, animated: true, completion: nil)
     }
 
     @IBAction func xButtonPressed(sender:UIButton) {
-        self.frontCardView?.mdc_swipe(MDCSwipeDirection.Left)
+        //self.frontCardView?.mdc_swipe(MDCSwipeDirection.Left)
+        self.evo_drawerController?.openDrawerSide(DrawerSide.Left, animated: true, completion: nil)
     }
 }

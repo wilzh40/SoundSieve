@@ -68,7 +68,8 @@ class ConnectionManager {
     class func playStreamFromTrack(track:Track) {
 
         let client_id = "6ec16ffb5ed930fce00949be480f746b"
-        let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time)
+        let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time/1000)
+        println(streamURL)
         //println(streamURL)
         Singleton.sharedInstance.audioPlayer.play(streamURL)
     }
