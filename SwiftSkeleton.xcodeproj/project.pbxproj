@@ -28,6 +28,7 @@
 		776A5A6F1A87344000D7B091 /* STKQueueEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A5A651A87344000D7B091 /* STKQueueEntry.m */; };
 		776A5A731A8738FE00D7B091 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776A5A711A8738FE00D7B091 /* AVFoundation.framework */; };
 		776A5A741A8738FE00D7B091 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776A5A721A8738FE00D7B091 /* AVKit.framework */; };
+		776A5A7C1A87A41100D7B091 /* GenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A5A7B1A87A41100D7B091 /* GenresViewController.swift */; };
 		77B856F81A79E4BB00A51186 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856F71A79E4BB00A51186 /* MainViewController.swift */; };
 		77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */; };
 		77B857011A7A9E3500A51186 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B857001A7A9E3500A51186 /* Model.swift */; };
@@ -152,6 +153,7 @@
 		776A5A661A87344000D7B091 /* StreamingKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "StreamingKit-Prefix.pch"; sourceTree = "<group>"; };
 		776A5A711A8738FE00D7B091 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		776A5A721A8738FE00D7B091 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		776A5A7B1A87A41100D7B091 /* GenresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresViewController.swift; sourceTree = "<group>"; };
 		77B856F71A79E4BB00A51186 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		77B857001A7A9E3500A51186 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 		77CEFE2F1A79DD4D001B0A02 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				776A5A7B1A87A41100D7B091 /* GenresViewController.swift */,
 				77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */,
 				77CEFE2D1A79DD46001B0A02 /* SavedSongsViewController.swift */,
 				77BFE9D51A814C5F00F1AAC1 /* SettingsViewController.swift */,
@@ -576,6 +579,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				776A5A7C1A87A41100D7B091 /* GenresViewController.swift in Sources */,
 				77040B0F1A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m in Sources */,
 				776A5A691A87344000D7B091 /* STKAutoRecoveringHTTPDataSource.m in Sources */,
 				77040B081A86CA3E0065D260 /* UIColor+MDCRGB8Bit.m in Sources */,

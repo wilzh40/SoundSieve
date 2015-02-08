@@ -68,10 +68,10 @@
             </objects>
             <point key="canvasLocation" x="799" y="240"/>
         </scene>
-        <!--Saved Songs View Controller-->
+        <!--Genres View Controller-->
         <scene sceneID="J5x-gq-12a">
             <objects>
-                <tableViewController storyboardIdentifier="Left" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vNe-dm-nii" customClass="SavedSongsViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Left" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vNe-dm-nii" customClass="GenresViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="01A-7T-BM0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,7 +80,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
-                                <navigationItem title="Menu" id="a7A-Zm-PNN"/>
+                                <navigationItem title="Genres" id="a7A-Zm-PNN"/>
                             </items>
                         </navigationBar>
                         <prototypes>
@@ -99,16 +99,32 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48P-ba-XTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-78" y="240"/>
+            <point key="canvasLocation" x="465" y="240"/>
         </scene>
-        <!--Settings-->
+        <!--Saved Songs-->
         <scene sceneID="d5V-hC-zry">
             <objects>
-                <tableViewController title="Settings" id="Onv-gg-qBu" customClass="SettingsViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Right" title="Saved Songs" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Onv-gg-qBu" customClass="SavedSongsViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="DmX-RS-Mob">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="IJv-Xi-36C">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Saved" id="l7A-Lo-AuS"/>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="2NI-rN-Ug4">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2NI-rN-Ug4" id="PuK-rY-rQr">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="Onv-gg-qBu" id="l5R-Cx-ikT"/>
                             <outlet property="delegate" destination="Onv-gg-qBu" id="x4K-Rr-Nd6"/>
@@ -118,23 +134,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVc-YS-cb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="799" y="-376"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="3Va-EI-aya">
-            <objects>
-                <navigationController storyboardIdentifier="Settings" title="Settings" id="Sup-F5-KqO" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="x4l-Yc-hrc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Onv-gg-qBu" kind="relationship" relationship="rootViewController" id="1Uf-tM-V1a"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nBd-nM-FtR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="443" y="-376"/>
+            <point key="canvasLocation" x="1139" y="240"/>
         </scene>
     </scenes>
     <resources>
