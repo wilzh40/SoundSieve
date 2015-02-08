@@ -56,7 +56,7 @@ class ChooseTrackView : MDCSwipeToChooseView {
         //self.backgroundColor = UIColor.blackColor()
         var gradientMaskLayer:CAGradientLayer = CAGradientLayer()
         gradientMaskLayer.frame = self.bounds
-        gradientMaskLayer.colors = [UIColor.clearColor().CGColor, UIColor.blackColor().CGColor,UIColor.blackColor().CGColor,UIColor.clearColor().CGColor]
+        gradientMaskLayer.colors = [UIColor.whiteColor().CGColor, UIColor.blackColor().CGColor,UIColor.blackColor().CGColor,UIColor.clearColor().CGColor]
 
         gradientMaskLayer.locations = [0, 0,0.7,1]
         self.imageView.layer.mask = gradientMaskLayer

@@ -43,19 +43,18 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         self.frontCardView = self.popTrackWithFrame(self.frontCardViewFrame())
         self.view.addSubview(self.frontCardView!)
         self.backCardView = self.popTrackWithFrame(self.backCardViewFrame())
-        self.view.addSubview(self.backCardView!)
-        
-        self.backCardView?.alpha = 0
+        self.view.insertSubview(self.backCardView!, belowSubview: self.frontCardView!)
+        //self.backCardView?.alpha = 0
         
         
         
         
         
         //hacky part so navbar doesnt overshadow the cards
-        if self.respondsToSelector(Selector("edgesForExtendedLayout")) {
+        /*if self.respondsToSelector(Selector("edgesForExtendedLayout")) {
             self.edgesForExtendedLayout = UIRectEdge.None
         }
-        
+        */
         //options
         //bring buttons to front
         self.view.bringSubviewToFront(xButton)
