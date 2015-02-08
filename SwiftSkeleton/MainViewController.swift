@@ -29,7 +29,6 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
        
         
         
-        
     }
     
     func didGetTracks() {
@@ -217,7 +216,11 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     //Pause play function
     @IBAction func buttonPressed(sender: AnimatedStartButton) {
         sender.selected = !sender.selected
-        
+        if(sender.selected) {
+            singleton.audioPlayer.pause()
+        } else {
+            singleton.audioPlayer.resume()
+        }
     }
 
     
