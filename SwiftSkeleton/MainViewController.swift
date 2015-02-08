@@ -8,10 +8,12 @@
 
 import Foundation
 import UIKit
+import QuartzCore
 import CoreData
 
 //import MDCSwipeToChoose
 class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, ConnectionProtocol{
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
     
     @IBOutlet weak var xButton: UIButton!
@@ -51,6 +53,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         
         
+        
         //hacky part so navbar doesnt overshadow the cards
         /*if self.respondsToSelector(Selector("edgesForExtendedLayout")) {
             self.edgesForExtendedLayout = UIRectEdge.None
@@ -58,6 +61,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         */
         //options
         //bring buttons to front
+        
+        titleLabel.text = currentTrack?.title
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
         self.view.bringSubviewToFront(pausePlayButton)
@@ -77,6 +82,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             println("No more tracks")
             return nil
         }
+       
+        
+        
         var options = MDCSwipeToChooseViewOptions()
         options.delegate = self
         options.likedText = "dope!"
@@ -102,7 +110,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         var view = ChooseTrackView(track:tracks.objectAtIndex(0) as Track, frame: frame, options: options)
         tracks.removeObjectAtIndex(0)
         //view.imageView.image = UIImage(named: "photo.png")
+        
         return view
+        
+
     }
     
     
@@ -141,8 +152,13 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         }
         currentTrack = self.frontCardView?.track!
         self.frontCardView = self.backCardView
-
         
+        
+        titleLabel.text = self.frontCardView?.track?.title
+        titleLabel.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+        UIView.animateWithDuration(0.25, animations: {
+            self.titleLabel.layer.transform = CATransform3DMakeScale(1,1,1)
+        })
         //Dirty Hackathon Code
         
         let frame = self.backCardViewFrame()

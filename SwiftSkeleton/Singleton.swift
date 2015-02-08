@@ -53,7 +53,8 @@ class Singleton {
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: error)
         AVAudioSession.sharedInstance().setActive(true, error: error)
         
-      
+        
+
         audioPlayer.meteringEnabled = true
         audioPlayer.volume = 1
        // audioPlayer.play("https://api.soundcloud.com/tracks/189594894/stream?client_id=6ec16ffb5ed930fce00949be480f746b&allows_redirect=false")

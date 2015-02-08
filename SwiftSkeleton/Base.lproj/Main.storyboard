@@ -4,26 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--News-->
-        <scene sceneID="rMM-rV-j1j">
-            <objects>
-                <navigationController storyboardIdentifier="Center" title="News" id="7gu-OU-cK6" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RDZ-vL-bMk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="sIy-NQ-Bi5" kind="relationship" relationship="rootViewController" id="Snz-5V-bBE"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Guz-6D-Bnc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="443" y="240"/>
-        </scene>
-        <!--SwipeToChoose-->
+        <!--SoundSieve-->
         <scene sceneID="sgn-WJ-gBD">
             <objects>
-                <viewController id="sIy-NQ-Bi5" customClass="MainViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Center" title="SoundSieve" id="sIy-NQ-Bi5" customClass="MainViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X5W-m6-aXp"/>
                         <viewControllerLayoutGuide type="bottom" id="oVg-oZ-xX4"/>
@@ -62,6 +46,12 @@
                                     <action selector="checkButtonPressed:" destination="sIy-NQ-Bi5" eventType="touchUpInside" id="DvW-Mq-MLg"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="WJ2-FF-t12">
+                                <rect key="frame" x="16" y="20" width="256" height="99"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -70,6 +60,7 @@
                         <outlet property="XButton" destination="Mwm-3n-ddD" id="GAN-dx-c3r"/>
                         <outlet property="checkButton" destination="5Pl-ng-FBc" id="Nxo-CS-hyz"/>
                         <outlet property="pausePlayButton" destination="TcY-ff-CKO" id="6f3-3w-VS3"/>
+                        <outlet property="titleLabel" destination="WJ2-FF-t12" id="pYj-8B-Ar4"/>
                         <outlet property="xButton" destination="Mwm-3n-ddD" id="jAi-iE-nko"/>
                     </connections>
                 </viewController>

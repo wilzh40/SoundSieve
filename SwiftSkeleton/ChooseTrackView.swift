@@ -25,7 +25,7 @@ class ChooseTrackView : MDCSwipeToChooseView {
         self.imageView.image = ConnectionManager.getImageFromURL(track.artwork_url!)
        
         //self.constructInfoView()
-    
+
        // self.constructNameLabel()
         self.addBackground()
 
