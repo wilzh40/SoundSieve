@@ -19,9 +19,8 @@ class ChooseTrackView : MDCSwipeToChooseView {
         super.init(frame: frame, options: options)
         self.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleBottomMargin
         
-        //change later
         self.imageView.image = ConnectionManager.getImageFromURL(track.artwork_url!)
-        
+
         self.constructInfoView()
 
     }
