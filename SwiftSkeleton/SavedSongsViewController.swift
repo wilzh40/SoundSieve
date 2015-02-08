@@ -16,6 +16,8 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
 
     func setupData() {
         self.tableData = singleton.savedTracks
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
+
     }
     
     override func viewDidLoad() {
@@ -41,7 +43,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 60;
+        return 40;
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -49,7 +51,8 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         let track:Track = tableData[indexPath.row] as Track
 
         cell.textLabel?.text = track.title
-        
+        cell.textLabel?.font = UIFont(name:"Futura",size:13.00)
+
         return cell
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

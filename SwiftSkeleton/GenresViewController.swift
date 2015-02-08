@@ -19,12 +19,17 @@ import Foundation
 import UIKit
 
 class GenresViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource  {
+
     let singleton:Singleton = Singleton.sharedInstance
     var tableData:NSMutableArray = ["Error"]
     
     
     func setupData() {
         self.tableData = singleton.genres
+       
+        //self.navigationItem.title?.font = UIFont(name:"Futura",size:15.00)
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
     }
     
     override func viewDidLoad() {
@@ -51,6 +56,7 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
       
         
         cell.textLabel?.text = tableData[indexPath.row] as? String
+        cell.textLabel?.font = UIFont(name:"Futura",size:15.00)
         
         if indexPath.row == singleton.selectedGenre {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
