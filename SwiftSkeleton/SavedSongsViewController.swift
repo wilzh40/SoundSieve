@@ -104,5 +104,15 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         
 
     }
-  
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    /*override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            singleton.deleteSavedTrackAtIndex(indexPath.row)
+        }
+    }*/
 }

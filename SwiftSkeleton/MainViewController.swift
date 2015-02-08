@@ -28,9 +28,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     override func viewDidLoad() {
         super.viewDidLoad()
         ConnectionManager.sharedInstance.delegate = self;
-       
 
-        
+        //self.view.backgroundColor = UIColor(red: 1.00, green: 0.95, blue: 0.85, alpha: 1.0)
     }
     override func viewWillDisappear(animated:Bool) {
         self.view.userInteractionEnabled = false
@@ -150,14 +149,14 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         if let track = self.backCardView?.track {
             ConnectionManager.playStreamFromTrack(track)
         }
-        
+        currentTrack = self.frontCardView?.track!
         if wasChosenWithDirection == MDCSwipeDirection.Left {
             println("Track deleted!")
         }else{
             println("Track saved!")
             singleton.addTrackToSavedTracks(currentTrack!)
         }
-        currentTrack = self.frontCardView?.track!
+        
         self.frontCardView = self.backCardView
         
         

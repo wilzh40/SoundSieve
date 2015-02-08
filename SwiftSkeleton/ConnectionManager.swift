@@ -36,7 +36,7 @@ class ConnectionManager {
         Alamofire.request(.GET, URL)
             .responseSwiftyJSON { (request, response, responseJSON, error) in
                 println(request)
-                println(responseJSON)
+                //println(responseJSON)
                 var tracks: NSMutableArray = []
                 for (index: String, child: JSON) in responseJSON {
                     var track = Track()
@@ -77,14 +77,12 @@ class ConnectionManager {
         let client_id = "6ec16ffb5ed930fce00949be480f746b"
         let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time/1000)
         var time = track.start_time/1000
-               println(time)
-        println(track.start_time)
-        //println(streamURL
         
     
         Singleton.sharedInstance.audioPlayer.play(streamURL)
 
-        let delay = 0.02 * Double(NSEC_PER_SEC)
+        //Hacky way 
+        let delay = 0.01 * Double(NSEC_PER_SEC)
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             
