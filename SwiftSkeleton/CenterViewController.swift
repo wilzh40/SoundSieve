@@ -27,6 +27,7 @@ class CenterViewController: UIViewController, ConnectionProtocol {
     }
     func toggleMenu() {
         self.evo_drawerController?.toggleDrawerSide(.Left, animated: true, completion: nil)
+        Singleton.sharedInstance.delegate?.reloadData!()
         
     }
 
