@@ -18,19 +18,19 @@ import Foundation
 import Foundation
 import UIKit
 
-class GenresViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource, SavedSongsDelegate {
+class GenresViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource  {
     let singleton:Singleton = Singleton.sharedInstance
     var tableData:NSMutableArray = ["Error"]
     
     
     func setupData() {
-        self.tableData = singleton.savedTracks
+        self.tableData = singleton.genres
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupData()
-        Singleton.sharedInstance.delegate = self
+       // Singleton.sharedInstance.delegate = self
         ConnectionManager.testNetworking()
         // ConnectionManager.getRedditList()
         
@@ -43,14 +43,14 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 60;
+        return 70;
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "protoCell")
-        let track:Track = tableData[indexPath.row] as Track
+      
         
-        cell.textLabel?.text = track.title
+        cell.textLabel?.text = tableData[indexPath.row] as? String
         
         return cell
     }
@@ -68,16 +68,16 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell",
+            forIndexPath: indexPath) as UITableViewCell
+        cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         if indexPath.row == singleton.savedTracks {
             return nil
         }
         return indexPath
     }
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == singleton.savedTracks {
-            cell.alpha = 0.4
-            cell.backgroundColor = UIColor.grayColor()
-        }
+       
         
     }
     

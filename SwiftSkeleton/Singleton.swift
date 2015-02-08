@@ -28,6 +28,8 @@ class Singleton {
     var tracks: NSMutableArray = []
     var savedTracksAsCoreData: [NSManagedObject] = []
     var savedTracks: NSMutableArray = []
+    var genres: NSMutableArray = ["dance","trap","rap","house","ambient"]
+    var selectedGenre:Int = 0
 
     // Settings
     
