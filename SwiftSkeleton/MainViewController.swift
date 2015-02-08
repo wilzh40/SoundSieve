@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import CoreData
+
 //import MDCSwipeToChoose
 class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
     @IBOutlet weak var checkButton: UIButton!
@@ -165,9 +167,56 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
             CGRectGetWidth(frontFrame),CGRectGetHeight(frontFrame))
         }
     
+    func addTrackToSavedTracks(title: String, link: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let entity = NSEntityDescription.entityForName("SavedTracks", inManagedObjectContext: managedContext)
+        let track = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        //set track properties
+        track.setValue(title, forKey: "title")
+        track.setValue(link, forKey: "link")
+        
+        //check for errors, if it cannot save
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+        }
+        
+        //add to savedTracks
+        singleton.savedTracksAsCoreData.append(track)
+    }
+    
+    func transferCoreDataTracksToSavedTracks() {
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let fetchRequest = NSFetchRequest(entityName:"Person")
+        var error: NSError?
+        
+        let fetchedResults =
+        managedContext.executeFetchRequest(fetchRequest,
+            error: &error) as [NSManagedObject]?
+        
+        if let results = fetchedResults {
+            singleton.savedTracksAsCoreData = results
+        } else {
+            println("Could not fetch \(error), \(error!.userInfo)")
+        }
+        singleton.savedTracks = [];
+        var i = 0;
+        for coreTrack in singleton.savedTracksAsCoreData as [NSManagedObject]{
+            var track = Track()
+            track.title = coreTrack.valueForKey("title") as String
+            track.stream_url = coreTrack.valueForKey("link") as String
+            singleton.savedTracks.addObject(track)
+        }
+    }
+    
     //Pause play function
     @IBAction func buttonPressed(sender: AnimatedStartButton) {
         sender.selected = !sender.selected
+        
     }
 
     

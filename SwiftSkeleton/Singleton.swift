@@ -7,6 +7,8 @@
 //
 import Foundation
 import UIKit
+import CoreData
+
 class Singleton {
     
     // View Controllers
@@ -14,7 +16,9 @@ class Singleton {
     var currentCenterViewController: Int = 0
     
     // Data 
-    
+    var savedTracksAsCoreData: [NSManagedObject] = []
+    var savedTracks: NSMutableArray = []
+
     // Settings
     
     
@@ -27,8 +31,6 @@ class Singleton {
          let settingsVC = storyBoard.instantiateViewControllerWithIdentifier("Settings") as UIViewController
         self.centerViewControllers.addObject(mainVC)
         self.centerViewControllers.addObject(settingsVC)
-        
-
         
 
     }
