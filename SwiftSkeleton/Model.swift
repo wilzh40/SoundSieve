@@ -30,6 +30,7 @@ class Track: NSObject {
         self.duration = 0
         self.stream_url = "exampleUrl"
         self.permalink_url = "exampleUrl"
+        self.artwork_url = "http://indie-france.olympe.in/apps/images/soundcloud.png"
     }
 }
 

@@ -59,6 +59,19 @@ class ConnectionManager {
         }
         
     }
+    
+    
+    class func getImageFromURL(imageURL:String) -> UIImage? {
+        let url = NSURL(string: imageURL)
+        if let data = NSData(contentsOfURL: url!) {
+            return UIImage(data: data)!
+        }else {
+            return nil
+        }
+        
+      
+    }
+    
     // Singleton
     class var sharedInstance : ConnectionManager {
         struct Static {
