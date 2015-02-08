@@ -26,7 +26,7 @@ class Singleton {
     // Data 
 
     var tracks: NSMutableArray = []
-    var savedTracksAsCoreData: [NSManagedObject] = []
+    var savedTracksAsCoreData: Array<NSManagedObject> = []
     var savedTracks: NSMutableArray = []
     var genres: NSMutableArray = ["Dance & Edm","Trap","House","Ambient","Pop","Indie"]
     var APIgenres: NSMutableArray = ["dance%20&%20edm","trap","house","ambient","pop","indie"]
@@ -139,6 +139,20 @@ class Singleton {
         managedContext.save(nil)
         self.savedTracksAsCoreData = []
         self.savedTracks = []
+        self.delegate?.reloadData!()
+    }
+    
+    func deleteSavedTrackAtIndex(index:Int) {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let entity = NSEntityDescription.entityForName("SavedTracks", inManagedObjectContext: managedContext)
+        managedContext.deleteObject(self.savedTracksAsCoreData[index])
+        var error:NSError?
+        managedContext.save(&error)
+        if (error != nil) {
+            println(error)
+        }
+        transferCoreDataTracksToSavedTracks()
         self.delegate?.reloadData!()
     }
 }
