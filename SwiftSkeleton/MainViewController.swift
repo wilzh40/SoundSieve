@@ -235,10 +235,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         }
     }
     
-    func clearSavedTracks() {
-        singleton.savedTracksAsCoreData = []
-    }
-    
+   
     //Pause play function
     @IBAction func buttonPressed(sender: AnimatedStartButton) {
         sender.selected = !sender.selected

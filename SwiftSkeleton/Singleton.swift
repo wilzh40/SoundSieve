@@ -37,7 +37,7 @@ class Singleton {
     
      func setupData() {
         //RandomTracks
-        ConnectionManager.getRandomTracks("techno", limit: 100)
+        ConnectionManager.getRandomTracks("dance%20&%20edm", limit: 100)
         
         //VCs
         /* let storyBoard = UIStoryboard(name: "Main", bundle: nil)
