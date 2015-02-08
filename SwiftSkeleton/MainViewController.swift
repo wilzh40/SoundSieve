@@ -105,5 +105,20 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
             println("Photo saved!")
         }
     }
-
+    // View frames
+    func frontCardViewFrame() -> CGRect {
+        let horizontalPadding: CGFloat = 20
+        let topPadding: CGFloat = 60
+        let bottomPadding: CGFloat = 200
+        return CGRectMake(horizontalPadding, topPadding,CGRectGetWidth(self.view.frame) - (horizontalPadding * 2),
+            CGRectGetHeight(self.view.frame) - bottomPadding)
+    }
+    func backCardViewFrame() -> CGRect {
+        let frontFrame = self.frontCardViewFrame()
+        return CGRectMake(frontFrame.origin.x,
+            frontFrame.origin.y + 10,
+            CGRectGetWidth(frontFrame),
+            CGRectGetHeight(frontFrame))
+    }
+    
 }
