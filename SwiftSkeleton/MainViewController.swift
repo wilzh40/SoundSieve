@@ -83,7 +83,15 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         options.likedColor = UIColor.whiteColor()
         options.nopeColor = UIColor.whiteColor()
         options.nopeText = "nah"
+        options.threshold = 10;
         options.onPan = { state -> Void in
+            
+            let frame = self.backCardViewFrame()
+            self.backCardView?.frame = CGRectMake(frame.origin.x,
+                frame.origin.y - (state.thresholdRatio * 10),
+                CGRectGetWidth(frame),
+                CGRectGetHeight(frame))
+            
             if state.thresholdRatio == 1 && state.direction == MDCSwipeDirection.Left {
                 
             } else {
@@ -91,7 +99,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             }
         }
         
-        var view = ChooseTrackView(track:tracks.objectAtIndex(0) as Track, frame: self.frontCardViewFrame(), options: options)
+        var view = ChooseTrackView(track:tracks.objectAtIndex(0) as Track, frame: frame, options: options)
         tracks.removeObjectAtIndex(0)
         //view.imageView.image = UIImage(named: "photo.png")
         return view
@@ -134,15 +142,24 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         self.frontCardView = self.backCardView
         
   
-        
-        if let newBackCard = self.popTrackWithFrame(self.backCardViewFrame()){
+        var a = self.backCardView as ChooseTrackView!
+        var b = self.popTrackWithFrame(self.backCardViewFrame()) as ChooseTrackView!
+        if a == b {
+           
+            self.backCardView!.alpha = 0
+            self.view.insertSubview(self.backCardView!, belowSubview: self.frontCardView!)
+            UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {()->Void in self.backCardView!.alpha = 1}
+                , completion: nil)
+        }
+
+        /*if  newBackCard = self.popTrackWithFrame(self.backCardViewFrame()){
             self.backCardView! = newBackCard
             self.backCardView!.alpha = 0
             self.view.insertSubview(self.backCardView!, belowSubview: self.frontCardView!)
             UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {()->Void in self.backCardView!.alpha = 1}
                 , completion: nil)
         }
-        
+        */
         //bring X, check, and playpause buttons to the front
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
@@ -220,15 +237,16 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     @IBAction func buttonPressed(sender: AnimatedStartButton) {
         sender.selected = !sender.selected
         if(sender.selected) {
-            singleton.audioPlayer.pause()
-        } else {
             singleton.audioPlayer.resume()
+        } else {
+            singleton.audioPlayer.pause()
         }
     }
 
     
     @IBAction func checkButtonPressed(sender: UIButton) {
         println("check pressed")
+        self.frontCardView?.mdc_swipe(MDCSwipeDirection.Right)
     }
 
     @IBAction func xButtonPressed(sender:UIButton) {
