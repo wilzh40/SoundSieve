@@ -78,7 +78,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
             }
         }
         
-        var view = ChooseTrackView(track:tracks.objectAtIndex(0) as Track, frame: self.view.bounds, options: options)
+        var view = ChooseTrackView(track:tracks.objectAtIndex(0) as Track, frame: self.frontCardViewFrame(), options: options)
         tracks.removeObjectAtIndex(0)
         //view.imageView.image = UIImage(named: "photo.png")
         return view
@@ -120,7 +120,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
             self.backCardView! = newBackCard
             self.backCardView!.alpha = 0
             self.view.insertSubview(self.backCardView!, belowSubview: self.frontCardView!)
-            UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {()->Void in self.backCardView!.alpha = 1}
+            UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {()->Void in self.backCardView!.alpha = 1}
                 , completion: nil)
         }
         
@@ -134,10 +134,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
     }
     // View frames
     func frontCardViewFrame() -> CGRect {
-        let horizontalPadding: CGFloat = 20
+        let horizontalPadding: CGFloat = 30
         let topPadding: CGFloat = 60
         let bottomPadding: CGFloat = 200
-        return CGRectMake(horizontalPadding, topPadding,CGRectGetWidth(self.view.frame) - (horizontalPadding * 2),
+        return CGRectMake(horizontalPadding, topPadding,CGRectGetWidth(self.view.frame) - (horizontalPadding),
             CGRectGetHeight(self.view.frame) - bottomPadding)
     }
     func backCardViewFrame() -> CGRect {

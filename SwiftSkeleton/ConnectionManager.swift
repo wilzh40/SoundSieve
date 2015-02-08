@@ -22,9 +22,10 @@ class ConnectionManager {
     var delegate : ConnectionProtocol?
     
    
-    class func getRandomTrack () {
+    class func getRandomTrack (genre: String, limit: Int ) {
         let URL = baseURL + "randomTrack"
-        Alamofire.request(.GET, URL, parameters: ["foo": "bar"])
+
+        Alamofire.request(.GET, URL, parameters: ["genre" : genre, "limit" : String(limit)])
             .responseSwiftyJSON { (request, response, responseJSON, error) in
                 println(request)
                 println(responseJSON)
@@ -32,7 +33,6 @@ class ConnectionManager {
                     println(error)
                 }
         }
-        
 
     }
     
