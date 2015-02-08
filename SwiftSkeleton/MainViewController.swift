@@ -81,9 +81,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
         }
         var options = MDCSwipeToChooseViewOptions()
         options.delegate = self
-        options.likedText = "nah"
-        options.likedColor = UIColor.blueColor()
-        options.nopeText = "yas"
+        options.likedText = "yas"
+        options.likedColor = UIColor.whiteColor()
+        options.nopeColor = UIColor.whiteColor()
+        options.nopeText = "nah"
         options.onPan = { state -> Void in
             if state.thresholdRatio == 1 && state.direction == MDCSwipeDirection.Left {
                 
@@ -121,6 +122,14 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
     
     // This is called then a user swipes the view fully left or right.
     func view(view: UIView, wasChosenWithDirection: MDCSwipeDirection) -> Void{
+        
+        // New song
+        
+        singleton.audioPlayer.queue("https://ec-media.soundcloud.com/fXy55cXpm5ax.128.mp3?f10880d39085a94a0418a7ef69b03d522cd6dfee9399eeb9a522039f6cffb63b4aaf59d35adcbcf0a635c59fe830592ee412cfa3ead70212788c30557704e7afd8133c08b4&AWSAccessKeyId=AKIAJNIGGLK7XA7YZSNQ&Expires=1423378760&Signature=EdSytuH9z%2FHN%2F%2FA3Hrc8BXyF9Og%3D#t=50", withQueueItemId: 0
+        )
+        singleton.audioPlayer.play("https://api.soundcloud.com/tracks/163564200/stream?client_id=6ec16ffb5ed930fce00949be480f746b&allows_redirect=false#t=50")
+        
+        
         if wasChosenWithDirection == MDCSwipeDirection.Left {
             println("Track deleted!")
         }else{
