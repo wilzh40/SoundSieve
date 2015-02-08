@@ -26,7 +26,7 @@ class ChooseTrackView : MDCSwipeToChooseView {
        
         //self.constructInfoView()
     
-        self.constructNameLabel()
+       // self.constructNameLabel()
         self.addBackground()
 
     }
@@ -52,14 +52,15 @@ class ChooseTrackView : MDCSwipeToChooseView {
     }
     
     func addBackground() {
-        self.layer.borderColor = UIColor.clearColor().CGColor!
+        self.layer.borderColor = UIColor.grayColor().CGColor!
+        self.layer.shadowColor = UIColor.blackColor().CGColor!
         //self.backgroundColor = UIColor.blackColor()
         var gradientMaskLayer:CAGradientLayer = CAGradientLayer()
         gradientMaskLayer.frame = self.bounds
         gradientMaskLayer.colors = [UIColor.whiteColor().CGColor, UIColor.blackColor().CGColor,UIColor.blackColor().CGColor,UIColor.clearColor().CGColor]
 
         gradientMaskLayer.locations = [0, 0,0.7,1]
-        self.imageView.layer.mask = gradientMaskLayer
+        //self.imageView.layer.mask = gradientMaskLayer
     }
     
     func constructInfoView() {
