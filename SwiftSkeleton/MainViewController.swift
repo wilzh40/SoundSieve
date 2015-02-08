@@ -26,12 +26,14 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
+        
+        
     }
     
     func didGetTracks() {
         //init code
-        var options = MDCSwipeToChooseViewOptions()
-        options.delegate = self
+        
         
         //self.populateTracks()
         tracks = Singleton.sharedInstance.tracks
@@ -74,10 +76,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         }
         var options = MDCSwipeToChooseViewOptions()
         options.delegate = self
-        options.likedText = "dope!"
+        options.likedText = "yas"
         options.likedColor = UIColor.whiteColor()
-        options.nopeColor = UIColor.redColor()
-        options.nopeText = "nah..."
+        options.nopeColor = UIColor.whiteColor()
+        options.nopeText = "nah"
         options.onPan = { state -> Void in
             if state.thresholdRatio == 1 && state.direction == MDCSwipeDirection.Left {
                 
@@ -149,8 +151,6 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
                 , completion: nil)
         }*/
         
-        pausePlayButton.selected = true
-        pausePlayButton.addTransforms()
     }
     // View frames
     func frontCardViewFrame() -> CGRect {
@@ -167,15 +167,15 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             CGRectGetWidth(frontFrame),CGRectGetHeight(frontFrame))
         }
     
-    func addTrackToSavedTracks(currentTrack: Track) {
+    func addTrackToSavedTracks(title: String, link: String) {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         let entity = NSEntityDescription.entityForName("SavedTracks", inManagedObjectContext: managedContext)
         let track = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
         //set track properties
-        track.setValue(currentTrack.title, forKey: "title")
-        track.setValue(currentTrack.stream_url, forKey: "link")
+        track.setValue(title, forKey: "title")
+        track.setValue(link, forKey: "link")
         
         //check for errors, if it cannot save
         var error: NSError?
@@ -188,7 +188,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     }
     
     func transferCoreDataTracksToSavedTracks() {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         let fetchRequest = NSFetchRequest(entityName:"Person")
         var error: NSError?
@@ -216,18 +217,18 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     @IBAction func buttonPressed(sender: AnimatedStartButton) {
         sender.selected = !sender.selected
         if(sender.selected) {
-            singleton.audioPlayer.resume()
-        } else {
             singleton.audioPlayer.pause()
+        } else {
+            singleton.audioPlayer.resume()
         }
     }
 
     
     @IBAction func checkButtonPressed(sender: UIButton) {
-        self.frontCardView?.mdc_swipe(MDCSwipeDirection.Right)
+        println("check pressed")
     }
 
     @IBAction func xButtonPressed(sender:UIButton) {
-        self.frontCardView?.mdc_swipe(MDCSwipeDirection.Left)
+        println("x pressed")
     }
 }
