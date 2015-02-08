@@ -29,6 +29,7 @@ class ConnectionManager {
         Alamofire.request(.GET, URL)
             .responseSwiftyJSON { (request, response, responseJSON, error) in
                 println(request)
+                println(responseJSON)
                 var tracks: NSMutableArray = []
                 for (index: String, child: JSON) in responseJSON {
                     var track = Track()
@@ -37,7 +38,7 @@ class ConnectionManager {
                     track.id = child["id"].int!
                     track.duration = child["duration"].int!
                     track.genre = child["genre"].string!
-                    track.subtitle = child["description"].string!
+                    track.subtitle = child["description"].string
                     track.artwork_url = child["artwork_url"].string
                     track.permalink_url = child["permalink_url"].string!
                     track.stream_url = child["stream_url"].string!
