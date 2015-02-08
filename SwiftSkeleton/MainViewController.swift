@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 //import MDCSwipeToChoose
-class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
+class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, ConnectionProtocol{
     @IBOutlet weak var checkButton: UIButton!
     
     @IBOutlet weak var xButton: UIButton!
@@ -25,19 +25,24 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
         super.viewDidLoad()
         
        
-    
         
+        
+        
+    }
+    
+    func didGetTracks() {
         //init code
         
         
-        self.populateTracks()
+        //self.populateTracks()
+        tracks = Singleton.sharedInstance.tracks
         self.frontCardView = self.popTrackWithFrame(self.frontCardViewFrame())
         self.view.addSubview(self.frontCardView!)
         self.backCardView = self.popTrackWithFrame(self.backCardViewFrame())
         self.view.addSubview(self.backCardView!)
         
         self.backCardView?.alpha = 0
-
+        
         
         
         
@@ -52,7 +57,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
         self.view.bringSubviewToFront(pausePlayButton)
-        
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,18 +65,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
     }
     
     
-    
-    func populateTracks() {
-        for i in 0...5 {
-            self.addTrack()
-        }
-        // Start with 5 tracks
-    }
-    
-    func addTrack() {
-        let track = Track()
-        self.tracks.addObject(track)
-    }
+
     
     func popTrackWithFrame(frame:CGRect) -> ChooseTrackView? {
         // Creates a new chooseTrackView from tracks, and pops that track off the list
@@ -124,11 +118,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
     func view(view: UIView, wasChosenWithDirection: MDCSwipeDirection) -> Void{
         
         // New song
-        
-        singleton.audioPlayer.queue("https://ec-media.soundcloud.com/fXy55cXpm5ax.128.mp3?f10880d39085a94a0418a7ef69b03d522cd6dfee9399eeb9a522039f6cffb63b4aaf59d35adcbcf0a635c59fe830592ee412cfa3ead70212788c30557704e7afd8133c08b4&AWSAccessKeyId=AKIAJNIGGLK7XA7YZSNQ&Expires=1423378760&Signature=EdSytuH9z%2FHN%2F%2FA3Hrc8BXyF9Og%3D#t=50", withQueueItemId: 0
-        )
-        singleton.audioPlayer.play("https://api.soundcloud.com/tracks/163564200/stream?client_id=6ec16ffb5ed930fce00949be480f746b&allows_redirect=false#t=50")
-        
+        if let track = self.backCardView?.track {
+            ConnectionManager.playStreamFromTrack(track)
+        }
         
         if wasChosenWithDirection == MDCSwipeDirection.Left {
             println("Track deleted!")

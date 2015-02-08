@@ -15,11 +15,12 @@ import AlamofireSwiftyJSON
 
 let baseURL = "http://soundsieve-backend.appspot.com/api/"
 
-protocol ConnectionProtocol {
-    
+@objc protocol ConnectionProtocol {
+    optional func didGetTracks()
 }
 class ConnectionManager {
     var delegate : ConnectionProtocol?
+
     
    
     class func getRandomTracks (genre: String, limit: Int ) {
@@ -47,6 +48,7 @@ class ConnectionManager {
 
                 }
                 Singleton.sharedInstance.tracks = tracks
+                ConnectionManager.sharedInstance.delegate?.didGetTracks!()
                 
                 
                 
@@ -62,6 +64,13 @@ class ConnectionManager {
     }
     
     
+    class func playStreamFromTrack(track:Track) {
+
+        let client_id = "6ec16ffb5ed930fce00949be480f746b"
+        let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time)
+        println(streamURL)
+        Singleton.sharedInstance.audioPlayer.play(streamURL)
+    }
     
     
     
