@@ -34,10 +34,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     func didGetTracks() {
         //init code
 
-        if let track = self.frontCardView?.track {
-        ConnectionManager.playStreamFromTrack(track)
-            singleton.audioPlayer.pause()
-        }
+        
     
 
         //self.populateTracks()
@@ -51,7 +48,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         currentTrack = self.frontCardView?.track!
         
         
-        
+        if let track = self.frontCardView?.track {
+            ConnectionManager.playStreamFromTrack(track)
+        }
         
         
         //hacky part so navbar doesnt overshadow the cards
@@ -66,7 +65,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
         self.view.bringSubviewToFront(pausePlayButton)
-
+        singleton.audioPlayer.pause()
     }
     
     override func didReceiveMemoryWarning() {
@@ -215,7 +214,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         //set track properties
         track.setValue(thisTrack.title, forKey: "title")
-        track.setValue(thisTrack.stream_url, forKey: "link")
+        track.setValue(thisTrack.permalink_url, forKey: "link")
         
         //check for errors, if it cannot save
         var error: NSError?
@@ -247,7 +246,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         for coreTrack in singleton.savedTracksAsCoreData as [NSManagedObject]{
             var track = Track()
             track.title = coreTrack.valueForKey("title") as String
-            track.stream_url = coreTrack.valueForKey("link") as String
+            track.permalink_url = coreTrack.valueForKey("link") as String
             singleton.savedTracks.addObject(track)
         }
     }
@@ -261,15 +260,15 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         } else {
             singleton.audioPlayer.pause()
         }
-        singleton.clearSavedTracks()
     }
 
-    
+    //Right button
     @IBAction func checkButtonPressed(sender: UIButton) {
         //self.frontCardView?.mdc_swipe(MDCSwipeDirection.Right)
         self.evo_drawerController?.openDrawerSide(DrawerSide.Right, animated: true, completion: nil)
     }
 
+    //Left button
     @IBAction func xButtonPressed(sender:UIButton) {
         //self.frontCardView?.mdc_swipe(MDCSwipeDirection.Left)
         self.evo_drawerController?.openDrawerSide(DrawerSide.Left, animated: true, completion: nil)
