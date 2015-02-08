@@ -34,8 +34,11 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     func didGetTracks() {
         //init code
-        
-        
+        if let track = self.frontCardView?.track {
+        ConnectionManager.playStreamFromTrack(track)
+            singleton.audioPlayer.pause()
+        }
+    
         //self.populateTracks()
         tracks = Singleton.sharedInstance.tracks
         self.frontCardView = self.popTrackWithFrame(self.frontCardViewFrame())
