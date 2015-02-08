@@ -26,6 +26,8 @@
 		776A5A6D1A87344000D7B091 /* STKHTTPDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A5A611A87344000D7B091 /* STKHTTPDataSource.m */; };
 		776A5A6E1A87344000D7B091 /* STKLocalFileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A5A631A87344000D7B091 /* STKLocalFileDataSource.m */; };
 		776A5A6F1A87344000D7B091 /* STKQueueEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A5A651A87344000D7B091 /* STKQueueEntry.m */; };
+		776A5A731A8738FE00D7B091 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776A5A711A8738FE00D7B091 /* AVFoundation.framework */; };
+		776A5A741A8738FE00D7B091 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776A5A721A8738FE00D7B091 /* AVKit.framework */; };
 		77B856F81A79E4BB00A51186 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856F71A79E4BB00A51186 /* MainViewController.swift */; };
 		77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */; };
 		77B857011A7A9E3500A51186 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B857001A7A9E3500A51186 /* Model.swift */; };
@@ -148,6 +150,8 @@
 		776A5A641A87344000D7B091 /* STKQueueEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKQueueEntry.h; sourceTree = "<group>"; };
 		776A5A651A87344000D7B091 /* STKQueueEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKQueueEntry.m; sourceTree = "<group>"; };
 		776A5A661A87344000D7B091 /* StreamingKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "StreamingKit-Prefix.pch"; sourceTree = "<group>"; };
+		776A5A711A8738FE00D7B091 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		776A5A721A8738FE00D7B091 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		77B856F71A79E4BB00A51186 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		77B857001A7A9E3500A51186 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				776A5A731A8738FE00D7B091 /* AVFoundation.framework in Frameworks */,
+				776A5A741A8738FE00D7B091 /* AVKit.framework in Frameworks */,
 				77CEFE1D1A79C48F001B0A02 /* AlamofireSwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +335,8 @@
 		77CEFCDF1A79C041001B0A02 = {
 			isa = PBXGroup;
 			children = (
+				776A5A711A8738FE00D7B091 /* AVFoundation.framework */,
+				776A5A721A8738FE00D7B091 /* AVKit.framework */,
 				77CEFDF71A79C280001B0A02 /* Alamofire-SwiftyJSON.xcodeproj */,
 				77CEFCEA1A79C041001B0A02 /* SwiftSkeleton */,
 				77CEFD031A79C041001B0A02 /* SwiftSkeletonTests */,

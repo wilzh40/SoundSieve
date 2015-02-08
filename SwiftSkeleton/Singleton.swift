@@ -7,11 +7,14 @@
 //
 import Foundation
 import UIKit
+import AVFoundation
+import AVKit
 class Singleton {
     
     // View Controllers
     var centerViewControllers: NSMutableArray = []
     var currentCenterViewController: Int = 0
+    let audioPlayer:STKAudioPlayer = STKAudioPlayer()
     
     // Data 
     
@@ -19,7 +22,7 @@ class Singleton {
     
     
 
-
+    
     
      func setupData() {
          let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -32,7 +35,24 @@ class Singleton {
         
 
     }
-    
+    func setupAudio() {
+        var error:NSErrorPointer = nil
+        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: error)
+        AVAudioSession.sharedInstance().setActive(true, error: error)
+        
+      
+        audioPlayer.meteringEnabled = true
+        audioPlayer.volume = 1
+        audioPlayer.play("https://api.soundcloud.com/tracks/189594894/stream?client_id=6ec16ffb5ed930fce00949be480f746b&allows_redirect=false")
+
+        
+        
+        var bufferLength = 0.1
+
+        
+        
+
+    }
     
     
     
