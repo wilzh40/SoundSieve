@@ -75,6 +75,7 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
         self.tableView.reloadData()
         self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
         ConnectionManager.getRandomTracks("a", limit: 0)
+        SwiftSpinner.show("Switching Genres")
         
     }
     

@@ -56,6 +56,7 @@
 		776A5AB61A87DB7A00D7B091 /* Icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 776A5A9F1A87DB7A00D7B091 /* Icon@3x.png */; };
 		776A5AB71A87DB7A00D7B091 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 776A5AA01A87DB7A00D7B091 /* iTunesArtwork.png */; };
 		776A5AB81A87DB7A00D7B091 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 776A5AA11A87DB7A00D7B091 /* iTunesArtwork@2x.png */; };
+		776A5ABB1A87DDD700D7B091 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A5ABA1A87DDD700D7B091 /* SwiftSpinner.swift */; };
 		77B856F81A79E4BB00A51186 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856F71A79E4BB00A51186 /* MainViewController.swift */; };
 		77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */; };
 		77B857011A7A9E3500A51186 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B857001A7A9E3500A51186 /* Model.swift */; };
@@ -208,6 +209,7 @@
 		776A5A9F1A87DB7A00D7B091 /* Icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@3x.png"; sourceTree = "<group>"; };
 		776A5AA01A87DB7A00D7B091 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		776A5AA11A87DB7A00D7B091 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		776A5ABA1A87DDD700D7B091 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 		77B856F71A79E4BB00A51186 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		77B857001A7A9E3500A51186 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				776A5A531A87344000D7B091 /* StreamingKit */,
 				77040AE61A86CA3E0065D260 /* MDCSwipeToChoose */,
 				77CEFE261A79D5CE001B0A02 /* DrawerController */,
+				776A5ABA1A87DDD700D7B091 /* SwiftSpinner.swift */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				77CEFCEE1A79C041001B0A02 /* AppDelegate.swift in Sources */,
 				77B856F81A79E4BB00A51186 /* MainViewController.swift in Sources */,
 				776A5A6D1A87344000D7B091 /* STKHTTPDataSource.m in Sources */,
+				776A5ABB1A87DDD700D7B091 /* SwiftSpinner.swift in Sources */,
 				77040B0A1A86CA3E0065D260 /* MDCSwipeOptions.m in Sources */,
 				776A5A6A1A87344000D7B091 /* STKCoreFoundationDataSource.m in Sources */,
 				77040B0C1A86CA3E0065D260 /* MDCPanState.m in Sources */,

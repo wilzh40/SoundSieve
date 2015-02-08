@@ -28,6 +28,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     override func viewDidLoad() {
         super.viewDidLoad()
         ConnectionManager.sharedInstance.delegate = self;
+       
+
         
     }
     override func viewWillDisappear(animated:Bool) {
@@ -38,7 +40,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     }
     func didGetTracks() {
         //init code
-
+        SwiftSpinner.hide()
         
     
 

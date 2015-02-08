@@ -12,11 +12,12 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
 
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+       
         Singleton.sharedInstance.setupData()
         Singleton.sharedInstance.setupAudio()
         Singleton.sharedInstance.transferCoreDataTracksToSavedTracks()
@@ -44,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         drawerCon.closeDrawerGestureModeMask = CloseDrawerGestureMode.PanningCenterView
         self.window?.rootViewController = drawerCon
         self.window?.makeKeyAndVisible()
-
+         SwiftSpinner.show("Initializing...")
         
         
         
