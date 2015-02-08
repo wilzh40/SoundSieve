@@ -17,6 +17,7 @@ class Track: NSObject {
     var id: Int
     var duration: Int
     var stream_url: String
+    var start_time: Int
     var permalink_url: String
     
     // Optional Variables (could be nil if not there)
@@ -28,6 +29,7 @@ class Track: NSObject {
         self.title = "ExampleTitle"
         self.id = 0
         self.duration = 0
+        self.start_time = 0
         self.stream_url = "exampleUrl"
         self.permalink_url = "exampleUrl"
         self.artwork_url = "http://indie-france.olympe.in/apps/images/soundcloud.png"

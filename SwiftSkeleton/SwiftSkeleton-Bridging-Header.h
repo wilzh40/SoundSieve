@@ -11,5 +11,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MDCSwipeToChoose.h"
+#import "STKAudioPlayer.h"
 
 #endif
