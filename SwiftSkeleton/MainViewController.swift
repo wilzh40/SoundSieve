@@ -105,7 +105,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
                 
             }
         }
-        
+
         var view = ChooseTrackView(track:tracks.objectAtIndex(0) as Track, frame: frame, options: options)
         tracks.removeObjectAtIndex(0)
         //view.imageView.image = UIImage(named: "photo.png")
