@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 //import MDCSwipeToChoose
 class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
+    @IBOutlet weak var checkButton: UIButton!
+    
+    @IBOutlet weak var xButton: UIButton!
+    
+    @IBOutlet weak var pausePlayButton: AnimatedStartButton!
     
     var tracks:NSMutableArray = []
     var frontCardView: ChooseTrackView?
@@ -19,6 +24,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
+    
+        
+        //init code
         
         
         self.populateTracks()
@@ -39,6 +48,11 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
         }
         
         //options
+        //bring buttons to front
+        self.view.bringSubviewToFront(xButton)
+        self.view.bringSubviewToFront(checkButton)
+        self.view.bringSubviewToFront(pausePlayButton)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -124,6 +138,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
                 , completion: nil)
         }
         
+        //bring X, check, and playpause buttons to the front
+        self.view.bringSubviewToFront(xButton)
+        self.view.bringSubviewToFront(checkButton)
+        self.view.bringSubviewToFront(pausePlayButton)
        /* if let self.backCardView = self.popTrackWithFrame(self.backCardViewFrame()) {
             self.backCardView?.alpha = 0
             self.view.insertSubview(self.backCardView!, belowSubview: self.frontCardView!)
@@ -147,4 +165,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
             CGRectGetWidth(frontFrame),CGRectGetHeight(frontFrame))
         }
     
+    @IBAction func buttonPressed(sender: AnimatedStartButton) {
+        sender.selected = !sender.selected
+    }
 }

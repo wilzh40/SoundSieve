@@ -39,6 +39,7 @@
 		77DDCDA21A86D93A0062B83F /* ChooseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DDCDA11A86D93A0062B83F /* ChooseTrackView.swift */; };
 		77DDCDA51A86E02E0062B83F /* Taylor.png in Resources */ = {isa = PBXBuildFile; fileRef = 77DDCDA41A86E02E0062B83F /* Taylor.png */; };
 		77E2B73E1A7C16CC00E3C4BC /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */; };
+		B86276C91A86FEF3004EEF50 /* AnimatedStartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86276C81A86FEF3004EEF50 /* AnimatedStartButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +145,7 @@
 		77DDCDA11A86D93A0062B83F /* ChooseTrackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTrackView.swift; sourceTree = "<group>"; };
 		77DDCDA41A86E02E0062B83F /* Taylor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Taylor.png; sourceTree = "<group>"; };
 		77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
+		B86276C81A86FEF3004EEF50 /* AnimatedStartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedStartButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +299,7 @@
 				77CEFE2F1A79DD4D001B0A02 /* ViewControllers */,
 				77CEFD101A79C057001B0A02 /* Source */,
 				77CEFCED1A79C041001B0A02 /* AppDelegate.swift */,
+				B86276C81A86FEF3004EEF50 /* AnimatedStartButton.swift */,
 				77CEFCF21A79C041001B0A02 /* ViewController.swift */,
 				77BFE9D31A81482C00F1AAC1 /* Core */,
 				77CEFCF41A79C041001B0A02 /* Main.storyboard */,
@@ -521,6 +524,7 @@
 				77B857011A7A9E3500A51186 /* Model.swift in Sources */,
 				77CEFE2A1A79D5CE001B0A02 /* DrawerVisualState.swift in Sources */,
 				77CEFE2E1A79DD46001B0A02 /* MenuViewController.swift in Sources */,
+				B86276C91A86FEF3004EEF50 /* AnimatedStartButton.swift in Sources */,
 				77CEFCEE1A79C041001B0A02 /* AppDelegate.swift in Sources */,
 				77B856F81A79E4BB00A51186 /* MainViewController.swift in Sources */,
 				77040B0A1A86CA3E0065D260 /* MDCSwipeOptions.m in Sources */,
