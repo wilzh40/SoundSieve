@@ -32,6 +32,7 @@ class Singleton {
     var genres: NSMutableArray = ["Dance & Edm","Trap","House","Ambient","Pop","Indie"]
     var APIgenres: NSMutableArray = ["dance%20&%20edm","trap","house","ambient","pop","indie"]
     var selectedGenre:Int = 0
+    var selectedSearchMethod:String = "Random"
 
     // Settings
     

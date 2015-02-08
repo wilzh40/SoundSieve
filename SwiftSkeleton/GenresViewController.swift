@@ -24,12 +24,33 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
     var tableData:NSMutableArray = ["Error"]
     
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBAction func indexChanged(sender: AnyObject) {
+        switch segmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            Singleton.sharedInstance.selectedSearchMethod = "Hot"
+            println("1")
+        case 1:
+            Singleton.sharedInstance.selectedSearchMethod = "Random"
+            println("2")
+        default:
+            break; 
+        }
+    }
     func setupData() {
         self.tableData = singleton.genres
        
         //self.navigationItem.title?.font = UIFont(name:"Futura",size:15.00)
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
+        
+       
+        
+//        let segmentedControl = UISegmentedControl() as UISegmentedControl
+//        segmentedControl.addTarget(self, action: "action:", forControlEvents: .ValueChanged);
+//        
+//        self.tableView.tableFooterView? = segmentedControl
     }
     
     override func viewDidLoad() {

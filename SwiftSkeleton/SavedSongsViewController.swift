@@ -93,8 +93,14 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     }
     
     @IBAction func clearListPressed(sender: UIBarButtonItem) {
-      
+        self.tableView.beginUpdates()
+       for var i = 0; i < tableData.count; ++i {
+            let indexPath = NSIndexPath(forRow: i, inSection: 0)
+            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+        }
         singleton.clearSavedTracks()
+        self.tableView.endUpdates()
+        
         
 
     }
