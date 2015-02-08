@@ -22,8 +22,13 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
         
         
         self.populateTracks()
+        self.frontCardView = self.popTrackWithFrame(self.frontCardViewFrame())
+        self.view.addSubview(self.frontCardView!)
+        self.backCardView = self.popTrackWithFrame(self.backCardViewFrame())
+        self.view.addSubview(self.backCardView!)
         
-        
+        self.backCardView?.alpha = 0
+
         
         
         
@@ -67,7 +72,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
         options.nopeText = "Not today"
         options.onPan = { state -> Void in
             if state.thresholdRatio == 1 && state.direction == MDCSwipeDirection.Left {
-                println("Photo deleted!")
+                
+            } else {
+                
             }
         }
         
@@ -85,7 +92,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
     
     // Sent before a choice is made. Cancel the choice by returning `false`. Otherwise return `true`.
     func view(view: UIView, shouldBeChosenWithDirection: MDCSwipeDirection) -> Bool{
-        if (shouldBeChosenWithDirection == MDCSwipeDirection.Left) {
+        return true
+        /*if (shouldBeChosenWithDirection == MDCSwipeDirection.Left) {
             return true;
         } else {
             // Snap the view back and cancel the choice.
@@ -94,16 +102,35 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
                 view.center = view.superview!.center
             })
             return false;
-        }
+        }*/
     }
     
     // This is called then a user swipes the view fully left or right.
     func view(view: UIView, wasChosenWithDirection: MDCSwipeDirection) -> Void{
         if wasChosenWithDirection == MDCSwipeDirection.Left {
-            println("Photo deleted!")
+            println("Track deleted!")
         }else{
-            println("Photo saved!")
+            println("Track saved!")
         }
+        self.frontCardView = self.backCardView
+        
+  
+        
+        if let newBackCard = self.popTrackWithFrame(self.backCardViewFrame()){
+            self.backCardView! = newBackCard
+            self.backCardView!.alpha = 0
+            self.view.insertSubview(self.backCardView!, belowSubview: self.frontCardView!)
+            UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {()->Void in self.backCardView!.alpha = 1}
+                , completion: nil)
+        }
+        
+       /* if let self.backCardView = self.popTrackWithFrame(self.backCardViewFrame()) {
+            self.backCardView?.alpha = 0
+            self.view.insertSubview(self.backCardView!, belowSubview: self.frontCardView!)
+            UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {()->Void in self.backCardView!.alpha = 1}
+                , completion: nil)
+        }*/
+        
     }
     // View frames
     func frontCardViewFrame() -> CGRect {
@@ -117,8 +144,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
         let frontFrame = self.frontCardViewFrame()
         return CGRectMake(frontFrame.origin.x,
             frontFrame.origin.y + 10,
-            CGRectGetWidth(frontFrame),
-            CGRectGetHeight(frontFrame))
-    }
+            CGRectGetWidth(frontFrame),CGRectGetHeight(frontFrame))
+        }
     
 }
