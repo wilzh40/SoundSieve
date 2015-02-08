@@ -114,7 +114,11 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Saved" id="l7A-Lo-AuS">
-                                    <barButtonItem key="rightBarButtonItem" style="plain" systemItem="trash" id="sXH-qe-4y2"/>
+                                    <barButtonItem key="rightBarButtonItem" style="plain" systemItem="trash" id="sXH-qe-4y2">
+                                        <connections>
+                                            <action selector="clearListPressed:" destination="Onv-gg-qBu" id="ujR-IM-mbi"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
@@ -137,6 +141,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVc-YS-cb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1139" y="240"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ITG-U2-gb6">
+            <objects>
+                <viewController id="lhj-cu-sfo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rfA-UQ-r7B"/>
+                        <viewControllerLayoutGuide type="bottom" id="EXP-1s-fQN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="i5r-gX-SND">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cSF-Dl-5lO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

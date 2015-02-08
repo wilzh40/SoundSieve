@@ -30,7 +30,12 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         ConnectionManager.sharedInstance.delegate = self;
         
     }
-    
+    override func viewWillDisappear(animated:Bool) {
+        self.view.userInteractionEnabled = false
+    }
+    override func viewWillAppear(animated:Bool) {
+        self.view.userInteractionEnabled = true
+    }
     func didGetTracks() {
         //init code
 
