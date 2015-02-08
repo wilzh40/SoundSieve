@@ -138,6 +138,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             println("Track deleted!")
         }else{
             println("Track saved!")
+            addTrackToSavedTracks(currentTrack!)
         }
         currentTrack = self.frontCardView?.track!
         self.frontCardView = self.backCardView
@@ -235,10 +236,6 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         }
     }
     
-    func clearSavedTracks() {
-        singleton.savedTracksAsCoreData = []
-    }
-    
     //Pause play function
     @IBAction func buttonPressed(sender: AnimatedStartButton) {
         sender.selected = !sender.selected
@@ -247,19 +244,12 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         } else {
             singleton.audioPlayer.pause()
         }
+        singleton.clearSavedTracks()
     }
 
     
     @IBAction func checkButtonPressed(sender: UIButton) {
         self.frontCardView?.mdc_swipe(MDCSwipeDirection.Right)
-
-
-        for t in singleton.savedTracks {
-            println(t.title!)
-        }
-        addTrackToSavedTracks(currentTrack!)
-        Singleton.sharedInstance.delegate?.reloadData!()
-        
     }
 
     @IBAction func xButtonPressed(sender:UIButton) {

@@ -74,7 +74,6 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     
     func reloadData() {
         self.tableData = singleton.savedTracks
-
         self.tableView.reloadData()
     }
     

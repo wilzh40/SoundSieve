@@ -76,5 +76,18 @@ class Singleton {
         return Static.instance
     }
     
-
+    func clearSavedTracks() {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let entity = NSEntityDescription.entityForName("SavedTracks", inManagedObjectContext: managedContext)
+        var count = savedTracksAsCoreData.count
+        for var i = 0; i < count; i++ {
+            managedContext.deleteObject(self.savedTracksAsCoreData[0])
+            savedTracksAsCoreData.removeAtIndex(0)
+        }
+        managedContext.save(nil)
+        self.savedTracksAsCoreData = []
+        self.savedTracks = []
+        self.delegate?.reloadData!()
+    }
 }
