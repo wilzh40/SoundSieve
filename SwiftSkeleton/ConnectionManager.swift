@@ -10,6 +10,8 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import AlamofireSwiftyJSON
+import UIKit
+import AVFoundation
 // This is my local RESTFUL testing setup using node and express.js, as well as modular databse
 
 
@@ -70,9 +72,23 @@ class ConnectionManager {
 
         let client_id = "6ec16ffb5ed930fce00949be480f746b"
         let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time/1000)
-        println(streamURL)
-        //println(streamURL)
+        var time = track.start_time/1000
+        println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        println(time)
+        println(track.start_time)
+        //println(streamURL
+        
         Singleton.sharedInstance.audioPlayer.play(streamURL)
+
+   
+        let delay = 0.2 * Double(NSEC_PER_SEC)
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            
+            Singleton.sharedInstance.audioPlayer.seekToTime(Double(time))
+        }
+
+        
     }
     
     

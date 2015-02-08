@@ -71,6 +71,53 @@ class Singleton {
 
     }
     
+    func addTrackToSavedTracks(thisTrack: Track) {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let entity = NSEntityDescription.entityForName("SavedTracks", inManagedObjectContext: managedContext)
+        let track = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        //set track properties
+        track.setValue(thisTrack.title, forKey: "title")
+        track.setValue(thisTrack.permalink_url, forKey: "link")
+        
+        //check for errors, if it cannot save
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+        }
+        
+        //add to savedTracks
+        self.savedTracksAsCoreData.append(track)
+        self.transferCoreDataTracksToSavedTracks()
+    }
+
+    
+    
+    func transferCoreDataTracksToSavedTracks() {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let fetchRequest = NSFetchRequest(entityName:"SavedTracks")
+        var error: NSError?
+        
+        let fetchedResults =
+        managedContext.executeFetchRequest(fetchRequest,
+            error: &error) as [NSManagedObject]?
+        
+        if let results = fetchedResults {
+            self.savedTracksAsCoreData = results
+        } else {
+            println("Could not fetch \(error), \(error!.userInfo)")
+        }
+        self.savedTracks = [];
+        for coreTrack in self.savedTracksAsCoreData as [NSManagedObject]{
+            var track = Track()
+            track.title = coreTrack.valueForKey("title") as String
+            track.permalink_url = coreTrack.valueForKey("link") as String
+            self.savedTracks.addObject(track)
+        }
+    }
+
     
     
     class var sharedInstance : Singleton {
