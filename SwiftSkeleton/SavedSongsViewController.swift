@@ -23,11 +23,18 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         self.setupData()
         Singleton.sharedInstance.delegate = self
         ConnectionManager.testNetworking()
+        
+        let barButton = UIBarButtonItem(title: "Clear Data", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("clearData"))
+        self.navigationItem.setLeftBarButtonItem(barButton, animated: true)
+            
+
        // ConnectionManager.getRedditList()
         
     }
     
-
+    func clearData () {
+        println("Data Cleared")
+    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
@@ -48,7 +55,10 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Change the center view controller
         self.tableView.reloadData()
-            
+        var url : NSURL
+        let track = singleton.savedTracks[indexPath.row] as Track
+        url = NSURL(string:track.permalink_url)!
+        UIApplication.sharedApplication().openURL(url)
     }
 
     override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -71,7 +81,9 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         }
       
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        self.reloadData()
+    }
     func reloadData() {
         self.tableData = singleton.savedTracks
         self.tableView.reloadData()
