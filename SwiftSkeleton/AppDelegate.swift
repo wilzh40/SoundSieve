@@ -32,9 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //    let button = UIBarButtonItem(title: "Super", style: .Plain, target: self, action: Selector("toggleMenu"))
         //centerController.navigationItem.setLeftBarButtonItem(button, animated: true)
     
-        var menu = storyBoard.instantiateViewControllerWithIdentifier("Left") as UIViewController
+        var left = storyBoard.instantiateViewControllerWithIdentifier("Left") as UIViewController
         
-        var drawerCon = DrawerController(centerViewController: centerController, leftDrawerViewController: menu)
+        
+        var right = storyBoard.instantiateViewControllerWithIdentifier("Right") as UIViewController
+        
+        var drawerCon = DrawerController(centerViewController: centerController, leftDrawerViewController: left, rightDrawerViewController:right)
        // drawerCon.navigationController?.navigationItem.setLeftBarButtonItem(button, animated: false)
         drawerCon.openDrawerGestureModeMask = OpenDrawerGestureMode.BezelPanningCenterView
         drawerCon.closeDrawerGestureModeMask = CloseDrawerGestureMode.PanningCenterView
