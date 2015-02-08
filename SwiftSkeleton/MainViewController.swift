@@ -25,19 +25,19 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
-        
+        ConnectionManager.sharedInstance.delegate = self;
         
     }
     
     func didGetTracks() {
         //init code
+
         if let track = self.frontCardView?.track {
         ConnectionManager.playStreamFromTrack(track)
             singleton.audioPlayer.pause()
         }
     
+
         //self.populateTracks()
         tracks = Singleton.sharedInstance.tracks
         self.frontCardView = self.popTrackWithFrame(self.frontCardViewFrame())
@@ -46,6 +46,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         self.view.insertSubview(self.backCardView!, belowSubview: self.frontCardView!)
         //self.backCardView?.alpha = 0
         
+        currentTrack = self.frontCardView?.track!
         
         
         
@@ -78,11 +79,12 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         }
         var options = MDCSwipeToChooseViewOptions()
         options.delegate = self
-        options.likedText = "yas"
+        options.likedText = "dope!"
         options.likedColor = UIColor.whiteColor()
-        options.nopeColor = UIColor.whiteColor()
-        options.nopeText = "nah"
+        options.nopeColor = UIColor.redColor()
+        options.nopeText = "nah..."
         options.threshold = 160
+
         options.onPan = { state -> Void in
             let frame = self.backCardViewFrame()
             self.backCardView?.frame = CGRectMake(frame.origin.x,
@@ -137,7 +139,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         }else{
             println("Track saved!")
         }
+        currentTrack = self.frontCardView?.track!
         self.frontCardView = self.backCardView
+
         
         //Dirty Hackathon Code
         
@@ -146,6 +150,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             frame.origin.y - 500 ,
             CGRectGetWidth(frame),
             CGRectGetHeight(frame))
+
         
         if let newBackCard = self.popTrackWithFrame(newFrame){
             self.backCardView! = newBackCard
@@ -167,6 +172,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
                 , completion: nil)
         }*/
         
+        pausePlayButton.selected = true
+        pausePlayButton.addTransforms()
     }
     // View frames
     func frontCardViewFrame() -> CGRect {
@@ -183,15 +190,15 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             CGRectGetWidth(frontFrame),CGRectGetHeight(frontFrame))
         }
     
-    func addTrackToSavedTracks(title: String, link: String) {
+    func addTrackToSavedTracks(thisTrack: Track) {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         let entity = NSEntityDescription.entityForName("SavedTracks", inManagedObjectContext: managedContext)
         let track = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
         //set track properties
-        track.setValue(title, forKey: "title")
-        track.setValue(link, forKey: "link")
+        track.setValue(thisTrack.title, forKey: "title")
+        track.setValue(thisTrack.stream_url, forKey: "link")
         
         //check for errors, if it cannot save
         var error: NSError?
@@ -201,13 +208,13 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         //add to savedTracks
         singleton.savedTracksAsCoreData.append(track)
+        transferCoreDataTracksToSavedTracks()
     }
     
     func transferCoreDataTracksToSavedTracks() {
-        let appDelegate =
-        UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let managedContext = appDelegate.managedObjectContext!
-        let fetchRequest = NSFetchRequest(entityName:"Person")
+        let fetchRequest = NSFetchRequest(entityName:"SavedTracks")
         var error: NSError?
         
         let fetchedResults =
@@ -220,7 +227,6 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             println("Could not fetch \(error), \(error!.userInfo)")
         }
         singleton.savedTracks = [];
-        var i = 0;
         for coreTrack in singleton.savedTracksAsCoreData as [NSManagedObject]{
             var track = Track()
             track.title = coreTrack.valueForKey("title") as String
@@ -229,24 +235,34 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         }
     }
     
+    func clearSavedTracks() {
+        singleton.savedTracksAsCoreData = []
+    }
+    
     //Pause play function
     @IBAction func buttonPressed(sender: AnimatedStartButton) {
         sender.selected = !sender.selected
         if(sender.selected) {
-            singleton.audioPlayer.pause()
-        } else {
             singleton.audioPlayer.resume()
+        } else {
+            singleton.audioPlayer.pause()
         }
     }
 
     
     @IBAction func checkButtonPressed(sender: UIButton) {
         self.frontCardView?.mdc_swipe(MDCSwipeDirection.Right)
-        println("check pressed")
+
+
+        for t in singleton.savedTracks {
+            println(t.title!)
+        }
+        addTrackToSavedTracks(currentTrack!)
+        Singleton.sharedInstance.delegate?.reloadData!()
+        
     }
 
     @IBAction func xButtonPressed(sender:UIButton) {
-         self.frontCardView?.mdc_swipe(MDCSwipeDirection.Left)
-        println("x pressed")
+        self.frontCardView?.mdc_swipe(MDCSwipeDirection.Left)
     }
 }

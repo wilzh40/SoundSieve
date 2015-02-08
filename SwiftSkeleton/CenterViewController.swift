@@ -16,7 +16,7 @@ class CenterViewController: UIViewController, ConnectionProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLeftMenuButton()
-        connectionManager.delegate = self
+        //connectionManager.delegate = self
         ConnectionManager.testNetworking()
         
     }

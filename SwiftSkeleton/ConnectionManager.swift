@@ -34,7 +34,7 @@ class ConnectionManager {
                 for (index: String, child: JSON) in responseJSON {
                     var track = Track()
                     track.title = child["title"].string!
-                    println(track.title)
+                    //println(track.title)
                     track.id = child["id"].int!
                     track.duration = child["duration"].int!
                     track.genre = child["genre"].string!
@@ -69,7 +69,7 @@ class ConnectionManager {
 
         let client_id = "6ec16ffb5ed930fce00949be480f746b"
         let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time)
-        println(streamURL)
+        //println(streamURL)
         Singleton.sharedInstance.audioPlayer.play(streamURL)
     }
     
@@ -82,8 +82,8 @@ class ConnectionManager {
         // Testting an http networking client for swift!
         Alamofire.request(.GET, URL, parameters: ["foo": "bar"])
             .responseSwiftyJSON { (request, response, responseJSON, error) in
-                println(request)
-                println(responseJSON["args"])
+                //println(request)
+                //println(responseJSON["args"])
                 if error != nil {
                     println(error)
                 }

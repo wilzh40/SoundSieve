@@ -11,8 +11,13 @@ import AVFoundation
 import AVKit
 import CoreData
 
+@objc protocol SavedSongsDelegate {
+    optional func reloadData()
+}
+
+
 class Singleton {
-    
+    var delegate: SavedSongsDelegate?
     // View Controllers
     var centerViewControllers: NSMutableArray = []
     var currentCenterViewController: Int = 0
@@ -35,11 +40,11 @@ class Singleton {
         ConnectionManager.getRandomTracks("techno", limit: 100)
         
         //VCs
-         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        /* let storyBoard = UIStoryboard(name: "Main", bundle: nil)
          let mainVC = storyBoard.instantiateViewControllerWithIdentifier("Center") as UIViewController
          let settingsVC = storyBoard.instantiateViewControllerWithIdentifier("Settings") as UIViewController
         self.centerViewControllers.addObject(mainVC)
-        self.centerViewControllers.addObject(settingsVC)
+        self.centerViewControllers.addObject(settingsVC) */
         
 
     }
