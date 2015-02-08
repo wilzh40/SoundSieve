@@ -29,9 +29,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate {
                 println("Photo deleted!")
             }
         }
-        
-        var view = MDCSwipeToChooseView(frame: self.view.bounds, options: options)
-        view.imageView.image = UIImage(named: "photo.png")
+        var track = Track()
+        var view = ChooseTrackView(track:track, frame: self.view.bounds, options: options)
+        //view.imageView.image = UIImage(named: "photo.png")
         self.view.addSubview(view)
     }
     

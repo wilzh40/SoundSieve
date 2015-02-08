@@ -36,6 +36,8 @@
 		77CEFE2A1A79D5CE001B0A02 /* DrawerVisualState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFE251A79D5CE001B0A02 /* DrawerVisualState.swift */; };
 		77CEFE2C1A79D78B001B0A02 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFE2B1A79D78B001B0A02 /* Singleton.swift */; };
 		77CEFE2E1A79DD46001B0A02 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFE2D1A79DD46001B0A02 /* MenuViewController.swift */; };
+		77DDCDA21A86D93A0062B83F /* ChooseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DDCDA11A86D93A0062B83F /* ChooseTrackView.swift */; };
+		77DDCDA51A86E02E0062B83F /* Taylor.png in Resources */ = {isa = PBXBuildFile; fileRef = 77DDCDA41A86E02E0062B83F /* Taylor.png */; };
 		77E2B73E1A7C16CC00E3C4BC /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +141,8 @@
 		77CEFE251A79D5CE001B0A02 /* DrawerVisualState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerVisualState.swift; sourceTree = "<group>"; };
 		77CEFE2B1A79D78B001B0A02 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		77CEFE2D1A79DD46001B0A02 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		77DDCDA11A86D93A0062B83F /* ChooseTrackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTrackView.swift; sourceTree = "<group>"; };
+		77DDCDA41A86E02E0062B83F /* Taylor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Taylor.png; sourceTree = "<group>"; };
 		77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -307,6 +311,7 @@
 		77CEFCEB1A79C041001B0A02 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				77DDCDA41A86E02E0062B83F /* Taylor.png */,
 				77CEFCEC1A79C041001B0A02 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -373,6 +378,7 @@
 				77CEFE2D1A79DD46001B0A02 /* MenuViewController.swift */,
 				77BFE9D51A814C5F00F1AAC1 /* SettingsViewController.swift */,
 				77B856F71A79E4BB00A51186 /* MainViewController.swift */,
+				77DDCDA11A86D93A0062B83F /* ChooseTrackView.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -486,6 +492,7 @@
 				77CEFCF61A79C041001B0A02 /* Main.storyboard in Resources */,
 				77CEFCFB1A79C041001B0A02 /* LaunchScreen.xib in Resources */,
 				77CEFCF81A79C041001B0A02 /* Images.xcassets in Resources */,
+				77DDCDA51A86E02E0062B83F /* Taylor.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +530,7 @@
 				77CEFE2C1A79D78B001B0A02 /* Singleton.swift in Sources */,
 				77CEFE281A79D5CE001B0A02 /* DrawerBarButtonItem.swift in Sources */,
 				77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */,
+				77DDCDA21A86D93A0062B83F /* ChooseTrackView.swift in Sources */,
 				77040B0D1A86CA3E0065D260 /* MDCSwipeResult.m in Sources */,
 				77CEFE271A79D5CE001B0A02 /* AnimatedMenuButton.swift in Sources */,
 				77040B061A86CA3E0065D260 /* MDCGeometry.m in Sources */,
