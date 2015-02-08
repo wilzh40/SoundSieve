@@ -25,6 +25,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ConnectionManager.sharedInstance.delegate = self;
         
     }
     
@@ -42,6 +43,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         self.backCardView?.alpha = 0
         
+        currentTrack = self.frontCardView?.track!
         
         
         
@@ -126,8 +128,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         }else{
             println("Track saved!")
         }
+        currentTrack = self.frontCardView?.track!
         self.frontCardView = self.backCardView
-        
+
   
         
         if let newBackCard = self.popTrackWithFrame(self.backCardViewFrame()){
@@ -167,15 +170,15 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             CGRectGetWidth(frontFrame),CGRectGetHeight(frontFrame))
         }
     
-    func addTrackToSavedTracks(currentTrack: Track) {
+    func addTrackToSavedTracks(thisTrack: Track) {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         let entity = NSEntityDescription.entityForName("SavedTracks", inManagedObjectContext: managedContext)
         let track = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
         //set track properties
-        track.setValue(currentTrack.title, forKey: "title")
-        track.setValue(currentTrack.stream_url, forKey: "link")
+        track.setValue(thisTrack.title, forKey: "title")
+        track.setValue(thisTrack.stream_url, forKey: "link")
         
         //check for errors, if it cannot save
         var error: NSError?
@@ -185,12 +188,13 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         //add to savedTracks
         singleton.savedTracksAsCoreData.append(track)
+        transferCoreDataTracksToSavedTracks()
     }
     
     func transferCoreDataTracksToSavedTracks() {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let managedContext = appDelegate.managedObjectContext!
-        let fetchRequest = NSFetchRequest(entityName:"Person")
+        let fetchRequest = NSFetchRequest(entityName:"SavedTracks")
         var error: NSError?
         
         let fetchedResults =
@@ -203,13 +207,16 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             println("Could not fetch \(error), \(error!.userInfo)")
         }
         singleton.savedTracks = [];
-        var i = 0;
         for coreTrack in singleton.savedTracksAsCoreData as [NSManagedObject]{
             var track = Track()
             track.title = coreTrack.valueForKey("title") as String
             track.stream_url = coreTrack.valueForKey("link") as String
             singleton.savedTracks.addObject(track)
         }
+    }
+    
+    func clearSavedTracks() {
+        singleton.savedTracksAsCoreData = []
     }
     
     //Pause play function
@@ -225,6 +232,12 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     @IBAction func checkButtonPressed(sender: UIButton) {
         self.frontCardView?.mdc_swipe(MDCSwipeDirection.Right)
+        for t in singleton.savedTracks {
+            println(t.title!)
+        }
+        addTrackToSavedTracks(currentTrack!)
+        Singleton.sharedInstance.delegate?.reloadData!()
+        
     }
 
     @IBAction func xButtonPressed(sender:UIButton) {

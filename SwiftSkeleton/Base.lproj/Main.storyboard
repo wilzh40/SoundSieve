@@ -74,10 +74,10 @@
             </objects>
             <point key="canvasLocation" x="799" y="240"/>
         </scene>
-        <!--Menu View Controller-->
+        <!--Saved Songs View Controller-->
         <scene sceneID="J5x-gq-12a">
             <objects>
-                <tableViewController storyboardIdentifier="Left" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vNe-dm-nii" customClass="MenuViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Left" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vNe-dm-nii" customClass="SavedSongsViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="01A-7T-BM0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
