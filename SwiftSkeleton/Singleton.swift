@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import AVFoundation
 import AVKit
+import CoreData
+
 class Singleton {
     
     // View Controllers
@@ -17,7 +19,11 @@ class Singleton {
     let audioPlayer:STKAudioPlayer = STKAudioPlayer()
     
     // Data 
+
     var tracks: NSMutableArray = []
+    var savedTracksAsCoreData: [NSManagedObject] = []
+    var savedTracks: NSMutableArray = []
+
     // Settings
     
     
@@ -34,8 +40,6 @@ class Singleton {
          let settingsVC = storyBoard.instantiateViewControllerWithIdentifier("Settings") as UIViewController
         self.centerViewControllers.addObject(mainVC)
         self.centerViewControllers.addObject(settingsVC)
-        
-
         
 
     }
