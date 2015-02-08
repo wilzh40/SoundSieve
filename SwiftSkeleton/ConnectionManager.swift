@@ -13,7 +13,7 @@ import AlamofireSwiftyJSON
 // This is my local RESTFUL testing setup using node and express.js, as well as modular databse
 
 
-let baseURL = "http://soundsieve.appspot.com/api/"
+let baseURL = "http://soundsieve-backend.appspot.com/api/"
 
 protocol ConnectionProtocol {
     
@@ -23,12 +23,16 @@ class ConnectionManager {
     
    
     class func getRandomTrack (genre: String, limit: Int ) {
-        let URL = baseURL + "randomTrack"
+        let URL = baseURL + "randomTrack/" + genre
 
-        Alamofire.request(.GET, URL, parameters: ["genre" : genre, "limit" : String(limit)])
+        Alamofire.request(.GET, URL)
             .responseSwiftyJSON { (request, response, responseJSON, error) in
                 println(request)
                 println(responseJSON)
+                
+                
+                
+                
                 if error != nil {
                     println(error)
                 }

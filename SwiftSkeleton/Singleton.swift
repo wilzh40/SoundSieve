@@ -25,6 +25,10 @@ class Singleton {
     
     
      func setupData() {
+        //RandomTracks
+        ConnectionManager.getRandomTrack("techno", limit: 100)
+        
+        //VCs
          let storyBoard = UIStoryboard(name: "Main", bundle: nil)
          let mainVC = storyBoard.instantiateViewControllerWithIdentifier("Center") as UIViewController
          let settingsVC = storyBoard.instantiateViewControllerWithIdentifier("Settings") as UIViewController
