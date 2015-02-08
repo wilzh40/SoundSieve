@@ -52,26 +52,35 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
         
         cell.textLabel?.text = tableData[indexPath.row] as? String
         
+        if indexPath.row == singleton.selectedGenre {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
+
+        }
+        
         return cell
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Change the center view controller
+        
+        
+        singleton.selectedGenre = indexPath.row
         self.tableView.reloadData()
+        self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+        ConnectionManager.getRandomTracks("a", limit: 0)
         
     }
     
     override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if indexPath.row == singleton.savedTracks {
-            return false
-        }
-        return true
+       return true
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell",
-            forIndexPath: indexPath) as UITableViewCell
-        cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-        if indexPath.row == singleton.savedTracks {
+        
+        // Remove all accessories
+      
+        if indexPath.row == singleton.selectedGenre {
             return nil
         }
         return indexPath
@@ -80,7 +89,7 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
        
         
     }
-    
+        
     func reloadData() {
         self.tableData = singleton.savedTracks
         self.tableView.reloadData()
