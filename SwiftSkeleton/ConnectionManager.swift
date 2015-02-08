@@ -27,7 +27,11 @@ class ConnectionManager {
    
     class func getRandomTracks (genre: String?, limit: Int? ) {
         let selectedGenre = Singleton.sharedInstance.APIgenres.objectAtIndex(Singleton.sharedInstance.selectedGenre) as String
-        let URL = baseURL + "randomTrack/" + selectedGenre
+        var hot = ""
+        if Singleton.sharedInstance.selectedSearchMethod == true {
+            hot = "/hot"
+        }
+        let URL = baseURL + "randomTrack/" + selectedGenre 
 
         Alamofire.request(.GET, URL)
             .responseSwiftyJSON { (request, response, responseJSON, error) in

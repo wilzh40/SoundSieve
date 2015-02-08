@@ -29,11 +29,19 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
         switch segmentedControl.selectedSegmentIndex
         {
         case 0:
-            Singleton.sharedInstance.selectedSearchMethod = "Hot"
+            Singleton.sharedInstance.selectedSearchMethod = true
             println("1")
+            self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+            ConnectionManager.getRandomTracks("a", limit: 0)
+            SwiftSpinner.show("Switching Search Method")
+            break;
         case 1:
-            Singleton.sharedInstance.selectedSearchMethod = "Random"
-            println("2")
+            Singleton.sharedInstance.selectedSearchMethod = false
+            println("0")
+            self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+            ConnectionManager.getRandomTracks("a", limit: 0)
+            SwiftSpinner.show("Switching Search Method")
+            break;
         default:
             break; 
         }
