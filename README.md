@@ -25,4 +25,11 @@ Made in 24 Hours by Wilson Zhao, Brian Ng, and [backend](https://github.com/kzen
 - Seeking still takes a while, find a way to buffer the next song beforehand
 - Native soundcloud integration, play within the app (or download!) instead of redirecting to soundcloud
 - Prevent duplicate songs from showing and saving
-=
+- Parse buffer data to make a pulse graphical display
+- Change the saved songs view to have dynamic cell height
+- Enable individual deletion of saved songs
+- Add an option to listen to the preview or the whole song
+- Refactor the code to make it less hacky
+
+
+

@@ -15,9 +15,7 @@ import CoreData
 class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, ConnectionProtocol{
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
-    
     @IBOutlet weak var xButton: UIButton!
-    
     @IBOutlet weak var pausePlayButton: AnimatedStartButton!
     
     var tracks:NSMutableArray = []
@@ -28,15 +26,18 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     override func viewDidLoad() {
         super.viewDidLoad()
         ConnectionManager.sharedInstance.delegate = self;
-
         //self.view.backgroundColor = UIColor(red: 1.00, green: 0.95, blue: 0.85, alpha: 1.0)
     }
     override func viewWillDisappear(animated:Bool) {
-        self.view.userInteractionEnabled = false
+        super.viewWillDisappear(true)
+        self.frontCardView?.userInteractionEnabled = false
     }
     override func viewWillAppear(animated:Bool) {
-        self.view.userInteractionEnabled = true
+        super.viewWillAppear(true)
+        self.frontCardView?.userInteractionEnabled = true
     }
+    
+    
     func didGetTracks() {
         //init code
         SwiftSpinner.hide()
