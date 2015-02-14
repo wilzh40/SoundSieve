@@ -30,14 +30,15 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         //self.view.backgroundColor = UIColor(red: 1.00, green: 0.95, blue: 0.85, alpha: 1.0)
     }
     override func viewWillDisappear(animated:Bool) {
-        super.viewWillDisappear(true)
+        super.viewWillDisappear(animated)
         self.frontCardView?.userInteractionEnabled = false
     }
     override func viewWillAppear(animated:Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         self.frontCardView?.userInteractionEnabled = true
     }
     
+    // Called when app recieves the list of songs from Kevin's backend
     
     func didGetTracks() {
         // Init Code
@@ -159,8 +160,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         // Animate the text
         titleLabel.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+        titleLabel.alpha = 0
         UIView.animateWithDuration(0.25, animations: {
             self.titleLabel.layer.transform = CATransform3DMakeScale(1,1,1)
+            self.titleLabel.alpha = 1
         })
         
         // Bring the backCard up
@@ -174,12 +177,14 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         if let newBackCard = self.popTrackWithFrame(newFrame){
             self.backCardView! = newBackCard
-            self.backCardView!.alpha = 0.2
+            self.backCardView!.frame = frame
+            self.backCardView!.alpha = 0
             self.view.insertSubview(self.backCardView!, belowSubview: self.frontCardView!)
-            UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {()->Void in self.backCardView!.alpha = 1}
+            UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {()->Void in self.backCardView!.alpha = 1}
                 , completion: nil)
             
         }
+        
         // Bring Buttons to the front
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
