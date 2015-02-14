@@ -5,16 +5,6 @@
 //  Created by Wilson Zhao on 2/8/15.
 //  Copyright (c) 2015 Innogen. All rights reserved.
 //
-
-import Foundation
-//
-//  MenuViewController.swift
-//  SwiftSkeleton
-//
-//  Created by Wilson Zhao on 1/28/15.
-//  Copyright (c) 2015 Innogen. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
@@ -53,12 +43,6 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
         
-       
-        
-//        let segmentedControl = UISegmentedControl() as UISegmentedControl
-//        segmentedControl.addTarget(self, action: "action:", forControlEvents: .ValueChanged);
-//        
-//        self.tableView.tableFooterView? = segmentedControl
     }
     
     override func viewDidLoad() {
@@ -85,7 +69,7 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
       
         
         cell.textLabel?.text = tableData[indexPath.row] as? String
-        cell.textLabel?.font = UIFont(name:"Futura",size:15.00)
+        cell.textLabel?.font = UIFont(name:"Futura",size: 15.00)
         
         if indexPath.row == singleton.selectedGenre {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
@@ -98,7 +82,6 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Change the center view controller
-        
         
         singleton.selectedGenre = indexPath.row
         self.tableView.reloadData()

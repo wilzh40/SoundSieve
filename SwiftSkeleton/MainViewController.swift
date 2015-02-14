@@ -31,11 +31,15 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     }
     override func viewWillDisappear(animated:Bool) {
         super.viewWillDisappear(animated)
+        self.view.userInteractionEnabled = false
         self.frontCardView?.userInteractionEnabled = false
+        println("Center View Will Disappear")
     }
     override func viewWillAppear(animated:Bool) {
         super.viewWillAppear(animated)
+        self.view.userInteractionEnabled = true
         self.frontCardView?.userInteractionEnabled = true
+        println("Center View Will Appear")
     }
     
     // Called when app recieves the list of songs from Kevin's backend
