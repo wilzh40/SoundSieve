@@ -13,6 +13,7 @@ import CoreData
 
 //import MDCSwipeToChoose
 class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, ConnectionProtocol{
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var xButton: UIButton!
@@ -39,40 +40,39 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     
     func didGetTracks() {
-        //init code
-        SwiftSpinner.hide()
+        // Init Code
         
-    
-
-        //self.populateTracks()
+        SwiftSpinner.hide()
         tracks = Singleton.sharedInstance.tracks
+        
         self.frontCardView = self.popTrackWithFrame(self.frontCardViewFrame())
         self.view.addSubview(self.frontCardView!)
         self.backCardView = self.popTrackWithFrame(self.backCardViewFrame())
         self.view.insertSubview(self.backCardView!, belowSubview: self.frontCardView!)
-        //self.backCardView?.alpha = 0
-        
+       
         currentTrack = self.frontCardView?.track!
-        
-        
-        if let track = self.frontCardView?.track {
-            ConnectionManager.playStreamFromTrack(track)
+        if currentTrack != nil {
+            ConnectionManager.playStreamFromTrack(currentTrack!)
         }
+        titleLabel.text = currentTrack?.title
+        singleton.audioPlayer.pause()
+
+      
+        // Bring buttons to front
+
+       
+        self.view.bringSubviewToFront(xButton)
+        self.view.bringSubviewToFront(checkButton)
+        self.view.bringSubviewToFront(pausePlayButton)
         
         
         //hacky part so navbar doesnt overshadow the cards
         /*if self.respondsToSelector(Selector("edgesForExtendedLayout")) {
-            self.edgesForExtendedLayout = UIRectEdge.None
+        self.edgesForExtendedLayout = UIRectEdge.None
         }
         */
-        //options
-        //bring buttons to front
         
-        titleLabel.text = currentTrack?.title
-        self.view.bringSubviewToFront(xButton)
-        self.view.bringSubviewToFront(checkButton)
-        self.view.bringSubviewToFront(pausePlayButton)
-        singleton.audioPlayer.pause()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,16 +80,12 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     }
     
     
-
-    
     func popTrackWithFrame(frame:CGRect) -> ChooseTrackView? {
         // Creates a new chooseTrackView from tracks, and pops that track off the list
         if self.tracks.count == 0 {
             println("No more tracks")
             return nil
         }
-       
-        
         
         var options = MDCSwipeToChooseViewOptions()
         options.delegate = self
@@ -107,9 +103,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
                 CGRectGetHeight(frame))
             
             if state.thresholdRatio == 1 && state.direction == MDCSwipeDirection.Left {
-                
             } else {
-                
             }
         }
 
@@ -162,11 +156,14 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         
         titleLabel.text = self.frontCardView?.track?.title
+        
+        // Animate the text
         titleLabel.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
         UIView.animateWithDuration(0.25, animations: {
             self.titleLabel.layer.transform = CATransform3DMakeScale(1,1,1)
         })
-        //Dirty Hackathon Code
+        
+        // Bring the backCard up
         
         let frame = self.backCardViewFrame()
         let newFrame = CGRectMake(frame.origin.x + 15,
@@ -183,20 +180,15 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
                 , completion: nil)
             
         }
-        
-        //bring X, check, and playpause buttons to the front
+        // Bring Buttons to the front
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
         self.view.bringSubviewToFront(pausePlayButton)
-       /* if let self.backCardView = self.popTrackWithFrame(self.backCardViewFrame()) {
-            self.backCardView?.alpha = 0
-            self.view.insertSubview(self.backCardView!, belowSubview: self.frontCardView!)
-            UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {()->Void in self.backCardView!.alpha = 1}
-                , completion: nil)
-        }*/
-        
+    
         pausePlayButton.selected = true
         pausePlayButton.addTransforms()
+        
+        
     }
     // View frames
     func frontCardViewFrame() -> CGRect {
@@ -215,7 +207,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
         
 
-    //Pause play function
+    // Pause play function
     @IBAction func buttonPressed(sender: AnimatedStartButton) {
         sender.selected = !sender.selected
         if(sender.selected) {
@@ -225,13 +217,13 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         }
     }
 
-    //Right button
+    // Right button
     @IBAction func checkButtonPressed(sender: UIButton) {
         //self.frontCardView?.mdc_swipe(MDCSwipeDirection.Right)
         self.evo_drawerController?.openDrawerSide(DrawerSide.Right, animated: true, completion: nil)
     }
 
-    //Left button
+    // Left button
     @IBAction func xButtonPressed(sender:UIButton) {
         //self.frontCardView?.mdc_swipe(MDCSwipeDirection.Left)
         self.evo_drawerController?.openDrawerSide(DrawerSide.Left, animated: true, completion: nil)
