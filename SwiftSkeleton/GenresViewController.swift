@@ -15,7 +15,6 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
     
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
     @IBAction func indexChanged(sender: AnyObject) {
         switch segmentedControl.selectedSegmentIndex
         {
@@ -35,10 +34,10 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
             break; 
         }
     }
+    
     func setupData() {
         self.tableData = singleton.genres
        
-        //self.navigationItem.title?.font = UIFont(name:"Futura",size:15.00)
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
         
@@ -47,13 +46,10 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupData()
-       // Singleton.sharedInstance.delegate = self
+        // Singleton.sharedInstance.delegate = self
         ConnectionManager.testNetworking()
-        // ConnectionManager.getRedditList()
-        
+
     }
-    
-    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
@@ -74,11 +70,11 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
-
         }
         
         return cell
     }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Change the center view controller
         
@@ -104,7 +100,6 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
         return indexPath
     }
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-       
         
     }
         

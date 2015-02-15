@@ -79,12 +79,12 @@ class ConnectionManager {
         Singleton.sharedInstance.audioPlayer.play(streamURL)
 
         //Hacky way to seek to music
-        let delay = 0.001 * Double(NSEC_PER_SEC)
+        let delay = 0.1 * Double(NSEC_PER_SEC)
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             
             Singleton.sharedInstance.audioPlayer.seekToTime(Double(time))
-            println("Played: \(track.title)")
+            println("Playing: \(track.title) at time: \(track.start_time/1000)")
             self.queueStreamFromTrack(nextTrack)
 
         }
@@ -102,7 +102,7 @@ class ConnectionManager {
             var time = track.start_time/1000
              Singleton.sharedInstance.audioPlayer.queue(streamURL)
             
-            println("queued: \(Singleton.sharedInstance.audioPlayer.currentlyPlayingQueueItemId())")
+            println("Queued: \(Singleton.sharedInstance.audioPlayer.currentlyPlayingQueueItemId())")
            // println(Singleton.sharedInstance.audioPlayer.mostRecentlyQueuedStillPendingItem)
         }
         
@@ -123,12 +123,11 @@ class ConnectionManager {
     
     }
     
-    
     class func getImageFromURL(imageURL:String) -> UIImage? {
         let url = NSURL(string: imageURL)
         if let data = NSData(contentsOfURL: url!) {
             return UIImage(data: data)!
-        }else {
+        } else {
             return nil
         }
     }

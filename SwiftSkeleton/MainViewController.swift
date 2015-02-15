@@ -75,21 +75,11 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
         self.view.bringSubviewToFront(pausePlayButton)
-        
-        
-        //hacky part so navbar doesnt overshadow the cards
-        /*if self.respondsToSelector(Selector("edgesForExtendedLayout")) {
-        self.edgesForExtendedLayout = UIRectEdge.None
-        }
-        */
-        
-
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
     
     func popTrackWithFrame(frame:CGRect) -> ChooseTrackView? {
         // Creates a new chooseTrackView from tracks, and pops that track off the list
@@ -123,10 +113,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         //view.imageView.image = UIImage(named: "photo.png")
         
         return view
-        
-
     }
-    
     
     // This is called when a user didn't fully swipe left or right.
     func viewDidCancelSwipe(view: UIView) -> Void{
@@ -208,11 +195,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             
             }
         }
-       
-        
-        
     }
+    
     // View frames
+
     func frontCardViewFrame() -> CGRect {
         let horizontalPadding: CGFloat = 20
         let topPadding: CGFloat = 100
@@ -251,26 +237,32 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     }
 
 
-
+    // STK delegate functions
 
     func audioPlayer(audioPlayer: STKAudioPlayer!, didCancelQueuedItems queuedItems: [AnyObject]!) {
-        println("Cancelled Queued Items")
+        println("Cancelled queued items")
     }
+    
     func audioPlayer(audioPlayer: STKAudioPlayer!, didFinishBufferingSourceWithQueueItemId queueItemId: NSObject!) {
-        println("Finished buffering source Id: \(queueItemId)")
+        println("Finished buffering source ID: \(queueItemId)")
     }
+    
     func audioPlayer(audioPlayer: STKAudioPlayer!, didFinishPlayingQueueItemId queueItemId: NSObject!, withReason stopReason: STKAudioPlayerStopReason, andProgress progress: Double, andDuration duration: Double) {
         
     }
+    
     func audioPlayer(audioPlayer: STKAudioPlayer!, didStartPlayingQueueItemId queueItemId: NSObject!) {
         
     }
+    
     func audioPlayer(audioPlayer: STKAudioPlayer!, logInfo line: String!) {
         
     }
+    
     func audioPlayer(audioPlayer: STKAudioPlayer!, stateChanged state: STKAudioPlayerState, previousState: STKAudioPlayerState) {
         
     }
+    
     func audioPlayer(audioPlayer: STKAudioPlayer!, unexpectedError errorCode: STKAudioPlayerErrorCode) {
         println(STKAudioPlayerErrorCode)
     }

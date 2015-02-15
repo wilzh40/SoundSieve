@@ -28,9 +28,6 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         
         let barButton = UIBarButtonItem(title: "Clear Data", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("clearData"))
         self.navigationItem.setLeftBarButtonItem(barButton, animated: true)
-            
-
-       // ConnectionManager.getRedditList()
         
     }
     
@@ -55,6 +52,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
 
         return cell
     }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Change the center view controller
         self.tableView.reloadData()
