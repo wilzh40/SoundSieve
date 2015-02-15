@@ -28,19 +28,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
         var centerController = storyBoard.instantiateViewControllerWithIdentifier("Center") as UIViewController
-    
         var left = storyBoard.instantiateViewControllerWithIdentifier("Left") as UIViewController
-        
-        
         var right = storyBoard.instantiateViewControllerWithIdentifier("Right") as UIViewController
         
         var drawerCon = DrawerController(centerViewController: centerController, leftDrawerViewController: left, rightDrawerViewController:right)
-       // drawerCon.navigationController?.navigationItem.setLeftBarButtonItem(button, animated: false)
         drawerCon.openDrawerGestureModeMask = OpenDrawerGestureMode.BezelPanningCenterView
         drawerCon.closeDrawerGestureModeMask = CloseDrawerGestureMode.PanningCenterView
         self.window?.rootViewController = drawerCon
         self.window?.makeKeyAndVisible()
-         SwiftSpinner.show("Initializing...")
+        SwiftSpinner.show("Initializing...")
         
         
         

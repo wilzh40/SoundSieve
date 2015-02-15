@@ -101,8 +101,8 @@ class ConnectionManager {
             let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time/1000)
             var time = track.start_time/1000
              Singleton.sharedInstance.audioPlayer.queue(streamURL)
-            println("Queued: \(track.title)")
-           // println(Singleton.sharedInstance.audioPlayer.currentlyPlayingQueueItemId())
+            
+            println("queued: \(Singleton.sharedInstance.audioPlayer.currentlyPlayingQueueItemId())")
            // println(Singleton.sharedInstance.audioPlayer.mostRecentlyQueuedStillPendingItem)
         }
         

@@ -272,6 +272,6 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
     }
     func audioPlayer(audioPlayer: STKAudioPlayer!, unexpectedError errorCode: STKAudioPlayerErrorCode) {
-        
+        println(STKAudioPlayerErrorCode)
     }
 }
