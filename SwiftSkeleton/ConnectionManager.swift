@@ -69,7 +69,7 @@ class ConnectionManager {
     }
     
     
-    class func playStreamFromTrack(track:Track) {
+    class func playStreamFromTrack(track:Track, nextTrack:Track) {
 
         let client_id = "6ec16ffb5ed930fce00949be480f746b"
         let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time/1000)
@@ -79,21 +79,32 @@ class ConnectionManager {
         Singleton.sharedInstance.audioPlayer.play(streamURL)
 
         //Hacky way to seek to music
-        let delay = 0.01 * Double(NSEC_PER_SEC)
+        let delay = 0.001 * Double(NSEC_PER_SEC)
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             
             Singleton.sharedInstance.audioPlayer.seekToTime(Double(time))
+            println("Played: \(track.title)")
+            self.queueStreamFromTrack(nextTrack)
+
         }
 
         
     }
     
     class func queueStreamFromTrack(track:Track) {
-        let client_id = "6ec16ffb5ed930fce00949be480f746b"
-        let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time/1000)
-        var time = track.start_time/1000
-         Singleton.sharedInstance.audioPlayer.queue(streamURL)
+        let delay = 1 * Double(NSEC_PER_SEC)
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+
+            let client_id = "6ec16ffb5ed930fce00949be480f746b"
+            let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time/1000)
+            var time = track.start_time/1000
+             Singleton.sharedInstance.audioPlayer.queue(streamURL)
+            println("Queued: \(track.title)")
+           // println(Singleton.sharedInstance.audioPlayer.currentlyPlayingQueueItemId())
+           // println(Singleton.sharedInstance.audioPlayer.mostRecentlyQueuedStillPendingItem)
+        }
         
     }
     
@@ -109,7 +120,7 @@ class ConnectionManager {
                     println(error)
                 }
         }
-        
+    
     }
     
     

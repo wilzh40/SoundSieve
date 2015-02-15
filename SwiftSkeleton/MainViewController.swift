@@ -11,8 +11,8 @@ import UIKit
 import QuartzCore
 import CoreData
 
-//import MDCSwipeToChoose
-class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, ConnectionProtocol{
+class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, ConnectionProtocol,STKAudioPlayerDelegate{
+   
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
@@ -26,7 +26,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ConnectionManager.sharedInstance.delegate = self;
+        ConnectionManager.sharedInstance.delegate = self
+        Singleton.sharedInstance.audioPlayer.delegate = self
         //self.view.backgroundColor = UIColor(red: 1.00, green: 0.95, blue: 0.85, alpha: 1.0)
     }
     override func viewWillDisappear(animated:Bool) {
@@ -60,16 +61,17 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         self.view.insertSubview(self.backCardView!, belowSubview: self.frontCardView!)
        
         currentTrack = self.frontCardView?.track!
-        if currentTrack != nil {
-            ConnectionManager.playStreamFromTrack(currentTrack!)
+        if let track = self.frontCardView?.track {
+            if let nextTrack = self.backCardView?.track {
+                ConnectionManager.playStreamFromTrack(track,nextTrack:nextTrack)
+                
+            }
         }
         titleLabel.text = currentTrack?.title
         singleton.audioPlayer.pause()
-
       
         // Bring buttons to front
 
-       
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
         self.view.bringSubviewToFront(pausePlayButton)
@@ -149,10 +151,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     // This is called then a user swipes the view fully left or right.
     func view(view: UIView, wasChosenWithDirection: MDCSwipeDirection) -> Void{
         
-        // New song
-        if let track = self.backCardView?.track {
-            ConnectionManager.playStreamFromTrack(track)
-        }
+   
         currentTrack = self.frontCardView?.track!
         if wasChosenWithDirection == MDCSwipeDirection.Left {
             println("Track deleted!")
@@ -193,6 +192,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             
         }
         
+        
         // Bring Buttons to the front
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
@@ -200,6 +200,15 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
         pausePlayButton.selected = true
         pausePlayButton.addTransforms()
+        
+        // Play new song and queue next song
+        if let track = self.frontCardView?.track {
+            if let nextTrack = self.backCardView?.track {
+                ConnectionManager.playStreamFromTrack(track,nextTrack:nextTrack)
+            
+            }
+        }
+       
         
         
     }
@@ -240,9 +249,29 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         //self.frontCardView?.mdc_swipe(MDCSwipeDirection.Left)
         self.evo_drawerController?.openDrawerSide(DrawerSide.Left, animated: true, completion: nil)
     }
-    
-    func updateControls() {
-          }
-    
-    
+
+
+
+
+    func audioPlayer(audioPlayer: STKAudioPlayer!, didCancelQueuedItems queuedItems: [AnyObject]!) {
+        println("Cancelled Queued Items")
+    }
+    func audioPlayer(audioPlayer: STKAudioPlayer!, didFinishBufferingSourceWithQueueItemId queueItemId: NSObject!) {
+        println("Finished buffering source Id: \(queueItemId)")
+    }
+    func audioPlayer(audioPlayer: STKAudioPlayer!, didFinishPlayingQueueItemId queueItemId: NSObject!, withReason stopReason: STKAudioPlayerStopReason, andProgress progress: Double, andDuration duration: Double) {
+        
+    }
+    func audioPlayer(audioPlayer: STKAudioPlayer!, didStartPlayingQueueItemId queueItemId: NSObject!) {
+        
+    }
+    func audioPlayer(audioPlayer: STKAudioPlayer!, logInfo line: String!) {
+        
+    }
+    func audioPlayer(audioPlayer: STKAudioPlayer!, stateChanged state: STKAudioPlayerState, previousState: STKAudioPlayerState) {
+        
+    }
+    func audioPlayer(audioPlayer: STKAudioPlayer!, unexpectedError errorCode: STKAudioPlayerErrorCode) {
+        
+    }
 }
