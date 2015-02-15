@@ -264,6 +264,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             println("Progress: \(progress) adjustedProgress: \(adjustedProgress) Duration: \(duration) ")
             if fabs(duration - adjustedProgress) < 1 {
                 // If the song ends (or almost ends, its not extremely accurate) show the next card
+                self.frontCardView?.removeFromSuperview()
                 self.appearNextCard()
 
             }
