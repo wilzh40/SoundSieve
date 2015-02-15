@@ -14,7 +14,10 @@ import CoreData
 @objc protocol SavedSongsDelegate {
     optional func reloadData()
 }
-
+enum SoundSieveOptions {
+    case startFromPreviewTime
+    case startFromBeginning
+}
 
 class Singleton {
     var delegate: SavedSongsDelegate?
@@ -33,19 +36,29 @@ class Singleton {
     var savedTracks: NSMutableArray = []
    
 
-    // Settings
+    // Settings (first run)
 
     var genres: NSMutableArray = ["Dance & Edm","Trap","House","Ambient","Pop","Indie"]
     var APIgenres: NSMutableArray = ["dance%20&%20edm","trap","house","ambient","pop","indie"]
     var selectedGenre: Int = 0
     var selectedSearchMethod: Bool = false
+    var startTime = SoundSieveOptions.startFromPreviewTime
     
     
      func setupData() {
-        //RandomTracks
-        ConnectionManager.getRandomTracks("dance%20&%20edm", limit: 100)
+        // Load Settings from NSUserDefaults (after first run)
+        selectedGenre = NSUserDefaults.standardUserDefaults().integerForKey("selectedGenre")
+        selectedSearchMethod = NSUserDefaults.standardUserDefaults().boolForKey("selectedSearchMethod")
         
-
+        // Get the initial track list
+        ConnectionManager.getRandomTracks()
+    }
+    
+    func saveData() {
+        // Called by App Delegate when it is terminated
+        NSUserDefaults.standardUserDefaults().setInteger(selectedGenre, forKey: "selectedGenre")
+        NSUserDefaults.standardUserDefaults().setBool(selectedSearchMethod, forKey: "selectedSearchMethod")
+        
     }
     
     func setupAudio() {
@@ -58,8 +71,6 @@ class Singleton {
 
         audioPlayer.meteringEnabled = true
         audioPlayer.volume = 1
-
-        
       
     }
     
@@ -79,12 +90,11 @@ class Singleton {
             println("Could not save \(error), \(error?.userInfo)")
         }
         
-        //add to savedTracks
+        // Add to savedTracks
         self.savedTracksAsCoreData.append(track)
         self.transferCoreDataTracksToSavedTracks()
     }
 
-    
     
     func transferCoreDataTracksToSavedTracks() {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -109,8 +119,6 @@ class Singleton {
             self.savedTracks.addObject(track)
         }
     }
-
-    
     
     class var sharedInstance : Singleton {
         struct Static {

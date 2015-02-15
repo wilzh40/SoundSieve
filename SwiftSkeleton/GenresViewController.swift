@@ -15,6 +15,7 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
     
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     @IBAction func indexChanged(sender: AnyObject) {
         switch segmentedControl.selectedSegmentIndex
         {
@@ -22,14 +23,14 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
             Singleton.sharedInstance.selectedSearchMethod = true
             println("1")
             self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
-            ConnectionManager.getRandomTracks("a", limit: 0)
+            ConnectionManager.getRandomTracks()
             SwiftSpinner.show("Switching Search Method")
             break;
         case 1:
             Singleton.sharedInstance.selectedSearchMethod = false
             println("0")
             self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
-            ConnectionManager.getRandomTracks("a", limit: 0)
+            ConnectionManager.getRandomTracks()
             SwiftSpinner.show("Switching Search Method")
             break;
         default:
@@ -86,7 +87,7 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
         singleton.selectedGenre = indexPath.row
         self.tableView.reloadData()
         self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
-        ConnectionManager.getRandomTracks("a", limit: 0)
+        ConnectionManager.getRandomTracks()
         SwiftSpinner.show("Switching Genres")
         
     }

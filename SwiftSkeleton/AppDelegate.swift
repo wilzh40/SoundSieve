@@ -28,11 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
         var centerController = storyBoard.instantiateViewControllerWithIdentifier("Center") as UIViewController
-
-        
-    
-    //    let button = UIBarButtonItem(title: "Super", style: .Plain, target: self, action: Selector("toggleMenu"))
-        //centerController.navigationItem.setLeftBarButtonItem(button, animated: true)
     
         var left = storyBoard.instantiateViewControllerWithIdentifier("Left") as UIViewController
         
@@ -52,9 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func toggleMenu() {
-        
-    }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -75,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(application: UIApplication) {
+        Singleton.sharedInstance.saveData()
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()

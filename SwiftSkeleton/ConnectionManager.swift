@@ -23,9 +23,7 @@ let baseURL = "http://soundsieve-backend.appspot.com/api/"
 class ConnectionManager {
     var delegate : ConnectionProtocol?
 
-    
-   
-    class func getRandomTracks (genre: String?, limit: Int? ) {
+    class func getRandomTracks () {
         let selectedGenre = Singleton.sharedInstance.APIgenres.objectAtIndex(Singleton.sharedInstance.selectedGenre) as String
         var hot = ""
         if Singleton.sharedInstance.selectedSearchMethod == true {
@@ -55,7 +53,6 @@ class ConnectionManager {
 
 
                 }
-                
                 
                 Singleton.sharedInstance.tracks = tracks
                 ConnectionManager.sharedInstance.delegate?.didGetTracks!()

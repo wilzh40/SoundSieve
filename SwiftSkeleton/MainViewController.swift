@@ -237,4 +237,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         //self.frontCardView?.mdc_swipe(MDCSwipeDirection.Left)
         self.evo_drawerController?.openDrawerSide(DrawerSide.Left, animated: true, completion: nil)
     }
+    
+    func updateControls() {
+          }
+    
+    
 }
