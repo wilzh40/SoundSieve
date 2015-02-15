@@ -55,10 +55,10 @@ class ConnectionManager {
 
 
                 }
+                
+                
                 Singleton.sharedInstance.tracks = tracks
                 ConnectionManager.sharedInstance.delegate?.didGetTracks!()
-                
-                
                 
                 if error != nil {
                     println(error)
@@ -81,7 +81,7 @@ class ConnectionManager {
     
         Singleton.sharedInstance.audioPlayer.play(streamURL)
 
-        //Hacky way 
+        //Hacky way to seek to music
         let delay = 0.01 * Double(NSEC_PER_SEC)
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
@@ -99,9 +99,6 @@ class ConnectionManager {
          Singleton.sharedInstance.audioPlayer.queue(streamURL)
         
     }
-    
-    
-    
     
     class func testNetworking() {
         let URL = "http://httpbin.org/get"
@@ -126,8 +123,6 @@ class ConnectionManager {
         }else {
             return nil
         }
-        
-      
     }
     
     // Singleton

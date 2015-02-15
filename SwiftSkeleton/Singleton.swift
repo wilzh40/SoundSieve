@@ -31,40 +31,36 @@ class Singleton {
     var tracks: NSMutableArray = []
     var savedTracksAsCoreData: Array<NSManagedObject> = []
     var savedTracks: NSMutableArray = []
+   
+
+    // Settings
+
     var genres: NSMutableArray = ["Dance & Edm","Trap","House","Ambient","Pop","Indie"]
     var APIgenres: NSMutableArray = ["dance%20&%20edm","trap","house","ambient","pop","indie"]
     var selectedGenre: Int = 0
     var selectedSearchMethod: Bool = false
-
-    // Settings
-    
-    
-
     
     
      func setupData() {
         //RandomTracks
         ConnectionManager.getRandomTracks("dance%20&%20edm", limit: 100)
         
-        //VCs
-        /* let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-         let mainVC = storyBoard.instantiateViewControllerWithIdentifier("Center") as UIViewController
-         let settingsVC = storyBoard.instantiateViewControllerWithIdentifier("Settings") as UIViewController
-        self.centerViewControllers.addObject(mainVC)
-        self.centerViewControllers.addObject(settingsVC) */
-        
 
     }
+    
     func setupAudio() {
-        var error:NSErrorPointer = nil
+        var error: NSErrorPointer = nil
+        var bufferLength: NSTimeInterval = 0.1
+
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: error)
         AVAudioSession.sharedInstance().setActive(true, error: error)
-    
+        AVAudioSession.sharedInstance().setPreferredIOBufferDuration(bufferLength, error:error)
+
         audioPlayer.meteringEnabled = true
         audioPlayer.volume = 1
-        
-        var bufferLength = 0.1
 
+        
+      
     }
     
     func addTrackToSavedTracks(thisTrack: Track) {
