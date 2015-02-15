@@ -79,7 +79,7 @@ class ConnectionManager {
         Singleton.sharedInstance.audioPlayer.play(streamURL)
 
         //Hacky way to seek to music
-        let delay = 0.1 * Double(NSEC_PER_SEC)
+        let delay = 0.2 * Double(NSEC_PER_SEC)
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             

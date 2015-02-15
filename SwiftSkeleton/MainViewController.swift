@@ -146,7 +146,11 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             println("Track saved!")
             singleton.addTrackToSavedTracks(currentTrack!)
         }
-        
+        self.appearNextCard()
+    }
+    
+    
+    func appearNextCard() {
         self.frontCardView = self.backCardView
         
         
@@ -167,7 +171,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             frame.origin.y - 500 ,
             CGRectGetWidth(frame),
             CGRectGetHeight(frame))
-
+        
         
         if let newBackCard = self.popTrackWithFrame(newFrame){
             self.backCardView! = newBackCard
@@ -184,7 +188,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
         self.view.bringSubviewToFront(pausePlayButton)
-    
+        
         pausePlayButton.selected = true
         pausePlayButton.addTransforms()
         
@@ -192,9 +196,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         if let track = self.frontCardView?.track {
             if let nextTrack = self.backCardView?.track {
                 ConnectionManager.playStreamFromTrack(track,nextTrack:nextTrack)
-            
+                
             }
         }
+
     }
     
     // View frames
@@ -237,7 +242,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     }
 
 
-    // STK delegate functions
+    // Audio player delegate functions
 
     func audioPlayer(audioPlayer: STKAudioPlayer!, didCancelQueuedItems queuedItems: [AnyObject]!) {
         println("Cancelled queued items")
@@ -248,15 +253,31 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     }
     
     func audioPlayer(audioPlayer: STKAudioPlayer!, didFinishPlayingQueueItemId queueItemId: NSObject!, withReason stopReason: STKAudioPlayerStopReason, andProgress progress: Double, andDuration duration: Double) {
+        //println(stopReason.value)
+        // When the current song finishes play the next song
+        
+        
+
+        if let trackStartTime = self.frontCardView?.track?.start_time {
+            // Adjust the progresss if the track skipped ahead
+            var adjustedProgress: Double = progress + Double(trackStartTime/1000)
+            println("Progress: \(progress) adjustedProgress: \(adjustedProgress) Duration: \(duration) ")
+            if fabs(duration - adjustedProgress) < 1 {
+                // If the song ends (or almost ends, its not extremely accurate) show the next card
+                self.appearNextCard()
+
+            }
+        }
         
     }
     
     func audioPlayer(audioPlayer: STKAudioPlayer!, didStartPlayingQueueItemId queueItemId: NSObject!) {
         
+        
     }
     
     func audioPlayer(audioPlayer: STKAudioPlayer!, logInfo line: String!) {
-        
+
     }
     
     func audioPlayer(audioPlayer: STKAudioPlayer!, stateChanged state: STKAudioPlayerState, previousState: STKAudioPlayerState) {

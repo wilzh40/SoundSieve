@@ -2392,6 +2392,7 @@ static BOOL GetHardwareCodecClassDesc(UInt32 formatId, AudioClassDescription* cl
 
 -(void) stopAudioUnitWithReason:(STKAudioPlayerStopReason)stopReasonIn
 {
+    
 	OSStatus status;
 	
 	if (!audioGraph)
