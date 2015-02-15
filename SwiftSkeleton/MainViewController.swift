@@ -45,6 +45,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     // Called when app recieves the list of songs from Kevin's backend
     
     func didGetTracks() {
+        // Delete all the current tracks being displayed (when being called in from SideMenu)
+        self.frontCardView?.removeFromSuperview()
+        self.backCardView?.removeFromSuperview()
+        
         // Init Code
         
         SwiftSpinner.hide()
@@ -184,7 +188,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             self.backCardView!.frame = frame
             self.backCardView!.alpha = 0
             self.view.insertSubview(self.backCardView!, belowSubview: self.frontCardView!)
-            UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {()->Void in self.backCardView!.alpha = 1}
+            UIView.animateWithDuration(0.5, delay: 0.1, options: UIViewAnimationOptions.CurveEaseInOut, animations: {()->Void in self.backCardView!.alpha = 1}
                 , completion: nil)
             
         }
@@ -214,8 +218,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             CGRectGetWidth(frontFrame),CGRectGetHeight(frontFrame))
         }
     
-        
-
+    
     // Pause play function
     @IBAction func buttonPressed(sender: AnimatedStartButton) {
         sender.selected = !sender.selected
