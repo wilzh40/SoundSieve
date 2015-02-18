@@ -593,6 +593,11 @@
 					77CEFCE71A79C041001B0A02 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = V688V75KS8;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					77CEFCFF1A79C041001B0A02 = {
 						CreatedOnToolsVersion = 6.1.1;
