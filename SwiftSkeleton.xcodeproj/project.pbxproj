@@ -17,6 +17,23 @@
 		77040B0D1A86CA3E0065D260 /* MDCSwipeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040AFF1A86CA3E0065D260 /* MDCSwipeResult.m */; };
 		77040B0E1A86CA3E0065D260 /* MDCSwipeToChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040B031A86CA3E0065D260 /* MDCSwipeToChooseView.m */; };
 		77040B0F1A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040B051A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m */; };
+		774280361A952B2100C3BF9B /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774280351A952B2100C3BF9B /* Credentials.swift */; };
+		774280541A952B7900C3BF9B /* Dictionary+OAuthSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774280411A952B7900C3BF9B /* Dictionary+OAuthSwift.swift */; };
+		774280551A952B7900C3BF9B /* HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774280421A952B7900C3BF9B /* HMAC.swift */; };
+		774280561A952B7900C3BF9B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 774280431A952B7900C3BF9B /* Info.plist */; };
+		774280571A952B7900C3BF9B /* Int+OAuthSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774280441A952B7900C3BF9B /* Int+OAuthSwift.swift */; };
+		774280581A952B7900C3BF9B /* NSData+OAuthSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774280451A952B7900C3BF9B /* NSData+OAuthSwift.swift */; };
+		774280591A952B7900C3BF9B /* NSURL+OAuthSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774280461A952B7900C3BF9B /* NSURL+OAuthSwift.swift */; };
+		7742805A1A952B7900C3BF9B /* OAuth1Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774280471A952B7900C3BF9B /* OAuth1Swift.swift */; };
+		7742805B1A952B7900C3BF9B /* OAuth2Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774280481A952B7900C3BF9B /* OAuth2Swift.swift */; };
+		7742805C1A952B7900C3BF9B /* OAuthSwiftClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7742804A1A952B7900C3BF9B /* OAuthSwiftClient.swift */; };
+		7742805D1A952B7900C3BF9B /* OAuthSwiftCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7742804B1A952B7900C3BF9B /* OAuthSwiftCredential.swift */; };
+		7742805E1A952B7900C3BF9B /* OAuthSwiftHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7742804C1A952B7900C3BF9B /* OAuthSwiftHTTPRequest.swift */; };
+		7742805F1A952B7900C3BF9B /* OAuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7742804D1A952B7900C3BF9B /* OAuthWebViewController.swift */; };
+		774280601A952B7900C3BF9B /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7742804E1A952B7900C3BF9B /* SHA1.swift */; };
+		774280611A952B7900C3BF9B /* String+OAuthSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7742804F1A952B7900C3BF9B /* String+OAuthSwift.swift */; };
+		774280621A952B7900C3BF9B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774280501A952B7900C3BF9B /* Utils.swift */; };
+		7742806A1A952B9B00C3BF9B /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 774280691A952B9B00C3BF9B /* OAuthSwift.framework */; };
 		776A5A671A87344000D7B091 /* NSMutableArray+STKAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A5A551A87344000D7B091 /* NSMutableArray+STKAudioPlayer.m */; };
 		776A5A681A87344000D7B091 /* STKAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A5A571A87344000D7B091 /* STKAudioPlayer.m */; };
 		776A5A691A87344000D7B091 /* STKAutoRecoveringHTTPDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A5A591A87344000D7B091 /* STKAutoRecoveringHTTPDataSource.m */; };
@@ -156,6 +173,25 @@
 		77040B041A86CA3E0065D260 /* UIView+MDCSwipeToChoose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MDCSwipeToChoose.h"; sourceTree = "<group>"; };
 		77040B051A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MDCSwipeToChoose.m"; sourceTree = "<group>"; };
 		77040B111A86CB540065D260 /* SwiftSkeleton-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SwiftSkeleton-Bridging-Header.h"; path = "SwiftSkeleton/SwiftSkeleton-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		774280351A952B2100C3BF9B /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		774280411A952B7900C3BF9B /* Dictionary+OAuthSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+OAuthSwift.swift"; sourceTree = "<group>"; };
+		774280421A952B7900C3BF9B /* HMAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMAC.swift; sourceTree = "<group>"; };
+		774280431A952B7900C3BF9B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		774280441A952B7900C3BF9B /* Int+OAuthSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+OAuthSwift.swift"; sourceTree = "<group>"; };
+		774280451A952B7900C3BF9B /* NSData+OAuthSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData+OAuthSwift.swift"; sourceTree = "<group>"; };
+		774280461A952B7900C3BF9B /* NSURL+OAuthSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+OAuthSwift.swift"; sourceTree = "<group>"; };
+		774280471A952B7900C3BF9B /* OAuth1Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth1Swift.swift; sourceTree = "<group>"; };
+		774280481A952B7900C3BF9B /* OAuth2Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth2Swift.swift; sourceTree = "<group>"; };
+		774280491A952B7900C3BF9B /* OAuthSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthSwift.h; sourceTree = "<group>"; };
+		7742804A1A952B7900C3BF9B /* OAuthSwiftClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthSwiftClient.swift; sourceTree = "<group>"; };
+		7742804B1A952B7900C3BF9B /* OAuthSwiftCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthSwiftCredential.swift; sourceTree = "<group>"; };
+		7742804C1A952B7900C3BF9B /* OAuthSwiftHTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthSwiftHTTPRequest.swift; sourceTree = "<group>"; };
+		7742804D1A952B7900C3BF9B /* OAuthWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthWebViewController.swift; sourceTree = "<group>"; };
+		7742804E1A952B7900C3BF9B /* SHA1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA1.swift; sourceTree = "<group>"; };
+		7742804F1A952B7900C3BF9B /* String+OAuthSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+OAuthSwift.swift"; sourceTree = "<group>"; };
+		774280501A952B7900C3BF9B /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		774280511A952B7900C3BF9B /* OAuthSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = OAuthSwift.xcodeproj; sourceTree = "<group>"; };
+		774280691A952B9B00C3BF9B /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftSkeleton-bxkqakgmzxltviempxlbqfrgfsfq/Build/Products/Debug-iphoneos/OAuthSwift.framework"; sourceTree = "<group>"; };
 		776A5A541A87344000D7B091 /* NSMutableArray+STKAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+STKAudioPlayer.h"; sourceTree = "<group>"; };
 		776A5A551A87344000D7B091 /* NSMutableArray+STKAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+STKAudioPlayer.m"; sourceTree = "<group>"; };
 		776A5A561A87344000D7B091 /* STKAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAudioPlayer.h; sourceTree = "<group>"; };
@@ -235,6 +271,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7742806A1A952B9B00C3BF9B /* OAuthSwift.framework in Frameworks */,
 				776A5A731A8738FE00D7B091 /* AVFoundation.framework in Frameworks */,
 				776A5A741A8738FE00D7B091 /* AVKit.framework in Frameworks */,
 				77CEFE1D1A79C48F001B0A02 /* AlamofireSwiftyJSON.framework in Frameworks */,
@@ -338,6 +375,29 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		774280401A952B7900C3BF9B /* OAuthSwift */ = {
+			isa = PBXGroup;
+			children = (
+				774280411A952B7900C3BF9B /* Dictionary+OAuthSwift.swift */,
+				774280421A952B7900C3BF9B /* HMAC.swift */,
+				774280431A952B7900C3BF9B /* Info.plist */,
+				774280441A952B7900C3BF9B /* Int+OAuthSwift.swift */,
+				774280451A952B7900C3BF9B /* NSData+OAuthSwift.swift */,
+				774280461A952B7900C3BF9B /* NSURL+OAuthSwift.swift */,
+				774280471A952B7900C3BF9B /* OAuth1Swift.swift */,
+				774280481A952B7900C3BF9B /* OAuth2Swift.swift */,
+				774280491A952B7900C3BF9B /* OAuthSwift.h */,
+				7742804A1A952B7900C3BF9B /* OAuthSwiftClient.swift */,
+				7742804B1A952B7900C3BF9B /* OAuthSwiftCredential.swift */,
+				7742804C1A952B7900C3BF9B /* OAuthSwiftHTTPRequest.swift */,
+				7742804D1A952B7900C3BF9B /* OAuthWebViewController.swift */,
+				7742804E1A952B7900C3BF9B /* SHA1.swift */,
+				7742804F1A952B7900C3BF9B /* String+OAuthSwift.swift */,
+				774280501A952B7900C3BF9B /* Utils.swift */,
+			);
+			path = OAuthSwift;
+			sourceTree = "<group>";
+		};
 		776A5A531A87344000D7B091 /* StreamingKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,6 +475,7 @@
 				77040B111A86CB540065D260 /* SwiftSkeleton-Bridging-Header.h */,
 				77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */,
 				77CEFE2B1A79D78B001B0A02 /* Singleton.swift */,
+				774280351A952B2100C3BF9B /* Credentials.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -422,6 +483,7 @@
 		77CEFCDF1A79C041001B0A02 = {
 			isa = PBXGroup;
 			children = (
+				774280691A952B9B00C3BF9B /* OAuthSwift.framework */,
 				776A5A711A8738FE00D7B091 /* AVFoundation.framework */,
 				776A5A721A8738FE00D7B091 /* AVKit.framework */,
 				77CEFDF71A79C280001B0A02 /* Alamofire-SwiftyJSON.xcodeproj */,
@@ -507,6 +569,8 @@
 		77CEFE211A79D5C6001B0A02 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				774280401A952B7900C3BF9B /* OAuthSwift */,
+				774280511A952B7900C3BF9B /* OAuthSwift.xcodeproj */,
 				776A5A531A87344000D7B091 /* StreamingKit */,
 				77040AE61A86CA3E0065D260 /* MDCSwipeToChoose */,
 				77CEFE261A79D5CE001B0A02 /* DrawerController */,
@@ -612,6 +676,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 77CEFCDF1A79C041001B0A02;
 			productRefGroup = 77CEFCE91A79C041001B0A02 /* Products */;
@@ -672,6 +737,7 @@
 				77CEFCF81A79C041001B0A02 /* Images.xcassets in Resources */,
 				776A5AA81A87DB7A00D7B091 /* Icon.png in Resources */,
 				776A5AAF1A87DB7A00D7B091 /* Icon-60.png in Resources */,
+				774280561A952B7900C3BF9B /* Info.plist in Resources */,
 				776A5AB71A87DB7A00D7B091 /* iTunesArtwork.png in Resources */,
 				77DDCDA51A86E02E0062B83F /* Taylor.png in Resources */,
 				776A5AB81A87DB7A00D7B091 /* iTunesArtwork@2x.png in Resources */,
@@ -696,20 +762,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				774280601A952B7900C3BF9B /* SHA1.swift in Sources */,
 				776A5A7C1A87A41100D7B091 /* GenresViewController.swift in Sources */,
+				7742805D1A952B7900C3BF9B /* OAuthSwiftCredential.swift in Sources */,
 				77040B0F1A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m in Sources */,
 				776A5A691A87344000D7B091 /* STKAutoRecoveringHTTPDataSource.m in Sources */,
 				77040B081A86CA3E0065D260 /* UIColor+MDCRGB8Bit.m in Sources */,
 				77040B091A86CA3E0065D260 /* UIView+MDCBorderedLabel.m in Sources */,
 				77040B0E1A86CA3E0065D260 /* MDCSwipeToChooseView.m in Sources */,
+				774280551A952B7900C3BF9B /* HMAC.swift in Sources */,
+				7742805A1A952B7900C3BF9B /* OAuth1Swift.swift in Sources */,
 				77CEFCF31A79C041001B0A02 /* ViewController.swift in Sources */,
 				77CEFCF11A79C041001B0A02 /* SwiftSkeleton.xcdatamodeld in Sources */,
 				77E2B73E1A7C16CC00E3C4BC /* CenterViewController.swift in Sources */,
 				776A5A6B1A87344000D7B091 /* STKDataSource.m in Sources */,
 				77CEFE291A79D5CE001B0A02 /* DrawerController.swift in Sources */,
+				774280581A952B7900C3BF9B /* NSData+OAuthSwift.swift in Sources */,
 				776A5A681A87344000D7B091 /* STKAudioPlayer.m in Sources */,
 				77B857011A7A9E3500A51186 /* Model.swift in Sources */,
 				77CEFE2A1A79D5CE001B0A02 /* DrawerVisualState.swift in Sources */,
+				774280541A952B7900C3BF9B /* Dictionary+OAuthSwift.swift in Sources */,
+				774280591A952B7900C3BF9B /* NSURL+OAuthSwift.swift in Sources */,
 				77CEFE2E1A79DD46001B0A02 /* SavedSongsViewController.swift in Sources */,
 				B86276C91A86FEF3004EEF50 /* AnimatedStartButton.swift in Sources */,
 				776A5A6C1A87344000D7B091 /* STKDataSourceWrapper.m in Sources */,
@@ -720,19 +793,27 @@
 				77040B0A1A86CA3E0065D260 /* MDCSwipeOptions.m in Sources */,
 				776A5A6A1A87344000D7B091 /* STKCoreFoundationDataSource.m in Sources */,
 				77040B0C1A86CA3E0065D260 /* MDCPanState.m in Sources */,
+				774280621A952B7900C3BF9B /* Utils.swift in Sources */,
 				77040B071A86CA3E0065D260 /* MDCViewState.m in Sources */,
+				7742805C1A952B7900C3BF9B /* OAuthSwiftClient.swift in Sources */,
 				77BFE9D61A814C5F00F1AAC1 /* SettingsViewController.swift in Sources */,
 				776A5A6F1A87344000D7B091 /* STKQueueEntry.m in Sources */,
+				774280611A952B7900C3BF9B /* String+OAuthSwift.swift in Sources */,
 				77CEFE2C1A79D78B001B0A02 /* Singleton.swift in Sources */,
+				774280571A952B7900C3BF9B /* Int+OAuthSwift.swift in Sources */,
 				776A5A6E1A87344000D7B091 /* STKLocalFileDataSource.m in Sources */,
+				7742805B1A952B7900C3BF9B /* OAuth2Swift.swift in Sources */,
 				77CEFE281A79D5CE001B0A02 /* DrawerBarButtonItem.swift in Sources */,
 				77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */,
 				77DDCDA21A86D93A0062B83F /* ChooseTrackView.swift in Sources */,
 				77040B0D1A86CA3E0065D260 /* MDCSwipeResult.m in Sources */,
+				774280361A952B2100C3BF9B /* Credentials.swift in Sources */,
 				77CEFE271A79D5CE001B0A02 /* AnimatedMenuButton.swift in Sources */,
 				77040B061A86CA3E0065D260 /* MDCGeometry.m in Sources */,
+				7742805E1A952B7900C3BF9B /* OAuthSwiftHTTPRequest.swift in Sources */,
 				776A5A671A87344000D7B091 /* NSMutableArray+STKAudioPlayer.m in Sources */,
 				77040B0B1A86CA3E0065D260 /* MDCSwipeToChooseViewOptions.m in Sources */,
+				7742805F1A952B7900C3BF9B /* OAuthWebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import AlamofireSwiftyJSON
+import OAuthSwift
 import UIKit
 import AVFoundation
 // This is my local RESTFUL testing setup using node and express.js, as well as modular databse
