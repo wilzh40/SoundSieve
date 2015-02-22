@@ -60,7 +60,10 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="WJ2-FF-t12">
-                                <rect key="frame" x="16" y="20" width="288" height="36"/>
+                                <rect key="frame" x="16" y="20" width="288" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="Qph-db-n74"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="27"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
