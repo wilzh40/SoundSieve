@@ -26,7 +26,19 @@ class ConnectionManager {
     
     
     class func authenticateSC() {
-        
+        let oauthswift = OAuth2Swift(
+            consumerKey:    Soundcloud["consumerKey"]!,
+            consumerSecret: Soundcloud["consumerSecret"]!,
+            authorizeUrl:   "https://soundcloud.com/connect",
+            responseType:   "token_and_code"
+        )
+        oauthswift.authorizeWithCallbackURL( NSURL(string: "SoundSieve://oauth-callback/soundcloud")!, scope: "*", state: "", success: {
+            credential, response in
+            println("Soundcloud", message: "oauth_token:\(credential.oauth_token)")
+            }, failure: {(error:NSError!) -> Void in
+                println(error.localizedDescription)
+        })
+
     }
     
     class func getRandomTracks() {
@@ -77,7 +89,7 @@ class ConnectionManager {
     
     class func playStreamFromTrack(track:Track, nextTrack:Track) {
 
-        let client_id = Soundcloud["ConsumerKey"]
+        let client_id = Soundcloud["consumerKey"]!
         let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time/1000)
         var time = track.start_time/1000
         
@@ -106,7 +118,7 @@ class ConnectionManager {
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
 
-            let client_id = "6ec16ffb5ed930fce00949be480f746b"
+            let client_id = Soundcloud["consumerKey"]!
             let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time/1000)
             var time = track.start_time/1000
              Singleton.sharedInstance.audioPlayer.queue(streamURL)

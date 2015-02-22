@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
        
+        ConnectionManager.authenticateSC()
+        
         Singleton.sharedInstance.setupData()
         Singleton.sharedInstance.setupAudio()
         Singleton.sharedInstance.transferCoreDataTracksToSavedTracks()
@@ -131,6 +133,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func application(application: UIApplication!, openURL url: NSURL!, sourceApplication: String!, annotation: AnyObject!) -> Bool {
+        println(url)
+        if (url.host == "oauth-callback") {
+            if url.path!.hasPrefix("/soundcloud")  {
+                OAuth2Swift.handleOpenURL(url)
+            }
+        }
+        
+        return true
+    }
+    
+
 
 }
 
