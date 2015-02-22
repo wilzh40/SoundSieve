@@ -42,8 +42,8 @@ class ConnectionManager {
                     track.title = child["title"].string!
                     //println(track.title)
                     track.id = child["id"].int!
-                    track.duration = child["duration"].int!
-                    track.genre = child["genre"].string!
+                    track.duration = child["duration"].int
+                    track.genre = child["genre"].string
                     track.subtitle = child["description"].string
                     track.artwork_url = child["artwork_url"].string
                     track.permalink_url = child["permalink_url"].string!
@@ -76,13 +76,15 @@ class ConnectionManager {
         let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time/1000)
         var time = track.start_time/1000
         
-    
+      
         Singleton.sharedInstance.audioPlayer.play(streamURL)
 
         //Hacky way to seek to music
         let delay = 0.2 * Double(NSEC_PER_SEC)
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
+            // Unmute the track giving it time to skip ahead
+            Singleton.sharedInstance.audioPlayer.volume = 1
             
             Singleton.sharedInstance.audioPlayer.seekToTime(Double(time))
             println("Playing: \(track.title) at time: \(track.start_time/1000)")
@@ -94,6 +96,7 @@ class ConnectionManager {
     }
     
     class func queueStreamFromTrack(track:Track) {
+        
         let delay = 1 * Double(NSEC_PER_SEC)
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
