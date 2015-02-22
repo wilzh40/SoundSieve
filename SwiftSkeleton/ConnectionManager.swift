@@ -42,7 +42,7 @@ class ConnectionManager {
                     //println(track.title)
                     track.id = child["id"].int!
                     track.duration = child["duration"].int!
-                    track.genre = child["genre"].string!
+                    track.genre = child["genre"].string
                     track.subtitle = child["description"].string
                     track.artwork_url = child["artwork_url"].string
                     track.permalink_url = child["permalink_url"].string!
