@@ -23,8 +23,13 @@ let baseURL = "http://soundsieve-backend.appspot.com/api/"
 }
 class ConnectionManager {
     var delegate : ConnectionProtocol?
-
-    class func getRandomTracks () {
+    
+    
+    class func authenticateSC() {
+        
+    }
+    
+    class func getRandomTracks() {
         let selectedGenre = Singleton.sharedInstance.APIgenres.objectAtIndex(Singleton.sharedInstance.selectedGenre) as String
         var hot = ""
         if Singleton.sharedInstance.selectedSearchMethod == true {
@@ -72,7 +77,7 @@ class ConnectionManager {
     
     class func playStreamFromTrack(track:Track, nextTrack:Track) {
 
-        let client_id = "6ec16ffb5ed930fce00949be480f746b"
+        let client_id = Soundcloud["ConsumerKey"]
         let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time/1000)
         var time = track.start_time/1000
         

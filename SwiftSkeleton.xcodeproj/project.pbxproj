@@ -70,6 +70,7 @@
 		776A5AB71A87DB7A00D7B091 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 776A5AA01A87DB7A00D7B091 /* iTunesArtwork.png */; };
 		776A5AB81A87DB7A00D7B091 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 776A5AA11A87DB7A00D7B091 /* iTunesArtwork@2x.png */; };
 		776A5ABB1A87DDD700D7B091 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A5ABA1A87DDD700D7B091 /* SwiftSpinner.swift */; };
+		778084131A9A846D007CBD7F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778084121A9A846D007CBD7F /* WebViewController.swift */; };
 		77AAD4B61A9A817D005F493E /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AAD4B51A9A812F005F493E /* OAuthSwift.framework */; };
 		77AAD4B71A9A817D005F493E /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77AAD4B51A9A812F005F493E /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77B856F81A79E4BB00A51186 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856F71A79E4BB00A51186 /* MainViewController.swift */; };
@@ -268,6 +269,7 @@
 		776A5AA01A87DB7A00D7B091 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		776A5AA11A87DB7A00D7B091 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		776A5ABA1A87DDD700D7B091 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
+		778084121A9A846D007CBD7F /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		77B856F71A79E4BB00A51186 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		77B857001A7A9E3500A51186 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -640,6 +642,7 @@
 		77CEFE2F1A79DD4D001B0A02 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				778084121A9A846D007CBD7F /* WebViewController.swift */,
 				776A5A7B1A87A41100D7B091 /* GenresViewController.swift */,
 				77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */,
 				77CEFE2D1A79DD46001B0A02 /* SavedSongsViewController.swift */,
@@ -839,6 +842,7 @@
 				7742805A1A952B7900C3BF9B /* OAuth1Swift.swift in Sources */,
 				77CEFCF31A79C041001B0A02 /* ViewController.swift in Sources */,
 				77CEFCF11A79C041001B0A02 /* SwiftSkeleton.xcdatamodeld in Sources */,
+				778084131A9A846D007CBD7F /* WebViewController.swift in Sources */,
 				77E2B73E1A7C16CC00E3C4BC /* CenterViewController.swift in Sources */,
 				776A5A6B1A87344000D7B091 /* STKDataSource.m in Sources */,
 				77CEFE291A79D5CE001B0A02 /* DrawerController.swift in Sources */,
