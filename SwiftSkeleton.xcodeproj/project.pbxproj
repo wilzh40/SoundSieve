@@ -74,6 +74,10 @@
 		77CEFE2E1A79DD46001B0A02 /* SavedSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFE2D1A79DD46001B0A02 /* SavedSongsViewController.swift */; };
 		77DDCDA21A86D93A0062B83F /* ChooseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DDCDA11A86D93A0062B83F /* ChooseTrackView.swift */; };
 		77DDCDA51A86E02E0062B83F /* Taylor.png in Resources */ = {isa = PBXBuildFile; fileRef = 77DDCDA41A86E02E0062B83F /* Taylor.png */; };
+		77E0EE261A98025100C9C7E6 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77E0EE251A98025100C9C7E6 /* SwiftyJSON.framework */; };
+		77E0EE271A98025100C9C7E6 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77E0EE251A98025100C9C7E6 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77E0EE2A1A98025600C9C7E6 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77E0EE291A98025600C9C7E6 /* Alamofire.framework */; };
+		77E0EE2B1A98025600C9C7E6 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77E0EE291A98025600C9C7E6 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77E2B73E1A7C16CC00E3C4BC /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */; };
 		B86276C91A86FEF3004EEF50 /* AnimatedStartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86276C81A86FEF3004EEF50 /* AnimatedStartButton.swift */; };
 /* End PBXBuildFile section */
@@ -123,6 +127,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				77E0EE271A98025100C9C7E6 /* SwiftyJSON.framework in Embed Frameworks */,
+				77E0EE2B1A98025600C9C7E6 /* Alamofire.framework in Embed Frameworks */,
 				77CEFE1E1A79C48F001B0A02 /* AlamofireSwiftyJSON.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -226,6 +232,8 @@
 		77CEFE2D1A79DD46001B0A02 /* SavedSongsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSongsViewController.swift; sourceTree = "<group>"; };
 		77DDCDA11A86D93A0062B83F /* ChooseTrackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTrackView.swift; sourceTree = "<group>"; };
 		77DDCDA41A86E02E0062B83F /* Taylor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Taylor.png; sourceTree = "<group>"; };
+		77E0EE251A98025100C9C7E6 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = SwiftyJSON.framework; path = "/Users/wilsonzhao/Library/Developer/Xcode/DerivedData/SwiftSkeleton-bxkqakgmzxltviempxlbqfrgfsfq/Build/Products/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<absolute>"; };
+		77E0EE291A98025600C9C7E6 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Alamofire.framework; path = "/Users/wilsonzhao/Library/Developer/Xcode/DerivedData/SwiftSkeleton-bxkqakgmzxltviempxlbqfrgfsfq/Build/Products/Debug-iphoneos/Alamofire.framework"; sourceTree = "<absolute>"; };
 		77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
 		B86276C81A86FEF3004EEF50 /* AnimatedStartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedStartButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -235,8 +243,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77E0EE261A98025100C9C7E6 /* SwiftyJSON.framework in Frameworks */,
 				776A5A731A8738FE00D7B091 /* AVFoundation.framework in Frameworks */,
 				776A5A741A8738FE00D7B091 /* AVKit.framework in Frameworks */,
+				77E0EE2A1A98025600C9C7E6 /* Alamofire.framework in Frameworks */,
 				77CEFE1D1A79C48F001B0A02 /* AlamofireSwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +432,8 @@
 		77CEFCDF1A79C041001B0A02 = {
 			isa = PBXGroup;
 			children = (
+				77E0EE291A98025600C9C7E6 /* Alamofire.framework */,
+				77E0EE251A98025100C9C7E6 /* SwiftyJSON.framework */,
 				776A5A711A8738FE00D7B091 /* AVFoundation.framework */,
 				776A5A721A8738FE00D7B091 /* AVKit.framework */,
 				77CEFDF71A79C280001B0A02 /* Alamofire-SwiftyJSON.xcodeproj */,

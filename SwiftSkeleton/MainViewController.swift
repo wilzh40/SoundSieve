@@ -257,8 +257,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         // When the current song finishes play the next song
         
         
-
+        
         if let trackStartTime = self.frontCardView?.track?.start_time {
+            // Mute the track giving it time to skip ahead
+            Singleton.sharedInstance.audioPlayer.volume = 0
             // Adjust the progresss if the track skipped ahead
             var adjustedProgress: Double = progress + Double(trackStartTime/1000)
             println("Progress: \(progress) adjustedProgress: \(adjustedProgress) Duration: \(duration) ")
