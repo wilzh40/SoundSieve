@@ -9,6 +9,6 @@
 import Foundation
 let Soundcloud =
 [
-    "consumerKey": "***",
+    "consumerKey": "6ec16ffb5ed930fce00949be480f746b",
     "consumerSecret": "***"
 ]

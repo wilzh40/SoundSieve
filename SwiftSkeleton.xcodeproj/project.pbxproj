@@ -70,6 +70,8 @@
 		776A5AB71A87DB7A00D7B091 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 776A5AA01A87DB7A00D7B091 /* iTunesArtwork.png */; };
 		776A5AB81A87DB7A00D7B091 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 776A5AA11A87DB7A00D7B091 /* iTunesArtwork@2x.png */; };
 		776A5ABB1A87DDD700D7B091 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A5ABA1A87DDD700D7B091 /* SwiftSpinner.swift */; };
+		77AAD4B61A9A817D005F493E /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AAD4B51A9A812F005F493E /* OAuthSwift.framework */; };
+		77AAD4B71A9A817D005F493E /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77AAD4B51A9A812F005F493E /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77B856F81A79E4BB00A51186 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856F71A79E4BB00A51186 /* MainViewController.swift */; };
 		77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */; };
 		77B857011A7A9E3500A51186 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B857001A7A9E3500A51186 /* Model.swift */; };
@@ -112,6 +114,13 @@
 			containerPortal = 774280511A952B7900C3BF9B /* OAuthSwift.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F435027A1A6791B200038A29;
+			remoteInfo = OAuthSwift;
+		};
+		77AAD4B81A9A817D005F493E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 774280511A952B7900C3BF9B /* OAuthSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F43502791A6791B200038A29;
 			remoteInfo = OAuthSwift;
 		};
 		77CEFD011A79C041001B0A02 /* PBXContainerItemProxy */ = {
@@ -160,6 +169,7 @@
 			files = (
 				77E0EE271A98025100C9C7E6 /* SwiftyJSON.framework in Embed Frameworks */,
 				77E0EE2B1A98025600C9C7E6 /* Alamofire.framework in Embed Frameworks */,
+				77AAD4B71A9A817D005F493E /* OAuthSwift.framework in Embed Frameworks */,
 				77CEFE1E1A79C48F001B0A02 /* AlamofireSwiftyJSON.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -299,6 +309,7 @@
 				776A5A741A8738FE00D7B091 /* AVKit.framework in Frameworks */,
 				77E0EE2A1A98025600C9C7E6 /* Alamofire.framework in Frameworks */,
 				77CEFE1D1A79C48F001B0A02 /* AlamofireSwiftyJSON.framework in Frameworks */,
+				77AAD4B61A9A817D005F493E /* OAuthSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,6 +667,7 @@
 			dependencies = (
 				77CEFE091A79C293001B0A02 /* PBXTargetDependency */,
 				77CEFE201A79C48F001B0A02 /* PBXTargetDependency */,
+				77AAD4B91A9A817D005F493E /* PBXTargetDependency */,
 			);
 			name = SwiftSkeleton;
 			productName = SwiftSkeleton;
@@ -881,6 +893,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		77AAD4B91A9A817D005F493E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OAuthSwift;
+			targetProxy = 77AAD4B81A9A817D005F493E /* PBXContainerItemProxy */;
+		};
 		77CEFD021A79C041001B0A02 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 77CEFCE71A79C041001B0A02 /* SwiftSkeleton */;
