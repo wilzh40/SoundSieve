@@ -274,7 +274,7 @@
 		77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		77B857001A7A9E3500A51186 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		77BFE9D51A814C5F00F1AAC1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		77CEFCE81A79C041001B0A02 /* SwiftSkeleton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftSkeleton.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		77CEFCE81A79C041001B0A02 /* SoundSieve.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundSieve.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CEFCEC1A79C041001B0A02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77CEFCED1A79C041001B0A02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77CEFCF01A79C041001B0A02 /* SwiftSkeleton.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftSkeleton.xcdatamodel; sourceTree = "<group>"; };
@@ -282,7 +282,7 @@
 		77CEFCF51A79C041001B0A02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		77CEFCF71A79C041001B0A02 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		77CEFCFA1A79C041001B0A02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		77CEFD001A79C041001B0A02 /* SwiftSkeletonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftSkeletonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		77CEFD001A79C041001B0A02 /* SoundSieveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoundSieveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CEFD051A79C041001B0A02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77CEFD061A79C041001B0A02 /* SwiftSkeletonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSkeletonTests.swift; sourceTree = "<group>"; };
 		77CEFDF71A79C280001B0A02 /* Alamofire-SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Alamofire-SwiftyJSON.xcodeproj"; path = "External/Alamofire-SwiftyJSON/Alamofire-SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
@@ -544,8 +544,8 @@
 		77CEFCE91A79C041001B0A02 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				77CEFCE81A79C041001B0A02 /* SwiftSkeleton.app */,
-				77CEFD001A79C041001B0A02 /* SwiftSkeletonTests.xctest */,
+				77CEFCE81A79C041001B0A02 /* SoundSieve.app */,
+				77CEFD001A79C041001B0A02 /* SoundSieveTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -656,9 +656,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		77CEFCE71A79C041001B0A02 /* SwiftSkeleton */ = {
+		77CEFCE71A79C041001B0A02 /* SoundSieve */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 77CEFD0A1A79C041001B0A02 /* Build configuration list for PBXNativeTarget "SwiftSkeleton" */;
+			buildConfigurationList = 77CEFD0A1A79C041001B0A02 /* Build configuration list for PBXNativeTarget "SoundSieve" */;
 			buildPhases = (
 				77CEFCE41A79C041001B0A02 /* Sources */,
 				77CEFCE51A79C041001B0A02 /* Frameworks */,
@@ -672,14 +672,14 @@
 				77CEFE201A79C48F001B0A02 /* PBXTargetDependency */,
 				77AAD4B91A9A817D005F493E /* PBXTargetDependency */,
 			);
-			name = SwiftSkeleton;
+			name = SoundSieve;
 			productName = SwiftSkeleton;
-			productReference = 77CEFCE81A79C041001B0A02 /* SwiftSkeleton.app */;
+			productReference = 77CEFCE81A79C041001B0A02 /* SoundSieve.app */;
 			productType = "com.apple.product-type.application";
 		};
-		77CEFCFF1A79C041001B0A02 /* SwiftSkeletonTests */ = {
+		77CEFCFF1A79C041001B0A02 /* SoundSieveTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 77CEFD0D1A79C041001B0A02 /* Build configuration list for PBXNativeTarget "SwiftSkeletonTests" */;
+			buildConfigurationList = 77CEFD0D1A79C041001B0A02 /* Build configuration list for PBXNativeTarget "SoundSieveTests" */;
 			buildPhases = (
 				77CEFCFC1A79C041001B0A02 /* Sources */,
 				77CEFCFD1A79C041001B0A02 /* Frameworks */,
@@ -690,9 +690,9 @@
 			dependencies = (
 				77CEFD021A79C041001B0A02 /* PBXTargetDependency */,
 			);
-			name = SwiftSkeletonTests;
+			name = SoundSieveTests;
 			productName = SwiftSkeletonTests;
-			productReference = 77CEFD001A79C041001B0A02 /* SwiftSkeletonTests.xctest */;
+			productReference = 77CEFD001A79C041001B0A02 /* SoundSieveTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -743,8 +743,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				77CEFCE71A79C041001B0A02 /* SwiftSkeleton */,
-				77CEFCFF1A79C041001B0A02 /* SwiftSkeletonTests */,
+				77CEFCE71A79C041001B0A02 /* SoundSieve */,
+				77CEFCFF1A79C041001B0A02 /* SoundSieveTests */,
 			);
 		};
 /* End PBXProject section */
@@ -904,7 +904,7 @@
 		};
 		77CEFD021A79C041001B0A02 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 77CEFCE71A79C041001B0A02 /* SwiftSkeleton */;
+			target = 77CEFCE71A79C041001B0A02 /* SoundSieve */;
 			targetProxy = 77CEFD011A79C041001B0A02 /* PBXContainerItemProxy */;
 		};
 		77CEFE091A79C293001B0A02 /* PBXTargetDependency */ = {
@@ -1030,7 +1030,7 @@
 				);
 				INFOPLIST_FILE = SwiftSkeleton/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SoundSieve;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSkeleton/SwiftSkeleton-Bridging-Header.h";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "SwiftSkeleton/SwiftSkeleton-Bridging-Header.h";
@@ -1051,7 +1051,7 @@
 				);
 				INFOPLIST_FILE = SwiftSkeleton/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SoundSieve;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSkeleton/SwiftSkeleton-Bridging-Header.h";
 			};
@@ -1071,7 +1071,7 @@
 				);
 				INFOPLIST_FILE = SwiftSkeletonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SoundSieveTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftSkeleton.app/SwiftSkeleton";
 			};
 			name = Debug;
@@ -1086,7 +1086,7 @@
 				);
 				INFOPLIST_FILE = SwiftSkeletonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SoundSieveTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftSkeleton.app/SwiftSkeleton";
 			};
 			name = Release;
@@ -1103,7 +1103,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		77CEFD0A1A79C041001B0A02 /* Build configuration list for PBXNativeTarget "SwiftSkeleton" */ = {
+		77CEFD0A1A79C041001B0A02 /* Build configuration list for PBXNativeTarget "SoundSieve" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				77CEFD0B1A79C041001B0A02 /* Debug */,
@@ -1112,7 +1112,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		77CEFD0D1A79C041001B0A02 /* Build configuration list for PBXNativeTarget "SwiftSkeletonTests" */ = {
+		77CEFD0D1A79C041001B0A02 /* Build configuration list for PBXNativeTarget "SoundSieveTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				77CEFD0E1A79C041001B0A02 /* Debug */,
