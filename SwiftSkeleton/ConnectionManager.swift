@@ -17,6 +17,7 @@ import AVFoundation
 
 
 let baseURL = "http://soundsieve-backend.appspot.com/api/"
+let soundcloudURL = "http://api.soundcloud.com/"
 
 @objc protocol ConnectionProtocol {
     optional func didGetTracks()
@@ -78,17 +79,28 @@ class ConnectionManager {
                 Singleton.sharedInstance.tracks = tracks
                 ConnectionManager.sharedInstance.delegate?.didGetTracks!()
                 
-                if error != nil {
-                    println(error)
-                }
         }
 
     }
     
     class func getTrackStream (trackUrl:String) {
-        
+       
+
     }
     
+    class func favoriteTrack (track: Track) {
+        let URL = soundcloudURL + "me/favorites/" + String(track.id!)
+        let parameters = ["oauth_token": Singleton.sharedInstance.token!]
+        Alamofire.request(.PUT, URL, parameters: parameters)
+            .response { (request, response, responseJSON, error) in
+                println(request)
+                println(response)
+
+                if error != nil {
+                    println(error)
+                }
+        }
+    }
     
     class func playStreamFromTrack(track:Track, nextTrack:Track) {
 

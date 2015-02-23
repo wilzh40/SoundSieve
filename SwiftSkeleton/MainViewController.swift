@@ -144,6 +144,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             println("Track deleted!")
         }else{
             println("Track saved!")
+            ConnectionManager.favoriteTrack(currentTrack!)
             singleton.addTrackToSavedTracks(currentTrack!)
         }
         self.appearNextCard()
