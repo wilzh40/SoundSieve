@@ -18,11 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
        
-        ConnectionManager.authenticateSC()
+        // Initial setup
+      
         
         Singleton.sharedInstance.setupData()
         Singleton.sharedInstance.setupAudio()
         Singleton.sharedInstance.transferCoreDataTracksToSavedTracks()
+        
+        // Connect to soundcloud to get OAuth Token if the user hasn't already
+        if Singleton.sharedInstance.token == nil {
+              ConnectionManager.authenticateSC()
+        }
+        
+        
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
@@ -137,9 +145,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication!, openURL url: NSURL!, sourceApplication: String!, annotation: AnyObject!) -> Bool {
         println(url)
         if (url.host == "oauth-callback") {
-            if url.path!.hasPrefix("/soundcloud")  {
-                OAuth2Swift.handleOpenURL(url)
-            }
+           
+            OAuth2Swift.handleOpenURL(url)
+            
         }
         
         return true

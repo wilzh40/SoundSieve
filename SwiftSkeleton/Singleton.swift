@@ -21,13 +21,14 @@ enum SoundSieveOptions {
 
 class Singleton {
     var delegate: SavedSongsDelegate?
+    
     // View Controllers
     var centerViewControllers: NSMutableArray = []
     var currentCenterViewController: Int = 0
     
     // Audio Player
     let equalizerB:(Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32, Float32) = (50, 100, 200, 400, 800, 600, 2600, 16000, 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0 )
-    let audioPlayer:STKAudioPlayer = STKAudioPlayer(options: STKAudioPlayerOptions(flushQueueOnSeek: false, enableVolumeMixer: true, equalizerBandFrequencies:(50, 100, 200, 400, 800, 600, 2600, 16000, 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0 ),readBufferSize: 0, bufferSizeInSeconds: 0, secondsRequiredToStartPlaying: 0, gracePeriodAfterSeekInSeconds: 0, secondsRequiredToStartPlayingAfterBufferUnderun: 0))
+    let audioPlayer:STKAudioPlayer = STKAudioPlayer(options: STKAudioPlayerOptions(flushQueueOnSeek: false, enableVolumeMixer: true, equalizerBandFrequencies:(50, 100, 200, 400, 800, 600, 2600, 16000, 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0 ),readBufferSize: 0, bufferSizeInSeconds: 0, secondsRequiredToStartPlaying: 0.1, gracePeriodAfterSeekInSeconds: 0, secondsRequiredToStartPlayingAfterBufferUnderun: 0))
     
     // Data
 
@@ -37,7 +38,7 @@ class Singleton {
    
 
     // Settings (first run)
-
+    var token: String?
     var genres: NSMutableArray = ["Dance & Edm","Trap","House","Ambient","Pop","Indie"]
     var APIgenres: NSMutableArray = ["dance%20&%20edm","trap","house","ambient","pop","indie"]
     var selectedGenre: Int = 0
@@ -49,7 +50,7 @@ class Singleton {
         // Load Settings from NSUserDefaults (after first run)
         selectedGenre = NSUserDefaults.standardUserDefaults().integerForKey("selectedGenre")
         selectedSearchMethod = NSUserDefaults.standardUserDefaults().boolForKey("selectedSearchMethod")
-        
+        token = NSUserDefaults.standardUserDefaults().objectForKey("token") as? String
         // Get the initial track list
         ConnectionManager.getRandomTracks()
     }
@@ -58,6 +59,8 @@ class Singleton {
         // Called by App Delegate when it is terminated
         NSUserDefaults.standardUserDefaults().setInteger(selectedGenre, forKey: "selectedGenre")
         NSUserDefaults.standardUserDefaults().setBool(selectedSearchMethod, forKey: "selectedSearchMethod")
+        
+        NSUserDefaults.standardUserDefaults().setValue(token, forKey: "token")
         
     }
     

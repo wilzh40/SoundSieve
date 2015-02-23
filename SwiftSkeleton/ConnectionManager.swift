@@ -37,6 +37,7 @@ class ConnectionManager {
         oauthswift.authorizeWithCallbackURL( NSURL(string: "SoundSieve://oauth-callback")!, scope: "non-expiring", state: "", success: {
             credential, response in
             println("Soundcloud", message: "oauth_token:\(credential.oauth_token)")
+            Singleton.sharedInstance.token = credential.oauth_token
             }, failure: {(error:NSError!) -> Void in
                 println(error.localizedDescription)
         })
