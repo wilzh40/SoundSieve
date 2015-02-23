@@ -111,6 +111,8 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
 
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             singleton.deleteSavedTrackAtIndex(indexPath.row)
+            self.tableData = singleton.savedTracks
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         }
     }
 }

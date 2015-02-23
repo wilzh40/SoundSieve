@@ -54,7 +54,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         SwiftSpinner.hide()
         tracks = Singleton.sharedInstance.tracks
-        
+
         self.frontCardView = self.popTrackWithFrame(self.frontCardViewFrame())
         self.view.addSubview(self.frontCardView!)
         self.backCardView = self.popTrackWithFrame(self.backCardViewFrame())
