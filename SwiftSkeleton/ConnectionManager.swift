@@ -30,9 +30,11 @@ class ConnectionManager {
             consumerKey:    Soundcloud["consumerKey"]!,
             consumerSecret: Soundcloud["consumerSecret"]!,
             authorizeUrl:   "https://soundcloud.com/connect",
-            responseType:   "token_and_code"
+            responseType:   "token"
+    
         )
-        oauthswift.authorizeWithCallbackURL( NSURL(string: "SoundSieve://oauth-callback/soundcloud")!, scope: "*", state: "", success: {
+        
+        oauthswift.authorizeWithCallbackURL( NSURL(string: "SoundSieve://oauth-callback")!, scope: "non-expiring", state: "", success: {
             credential, response in
             println("Soundcloud", message: "oauth_token:\(credential.oauth_token)")
             }, failure: {(error:NSError!) -> Void in
