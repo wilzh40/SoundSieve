@@ -45,8 +45,19 @@ class Singleton {
     var selectedSearchMethod: Bool = false
     var startTime = SoundSieveOptions.startFromPreviewTime
     
+    // Core Data
+    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    var managedContext: NSManagedObjectContext?
+    var entity: NSEntityDescription?
+
     
      func setupData() {
+        
+        //Core Data shit
+        self.managedContext = appDelegate.managedObjectContext!
+        self.entity = NSEntityDescription.entityForName("SavedTracks", inManagedObjectContext: managedContext!)
+        
+        
         // Load Settings from NSUserDefaults (after first run)
         selectedGenre = NSUserDefaults.standardUserDefaults().integerForKey("selectedGenre")
         selectedSearchMethod = NSUserDefaults.standardUserDefaults().boolForKey("selectedSearchMethod")
@@ -80,10 +91,7 @@ class Singleton {
     }
     
     func addTrackToSavedTracks(thisTrack: Track) {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        let entity = NSEntityDescription.entityForName("SavedTracks", inManagedObjectContext: managedContext)
-        let track = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        let track = NSManagedObject(entity: self.entity!, insertIntoManagedObjectContext: managedContext)
         
         // Set track properties
         track.setValue(thisTrack.title, forKey: "title")
@@ -91,7 +99,7 @@ class Singleton {
         
         // Check for errors, if it cannot save
         var error: NSError?
-        if !managedContext.save(&error) {
+        if !self.managedContext!.save(&error) {
             println("Could not save \(error), \(error?.userInfo)")
         }
 
@@ -102,13 +110,11 @@ class Singleton {
 
     
     func transferCoreDataTracksToSavedTracks() {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
         let fetchRequest = NSFetchRequest(entityName:"SavedTracks")
         var error: NSError?
         
         let fetchedResults =
-        managedContext.executeFetchRequest(fetchRequest,
+        self.managedContext!.executeFetchRequest(fetchRequest,
             error: &error) as [NSManagedObject]?
         
         if let results = fetchedResults {
@@ -133,31 +139,26 @@ class Singleton {
     }
     
     func clearSavedTracks() {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        let entity = NSEntityDescription.entityForName("SavedTracks", inManagedObjectContext: managedContext)
         var count = savedTracksAsCoreData.count
         for var i = 0; i < count; i++ {
-            managedContext.deleteObject(self.savedTracksAsCoreData[0])
+            self.managedContext!.deleteObject(self.savedTracksAsCoreData[0])
             savedTracksAsCoreData.removeAtIndex(0)
         }
-        managedContext.save(nil)
+        self.managedContext!.save(nil)
         self.savedTracksAsCoreData = []
         self.savedTracks = []
         self.delegate?.reloadData!()
     }
     
     func deleteSavedTrackAtIndex(index:Int) {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        let entity = NSEntityDescription.entityForName("SavedTracks", inManagedObjectContext: managedContext)
-        managedContext.deleteObject(self.savedTracksAsCoreData[index])
+        self.managedContext!.deleteObject(self.savedTracksAsCoreData[index])
         var error:NSError?
-        managedContext.save(&error)
+        self.managedContext!.save(&error)
         if (error != nil) {
             println(error)
         }
-        transferCoreDataTracksToSavedTracks()
-        self.delegate?.reloadData!()
+        
+        self.savedTracksAsCoreData.removeAtIndex(index)
+        self.savedTracks.removeObjectAtIndex(index)
     }
 }
