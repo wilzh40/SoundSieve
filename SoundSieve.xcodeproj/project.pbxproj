@@ -33,7 +33,6 @@
 		774280601A952B7900C3BF9B /* SHA1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7742804E1A952B7900C3BF9B /* SHA1.swift */; };
 		774280611A952B7900C3BF9B /* String+OAuthSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7742804F1A952B7900C3BF9B /* String+OAuthSwift.swift */; };
 		774280621A952B7900C3BF9B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774280501A952B7900C3BF9B /* Utils.swift */; };
-		7742806A1A952B9B00C3BF9B /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 774280691A952B9B00C3BF9B /* OAuthSwift.framework */; };
 		776A5A671A87344000D7B091 /* NSMutableArray+STKAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A5A551A87344000D7B091 /* NSMutableArray+STKAudioPlayer.m */; };
 		776A5A681A87344000D7B091 /* STKAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A5A571A87344000D7B091 /* STKAudioPlayer.m */; };
 		776A5A691A87344000D7B091 /* STKAutoRecoveringHTTPDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A5A591A87344000D7B091 /* STKAutoRecoveringHTTPDataSource.m */; };
@@ -71,7 +70,6 @@
 		776A5AB81A87DB7A00D7B091 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 776A5AA11A87DB7A00D7B091 /* iTunesArtwork@2x.png */; };
 		776A5ABB1A87DDD700D7B091 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A5ABA1A87DDD700D7B091 /* SwiftSpinner.swift */; };
 		778084131A9A846D007CBD7F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778084121A9A846D007CBD7F /* WebViewController.swift */; };
-		77AAD4B61A9A817D005F493E /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AAD4B51A9A812F005F493E /* OAuthSwift.framework */; };
 		77AAD4B71A9A817D005F493E /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77AAD4B51A9A812F005F493E /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77B856F81A79E4BB00A51186 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856F71A79E4BB00A51186 /* MainViewController.swift */; };
 		77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */; };
@@ -191,9 +189,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-
-				77E0EE271A98025100C9C7E6 /* SwiftyJSON.framework in Embed Frameworks */,
-				77E0EE2B1A98025600C9C7E6 /* Alamofire.framework in Embed Frameworks */,
 				77AAD4B71A9A817D005F493E /* OAuthSwift.framework in Embed Frameworks */,
 				77CEFE1E1A79C48F001B0A02 /* AlamofireSwiftyJSON.framework in Embed Frameworks */,
 			);
@@ -385,13 +380,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7742806A1A952B9B00C3BF9B /* OAuthSwift.framework in Frameworks */,
-				77E0EE261A98025100C9C7E6 /* SwiftyJSON.framework in Frameworks */,
-
 				776A5A731A8738FE00D7B091 /* AVFoundation.framework in Frameworks */,
 				776A5A741A8738FE00D7B091 /* AVKit.framework in Frameworks */,
 				77CEFE1D1A79C48F001B0A02 /* AlamofireSwiftyJSON.framework in Frameworks */,
-				77AAD4B61A9A817D005F493E /* OAuthSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,9 +601,6 @@
 			isa = PBXGroup;
 			children = (
 				774280691A952B9B00C3BF9B /* OAuthSwift.framework */,
-				77E0EE291A98025600C9C7E6 /* Alamofire.framework */,
-				77E0EE251A98025100C9C7E6 /* SwiftyJSON.framework */,
-
 				776A5A711A8738FE00D7B091 /* AVFoundation.framework */,
 				776A5A721A8738FE00D7B091 /* AVKit.framework */,
 				77CEFDF71A79C280001B0A02 /* Alamofire-SwiftyJSON.xcodeproj */,
