@@ -17,7 +17,6 @@
 		77040B0D1A86CA3E0065D260 /* MDCSwipeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040AFF1A86CA3E0065D260 /* MDCSwipeResult.m */; };
 		77040B0E1A86CA3E0065D260 /* MDCSwipeToChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040B031A86CA3E0065D260 /* MDCSwipeToChooseView.m */; };
 		77040B0F1A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m in Sources */ = {isa = PBXBuildFile; fileRef = 77040B051A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m */; };
-		774280361A952B2100C3BF9B /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774280351A952B2100C3BF9B /* Credentials.swift */; };
 		774280541A952B7900C3BF9B /* Dictionary+OAuthSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774280411A952B7900C3BF9B /* Dictionary+OAuthSwift.swift */; };
 		774280551A952B7900C3BF9B /* HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774280421A952B7900C3BF9B /* HMAC.swift */; };
 		774280561A952B7900C3BF9B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 774280431A952B7900C3BF9B /* Info.plist */; };
@@ -81,7 +80,6 @@
 		77CEFCF61A79C041001B0A02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77CEFCF41A79C041001B0A02 /* Main.storyboard */; };
 		77CEFCF81A79C041001B0A02 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77CEFCF71A79C041001B0A02 /* Images.xcassets */; };
 		77CEFCFB1A79C041001B0A02 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77CEFCF91A79C041001B0A02 /* LaunchScreen.xib */; };
-		77CEFD071A79C041001B0A02 /* SwiftSkeletonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFD061A79C041001B0A02 /* SwiftSkeletonTests.swift */; };
 		77CEFE1D1A79C48F001B0A02 /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CEFDFF1A79C280001B0A02 /* AlamofireSwiftyJSON.framework */; };
 		77CEFE1E1A79C48F001B0A02 /* AlamofireSwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77CEFDFF1A79C280001B0A02 /* AlamofireSwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77CEFE271A79D5CE001B0A02 /* AnimatedMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFE221A79D5CE001B0A02 /* AnimatedMenuButton.swift */; };
@@ -93,6 +91,7 @@
 		77DDCDA21A86D93A0062B83F /* ChooseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DDCDA11A86D93A0062B83F /* ChooseTrackView.swift */; };
 		77DDCDA51A86E02E0062B83F /* Taylor.png in Resources */ = {isa = PBXBuildFile; fileRef = 77DDCDA41A86E02E0062B83F /* Taylor.png */; };
 		77E2B73E1A7C16CC00E3C4BC /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */; };
+		B835AA0B1AC48ABE00428971 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B835AA0A1AC48ABE00428971 /* Credentials.swift */; };
 		B841D0011A9A969300B5D921 /* MagicalImportFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = B841CFC51A9A969300B5D921 /* MagicalImportFunctions.m */; };
 		B841D0021A9A969300B5D921 /* NSAttributeDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = B841CFC71A9A969300B5D921 /* NSAttributeDescription+MagicalDataImport.m */; };
 		B841D0031A9A969300B5D921 /* NSEntityDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = B841CFC91A9A969300B5D921 /* NSEntityDescription+MagicalDataImport.m */; };
@@ -223,7 +222,6 @@
 		77040B041A86CA3E0065D260 /* UIView+MDCSwipeToChoose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MDCSwipeToChoose.h"; sourceTree = "<group>"; };
 		77040B051A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MDCSwipeToChoose.m"; sourceTree = "<group>"; };
 		77040B111A86CB540065D260 /* SwiftSkeleton-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SwiftSkeleton-Bridging-Header.h"; path = "SwiftSkeleton/SwiftSkeleton-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		774280351A952B2100C3BF9B /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		774280411A952B7900C3BF9B /* Dictionary+OAuthSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+OAuthSwift.swift"; sourceTree = "<group>"; };
 		774280421A952B7900C3BF9B /* HMAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMAC.swift; sourceTree = "<group>"; };
 		774280431A952B7900C3BF9B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 		7742804F1A952B7900C3BF9B /* String+OAuthSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+OAuthSwift.swift"; sourceTree = "<group>"; };
 		774280501A952B7900C3BF9B /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		774280511A952B7900C3BF9B /* OAuthSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = OAuthSwift.xcodeproj; sourceTree = "<group>"; };
-		774280691A952B9B00C3BF9B /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftSkeleton-bxkqakgmzxltviempxlbqfrgfsfq/Build/Products/Debug-iphoneos/OAuthSwift.framework"; sourceTree = "<group>"; };
 		776A5A541A87344000D7B091 /* NSMutableArray+STKAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+STKAudioPlayer.h"; sourceTree = "<group>"; };
 		776A5A551A87344000D7B091 /* NSMutableArray+STKAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+STKAudioPlayer.m"; sourceTree = "<group>"; };
 		776A5A561A87344000D7B091 /* STKAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKAudioPlayer.h; sourceTree = "<group>"; };
@@ -314,6 +311,7 @@
 		77DDCDA11A86D93A0062B83F /* ChooseTrackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTrackView.swift; sourceTree = "<group>"; };
 		77DDCDA41A86E02E0062B83F /* Taylor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Taylor.png; sourceTree = "<group>"; };
 		77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
+		B835AA0A1AC48ABE00428971 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		B841CFC41A9A969300B5D921 /* MagicalImportFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalImportFunctions.h; sourceTree = "<group>"; };
 		B841CFC51A9A969300B5D921 /* MagicalImportFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicalImportFunctions.m; sourceTree = "<group>"; };
 		B841CFC61A9A969300B5D921 /* NSAttributeDescription+MagicalDataImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributeDescription+MagicalDataImport.h"; sourceTree = "<group>"; };
@@ -592,7 +590,7 @@
 				77040B111A86CB540065D260 /* SwiftSkeleton-Bridging-Header.h */,
 				77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */,
 				77CEFE2B1A79D78B001B0A02 /* Singleton.swift */,
-				774280351A952B2100C3BF9B /* Credentials.swift */,
+				B835AA0A1AC48ABE00428971 /* Credentials.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -600,7 +598,6 @@
 		77CEFCDF1A79C041001B0A02 = {
 			isa = PBXGroup;
 			children = (
-				774280691A952B9B00C3BF9B /* OAuthSwift.framework */,
 				776A5A711A8738FE00D7B091 /* AVFoundation.framework */,
 				776A5A721A8738FE00D7B091 /* AVKit.framework */,
 				77CEFDF71A79C280001B0A02 /* Alamofire-SwiftyJSON.xcodeproj */,
@@ -1047,6 +1044,7 @@
 				776A5A6D1A87344000D7B091 /* STKHTTPDataSource.m in Sources */,
 				B841D0131A9A969300B5D921 /* NSPersistentStore+MagicalRecord.m in Sources */,
 				B841D0041A9A969300B5D921 /* NSNumber+MagicalDataImport.m in Sources */,
+				B835AA0B1AC48ABE00428971 /* Credentials.swift in Sources */,
 				776A5ABB1A87DDD700D7B091 /* SwiftSpinner.swift in Sources */,
 				B841D0021A9A969300B5D921 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				77040B0A1A86CA3E0065D260 /* MDCSwipeOptions.m in Sources */,
@@ -1075,7 +1073,6 @@
 				B841D00F1A9A969300B5D921 /* NSManagedObjectContext+MagicalRecord.m in Sources */,
 				B841D01B1A9A969300B5D921 /* MagicalRecord.m in Sources */,
 				77040B0D1A86CA3E0065D260 /* MDCSwipeResult.m in Sources */,
-				774280361A952B2100C3BF9B /* Credentials.swift in Sources */,
 				77CEFE271A79D5CE001B0A02 /* AnimatedMenuButton.swift in Sources */,
 				B841D0081A9A969300B5D921 /* NSManagedObject+MagicalAggregation.m in Sources */,
 				77040B061A86CA3E0065D260 /* MDCGeometry.m in Sources */,
@@ -1092,7 +1089,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77CEFD071A79C041001B0A02 /* SwiftSkeletonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
