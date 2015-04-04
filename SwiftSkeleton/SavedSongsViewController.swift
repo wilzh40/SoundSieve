@@ -23,8 +23,12 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupData()
+        
         Singleton.sharedInstance.delegate = self
         ConnectionManager.testNetworking()
+        
+        self.navigationController?.view.layoutSubviews()
+
         
         let barButton = UIBarButtonItem(title: "Clear Data", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("clearData"))
         self.navigationItem.setLeftBarButtonItem(barButton, animated: true)

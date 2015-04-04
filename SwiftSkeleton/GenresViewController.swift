@@ -46,6 +46,8 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupData()
+        self.navigationController?.view.layoutSubviews()
+
         // Singleton.sharedInstance.delegate = self
         ConnectionManager.testNetworking()
 

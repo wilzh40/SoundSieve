@@ -13,8 +13,6 @@ import AlamofireSwiftyJSON
 import OAuthSwift
 import UIKit
 import AVFoundation
-// This is my local RESTFUL testing setup using node and express.js, as well as modular databse
-
 
 let baseURL = "http://soundsieve-backend.appspot.com/api/"
 let soundcloudURL = "http://api.soundcloud.com/"
@@ -25,8 +23,6 @@ let soundcloudURL = "http://api.soundcloud.com/"
 class ConnectionManager {
     var delegate : ConnectionProtocol?
     
-
-    
     class func authenticateSC() {
         let oauthswift = OAuth2Swift(
             consumerKey:    Soundcloud["consumerKey"]!,
@@ -35,9 +31,11 @@ class ConnectionManager {
             responseType:   "token"
     
         )
+        
         // The callback URL matches the one given on the soundsieve sc account
         // After the user logins Safari redirects it to "SoundSieve://" which opens the app natively
-        // After acceptance the openURL function in appDelegate is called
+        // After successful authentication the openURL function in appDelegate is called
+        
         oauthswift.authorizeWithCallbackURL( NSURL(string: "SoundSieve://oauth-callback")!, scope: "non-expiring", state: "", success: {
             credential, response in
             println("Soundcloud", message: "oauth_token:\(credential.oauth_token)")
