@@ -19,13 +19,13 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
         switch segmentedControl.selectedSegmentIndex
         {
         case 0:
-            Singleton.sharedInstance.selectedSearchMethod = true
+            Singleton.sharedInstance.settings.selectedSearchMethod = .Random
             self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
             ConnectionManager.getRandomTracks()
             SwiftSpinner.show("Switching Search Method")
             break;
         case 1:
-            Singleton.sharedInstance.selectedSearchMethod = false
+            Singleton.sharedInstance.settings.selectedSearchMethod = .Hot
             self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
             ConnectionManager.getRandomTracks()
             SwiftSpinner.show("Switching Search Method")
@@ -68,7 +68,7 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
         cell.textLabel?.text = tableData[indexPath.row] as? String
         cell.textLabel?.font = UIFont(name:"Futura",size: 15.00)
         
-        if indexPath.row == singleton.selectedGenre {
+        if indexPath.row == singleton.settings.selectedGenre {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
@@ -80,7 +80,7 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Change the center view controller
         
-        singleton.selectedGenre = indexPath.row
+        singleton.settings.selectedGenre = indexPath.row
         self.tableView.reloadData()
         self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
         ConnectionManager.getRandomTracks()
@@ -96,7 +96,7 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
         
         // Remove all accessories
       
-        if indexPath.row == singleton.selectedGenre {
+        if indexPath.row == singleton.settings.selectedGenre {
             return nil
         }
         return indexPath

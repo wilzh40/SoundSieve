@@ -68,6 +68,7 @@
 		776A5AB71A87DB7A00D7B091 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 776A5AA01A87DB7A00D7B091 /* iTunesArtwork.png */; };
 		776A5AB81A87DB7A00D7B091 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 776A5AA11A87DB7A00D7B091 /* iTunesArtwork@2x.png */; };
 		776A5ABB1A87DDD700D7B091 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A5ABA1A87DDD700D7B091 /* SwiftSpinner.swift */; };
+		7780516D1ACF8FCE00BDD6CA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7780516C1ACF8FCE00BDD6CA /* Settings.swift */; };
 		778084131A9A846D007CBD7F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778084121A9A846D007CBD7F /* WebViewController.swift */; };
 		77AAD4B71A9A817D005F493E /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77AAD4B51A9A812F005F493E /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77B856F81A79E4BB00A51186 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B856F71A79E4BB00A51186 /* MainViewController.swift */; };
@@ -285,6 +286,7 @@
 		776A5AA01A87DB7A00D7B091 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		776A5AA11A87DB7A00D7B091 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		776A5ABA1A87DDD700D7B091 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
+		7780516C1ACF8FCE00BDD6CA /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		778084121A9A846D007CBD7F /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		77B856F71A79E4BB00A51186 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
@@ -588,8 +590,10 @@
 			isa = PBXGroup;
 			children = (
 				77040B111A86CB540065D260 /* SwiftSkeleton-Bridging-Header.h */,
+				77CEFCED1A79C041001B0A02 /* AppDelegate.swift */,
 				77B856FD1A79EC1A00A51186 /* ConnectionManager.swift */,
 				77CEFE2B1A79D78B001B0A02 /* Singleton.swift */,
+				7780516C1ACF8FCE00BDD6CA /* Settings.swift */,
 				B835AA0A1AC48ABE00428971 /* Credentials.swift */,
 			);
 			name = Core;
@@ -623,7 +627,6 @@
 				77B856FF1A7A9E1C00A51186 /* Models */,
 				77CEFE2F1A79DD4D001B0A02 /* ViewControllers */,
 				77CEFD101A79C057001B0A02 /* Source */,
-				77CEFCED1A79C041001B0A02 /* AppDelegate.swift */,
 				B86276C81A86FEF3004EEF50 /* AnimatedStartButton.swift */,
 				77CEFCF21A79C041001B0A02 /* ViewController.swift */,
 				77BFE9D31A81482C00F1AAC1 /* Core */,
@@ -1080,6 +1083,7 @@
 				B841D0011A9A969300B5D921 /* MagicalImportFunctions.m in Sources */,
 				B841D0061A9A969300B5D921 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				776A5A671A87344000D7B091 /* NSMutableArray+STKAudioPlayer.m in Sources */,
+				7780516D1ACF8FCE00BDD6CA /* Settings.swift in Sources */,
 				77040B0B1A86CA3E0065D260 /* MDCSwipeToChooseViewOptions.m in Sources */,
 				7742805F1A952B7900C3BF9B /* OAuthWebViewController.swift in Sources */,
 			);

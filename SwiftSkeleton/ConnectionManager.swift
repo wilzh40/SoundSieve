@@ -48,9 +48,9 @@ class ConnectionManager {
     }
     
     class func getRandomTracks() {
-        let selectedGenre = Singleton.sharedInstance.APIgenres.objectAtIndex(Singleton.sharedInstance.selectedGenre) as String
+        let selectedGenre = Singleton.sharedInstance.APIgenres.objectAtIndex(Singleton.sharedInstance.settings.selectedGenre) as String
         var hot = ""
-        if Singleton.sharedInstance.selectedSearchMethod == true {
+        if Singleton.sharedInstance.settings.selectedSearchMethod == .Hot {
             hot = "/hot"
         }
         let URL = baseURL + "randomTrack/" + selectedGenre 

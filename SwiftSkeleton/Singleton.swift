@@ -14,10 +14,7 @@ import CoreData
 @objc protocol SavedSongsDelegate {
     optional func reloadData()
 }
-enum SoundSieveOptions {
-    case startFromPreviewTime
-    case startFromBeginning
-}
+
 
 class Singleton {
     var delegate: SavedSongsDelegate?
@@ -35,15 +32,27 @@ class Singleton {
     var tracks: NSMutableArray = []
     var savedTracksAsCoreData: Array<NSManagedObject> = []
     var savedTracks: NSMutableArray = []
-   
 
-    // Settings (first run)
+  
+    
+
+    // Settings
+    var settings: Settings = Settings()
     var token: String?
     var genres: NSMutableArray = ["Dance & Edm","Trap","House","Ambient","Pop","Indie"]
     var APIgenres: NSMutableArray = ["dance%20&%20edm","trap","house","ambient","pop","indie"]
-    var selectedGenre: Int = 0
-    var selectedSearchMethod: Bool = false
-    var startTime = SoundSieveOptions.startFromPreviewTime
+    
+    /*
+    var selectedSearchMethod : SearchMethod = .Random {
+        didSet {
+            if selectedSearchMethod != oldValue {
+                switch selectedSearchMethod {
+                case .Random :
+                case .Hot:
+                }
+            }
+        }
+    }*/
     
     // Core Data
     let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -59,8 +68,12 @@ class Singleton {
         
         
         // Load Settings from NSUserDefaults (after first run)
-        selectedGenre = NSUserDefaults.standardUserDefaults().integerForKey("selectedGenre")
-        selectedSearchMethod = NSUserDefaults.standardUserDefaults().boolForKey("selectedSearchMethod")
+        if let data: NSData = NSUserDefaults.standardUserDefaults().objectForKey("settings") as? NSData
+        {
+            self.settings = NSKeyedUnarchiver.unarchiveObjectWithData(data) as Settings
+        } else {
+            self.settings = Settings()
+        }
         token = NSUserDefaults.standardUserDefaults().objectForKey("token") as? String
         // Get the initial track list
         ConnectionManager.getRandomTracks()
@@ -68,8 +81,8 @@ class Singleton {
     
     func saveData() {
         // Called by App Delegate when it is terminated
-        NSUserDefaults.standardUserDefaults().setInteger(selectedGenre, forKey: "selectedGenre")
-        NSUserDefaults.standardUserDefaults().setBool(selectedSearchMethod, forKey: "selectedSearchMethod")
+        // Converting the object into NSData
+        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(self.settings), forKey: "settings")
         
         NSUserDefaults.standardUserDefaults().setValue(token, forKey: "token")
         
