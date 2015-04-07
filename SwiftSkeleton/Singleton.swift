@@ -63,7 +63,7 @@ class Singleton {
         selectedSearchMethod = NSUserDefaults.standardUserDefaults().boolForKey("selectedSearchMethod")
         token = NSUserDefaults.standardUserDefaults().objectForKey("token") as? String
         // Get the initial track list
-        ConnectionManager.getRandomTracks()
+        //ConnectionManager.getRandomTracks()
     }
     
     func saveData() {

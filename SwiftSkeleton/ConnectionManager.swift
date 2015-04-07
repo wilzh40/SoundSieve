@@ -42,6 +42,7 @@ class ConnectionManager {
             credential, response in
             println("Soundcloud", message: "oauth_token:\(credential.oauth_token)")
             Singleton.sharedInstance.token = credential.oauth_token
+            self.getUserStream()
             }, failure: {(error:NSError!) -> Void in
                 SwiftSpinner.show("Failed to connect, waiting...", animated: false)
                 println(error.localizedDescription)
@@ -93,8 +94,42 @@ class ConnectionManager {
     }
     
     class func getTrackStream (trackUrl:String) {
-       
 
+    }
+    
+    class func getUserStream () {
+        let URL = "https://api.soundcloud.com/me/activities?limit=100&oauth_token=" + Singleton.sharedInstance.token!
+        Alamofire.request(.GET, URL)
+            .responseSwiftyJSON { (request, response, responseJSON, error) in
+                println(request)
+                if error != nil {
+                    println(error)
+                    SwiftSpinner.show("Failed to connect, waiting...", animated: false)
+                    
+                } else {
+                    
+                    println(responseJSON)
+                    var tracks: NSMutableArray = []
+                    for (index: String, child: JSON) in responseJSON["collection"] {
+                        if(child["origin"]["kind"].string! == "track") {
+                            var track = Track()
+                            track.title = child["origin"]["title"].string!
+                            //println(track.title)
+                            track.id = child["origin"]["id"].int!
+                            track.duration = child["origin"]["duration"].int
+                            track.genre = child["origin"]["genre"].string
+                            track.subtitle = child["origin"]["description"].string
+                            track.artwork_url = child["origin"]["artwork_url"].string
+                            track.permalink_url = child["origin"]["permalink_url"].string!
+                            track.stream_url = child["origin"]["stream_url"].string!
+                            track.start_time = 0
+                            tracks.addObject(track)
+                        }
+                    }
+                    Singleton.sharedInstance.tracks = tracks
+                    ConnectionManager.sharedInstance.delegate?.didGetTracks!()
+                }
+        }
     }
     
     class func favoriteTrack (track: Track) {

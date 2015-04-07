@@ -20,15 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         // Initial setup
       
-        
+        // Connect to soundcloud to get OAuth Token if the user hasn't already
         Singleton.sharedInstance.setupData()
+        if Singleton.sharedInstance.token == nil {
+            ConnectionManager.authenticateSC()
+        }
         Singleton.sharedInstance.setupAudio()
         Singleton.sharedInstance.transferCoreDataTracksToSavedTracks()
         
         // Connect to soundcloud to get OAuth Token if the user hasn't already
-        if Singleton.sharedInstance.token == nil {
+        /* if Singleton.sharedInstance.token == nil {
               ConnectionManager.authenticateSC()
-        }
+        }*/
         
         
         // Override point for customization after application launch.
