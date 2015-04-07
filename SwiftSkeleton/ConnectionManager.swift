@@ -14,7 +14,7 @@ import OAuthSwift
 import UIKit
 import AVFoundation
 
-let baseURL = "http://soundsieve-backend.appspot.com/api/"
+let baseURL = "http://soundsieve-kzeng.rhcloud.com/api/"
 let soundcloudURL = "http://api.soundcloud.com/"
 
 @objc protocol ConnectionProtocol {
@@ -49,13 +49,16 @@ class ConnectionManager {
     
     class func getRandomTracks() {
         let selectedGenre = Singleton.sharedInstance.APIgenres.objectAtIndex(Singleton.sharedInstance.settings.selectedGenre) as String
-        var hot = ""
-        if Singleton.sharedInstance.settings.selectedSearchMethod == .Hot {
-            hot = "/hot"
+        var searchMethod:String
+        switch (Singleton.sharedInstance.settings.selectedSearchMethod) {
+        case .Hot:
+                searchMethod = "hot"
+        case .Random:
+            searchMethod = "random"
         }
-        let URL = baseURL + "randomTrack/" + selectedGenre 
+        let URL = baseURL + searchMethod + "?genres=" + selectedGenre
 
-        Alamofire.request(.GET, URL)
+        Alamofire.request(.GET, URL )
             .responseSwiftyJSON { (request, response, responseJSON, error) in
                 println(request)
                 
