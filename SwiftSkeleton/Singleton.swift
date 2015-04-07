@@ -74,7 +74,7 @@ class Singleton {
         } else {
             self.settings = Settings()
         }
-        token = NSUserDefaults.standardUserDefaults().objectForKey("token") as? String
+        self.token = NSUserDefaults.standardUserDefaults().objectForKey("token") as? String
         // Get the initial track list
         //ConnectionManager.getRandomTracks()
     }

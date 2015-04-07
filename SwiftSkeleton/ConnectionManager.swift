@@ -29,7 +29,7 @@ class ConnectionManager {
             consumerSecret: Soundcloud["consumerSecret"]!,
             authorizeUrl:   "https://soundcloud.com/connect",
             responseType:   "token"
-    
+            
         )
         
         // The callback URL matches the one given on the soundsieve sc account
@@ -40,12 +40,20 @@ class ConnectionManager {
             credential, response in
             println("Soundcloud", message: "oauth_token:\(credential.oauth_token)")
             Singleton.sharedInstance.token = credential.oauth_token
-            self.getUserStream()
+            Singleton.sharedInstance.saveData()
+            // Either get user stream or random tracks, based on the setting
+            switch (Singleton.sharedInstance.settings.trackSource) {
+            case .Stream:
+                self.getUserStream()
+            case .Explore:
+                self.getRandomTracks()
+                
+            }
             }, failure: {(error:NSError!) -> Void in
                 SwiftSpinner.show("Failed to connect, waiting...", animated: false)
                 println(error.localizedDescription)
         })
-
+        
     }
     
     class func getRandomTracks() {
@@ -53,12 +61,12 @@ class ConnectionManager {
         var searchMethod:String
         switch (Singleton.sharedInstance.settings.selectedSearchMethod) {
         case .Hot:
-                searchMethod = "hot"
+            searchMethod = "hot"
         case .Random:
             searchMethod = "random"
         }
         let URL = baseURL + searchMethod + "?genres=" + selectedGenre
-
+        
         Alamofire.request(.GET, URL )
             .responseSwiftyJSON { (request, response, responseJSON, error) in
                 println(request)
@@ -66,9 +74,9 @@ class ConnectionManager {
                 if error != nil {
                     println(error)
                     SwiftSpinner.show("Failed to connect, waiting...", animated: false)
-
+                    
                 } else {
-                
+                    
                     //println(responseJSON)
                     var tracks: NSMutableArray = []
                     for (index: String, child: JSON) in responseJSON {
@@ -83,7 +91,7 @@ class ConnectionManager {
                         track.permalink_url = child["permalink_url"].string!
                         track.stream_url = child["stream_url"].string!
                         track.start_time = child["start_time"].int!
-
+                        
                         tracks.addObject(track)
                     }
                     Singleton.sharedInstance.tracks = tracks
@@ -91,11 +99,11 @@ class ConnectionManager {
                 }
                 
         }
-
+        
     }
     
     class func getTrackStream (trackUrl:String) {
-
+        
     }
     
     class func getUserStream () {
@@ -140,7 +148,7 @@ class ConnectionManager {
             .response { (request, response, responseJSON, error) in
                 println(request)
                 println(response)
-
+                
                 if error != nil {
                     println(error)
                 }
@@ -148,14 +156,14 @@ class ConnectionManager {
     }
     
     class func playStreamFromTrack(track:Track, nextTrack:Track) {
-
+        
         let client_id = Soundcloud["consumerKey"]!
         let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time/1000)
         var time = track.start_time/1000
         
-      
+        
         Singleton.sharedInstance.audioPlayer.play(streamURL)
-
+        
         //Hacky way to seek to music
         let delay = 0.2 * Double(NSEC_PER_SEC)
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
@@ -166,9 +174,9 @@ class ConnectionManager {
             Singleton.sharedInstance.audioPlayer.seekToTime(Double(time))
             println("Playing: \(track.title) at time: \(track.start_time/1000)")
             self.queueStreamFromTrack(nextTrack)
-
+            
         }
-
+        
         
     }
     
@@ -177,21 +185,21 @@ class ConnectionManager {
         let delay = 1 * Double(NSEC_PER_SEC)
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
-
+            
             let client_id = Soundcloud["consumerKey"]!
             let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time/1000)
             var time = track.start_time/1000
-             Singleton.sharedInstance.audioPlayer.queue(streamURL)
+            Singleton.sharedInstance.audioPlayer.queue(streamURL)
             
             println("Queued: \(Singleton.sharedInstance.audioPlayer.currentlyPlayingQueueItemId())")
-           // println(Singleton.sharedInstance.audioPlayer.mostRecentlyQueuedStillPendingItem)
+            // println(Singleton.sharedInstance.audioPlayer.mostRecentlyQueuedStillPendingItem)
         }
         
     }
     
     class func testNetworking() {
         let URL = "http://httpbin.org/get"
-
+        
         // Testting an http networking client for swift!
         Alamofire.request(.GET, URL, parameters: ["foo": "bar"])
             .responseSwiftyJSON { (request, response, responseJSON, error) in
@@ -201,7 +209,7 @@ class ConnectionManager {
                     println(error)
                 }
         }
-    
+        
     }
     
     class func getImageFromURL(imageURL:String) -> UIImage? {
@@ -221,6 +229,6 @@ class ConnectionManager {
         return Static.instance
     }
     
-
+    
 }
 

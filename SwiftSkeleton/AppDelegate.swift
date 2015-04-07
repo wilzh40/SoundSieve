@@ -20,13 +20,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         // Initial setup
       
-        // Connect to soundcloud to get OAuth Token if the user hasn't already
         Singleton.sharedInstance.setupData()
-        if Singleton.sharedInstance.token == nil {
-            ConnectionManager.authenticateSC()
-        }
         Singleton.sharedInstance.setupAudio()
         Singleton.sharedInstance.transferCoreDataTracksToSavedTracks()
+        
+        // Connect to soundcloud to get OAuth Token if the user hasn't already
+        
+        if Singleton.sharedInstance.token == nil {
+            ConnectionManager.authenticateSC()
+        } else {
+            // Load the lists of tracks
+            switch (Singleton.sharedInstance.settings.trackSource) {
+            case .Stream:
+                ConnectionManager.getUserStream()
+            case .Explore:
+                ConnectionManager.getRandomTracks()
+                
+            }
+        }
+  
         
         // Connect to soundcloud to get OAuth Token if the user hasn't already
         /* if Singleton.sharedInstance.token == nil {
