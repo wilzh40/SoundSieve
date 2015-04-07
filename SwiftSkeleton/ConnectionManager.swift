@@ -108,7 +108,7 @@ class ConnectionManager {
                     
                 } else {
                     
-                    println(responseJSON)
+                    //println(responseJSON)
                     var tracks: NSMutableArray = []
                     for (index: String, child: JSON) in responseJSON["collection"] {
                         if(child["origin"]["kind"].string! == "track") {
