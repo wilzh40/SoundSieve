@@ -13,10 +13,8 @@ import AlamofireSwiftyJSON
 import OAuthSwift
 import UIKit
 import AVFoundation
-// This is my local RESTFUL testing setup using node and express.js, as well as modular databse
 
-
-let baseURL = "http://soundsieve-backend.appspot.com/api/"
+let baseURL = "http://soundsieve-kzeng.rhcloud.com/api/"
 let soundcloudURL = "http://api.soundcloud.com/"
 
 @objc protocol ConnectionProtocol {
@@ -24,8 +22,6 @@ let soundcloudURL = "http://api.soundcloud.com/"
 }
 class ConnectionManager {
     var delegate : ConnectionProtocol?
-    
-
     
     class func authenticateSC() {
         let oauthswift = OAuth2Swift(
@@ -35,9 +31,11 @@ class ConnectionManager {
             responseType:   "token"
     
         )
+        
         // The callback URL matches the one given on the soundsieve sc account
         // After the user logins Safari redirects it to "SoundSieve://" which opens the app natively
-        // After acceptance the openURL function in appDelegate is called
+        // After successful authentication the openURL function in appDelegate is called
+        
         oauthswift.authorizeWithCallbackURL( NSURL(string: "SoundSieve://oauth-callback")!, scope: "non-expiring", state: "", success: {
             credential, response in
             println("Soundcloud", message: "oauth_token:\(credential.oauth_token)")
@@ -51,14 +49,17 @@ class ConnectionManager {
     }
     
     class func getRandomTracks() {
-        let selectedGenre = Singleton.sharedInstance.APIgenres.objectAtIndex(Singleton.sharedInstance.selectedGenre) as String
-        var hot = ""
-        if Singleton.sharedInstance.selectedSearchMethod == true {
-            hot = "/hot"
+        let selectedGenre = Singleton.sharedInstance.APIgenres.objectAtIndex(Singleton.sharedInstance.settings.selectedGenre) as String
+        var searchMethod:String
+        switch (Singleton.sharedInstance.settings.selectedSearchMethod) {
+        case .Hot:
+                searchMethod = "hot"
+        case .Random:
+            searchMethod = "random"
         }
-        let URL = baseURL + "randomTrack/" + selectedGenre 
+        let URL = baseURL + searchMethod + "?genres=" + selectedGenre
 
-        Alamofire.request(.GET, URL)
+        Alamofire.request(.GET, URL )
             .responseSwiftyJSON { (request, response, responseJSON, error) in
                 println(request)
                 
