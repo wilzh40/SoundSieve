@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -8,7 +8,7 @@
         <!--SoundSieve-->
         <scene sceneID="sgn-WJ-gBD">
             <objects>
-                <viewController storyboardIdentifier="Center" title="SoundSieve" id="sIy-NQ-Bi5" customClass="MainViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Center" title="SoundSieve" id="sIy-NQ-Bi5" customClass="MainViewController" customModule="SoundSieve" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X5W-m6-aXp"/>
                         <viewControllerLayoutGuide type="bottom" id="oVg-oZ-xX4"/>
@@ -44,7 +44,7 @@
                                     <action selector="checkButtonPressed:" destination="sIy-NQ-Bi5" eventType="touchUpInside" id="DvW-Mq-MLg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcY-ff-CKO" customClass="AnimatedStartButton" customModule="SwiftSkeleton" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcY-ff-CKO" customClass="AnimatedStartButton" customModule="SoundSieve" customModuleProvider="target">
                                 <rect key="frame" x="123" y="485" width="75" height="75"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <constraints>
@@ -98,7 +98,7 @@
         <!--Genres View Controller-->
         <scene sceneID="J5x-gq-12a">
             <objects>
-                <tableViewController storyboardIdentifier="Left" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vNe-dm-nii" customClass="GenresViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Left" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vNe-dm-nii" customClass="GenresViewController" customModule="SoundSieve" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="01A-7T-BM0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,7 +147,7 @@
         <!--Saved Songs-->
         <scene sceneID="d5V-hC-zry">
             <objects>
-                <tableViewController storyboardIdentifier="Right" title="Saved Songs" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Onv-gg-qBu" customClass="SavedSongsViewController" customModule="SwiftSkeleton" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Right" title="Saved Songs" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Onv-gg-qBu" customClass="SavedSongsViewController" customModule="SoundSieve" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="DmX-RS-Mob">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

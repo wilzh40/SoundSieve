@@ -75,6 +75,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
         self.view.bringSubviewToFront(pausePlayButton)
+        xButton.adjustsImageWhenHighlighted = true
+        checkButton.adjustsImageWhenHighlighted = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -232,22 +234,23 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
 
     // Right button
     @IBAction func checkButtonPressed(sender: UIButton) {
-        //self.frontCardView?.mdc_swipe(MDCSwipeDirection.Right)
-        
-        /* UIView.animateWithDuration(1.0, animations:{
-            sender.frame = CGRectMake(sender.frame.origin.x + 25, sender.frame.origin.y + 25, sender.frame.size.width, sender.frame.size.height)
-        }) */
-        
+        UIView.animateWithDuration(0.3, animations:{
+            sender.alpha = 0
+        })
+        UIView.animateWithDuration(0.3, animations:{
+            sender.alpha = 1
+        })
         self.evo_drawerController?.openDrawerSide(DrawerSide.Right, animated: true, completion: nil)
     }
 
     // Left button
     @IBAction func xButtonPressed(sender:UIButton) {
-        /* UIView.animateWithDuration(1.0, animations:{
-            sender.frame = CGRectMake(sender.frame.origin.x + 25, sender.frame.origin.y + 25, sender.frame.size.width, sender.frame.size.height)
-        })*/
-        
-        //self.frontCardView?.mdc_swipe(MDCSwipeDirection.Left)
+        UIView.animateWithDuration(0.3, animations:{
+            sender.alpha = 0
+        })
+        UIView.animateWithDuration(0.3, animations:{
+            sender.alpha = 1
+        })
         self.evo_drawerController?.openDrawerSide(DrawerSide.Left, animated: true, completion: nil)
     }
 
