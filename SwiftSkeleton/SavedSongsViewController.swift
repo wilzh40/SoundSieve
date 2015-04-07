@@ -49,7 +49,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
 
         cell.textLabel?.text = track.title
         cell.textLabel?.font = UIFont(name:"Futura",size:13.00)
-
+        cell.imageView!.image = ConnectionManager.getImageFromURL(track.artwork_url!)
         return cell
     }
     
