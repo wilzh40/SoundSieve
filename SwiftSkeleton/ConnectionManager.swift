@@ -40,7 +40,7 @@ class ConnectionManager {
             credential, response in
             println("Soundcloud", message: "oauth_token:\(credential.oauth_token)")
             Singleton.sharedInstance.token = credential.oauth_token
-            self.getUserStream()
+           // self.getUserStream()
             }, failure: {(error:NSError!) -> Void in
                 SwiftSpinner.show("Failed to connect, waiting...", animated: false)
                 println(error.localizedDescription)
@@ -49,7 +49,7 @@ class ConnectionManager {
     }
     
     class func getRandomTracks() {
-        let selectedGenre = Singleton.sharedInstance.APIgenres.objectAtIndex(Singleton.sharedInstance.settings.selectedGenre) as String
+        let selectedGenre = Singleton.sharedInstance.APIgenres.objectAtIndex(Singleton.sharedInstance.settings.selectedGenre) as! String
         var hot = ""
         if Singleton.sharedInstance.settings.selectedSearchMethod == .Hot {
             hot = "/hot"
@@ -57,7 +57,7 @@ class ConnectionManager {
         let URL = baseURL + "randomTrack/" + selectedGenre 
 
         Alamofire.request(.GET, URL)
-            .responseSwiftyJSON { (request, response, responseJSON, error) in
+            .responseSwiftyJSON ({ (request, response, responseJSON, error) in
                 println(request)
                 
                 if error != nil {
@@ -87,7 +87,7 @@ class ConnectionManager {
                     ConnectionManager.sharedInstance.delegate?.didGetTracks!()
                 }
                 
-        }
+        })
 
     }
     
@@ -98,7 +98,7 @@ class ConnectionManager {
     class func getUserStream () {
         let URL = "https://api.soundcloud.com/me/activities?limit=100&oauth_token=" + Singleton.sharedInstance.token!
         Alamofire.request(.GET, URL)
-            .responseSwiftyJSON { (request, response, responseJSON, error) in
+            .responseSwiftyJSON ({ (request, response, responseJSON, error) in
                 println(request)
                 if error != nil {
                     println(error)
@@ -127,7 +127,7 @@ class ConnectionManager {
                     Singleton.sharedInstance.tracks = tracks
                     ConnectionManager.sharedInstance.delegate?.didGetTracks!()
                 }
-        }
+        })
     }
     
     class func favoriteTrack (track: Track) {
@@ -191,13 +191,13 @@ class ConnectionManager {
 
         // Testting an http networking client for swift!
         Alamofire.request(.GET, URL, parameters: ["foo": "bar"])
-            .responseSwiftyJSON { (request, response, responseJSON, error) in
+            .responseSwiftyJSON ({ (request, response, responseJSON, error) in
                 //println(request)
                 //println(responseJSON["args"])
                 if error != nil {
                     println(error)
                 }
-        }
+        })
     
     }
     

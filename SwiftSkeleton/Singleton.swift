@@ -55,7 +55,7 @@ class Singleton {
     }*/
     
     // Core Data
-    let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var managedContext: NSManagedObjectContext?
     var entity: NSEntityDescription?
 
@@ -70,13 +70,13 @@ class Singleton {
         // Load Settings from NSUserDefaults (after first run)
         if let data: NSData = NSUserDefaults.standardUserDefaults().objectForKey("settings") as? NSData
         {
-            self.settings = NSKeyedUnarchiver.unarchiveObjectWithData(data) as Settings
+            self.settings = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! Settings
         } else {
             self.settings = Settings()
         }
         token = NSUserDefaults.standardUserDefaults().objectForKey("token") as? String
         // Get the initial track list
-        //ConnectionManager.getRandomTracks()
+        ConnectionManager.getRandomTracks()
     }
     
     func saveData() {
@@ -129,7 +129,7 @@ class Singleton {
         
         let fetchedResults =
         self.managedContext!.executeFetchRequest(fetchRequest,
-            error: &error) as [NSManagedObject]?
+            error: &error) as! [NSManagedObject]?
         
         if let results = fetchedResults {
             self.savedTracksAsCoreData = results
@@ -139,8 +139,8 @@ class Singleton {
         self.savedTracks = [];
         for coreTrack in self.savedTracksAsCoreData as [NSManagedObject]{
             var track = Track()
-            track.title = coreTrack.valueForKey("title") as String
-            track.permalink_url = coreTrack.valueForKey("link") as String
+            track.title = coreTrack.valueForKey("title") as! String
+            track.permalink_url = coreTrack.valueForKey("link")as! String
             track.artwork_url = coreTrack.valueForKey("artwork_url") as? String
             self.savedTracks.addObject(track)
         }

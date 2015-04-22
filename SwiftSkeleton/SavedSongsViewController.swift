@@ -49,7 +49,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
          let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "protoCell")
-        let track:Track = tableData[indexPath.row] as Track
+        let track:Track = tableData[indexPath.row] as! Track
 
         cell.textLabel?.text = track.title
         cell.textLabel?.font = UIFont(name:"Futura",size:13.00)
@@ -61,7 +61,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         // Change the center view controller
         self.tableView.reloadData()
         var url : NSURL
-        let track = singleton.savedTracks[indexPath.row] as Track
+        let track = singleton.savedTracks[indexPath.row] as! Track
         url = NSURL(string:track.permalink_url)!
         UIApplication.sharedApplication().openURL(url)
     }
