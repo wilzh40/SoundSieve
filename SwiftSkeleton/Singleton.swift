@@ -40,7 +40,7 @@ class Singleton {
     var settings: Settings = Settings()
     var token: String?
     var genres: NSMutableArray = ["Dance & Edm","Trap","House","Ambient","Pop","Indie"]
-    var APIgenres: NSMutableArray = ["dance%20&%20edm","trap","house","ambient","pop","indie"]
+    var APIgenres: NSMutableArray = ["dance%20%26%20edm","trap","house","ambient","pop","indie"]
     
     /*
     var selectedSearchMethod : SearchMethod = .Random {
@@ -74,7 +74,7 @@ class Singleton {
         } else {
             self.settings = Settings()
         }
-        token = NSUserDefaults.standardUserDefaults().objectForKey("token") as? String
+        self.token = NSUserDefaults.standardUserDefaults().objectForKey("token") as? String
         // Get the initial track list
         ConnectionManager.getRandomTracks()
     }

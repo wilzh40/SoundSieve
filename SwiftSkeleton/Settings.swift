@@ -17,12 +17,22 @@ enum StartTimeOptions: Int {
     case StartFromPreviewTime, StartFromBeginning
 }
 
+enum TrackSource: Int {
+    case Explore, Stream
+}
+
 
 @objc(Settings)
 class Settings: NSObject, NSCoding {
     var selectedSearchMethod : SearchMethod = .Random
     var startTime : StartTimeOptions = .StartFromPreviewTime
     var selectedGenre: Int = 0
+    
+    // Bools
+
+    var trackSource: TrackSource = .Explore
+    
+    
    /* override init() {
         var selectedSearchMethod : SearchMethod = .Random
         var startTime : StartTimeOptions = .StartFromPreviewTime
@@ -35,6 +45,7 @@ class Settings: NSObject, NSCoding {
         self.selectedSearchMethod = SearchMethod(rawValue: aDecoder.decodeIntegerForKey("selectedSearchMethod"))!
         self.startTime = StartTimeOptions(rawValue: aDecoder.decodeIntegerForKey("startTime"))!
         self.selectedGenre = aDecoder.decodeIntegerForKey("selectedGenre")
+        self.trackSource = TrackSource(rawValue: aDecoder.decodeIntegerForKey("trackSource"))!
         
     }
     
@@ -42,6 +53,7 @@ class Settings: NSObject, NSCoding {
         aCoder.encodeInteger(self.selectedSearchMethod.rawValue, forKey: "selectedSearchMethod")
         aCoder.encodeInteger(self.startTime.rawValue, forKey: "startTime")
         aCoder.encodeInteger(self.selectedGenre, forKey: "selectedGenre")
+        aCoder.encodeInteger(self.trackSource.rawValue, forKey: "trackSource")
     }
 
 }
