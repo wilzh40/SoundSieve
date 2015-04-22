@@ -4,3 +4,6 @@
 [submodule "External/DrawerController"]
 	path = External/DrawerController
 	url = https://github.com/sascha/DrawerController
+[submodule "External/OAuthSwift"]
+	path = External/OAuthSwift
+	url = https://github.com/dongri/OAuthSwift
