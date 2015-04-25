@@ -54,7 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
         var centerController = storyBoard.instantiateViewControllerWithIdentifier("Center") as! UIViewController
-        var left = UINavigationController(rootViewController:GenresViewController())
+        
+        // CHANGE LATER
+        var left = UINavigationController(rootViewController:SettingsViewController())
         var right = UINavigationController(rootViewController:SavedSongsViewController())
         left.view.layoutSubviews()
         right.view.layoutSubviews()

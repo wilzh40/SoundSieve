@@ -31,8 +31,9 @@ class Settings: NSObject, NSCoding {
     // Bools
 
     var trackSource: TrackSource = .Explore
-    
-    
+    var autoplay: Bool  = true
+    var duplicates: Bool = true
+
    /* override init() {
         var selectedSearchMethod : SearchMethod = .Random
         var startTime : StartTimeOptions = .StartFromPreviewTime
@@ -46,6 +47,8 @@ class Settings: NSObject, NSCoding {
         self.startTime = StartTimeOptions(rawValue: aDecoder.decodeIntegerForKey("startTime"))!
         self.selectedGenre = aDecoder.decodeIntegerForKey("selectedGenre")
         self.trackSource = TrackSource(rawValue: aDecoder.decodeIntegerForKey("trackSource"))!
+        self.autoplay = aDecoder.decodeBoolForKey("autoplay")
+        self.duplicates = aDecoder.decodeBoolForKey("duplicates")
         
     }
     
@@ -54,6 +57,8 @@ class Settings: NSObject, NSCoding {
         aCoder.encodeInteger(self.startTime.rawValue, forKey: "startTime")
         aCoder.encodeInteger(self.selectedGenre, forKey: "selectedGenre")
         aCoder.encodeInteger(self.trackSource.rawValue, forKey: "trackSource")
+        aCoder.encodeBool(self.autoplay, forKey: "autoplay")
+        aCoder.encodeBool(self.duplicates, forKey: "duplicates")
     }
 
 }
