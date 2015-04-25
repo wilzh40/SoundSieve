@@ -17,22 +17,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     func setupData() {
         self.tableData = singleton.savedTracks
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
-        self.navigationController?.navigationItem.title = "Saved Songs"
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.setupData()
-        
-        Singleton.sharedInstance.delegate = self
-      //  ConnectionManager.testNetworking()
-        
-        self.navigationController?.view.layoutSubviews()
-
-        
-        let barButton = UIBarButtonItem(title: "Clear Data", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("clearData"))
-        self.navigationItem.setRightBarButtonItem(barButton, animated: true)
-        
+        self.navigationController?.navigationBar.topItem?.title = "Saved Songs"
     }
     
     func clearData () {
@@ -44,6 +29,26 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         singleton.clearSavedTracks()
         self.tableView.endUpdates()
         println("Data Cleared")
+    }
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setupData()
+        
+        Singleton.sharedInstance.delegate = self
+      //  ConnectionManager.testNetworking()
+
+        let barButton = UIBarButtonItem(title: "x", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("clearData"))
+        self.navigationItem.setRightBarButtonItem(barButton, animated: true)
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.reloadData()
+        self.navigationController?.view.layoutSubviews()
+        
+        
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,9 +98,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         }
       
     }
-    override func viewWillAppear(animated: Bool) {
-        self.reloadData()
-    }
+    
     func reloadData() {
         self.tableData = singleton.savedTracks
         self.tableView.reloadData()

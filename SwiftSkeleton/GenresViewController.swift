@@ -40,16 +40,21 @@ class GenresViewController: UITableViewController, UITableViewDelegate, UITableV
        
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
+        self.navigationController?.navigationBar.topItem?.title = "Settings"
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupData()
-        self.navigationController?.view.layoutSubviews()
 
         // Singleton.sharedInstance.delegate = self
         ConnectionManager.testNetworking()
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.view.layoutSubviews()
 
     }
     
