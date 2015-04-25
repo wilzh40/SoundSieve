@@ -10,7 +10,9 @@
 #define SwiftSkeleton_SwiftSkeleton_Bridging_Header_h
 
 #import <UIKit/UIKit.h>
+//#import <XLForm/XLForm.h>
 #import "MDCSwipeToChoose.h"
+#import "XLForm.h"
 #import "STKAudioPlayer.h"
 #import "CoreData+MagicalRecord.h"
 

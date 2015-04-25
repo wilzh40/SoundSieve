@@ -7,3 +7,6 @@
 [submodule "External/OAuthSwift"]
 	path = External/OAuthSwift
 	url = https://github.com/dongri/OAuthSwift
+[submodule "External/XLForm"]
+	path = External/XLForm
+	url = https://github.com/xmartlabs/XLForm.git
