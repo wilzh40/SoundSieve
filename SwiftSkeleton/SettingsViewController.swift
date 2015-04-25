@@ -19,6 +19,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         static let duplicates = "duplicates"
         static let autoplay = "autoplay"
         static let genre = "genre"
+        static let hotness = "hotness"
     }
     
   /*  required init(coder aDecoder: NSCoder) {
@@ -91,6 +92,13 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         section.addFormRow(row)
         
         
+        // Hotness
+        
+        row = XLFormRowDescriptor(tag: tag.hotness, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Sort by Hotness?")
+        row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
+        row.value = settings.hotness
+        section.addFormRow(row)
+
         
         self.form = form;
         

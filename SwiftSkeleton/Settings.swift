@@ -33,6 +33,7 @@ class Settings: NSObject, NSCoding {
     var trackSource: TrackSource = .Explore
     var autoplay: Bool  = true
     var duplicates: Bool = true
+    var hotness: Bool = false
 
    /* override init() {
         var selectedSearchMethod : SearchMethod = .Random
@@ -49,6 +50,8 @@ class Settings: NSObject, NSCoding {
         self.trackSource = TrackSource(rawValue: aDecoder.decodeIntegerForKey("trackSource"))!
         self.autoplay = aDecoder.decodeBoolForKey("autoplay")
         self.duplicates = aDecoder.decodeBoolForKey("duplicates")
+        self.hotness = aDecoder.decodeBoolForKey("hotness")
+
         
     }
     
@@ -59,6 +62,7 @@ class Settings: NSObject, NSCoding {
         aCoder.encodeInteger(self.trackSource.rawValue, forKey: "trackSource")
         aCoder.encodeBool(self.autoplay, forKey: "autoplay")
         aCoder.encodeBool(self.duplicates, forKey: "duplicates")
+        aCoder.encodeBool(self.hotness, forKey: "hotness")
     }
 
 }
