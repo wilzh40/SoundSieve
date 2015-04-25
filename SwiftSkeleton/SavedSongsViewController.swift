@@ -39,7 +39,8 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         Singleton.sharedInstance.delegate = self
       //  ConnectionManager.testNetworking()
 
-        let barButton = UIBarButtonItem(title: "x", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("clearData"))
+        let barButton = UIBarButtonItem(barButtonSystemItem:.Trash, target: self, action: Selector("clearData"))
+
         self.navigationItem.setRightBarButtonItem(barButton, animated: true)
         
     }
