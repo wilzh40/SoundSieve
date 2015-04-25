@@ -54,8 +54,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
         var centerController = storyBoard.instantiateViewControllerWithIdentifier("Center") as! UIViewController
-        var left = storyBoard.instantiateViewControllerWithIdentifier("Left") as! UIViewController
-        var right = storyBoard.instantiateViewControllerWithIdentifier("Right")as! UIViewController
+        var left = UINavigationController(rootViewController:GenresViewController())
+        var right = UINavigationController(rootViewController:SavedSongsViewController())
+        left.view.layoutSubviews()
+        right.view.layoutSubviews()
+
+       // var left = storyBoard.instantiateViewControllerWithIdentifier("Left") as! UIViewController
+       // var right = storyBoard.instantiateViewControllerWithIdentifier("Right")as! UIViewController
         
         var drawerCon = DrawerController(centerViewController: centerController, leftDrawerViewController: left, rightDrawerViewController:right)
         drawerCon.openDrawerGestureModeMask = OpenDrawerGestureMode.BezelPanningCenterView

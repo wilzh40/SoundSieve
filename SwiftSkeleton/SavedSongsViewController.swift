@@ -17,7 +17,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     func setupData() {
         self.tableData = singleton.savedTracks
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
-
+        self.navigationController?.navigationItem.title = "Saved Songs"
     }
     
     override func viewDidLoad() {
@@ -25,17 +25,24 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         self.setupData()
         
         Singleton.sharedInstance.delegate = self
-        ConnectionManager.testNetworking()
+      //  ConnectionManager.testNetworking()
         
         self.navigationController?.view.layoutSubviews()
 
         
         let barButton = UIBarButtonItem(title: "Clear Data", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("clearData"))
-        self.navigationItem.setLeftBarButtonItem(barButton, animated: true)
+        self.navigationItem.setRightBarButtonItem(barButton, animated: true)
         
     }
     
     func clearData () {
+        self.tableView.beginUpdates()
+        for var i = 0; i < tableData.count; ++i {
+            let indexPath = NSIndexPath(forRow: i, inSection: 0)
+            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+        }
+        singleton.clearSavedTracks()
+        self.tableView.endUpdates()
         println("Data Cleared")
     }
 
@@ -93,20 +100,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         self.tableData = singleton.savedTracks
         self.tableView.reloadData()
     }
-    
-    @IBAction func clearListPressed(sender: UIBarButtonItem) {
-        self.tableView.beginUpdates()
-       for var i = 0; i < tableData.count; ++i {
-            let indexPath = NSIndexPath(forRow: i, inSection: 0)
-            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-        }
-        singleton.clearSavedTracks()
-        self.tableView.endUpdates()
-        
-        
 
-    }
-    
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
