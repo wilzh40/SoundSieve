@@ -19,6 +19,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     @IBOutlet weak var xButton: UIButton!
     @IBOutlet weak var pausePlayButton: AnimatedStartButton!
     
+    let settings = Singleton.sharedInstance.settings
+    
     var tracks:NSMutableArray = []
     var frontCardView: ChooseTrackView?
     var backCardView: ChooseTrackView?
@@ -269,22 +271,22 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         //println(stopReason.value)
         // When the current song finishes play the next song
         
+        if settings.autoplay == true {
         
-        
-        if let trackStartTime = self.frontCardView?.track?.start_time {
-            // Mute the track giving it time to skip ahead
-            Singleton.sharedInstance.audioPlayer.volume = 0
-            // Adjust the progresss if the track skipped ahead
-            var adjustedProgress: Double = progress + Double(trackStartTime/1000)
-            println("Progress: \(progress) adjustedProgress: \(adjustedProgress) Duration: \(duration) ")
-            if fabs(duration - adjustedProgress) < 1 {
-                // If the song ends (or almost ends, its not extremely accurate) show the next card
-                self.frontCardView?.removeFromSuperview()
-                self.appearNextCard()
+            if let trackStartTime = self.frontCardView?.track?.start_time {
+                // Mute the track giving it time to skip ahead
+                Singleton.sharedInstance.audioPlayer.volume = 0
+                // Adjust the progresss if the track skipped ahead
+                var adjustedProgress: Double = progress + Double(trackStartTime/1000)
+                println("Progress: \(progress) adjustedProgress: \(adjustedProgress) Duration: \(duration) ")
+                if fabs(duration - adjustedProgress) < 1 {
+                    // If the song ends (or almost ends, its not extremely accurate) show the next card
+                    self.frontCardView?.removeFromSuperview()
+                    self.appearNextCard()
 
+                }
             }
         }
-        
     }
     
     func audioPlayer(audioPlayer: STKAudioPlayer!, didStartPlayingQueueItemId queueItemId: NSObject!) {

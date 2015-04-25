@@ -10,11 +10,13 @@ import Foundation
 import UIKit
 class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
     
+    let settings = Singleton.sharedInstance.settings
+    
     struct tag {
         static let dateTime = "dateTime"
         static let date = "date"
         static let time = "time"
-        static let duplicate = "duplicate"
+        static let duplicates = "duplicates"
         static let autoplay = "autoplay"
         static let genre = "genre"
     }
@@ -58,13 +60,17 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         
         
         row = XLFormRowDescriptor(tag: tag.genre, rowType: XLFormRowDescriptorTypeSelectorActionSheet, title: "Genre")
-        row.selectorOptions = Singleton.sharedInstance.APIgenres as [AnyObject]
+        row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
+        row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "detailTextLabel.font")
+        row.selectorOptions = Singleton.sharedInstance.genres as [AnyObject]
         section.addFormRow(row)
         
         
         
         
         section = XLFormSectionDescriptor.formSectionWithTitle("Other Settings") as!XLFormSectionDescriptor
+        row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
+
         form.addFormSection(section)
         
         
@@ -72,24 +78,43 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         
         
         // Display Duplicates?
-        row = XLFormRowDescriptor(tag: tag.duplicate, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Display Duplicates?")
+        row = XLFormRowDescriptor(tag: tag.duplicates, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Display Duplicates?")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
+        row.value = settings.duplicates 
+
         section.addFormRow(row)
         
         // Autoplay?
         row = XLFormRowDescriptor(tag: tag.autoplay, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Autoplay?")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
+        row.value = settings.autoplay
         section.addFormRow(row)
+        
+        
+        
         self.form = form;
         
-       self.formValues()
+        
+        
+        print(self.formValues())
     
     }
     
     override func formRowDescriptorValueHasChanged(formRow: XLFormRowDescriptor!, oldValue: AnyObject!, newValue: AnyObject!) {
+        
+        // Called once a value is changed
         // Delegate function
 
-        print(formRow.tag + " has changed to " )
+
+        print(self.formValues()[formRow.description]!)
+        var values = self.formValues() as Dictionary
+        
+        settings.autoplay = values[tag.autoplay] as! Bool
+        settings.duplicates = values[tag.duplicates] as! Bool
+        
+        
+        
+
     }
     
 }
