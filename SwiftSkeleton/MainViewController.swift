@@ -45,6 +45,14 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         // Animate waveform according to loudness while playing
         
+        if !settings.waveform {
+            // If there's no waveform just make it opaque
+            waveformView.alpha = 0
+            return
+        } else {
+            waveformView.alpha = 1
+        }
+        
         var normalizedValue = pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(0) / 20) + pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(1) / 20) - 0.002
         if pausePlayButton.selected {
             waveformView.updateWithLevel(CGFloat(normalizedValue))
@@ -52,6 +60,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             waveformView.updateWithLevel(0)
         }
         
+        // If theres a lot of stuff happening change the waveform color
         
         if normalizedValue > 1.9 {
             waveformView.waveColor = UIColor.orangeColor()

@@ -185,8 +185,13 @@ class ConnectionManager {
             // Unmute the track giving it time to skip ahead
             Singleton.sharedInstance.audioPlayer.volume = 1
             
-            Singleton.sharedInstance.audioPlayer.seekToTime(Double(time))
-            println("Playing: \(track.title) at time: \(track.start_time/1000)")
+            // Seek ahead
+            
+            if Singleton.sharedInstance.settings.preview == true {
+                Singleton.sharedInstance.audioPlayer.seekToTime(Double(time))
+                println("Playing: \(track.title) at time: \(track.start_time/1000)")
+            }
+
             
             if Singleton.sharedInstance.settings.autoplay == true {
                 self.queueStreamFromTrack(nextTrack)
