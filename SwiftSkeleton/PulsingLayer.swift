@@ -84,7 +84,7 @@ class PulsingLayer: CALayer {
         }*/
         
         var normalizedValue = pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(0) / 20) + pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(1) / 20)
-        println(normalizedValue)
+        //println(normalizedValue)
         if normalizedValue > self.threshold*2{
             intervalsSinceLastBeat++
             if intervalsSinceLastBeat > intervalThreshold {

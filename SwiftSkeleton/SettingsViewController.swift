@@ -19,6 +19,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         static let hotness = "hotness"
         static let preview = "preview"
         static let waveform = "waveform"
+        static let account = "account"
     }
     
   /*  required init(coder aDecoder: NSCoder) {
@@ -37,7 +38,10 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.view.layoutSubviews()
+      
     }
+    
+
     
     func initializeForm() {
         
@@ -106,9 +110,28 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         row.value = settings.waveform
         section.addFormRow(row)
         
+    // User Account
+        section = XLFormSectionDescriptor.formSectionWithTitle("Soundcloud Account") as!XLFormSectionDescriptor
+        
+        form.addFormSection(section)
+        
+        // Account
+        row = XLFormRowDescriptor(tag: tag.account, rowType: XLFormRowDescriptorTypeButton, title: Singleton.sharedInstance.username)
+        row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
+        row.value = Singleton.sharedInstance.username
+        row.action.formSelector = "connectSC"
+        section.addFormRow(row)
+
+        
         self.form = form;
         
     }
+
+    func connectSC() {
+        println("Connecting account")
+        ConnectionManager.authenticateSC()
+    }
+  
     
     override func formRowDescriptorValueHasChanged(formRow: XLFormRowDescriptor!, oldValue: AnyObject!, newValue: AnyObject!) {
         

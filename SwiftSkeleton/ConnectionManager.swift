@@ -25,6 +25,8 @@ class ConnectionManager {
     
     let settings = Singleton.sharedInstance.settings
     
+    // Authenticate SC -> Safari login -> Call back to app -> Get token -> Get username -> Save data -> reload
+    
     class func authenticateSC() {
         let oauthswift = OAuth2Swift(
             consumerKey:    Soundcloud["consumerKey"]!,
@@ -42,7 +44,23 @@ class ConnectionManager {
             credential, response in
             println("Soundcloud", message: "oauth_token:\(credential.oauth_token)")
             Singleton.sharedInstance.token = credential.oauth_token
-
+            ConnectionManager.getUsername()
+            
+            }, failure: {(error:NSError!) -> Void in
+                SwiftSpinner.show("Failed to connect, waiting...", animated: false)
+                println(error.localizedDescription)
+        })
+        
+    }
+    
+    class func getUsername() {
+        let URL = soundcloudURL + "me/"
+        let parameters = ["oauth_token": Singleton.sharedInstance.token!]
+        Alamofire.request(.GET, URL, parameters:parameters )
+        .responseSwiftyJSON ({ (request, response, responseJSON, error) in
+            println(request)
+            println(response)
+            Singleton.sharedInstance.username = responseJSON["username"].string!
             Singleton.sharedInstance.saveData()
             // Either get user stream or random tracks, based on the setting
             switch (Singleton.sharedInstance.settings.trackSource) {
@@ -53,11 +71,10 @@ class ConnectionManager {
                 
             }
 
-            }, failure: {(error:NSError!) -> Void in
-                SwiftSpinner.show("Failed to connect, waiting...", animated: false)
-                println(error.localizedDescription)
+                if error != nil {
+                    println(error)
+                }
         })
-        
     }
     
     class func getRandomTracks() {
@@ -155,6 +172,7 @@ class ConnectionManager {
         })
     }
     
+    
     class func favoriteTrack (track: Track) {
         let URL = soundcloudURL + "me/favorites/" + String(track.id!)
         let parameters = ["oauth_token": Singleton.sharedInstance.token!]
@@ -168,6 +186,8 @@ class ConnectionManager {
                 }
         }
     }
+    
+    
     
     class func playStreamFromTrack(track:Track, nextTrack:Track) {
         

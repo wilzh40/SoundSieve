@@ -39,6 +39,7 @@ class Singleton {
     // Settings
     var settings: Settings = Settings()
     var token: String?
+    var username: String?
     var genres: NSMutableArray = ["Dance & Edm","Trap","Hip Hop and Rap","House","Ambient","Pop","Indie"]
     var APIgenres: NSMutableArray = ["dance%20%26%20edm","trap","hip%20hop%20%26%20rap","house","ambient","pop","indie"]
     
@@ -78,6 +79,7 @@ class Singleton {
             self.settings = Settings()
         }
         self.token = NSUserDefaults.standardUserDefaults().objectForKey("token") as? String
+        self.username = NSUserDefaults.standardUserDefaults().objectForKey("username") as? String
         // Get the initial track list
         // ConnectionManager.getRandomTracks()
     }
@@ -88,6 +90,8 @@ class Singleton {
         NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(self.settings), forKey: "settings")
         
         NSUserDefaults.standardUserDefaults().setValue(token, forKey: "token")
+        NSUserDefaults.standardUserDefaults().setValue(username, forKey: "username")
+
         
     }
     

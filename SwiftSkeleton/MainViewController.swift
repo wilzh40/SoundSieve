@@ -313,6 +313,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             sender.alpha = 1
         })
         self.evo_drawerController?.openDrawerSide(DrawerSide.Right, animated: true, completion: nil)
+
     }
 
     // Left button
@@ -324,6 +325,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             sender.alpha = 1
         })
         self.evo_drawerController?.openDrawerSide(DrawerSide.Left, animated: true, completion: nil)
+        //self.evo_drawerController?.leftDrawerViewController? as! GenresViewController
     }
 
 
