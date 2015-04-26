@@ -22,6 +22,7 @@ class PulsingLayer: CALayer {
     var animationGroup: CAAnimationGroup
     
     let singleton = Singleton.sharedInstance
+    var meterInterval: Float
     var threshold: Float
     var intervalThreshold: Float
     var intervalsSinceLastBeat: Float
@@ -40,7 +41,9 @@ class PulsingLayer: CALayer {
         // metering vars
         
         self.threshold = 0.94
-        self.intervalThreshold = 3
+        self.meterInterval = 0.01
+        self.intervalThreshold = 5
+        
         self.intervalsSinceLastBeat = 0
         super.init()
         
@@ -65,7 +68,7 @@ class PulsingLayer: CALayer {
                 self.addAnimation(self.animationGroup, forKey: "pulse")
                 
                 // Then add a timer that meters the audio
-                var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "meterAudio", userInfo: nil, repeats: true)
+                var timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "meterAudio", userInfo: nil, repeats: true)
             })
             
         })
