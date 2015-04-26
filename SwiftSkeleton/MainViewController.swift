@@ -20,6 +20,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     @IBOutlet weak var pausePlayButton: AnimatedStartButton!
     
     let settings = Singleton.sharedInstance.settings
+    let pulsingLayer = PulsingLayer()
+    
     
     var tracks:NSMutableArray = []
     var frontCardView: ChooseTrackView?
@@ -72,6 +74,14 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         titleLabel.text = currentTrack?.title
         singleton.audioPlayer.pause()
       
+        // Add pulse animation
+        /*let pulseEffect = LFTPulseAnimation(repeatCount: Float.infinity, radius:20, position:pausePlayButton!.center)
+        pausePlayButton.layer.insertSublayer(pulseEffect, below: pausePlayButton!.layer)*/
+        
+       
+        pulsingLayer.position = pausePlayButton.center
+        view.layer.insertSublayer(pulsingLayer, below: pausePlayButton.layer)
+        
         // Bring buttons to front
 
         self.view.bringSubviewToFront(xButton)

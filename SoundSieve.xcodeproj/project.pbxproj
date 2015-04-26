@@ -53,6 +53,8 @@
 		776A5AB71A87DB7A00D7B091 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 776A5AA01A87DB7A00D7B091 /* iTunesArtwork.png */; };
 		776A5AB81A87DB7A00D7B091 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 776A5AA11A87DB7A00D7B091 /* iTunesArtwork@2x.png */; };
 		776A5ABB1A87DDD700D7B091 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A5ABA1A87DDD700D7B091 /* SwiftSpinner.swift */; };
+		7777C2581AECAEC100B300F9 /* LFTPulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7777C2571AECAEC100B300F9 /* LFTPulseAnimation.swift */; };
+		7777C25E1AECB43800B300F9 /* PulsingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7777C25D1AECB43800B300F9 /* PulsingLayer.swift */; };
 		7780516D1ACF8FCE00BDD6CA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7780516C1ACF8FCE00BDD6CA /* Settings.swift */; };
 		778084131A9A846D007CBD7F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778084121A9A846D007CBD7F /* WebViewController.swift */; };
 		778230611AEC073A00F6E332 /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CEFDFF1A79C280001B0A02 /* AlamofireSwiftyJSON.framework */; };
@@ -297,6 +299,8 @@
 		776A5AA01A87DB7A00D7B091 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		776A5AA11A87DB7A00D7B091 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		776A5ABA1A87DDD700D7B091 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
+		7777C2571AECAEC100B300F9 /* LFTPulseAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFTPulseAnimation.swift; sourceTree = "<group>"; };
+		7777C25D1AECB43800B300F9 /* PulsingLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsingLayer.swift; sourceTree = "<group>"; };
 		7780516C1ACF8FCE00BDD6CA /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		778084121A9A846D007CBD7F /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7782306A1AEC07BF00F6E332 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Alamofire.framework; path = "/Users/wilsonzhao/Library/Developer/Xcode/DerivedData/SoundSieve-bxslriznrrubnkayqycbcqkufmzg/Build/Products/Debug-iphoneos/Alamofire.framework"; sourceTree = "<absolute>"; };
@@ -895,6 +899,8 @@
 				77040AE61A86CA3E0065D260 /* MDCSwipeToChoose */,
 				77CEFE261A79D5CE001B0A02 /* DrawerController */,
 				776A5ABA1A87DDD700D7B091 /* SwiftSpinner.swift */,
+				7777C2571AECAEC100B300F9 /* LFTPulseAnimation.swift */,
+				7777C25D1AECB43800B300F9 /* PulsingLayer.swift */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -1220,6 +1226,7 @@
 				778231751AEC2EFD00F6E332 /* XLFormRowNavigationAccessoryView.m in Sources */,
 				7782315E1AEC2EFD00F6E332 /* XLFormLeftRightSelectorCell.m in Sources */,
 				7782316E1AEC2EFD00F6E332 /* NSExpression+XLFormAdditions.m in Sources */,
+				7777C25E1AECB43800B300F9 /* PulsingLayer.swift in Sources */,
 				776A5A7C1A87A41100D7B091 /* GenresViewController.swift in Sources */,
 				B841D0171A9A969300B5D921 /* MagicalRecord+iCloud.m in Sources */,
 				77040B0F1A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m in Sources */,
@@ -1275,6 +1282,7 @@
 				B841D0041A9A969300B5D921 /* NSNumber+MagicalDataImport.m in Sources */,
 				B835AA0B1AC48ABE00428971 /* Credentials.swift in Sources */,
 				778231681AEC2EFD00F6E332 /* XLFormOptionsViewController.m in Sources */,
+				7777C2581AECAEC100B300F9 /* LFTPulseAnimation.swift in Sources */,
 				776A5ABB1A87DDD700D7B091 /* SwiftSpinner.swift in Sources */,
 				B841D0021A9A969300B5D921 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				778231791AEC2EFD00F6E332 /* XLFormValidator.m in Sources */,
