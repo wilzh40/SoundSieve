@@ -17,6 +17,8 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         static let autoplay = "autoplay"
         static let genre = "genre"
         static let hotness = "hotness"
+        static let preview = "preview"
+        static let waveform = "waveform"
     }
     
   /*  required init(coder aDecoder: NSCoder) {
@@ -91,6 +93,17 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         row.value = settings.hotness
         section.addFormRow(row)
 
+        // Preview Song?
+        row = XLFormRowDescriptor(tag: tag.preview, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Preview song?")
+        row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
+        row.value = settings.preview
+        section.addFormRow(row)
+        
+        // Display Waveform
+        row = XLFormRowDescriptor(tag: tag.waveform, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Display Waveform?")
+        row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
+        row.value = settings.waveform
+        section.addFormRow(row)
         
         self.form = form;
         
@@ -115,6 +128,10 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         
         settings.autoplay = values[tag.autoplay] as! Bool
         settings.duplicates = values[tag.duplicates] as! Bool
+        
+        settings.preview = values[tag.preview] as! Bool
+        settings.waveform = values[tag.waveform] as! Bool
+        
         print(self.formValues())
 
     }

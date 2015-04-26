@@ -36,6 +36,8 @@ class Settings: NSObject, NSCoding {
     var autoplay: Bool  = true
     var duplicates: Bool = true
     var hotness: Bool = false
+    var preview: Bool = true
+    var waveform: Bool = true
 
    /* override init() {
         var selectedSearchMethod : SearchMethod = .Random
@@ -56,6 +58,8 @@ class Settings: NSObject, NSCoding {
         self.autoplay = aDecoder.decodeBoolForKey("autoplay")
         self.duplicates = aDecoder.decodeBoolForKey("duplicates")
         self.hotness = aDecoder.decodeBoolForKey("hotness")
+        self.preview = aDecoder.decodeBoolForKey("preview")
+        self.waveform = aDecoder.decodeBoolForKey("waveform")
 
         
     }
@@ -71,6 +75,8 @@ class Settings: NSObject, NSCoding {
         aCoder.encodeBool(self.autoplay, forKey: "autoplay")
         aCoder.encodeBool(self.duplicates, forKey: "duplicates")
         aCoder.encodeBool(self.hotness, forKey: "hotness")
-    }
-
+        aCoder.encodeBool(self.preview, forKey: "preview")
+        aCoder.encodeBool(self.waveform, forKey: "waveform")
 }
+}
+
