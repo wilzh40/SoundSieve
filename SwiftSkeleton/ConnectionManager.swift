@@ -57,27 +57,27 @@ class ConnectionManager {
         let URL = soundcloudURL + "me/"
         let parameters = ["oauth_token": Singleton.sharedInstance.token!]
         Alamofire.request(.GET, URL, parameters:parameters )
-        .responseSwiftyJSON ({ (request, response, responseJSON, error) in
-            println(request)
-            println(response)
-            Singleton.sharedInstance.username = responseJSON["username"].string!
-            Singleton.sharedInstance.saveData()
-            // Either get user stream or random tracks, based on the setting
-            switch (Singleton.sharedInstance.settings.trackSource) {
-            case .Stream:
-                self.getUserStream()
-            case .Explore:
-                self.getRandomTracks()
+            .responseSwiftyJSON ({ (request, response, responseJSON, error) in
+                println(request)
+                println(response)
+                Singleton.sharedInstance.username = responseJSON["username"].string!
+                Singleton.sharedInstance.saveData()
+                // Either get user stream or random tracks, based on the setting
+                switch (Singleton.sharedInstance.settings.trackSource) {
+                case .Stream:
+                    self.getUserStream()
+                case .Explore:
+                    self.getRandomTracks()
+                    
+                }
+                // Update the username
+                Singleton.sharedInstance.settingsVC!.updateUsername()
                 
-            }
-            // Update the username
-            Singleton.sharedInstance.settingsVC!.updateUsername()
-
-
+                
                 if error != nil {
                     println(error)
                 }
-        })
+            })
     }
     
     class func getRandomTracks() {
@@ -93,9 +93,9 @@ class ConnectionManager {
         var searchMethod:String
         /*switch (Singleton.sharedInstance.settings.selectedSearchMethod) {
         case .Hot:
-            searchMethod = "hot"
+        searchMethod = "hot"
         case .Random:
-            searchMethod = "random"
+        searchMethod = "random"
         }*/
         
         if Singleton.sharedInstance.settings.hotness == true {
@@ -131,23 +131,32 @@ class ConnectionManager {
                         track.stream_url = child["stream_url"].string!
                         track.start_time = child["start_time"].int!
                         
-                        if find(playedTracksArray, track.id!) == nil {
-                            if Singleton.sharedInstance.settings.duplicates == false {
+                        if Singleton.sharedInstance.settings.duplicates == false {
+                            // If duplicates are not allowed
+                            if find(playedTracksArray, track.id!) == nil {
+                                // Check if the id is in played tracks; if it isn't add it to the collection
                                 tracks.addObject(track)
                             }
+                            if tracks.count == 0 {
+                                
+                                // If there's no more tracks abort mission
+                                
+                                SwiftSpinner.show("Uh Oh! No more songs...", animated:false)
+                                return
+                            }
+                        } else {
+                            tracks.addObject(track)
                         }
-                        if tracks.count == 0 {
-                            SwiftSpinner.show("Uh Oh! No more songs...", animated:false)
-                        }
+                        
                     }
                     Singleton.sharedInstance.tracks = tracks
                     ConnectionManager.sharedInstance.delegate?.didGetTracks!()
                 }
                 
-
-        })
-
-
+                
+            })
+        
+        
     }
     
     class func getTrackStream (trackUrl:String) {
@@ -186,7 +195,7 @@ class ConnectionManager {
                     Singleton.sharedInstance.tracks = tracks
                     ConnectionManager.sharedInstance.delegate?.didGetTracks!()
                 }
-        })
+            })
     }
     
     
@@ -228,7 +237,7 @@ class ConnectionManager {
                 Singleton.sharedInstance.audioPlayer.seekToTime(Double(time))
                 println("Playing: \(track.title) at time: \(track.start_time/1000)")
             }
-
+            
             
             if Singleton.sharedInstance.settings.autoplay == true {
                 self.queueStreamFromTrack(nextTrack)
@@ -267,10 +276,10 @@ class ConnectionManager {
                 if error != nil {
                     println(error)
                 }
-
-        })
-    
-
+                
+            })
+        
+        
     }
     
     class func getImageFromURL(imageURL:String) -> UIImage? {
