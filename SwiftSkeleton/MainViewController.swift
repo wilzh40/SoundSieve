@@ -53,8 +53,12 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         }
         
         
-        if normalizedValue == 2.0 {
+        if normalizedValue > 1.9 {
             waveformView.waveColor = UIColor.orangeColor()
+            waveformView.layer.transform = CATransform3DMakeScale(1,1.1,1.1)
+        } else {
+            waveformView.waveColor = UIColor.blackColor()
+               waveformView.layer.transform = CATransform3DMakeScale(1,0.8,1)
         }
         
         // Fade in Title
@@ -120,8 +124,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         pausePlayButton.layer.insertSublayer(pulseEffect, below: pausePlayButton!.layer)*/
         
        
-        pulsingLayer.position = pausePlayButton.center
-        view.layer.insertSublayer(pulsingLayer, below: pausePlayButton.layer)
+        //pulsingLayer.position = pausePlayButton.center
+        //view.layer.insertSublayer(pulsingLayer, below: pausePlayButton.layer)
          //view.addSubview(waveformView)
        
         
