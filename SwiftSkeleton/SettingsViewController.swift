@@ -165,6 +165,12 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
             SwiftSpinner.show("Switching Genres")
         }
       
+        if formRow.description == tag.hotness {
+            settings.hotness = values[tag.hotness] as! Bool
+            ConnectionManager.getRandomTracks()
+            SwiftSpinner.show("Switching Sorting")
+            
+        }
         
         settings.autoplay = values[tag.autoplay] as! Bool
         settings.duplicates = values[tag.duplicates] as! Bool
