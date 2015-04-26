@@ -81,7 +81,14 @@ class ConnectionManager {
     }
     
     class func getRandomTracks() {
-
+        //make a temp array of played tracks' ids
+        var playedTracksArray = [Int]()
+        for aTrack in Singleton.sharedInstance.playedTracks{
+            let track = aTrack as! Track
+            playedTracksArray.append(track.id!);
+        }
+        
+        
         let selectedGenre = Singleton.sharedInstance.APIgenres.objectAtIndex(Singleton.sharedInstance.settings.selectedGenre) as! String
         var searchMethod:String
         /*switch (Singleton.sharedInstance.settings.selectedSearchMethod) {
@@ -124,7 +131,9 @@ class ConnectionManager {
                         track.stream_url = child["stream_url"].string!
                         track.start_time = child["start_time"].int!
                         
-                        tracks.addObject(track)
+                        if find(playedTracksArray, track.id!) == nil {
+                            tracks.addObject(track)
+                        }
                     }
                     Singleton.sharedInstance.tracks = tracks
                     ConnectionManager.sharedInstance.delegate?.didGetTracks!()

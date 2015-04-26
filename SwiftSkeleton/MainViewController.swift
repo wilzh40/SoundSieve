@@ -221,6 +221,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             ConnectionManager.favoriteTrack(currentTrack!)
             singleton.addTrackToSavedTracks(currentTrack!)
         }
+        
+        singleton.addTrackToPlayedTracks(currentTrack!)
         self.appearNextCard()
     }
     
@@ -274,7 +276,6 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
                 
             }
         }
-
     }
     
     // View frames
