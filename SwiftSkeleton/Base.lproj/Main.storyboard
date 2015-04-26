@@ -23,7 +23,7 @@
                                     <constraint firstAttribute="width" constant="50" id="CFa-Rt-OYi"/>
                                     <constraint firstAttribute="height" constant="50" id="UkL-Dh-Cnd"/>
                                 </constraints>
-                                <state key="normal" image="music">
+                                <state key="normal" image="list-square">
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -36,7 +36,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Dj4-wf-mGk"/>
                                     <constraint firstAttribute="width" constant="50" id="thR-IU-IKx"/>
                                 </constraints>
-                                <state key="normal" image="list-square">
+                                <state key="normal" image="music">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
