@@ -183,6 +183,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         }
         
         var view = ChooseTrackView(track:tracks.objectAtIndex(0) as! Track, frame: frame, options: options)
+        if tracks.count == 0 {
+            SwiftSpinner.show("Uh Oh! No more songs...", animated:false)
+        }
         tracks.removeObjectAtIndex(0)
         //view.imageView.image = UIImage(named: "photo.png")
         
@@ -221,6 +224,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             ConnectionManager.favoriteTrack(currentTrack!)
             singleton.addTrackToSavedTracks(currentTrack!)
         }
+        
+        singleton.addTrackToPlayedTracks(currentTrack!)
         self.appearNextCard()
     }
     
@@ -274,7 +279,6 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
                 
             }
         }
-
     }
     
     // View frames

@@ -62,10 +62,6 @@
 		778230621AEC073A00F6E332 /* AlamofireSwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77CEFDFF1A79C280001B0A02 /* AlamofireSwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		778230661AEC074200F6E332 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A4AC7C1AE862DE00E293E6 /* OAuthSwift.framework */; };
 		778230671AEC074200F6E332 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B8A4AC7C1AE862DE00E293E6 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7782306B1AEC07BF00F6E332 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7782306A1AEC07BF00F6E332 /* Alamofire.framework */; };
-		7782306C1AEC07BF00F6E332 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7782306A1AEC07BF00F6E332 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7782306E1AEC07C300F6E332 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7782306D1AEC07C300F6E332 /* SwiftyJSON.framework */; };
-		7782306F1AEC07C300F6E332 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7782306D1AEC07C300F6E332 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		778231581AEC2EFD00F6E332 /* XLFormBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 778231081AEC2EFD00F6E332 /* XLFormBaseCell.m */; };
 		778231591AEC2EFD00F6E332 /* XLFormButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7782310A1AEC2EFD00F6E332 /* XLFormButtonCell.m */; };
 		7782315A1AEC2EFD00F6E332 /* XLFormCheckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7782310C1AEC2EFD00F6E332 /* XLFormCheckCell.m */; };
@@ -220,9 +216,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7782306F1AEC07C300F6E332 /* SwiftyJSON.framework in Embed Frameworks */,
 				778230671AEC074200F6E332 /* OAuthSwift.framework in Embed Frameworks */,
-				7782306C1AEC07BF00F6E332 /* Alamofire.framework in Embed Frameworks */,
 				778230621AEC073A00F6E332 /* AlamofireSwiftyJSON.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -307,8 +301,6 @@
 		7777C25F1AECC18700B300F9 /* SiriWaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiriWaveformView.swift; sourceTree = "<group>"; };
 		7780516C1ACF8FCE00BDD6CA /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		778084121A9A846D007CBD7F /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		7782306A1AEC07BF00F6E332 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Alamofire.framework; path = "/Users/wilsonzhao/Library/Developer/Xcode/DerivedData/SoundSieve-bxslriznrrubnkayqycbcqkufmzg/Build/Products/Debug-iphoneos/Alamofire.framework"; sourceTree = "<absolute>"; };
-		7782306D1AEC07C300F6E332 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = SwiftyJSON.framework; path = "/Users/wilsonzhao/Library/Developer/Xcode/DerivedData/SoundSieve-bxslriznrrubnkayqycbcqkufmzg/Build/Products/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<absolute>"; };
 		778231071AEC2EFD00F6E332 /* XLFormBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLFormBaseCell.h; sourceTree = "<group>"; };
 		778231081AEC2EFD00F6E332 /* XLFormBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLFormBaseCell.m; sourceTree = "<group>"; };
 		778231091AEC2EFD00F6E332 /* XLFormButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLFormButtonCell.h; sourceTree = "<group>"; };
@@ -482,9 +474,7 @@
 			files = (
 				776A5A731A8738FE00D7B091 /* AVFoundation.framework in Frameworks */,
 				778230611AEC073A00F6E332 /* AlamofireSwiftyJSON.framework in Frameworks */,
-				7782306E1AEC07C300F6E332 /* SwiftyJSON.framework in Frameworks */,
 				778230661AEC074200F6E332 /* OAuthSwift.framework in Frameworks */,
-				7782306B1AEC07BF00F6E332 /* Alamofire.framework in Frameworks */,
 				776A5A741A8738FE00D7B091 /* AVKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -812,8 +802,6 @@
 		77CEFCDF1A79C041001B0A02 = {
 			isa = PBXGroup;
 			children = (
-				7782306D1AEC07C300F6E332 /* SwiftyJSON.framework */,
-				7782306A1AEC07BF00F6E332 /* Alamofire.framework */,
 				776A5A711A8738FE00D7B091 /* AVFoundation.framework */,
 				776A5A721A8738FE00D7B091 /* AVKit.framework */,
 				77CEFDF71A79C280001B0A02 /* Alamofire-SwiftyJSON.xcodeproj */,

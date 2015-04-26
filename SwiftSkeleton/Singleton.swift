@@ -32,6 +32,8 @@ class Singleton {
     var tracks: NSMutableArray = []
     var savedTracksAsCoreData: Array<NSManagedObject> = []
     var savedTracks: NSMutableArray = []
+    var playedTracksAsCoreData: Array<NSManagedObject> = []
+    var playedTracks: NSMutableArray = []
 
     // Refs to VCS
     
@@ -69,7 +71,6 @@ class Singleton {
     }
     
      func setupData() {
-        
         //Core Data shit
         self.managedContext = appDelegate.managedObjectContext!
         self.entity = NSEntityDescription.entityForName("SavedTracks", inManagedObjectContext: managedContext!)
@@ -122,8 +123,26 @@ class Singleton {
     }
     
  
+    func addTrackToPlayedTracks(thisTrack: Track) {
+        self.entity = NSEntityDescription.entityForName("PlayedTracks", inManagedObjectContext: managedContext!)
+        let track = NSManagedObject(entity: self.entity!, insertIntoManagedObjectContext: managedContext)
+        
+        // Set track properties
+        track.setValue(thisTrack.id, forKey: "id")
+        
+        // Check for errors, if it cannot savetr
+        var error: NSError?
+        if !self.managedContext!.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+        }
+        
+        // Add to playedTracks
+        self.playedTracksAsCoreData.append(track)
+        self.transferCoreDataTracksToPlayedTracks()
+    }
     
     func addTrackToSavedTracks(thisTrack: Track) {
+        self.entity = NSEntityDescription.entityForName("SavedTracks", inManagedObjectContext: managedContext!)
         let track = NSManagedObject(entity: self.entity!, insertIntoManagedObjectContext: managedContext)
         
         // Set track properties
@@ -142,6 +161,26 @@ class Singleton {
         self.transferCoreDataTracksToSavedTracks()
     }
 
+    func transferCoreDataTracksToPlayedTracks() {
+        let fetchRequest = NSFetchRequest(entityName:"PlayedTracks")
+        var error: NSError?
+        
+        let fetchedResults =
+        self.managedContext!.executeFetchRequest(fetchRequest,
+            error: &error) as! [NSManagedObject]?
+        
+        if let results = fetchedResults {
+            self.playedTracksAsCoreData = results
+        } else {
+            println("Could not fetch \(error), \(error!.userInfo)")
+        }
+        self.playedTracks = [];
+        for coreTrack in self.playedTracksAsCoreData as [NSManagedObject]{
+            var track = Track()
+            track.id = coreTrack.valueForKey("id") as? Int
+            self.playedTracks.addObject(track)
+        }
+    }
     
     func transferCoreDataTracksToSavedTracks() {
         let fetchRequest = NSFetchRequest(entityName:"SavedTracks")

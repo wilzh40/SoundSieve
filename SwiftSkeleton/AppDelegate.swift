@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Singleton.sharedInstance.setupData()
         Singleton.sharedInstance.setupAudio()
         Singleton.sharedInstance.transferCoreDataTracksToSavedTracks()
+        Singleton.sharedInstance.transferCoreDataTracksToPlayedTracks()
         
         // Connect to soundcloud to get OAuth Token if the user hasn't already
         
