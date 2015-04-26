@@ -13,9 +13,6 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
     let settings = Singleton.sharedInstance.settings
     
     struct tag {
-        static let dateTime = "dateTime"
-        static let date = "date"
-        static let time = "time"
         static let duplicates = "duplicates"
         static let autoplay = "autoplay"
         static let genre = "genre"
@@ -28,7 +25,11 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
     }
     */
     override func viewDidLoad() {
+        
         self.initializeForm()
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
+        
         super.viewDidLoad()
     }
     
@@ -38,7 +39,6 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
     
     func initializeForm() {
         
-
         
         
         // Row Config
@@ -48,21 +48,21 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         var row : XLFormRowDescriptor
         
         form = XLFormDescriptor.formDescriptorWithTitle("Settings") as! XLFormDescriptor
-        
+
         section = XLFormSectionDescriptor.formSectionWithTitle("Genres") as! XLFormSectionDescriptor
         form.addFormSection(section)
         
-        
+    // Genres
+
         row = XLFormRowDescriptor(tag: tag.genre, rowType: XLFormRowDescriptorTypeSelectorActionSheet, title: "Genre")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "detailTextLabel.font")
         row.selectorOptions = Singleton.sharedInstance.genres as [AnyObject]
-        row.value = settings.genre
+        row.value = Singleton.sharedInstance.genres.objectAtIndex(settings.selectedGenre)
     
         section.addFormRow(row)
         
-        
-        
+    // Other settings
         
         section = XLFormSectionDescriptor.formSectionWithTitle("Other Settings") as!XLFormSectionDescriptor
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
@@ -76,8 +76,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         // Display Duplicates?
         row = XLFormRowDescriptor(tag: tag.duplicates, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Display Duplicates?")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
-        row.value = settings.duplicates 
-
+        row.value = settings.duplicates
         section.addFormRow(row)
         
         // Autoplay?
@@ -86,9 +85,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         row.value = settings.autoplay
         section.addFormRow(row)
         
-        
-        // Hotness
-        
+        // Hotness?
         row = XLFormRowDescriptor(tag: tag.hotness, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Sort by Hotness?")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.value = settings.hotness
@@ -97,10 +94,6 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         
         self.form = form;
         
-        
-        
-        print(self.formValues())
-    
     }
     
     override func formRowDescriptorValueHasChanged(formRow: XLFormRowDescriptor!, oldValue: AnyObject!, newValue: AnyObject!) {
@@ -108,24 +101,21 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         // Called once a value is changed
         // Delegate function
 
-
-        print(self.formValues()[formRow.description]!)
         var values = self.formValues() as Dictionary
         
         if formRow.description == tag.genre {
+            // Get the index of the selection, works seemlessly with existing code
+            
             settings.selectedGenre = Singleton.sharedInstance.genres.indexOfObject(values[tag.genre] as! String)
             self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
             ConnectionManager.getRandomTracks()
             SwiftSpinner.show("Switching Genres")
-            
         }
       
         
         settings.autoplay = values[tag.autoplay] as! Bool
         settings.duplicates = values[tag.duplicates] as! Bool
-        
-        
-        
+        print(self.formValues())
 
     }
     

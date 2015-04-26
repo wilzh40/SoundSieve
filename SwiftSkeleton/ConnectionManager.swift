@@ -23,6 +23,8 @@ let soundcloudURL = "http://api.soundcloud.com/"
 class ConnectionManager {
     var delegate : ConnectionProtocol?
     
+    let settings = Singleton.sharedInstance.settings
+    
     class func authenticateSC() {
         let oauthswift = OAuth2Swift(
             consumerKey:    Soundcloud["consumerKey"]!,
