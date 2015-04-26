@@ -61,18 +61,25 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "protoCell")
+  
         let track:Track = tableData[indexPath.row] as! Track
-
+        let cell: SongCell = SongCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "protoCell",urlString: track.artwork_url!)
         cell.textLabel?.text = track.title
         cell.textLabel?.font = UIFont(name:"Futura",size:13.00)
-        cell.imageView!.image = ConnectionManager.getImageFromURL(track.artwork_url!)
+        //cell.imageView!.image = ConnectionManager.getImageFromURL(track.artwork_url!)
+        
+        // Opti efforts
+              cell.layer.shouldRasterize = false
+       // cell.layer.rasterizationScale = UIScreen.mainScreen().scale
+        
         return cell
     }
     
+
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Change the center view controller
-        self.tableView.reloadData()
+        // self.tableView.reloadData()
         var url : NSURL
         let track = singleton.savedTracks[indexPath.row] as! Track
         url = NSURL(string:track.permalink_url)!
@@ -97,6 +104,10 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
             cell.alpha = 0.4
             cell.backgroundColor = UIColor.grayColor()
         }
+        
+        let track = singleton.savedTracks[indexPath.row] as! Track
+     
+
       
     }
     
@@ -104,7 +115,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         self.tableData = singleton.savedTracks
         self.tableView.reloadData()
     }
-
+    
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }

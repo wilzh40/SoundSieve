@@ -120,6 +120,8 @@
 		77CEFE2E1A79DD46001B0A02 /* SavedSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFE2D1A79DD46001B0A02 /* SavedSongsViewController.swift */; };
 		77DDCDA21A86D93A0062B83F /* ChooseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DDCDA11A86D93A0062B83F /* ChooseTrackView.swift */; };
 		77DDCDA51A86E02E0062B83F /* Taylor.png in Resources */ = {isa = PBXBuildFile; fileRef = 77DDCDA41A86E02E0062B83F /* Taylor.png */; };
+		77E17D521AED9229008E9D2D /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E17D511AED9229008E9D2D /* ImageLoader.swift */; };
+		77E17D561AED95F4008E9D2D /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E17D551AED95F4008E9D2D /* SongCell.swift */; };
 		77E2B73E1A7C16CC00E3C4BC /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */; };
 		B835AA0B1AC48ABE00428971 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B835AA0A1AC48ABE00428971 /* Credentials.swift */; };
 		B841D0011A9A969300B5D921 /* MagicalImportFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = B841CFC51A9A969300B5D921 /* MagicalImportFunctions.m */; };
@@ -407,6 +409,8 @@
 		77CEFE2D1A79DD46001B0A02 /* SavedSongsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSongsViewController.swift; sourceTree = "<group>"; };
 		77DDCDA11A86D93A0062B83F /* ChooseTrackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTrackView.swift; sourceTree = "<group>"; };
 		77DDCDA41A86E02E0062B83F /* Taylor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Taylor.png; sourceTree = "<group>"; };
+		77E17D511AED9229008E9D2D /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		77E17D551AED95F4008E9D2D /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
 		B835AA0A1AC48ABE00428971 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		B841CFC41A9A969300B5D921 /* MagicalImportFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalImportFunctions.h; sourceTree = "<group>"; };
@@ -904,6 +908,7 @@
 				7777C2571AECAEC100B300F9 /* LFTPulseAnimation.swift */,
 				7777C25D1AECB43800B300F9 /* PulsingLayer.swift */,
 				7777C25F1AECC18700B300F9 /* SiriWaveformView.swift */,
+				77E17D511AED9229008E9D2D /* ImageLoader.swift */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -930,6 +935,7 @@
 				77BFE9D51A814C5F00F1AAC1 /* SettingsViewController.swift */,
 				77B856F71A79E4BB00A51186 /* MainViewController.swift */,
 				77DDCDA11A86D93A0062B83F /* ChooseTrackView.swift */,
+				77E17D551AED95F4008E9D2D /* SongCell.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1233,6 +1239,7 @@
 				776A5A7C1A87A41100D7B091 /* GenresViewController.swift in Sources */,
 				B841D0171A9A969300B5D921 /* MagicalRecord+iCloud.m in Sources */,
 				77040B0F1A86CA3E0065D260 /* UIView+MDCSwipeToChoose.m in Sources */,
+				77E17D561AED95F4008E9D2D /* SongCell.swift in Sources */,
 				778231601AEC2EFD00F6E332 /* XLFormSegmentedCell.m in Sources */,
 				B841D0031A9A969300B5D921 /* NSEntityDescription+MagicalDataImport.m in Sources */,
 				776A5A691A87344000D7B091 /* STKAutoRecoveringHTTPDataSource.m in Sources */,
@@ -1313,6 +1320,7 @@
 				77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */,
 				77DDCDA21A86D93A0062B83F /* ChooseTrackView.swift in Sources */,
 				B841D00B1A9A969300B5D921 /* NSManagedObject+MagicalRecord.m in Sources */,
+				77E17D521AED9229008E9D2D /* ImageLoader.swift in Sources */,
 				778231721AEC2EFD00F6E332 /* UIView+XLFormAdditions.m in Sources */,
 				B841D00F1A9A969300B5D921 /* NSManagedObjectContext+MagicalRecord.m in Sources */,
 				B841D01B1A9A969300B5D921 /* MagicalRecord.m in Sources */,
