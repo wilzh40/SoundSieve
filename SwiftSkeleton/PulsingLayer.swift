@@ -80,9 +80,9 @@ class PulsingLayer: CALayer {
             self.addAnimation(self.animationGroup, forKey:nil)
         }*/
         
-        var normalizedValue = pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(0) / 20)
+        var normalizedValue = pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(0) / 20) + pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(1) / 20)
         println(normalizedValue)
-        if normalizedValue > self.threshold{
+        if normalizedValue > self.threshold*2{
             intervalsSinceLastBeat++
             if intervalsSinceLastBeat > intervalThreshold {
                 self.setupAnimationGroup()
