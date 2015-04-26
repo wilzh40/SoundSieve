@@ -107,15 +107,13 @@ class Singleton {
       
         // Every 0.3 seconds we monitor the levels of the audio
         
-        var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "meterAudio", userInfo: nil, repeats: true)
+        //var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "meterAudio", userInfo: nil, repeats: true)
      
 
       
     }
     
-    @objc func meterAudio() {
-        println(audioPlayer.peakPowerInDecibelsForChannel(1))
-    }
+ 
     
     func addTrackToSavedTracks(thisTrack: Track) {
         let track = NSManagedObject(entity: self.entity!, insertIntoManagedObjectContext: managedContext)

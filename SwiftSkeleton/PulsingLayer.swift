@@ -21,16 +21,27 @@ class PulsingLayer: CALayer {
     var pulseInterval: NSTimeInterval
     var animationGroup: CAAnimationGroup
     
+    let singleton = Singleton.sharedInstance
+    var threshold: Float
+    var intervalThreshold: Float
+    var intervalsSinceLastBeat: Float
+    
+    
     override init() {
         // before super.init()
-        self.radius = 60
-        self.fromValueForRadius = 0.0
+        self.radius = 100
+        self.fromValueForRadius = 2
         self.fromValueForAlpha = 0.45
-        self.keyTimeForHalfOpacity = 0.2
+        self.keyTimeForHalfOpacity = 0.45
         self.animationDuration = 1
         self.pulseInterval = 0
         self.animationGroup = CAAnimationGroup();
         
+        // metering vars
+        
+        self.threshold = 0.94
+        self.intervalThreshold = 3
+        self.intervalsSinceLastBeat = 0
         super.init()
         
         // after super.init()
@@ -50,10 +61,35 @@ class PulsingLayer: CALayer {
             
             
             dispatch_async(dispatch_get_main_queue(), {
+                // Play the animation once
                 self.addAnimation(self.animationGroup, forKey: "pulse")
+                
+                // Then add a timer that meters the audio
+                var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "meterAudio", userInfo: nil, repeats: true)
             })
             
         })
+    }
+    
+    @objc func meterAudio() {
+        // Everytime the amplitude of the first channel exceeds a threshold
+        // it will play the pulse animation again
+        /*println(singleton.audioPlayer.peakPowerInDecibelsForChannel(1))
+        let lowAmplitude = singleton.audioPlayer.peakPowerInDecibelsForChannel(1)
+        if lowAmplitude > -5 {
+            self.addAnimation(self.animationGroup, forKey:nil)
+        }*/
+        
+        var normalizedValue = pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(0) / 20)
+        println(normalizedValue)
+        if normalizedValue > self.threshold{
+            intervalsSinceLastBeat++
+            if intervalsSinceLastBeat > intervalThreshold {
+                self.setupAnimationGroup()
+                self.addAnimation(self.animationGroup, forKey:nil)
+                intervalsSinceLastBeat = 0
+            }
+        }
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -87,7 +123,7 @@ class PulsingLayer: CALayer {
     }
     
     override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
-        self.removeFromSuperlayer()
+        //self.removeFromSuperlayer()
     }
 }
 
