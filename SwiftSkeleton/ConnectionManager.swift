@@ -132,7 +132,12 @@ class ConnectionManager {
                         track.start_time = child["start_time"].int!
                         
                         if find(playedTracksArray, track.id!) == nil {
-                            tracks.addObject(track)
+                            if Singleton.sharedInstance.settings.duplicates == false {
+                                tracks.addObject(track)
+                            }
+                        }
+                        if tracks.count == 0 {
+                            SwiftSpinner.show("Uh Oh! No more songs...", animated:false)
                         }
                     }
                     Singleton.sharedInstance.tracks = tracks

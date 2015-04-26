@@ -183,6 +183,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         }
         
         var view = ChooseTrackView(track:tracks.objectAtIndex(0) as! Track, frame: frame, options: options)
+        if tracks.count == 0 {
+            SwiftSpinner.show("Uh Oh! No more songs...", animated:false)
+        }
         tracks.removeObjectAtIndex(0)
         //view.imageView.image = UIImage(named: "photo.png")
         

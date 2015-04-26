@@ -71,7 +71,6 @@ class Singleton {
     }
     
      func setupData() {
-        
         //Core Data shit
         self.managedContext = appDelegate.managedObjectContext!
         self.entity = NSEntityDescription.entityForName("SavedTracks", inManagedObjectContext: managedContext!)
