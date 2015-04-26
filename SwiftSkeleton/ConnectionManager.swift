@@ -62,12 +62,19 @@ class ConnectionManager {
 
         let selectedGenre = Singleton.sharedInstance.APIgenres.objectAtIndex(Singleton.sharedInstance.settings.selectedGenre) as! String
         var searchMethod:String
-        switch (Singleton.sharedInstance.settings.selectedSearchMethod) {
+        /*switch (Singleton.sharedInstance.settings.selectedSearchMethod) {
         case .Hot:
             searchMethod = "hot"
         case .Random:
             searchMethod = "random"
+        }*/
+        
+        if Singleton.sharedInstance.settings.hotness == true {
+            searchMethod = "hot"
+        } else {
+            searchMethod = "random"
         }
+        
         let URL = baseURL + searchMethod + "?genres=" + selectedGenre
         
         Alamofire.request(.GET, URL )

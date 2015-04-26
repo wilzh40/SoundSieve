@@ -47,13 +47,6 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         var section : XLFormSectionDescriptor
         var row : XLFormRowDescriptor
         
-        
-        // 
-        
-      
-        //
-        
-        
         form = XLFormDescriptor.formDescriptorWithTitle("Settings") as! XLFormDescriptor
         
         section = XLFormSectionDescriptor.formSectionWithTitle("Genres") as! XLFormSectionDescriptor
@@ -64,6 +57,8 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "detailTextLabel.font")
         row.selectorOptions = Singleton.sharedInstance.genres as [AnyObject]
+        row.value = settings.genre
+    
         section.addFormRow(row)
         
         
@@ -116,6 +111,15 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
 
         print(self.formValues()[formRow.description]!)
         var values = self.formValues() as Dictionary
+        
+        if formRow.description == tag.genre {
+            settings.selectedGenre = Singleton.sharedInstance.genres.indexOfObject(values[tag.genre] as! String)
+            self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+            ConnectionManager.getRandomTracks()
+            SwiftSpinner.show("Switching Genres")
+            
+        }
+      
         
         settings.autoplay = values[tag.autoplay] as! Bool
         settings.duplicates = values[tag.duplicates] as! Bool

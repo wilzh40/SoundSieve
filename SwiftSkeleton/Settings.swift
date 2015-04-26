@@ -27,6 +27,8 @@ class Settings: NSObject, NSCoding {
     var selectedSearchMethod : SearchMethod = .Random
     var startTime : StartTimeOptions = .StartFromPreviewTime
     var selectedGenre: Int = 0
+    var genre: NSString = "Trap"
+
     
     // Bools
 
@@ -48,6 +50,9 @@ class Settings: NSObject, NSCoding {
         self.startTime = StartTimeOptions(rawValue: aDecoder.decodeIntegerForKey("startTime"))!
         self.selectedGenre = aDecoder.decodeIntegerForKey("selectedGenre")
         self.trackSource = TrackSource(rawValue: aDecoder.decodeIntegerForKey("trackSource"))!
+        
+        //self.genre = aDecoder.decodeObjectForKey("genre") as! NSString
+        
         self.autoplay = aDecoder.decodeBoolForKey("autoplay")
         self.duplicates = aDecoder.decodeBoolForKey("duplicates")
         self.hotness = aDecoder.decodeBoolForKey("hotness")
@@ -60,6 +65,9 @@ class Settings: NSObject, NSCoding {
         aCoder.encodeInteger(self.startTime.rawValue, forKey: "startTime")
         aCoder.encodeInteger(self.selectedGenre, forKey: "selectedGenre")
         aCoder.encodeInteger(self.trackSource.rawValue, forKey: "trackSource")
+        
+        //aCoder.encodeObject(self.genre, forKey: "genre")
+        
         aCoder.encodeBool(self.autoplay, forKey: "autoplay")
         aCoder.encodeBool(self.duplicates, forKey: "duplicates")
         aCoder.encodeBool(self.hotness, forKey: "hotness")
