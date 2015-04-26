@@ -38,8 +38,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.view.layoutSubviews()
-      
-    }
+          }
     
 
     
@@ -132,6 +131,10 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         ConnectionManager.authenticateSC()
     }
   
+    func updateUsername(){
+        self.reloadFormRow(self.form.formRowWithTag(tag.account))
+
+    }
     
     override func formRowDescriptorValueHasChanged(formRow: XLFormRowDescriptor!, oldValue: AnyObject!, newValue: AnyObject!) {
         

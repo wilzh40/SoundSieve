@@ -70,6 +70,9 @@ class ConnectionManager {
                 self.getRandomTracks()
                 
             }
+            // Update the username
+            Singleton.sharedInstance.settingsVC!.updateUsername()
+
 
                 if error != nil {
                     println(error)

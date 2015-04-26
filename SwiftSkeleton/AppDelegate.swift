@@ -55,9 +55,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var centerController = storyBoard.instantiateViewControllerWithIdentifier("Center") as! UIViewController
         
-        // CHANGE LATER
+
         var left = UINavigationController(rootViewController:SettingsViewController())
         var right = UINavigationController(rootViewController:SavedSongsViewController())
+        
+        
+        // Add the refs for singleton
+        Singleton.sharedInstance.settingsVC = left.childViewControllers[0] as? SettingsViewController
+        Singleton.sharedInstance.savedSongsVC = right.childViewControllers[0] as? SavedSongsViewController
+        
         left.view.layoutSubviews()
         right.view.layoutSubviews()
 

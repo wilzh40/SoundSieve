@@ -33,6 +33,10 @@ class Singleton {
     var savedTracksAsCoreData: Array<NSManagedObject> = []
     var savedTracks: NSMutableArray = []
 
+    // Refs to VCS
+    
+    var settingsVC: SettingsViewController?
+    var savedSongsVC: SavedSongsViewController?
   
     
 
