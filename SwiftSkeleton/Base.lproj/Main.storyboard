@@ -68,8 +68,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2QS-Ah-EeX" customClass="SiriWaveformView" customModule="SoundSieve" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="320" height="393"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2QS-Ah-EeX" customClass="SiriWaveformView" customModule="SoundSieve" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="320" height="540"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -77,14 +77,14 @@
                         <constraints>
                             <constraint firstItem="WJ2-FF-t12" firstAttribute="top" secondItem="VkX-AU-Nbw" secondAttribute="topMargin" constant="20" id="1U7-cp-zKU"/>
                             <constraint firstItem="oVg-oZ-xX4" firstAttribute="top" secondItem="Mwm-3n-ddD" secondAttribute="bottom" constant="20" id="54d-M9-GqK"/>
-                            <constraint firstItem="2QS-Ah-EeX" firstAttribute="top" secondItem="WJ2-FF-t12" secondAttribute="bottom" id="D4y-mS-8cg"/>
                             <constraint firstItem="WJ2-FF-t12" firstAttribute="leading" secondItem="VkX-AU-Nbw" secondAttribute="leadingMargin" id="Db0-zl-dDT"/>
                             <constraint firstItem="Mwm-3n-ddD" firstAttribute="leading" secondItem="VkX-AU-Nbw" secondAttribute="leadingMargin" id="JXV-CY-XDa"/>
                             <constraint firstAttribute="bottomMargin" secondItem="TcY-ff-CKO" secondAttribute="bottom" constant="8" id="Ui5-zb-Foj"/>
                             <constraint firstItem="5Pl-ng-FBc" firstAttribute="trailing" secondItem="VkX-AU-Nbw" secondAttribute="trailingMargin" id="a6q-1T-fpo"/>
                             <constraint firstItem="2QS-Ah-EeX" firstAttribute="centerX" secondItem="WJ2-FF-t12" secondAttribute="centerX" id="c6r-PH-8gb"/>
-                            <constraint firstItem="TcY-ff-CKO" firstAttribute="top" secondItem="2QS-Ah-EeX" secondAttribute="bottom" id="e3d-Ro-cYj"/>
+                            <constraint firstItem="2QS-Ah-EeX" firstAttribute="top" secondItem="X5W-m6-aXp" secondAttribute="bottom" constant="-50" id="diA-wQ-l5k"/>
                             <constraint firstItem="WJ2-FF-t12" firstAttribute="trailing" secondItem="VkX-AU-Nbw" secondAttribute="trailingMargin" id="fCF-qd-241"/>
+                            <constraint firstItem="oVg-oZ-xX4" firstAttribute="top" secondItem="2QS-Ah-EeX" secondAttribute="bottom" constant="-50" id="kGp-Nt-bha"/>
                             <constraint firstItem="2QS-Ah-EeX" firstAttribute="leading" secondItem="VkX-AU-Nbw" secondAttribute="leading" id="o55-VT-wjm"/>
                             <constraint firstItem="oVg-oZ-xX4" firstAttribute="top" secondItem="5Pl-ng-FBc" secondAttribute="bottom" constant="20" id="vqf-mR-Qac"/>
                             <constraint firstAttribute="centerX" secondItem="TcY-ff-CKO" secondAttribute="centerX" constant="-0.5" id="w0W-H7-hrQ"/>

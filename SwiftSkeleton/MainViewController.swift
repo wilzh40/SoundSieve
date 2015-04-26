@@ -55,19 +55,22 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         var normalizedValue = pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(0) / 20) + pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(1) / 20) - 0.002
         if pausePlayButton.selected {
-            waveformView.updateWithLevel(CGFloat(normalizedValue))
+            waveformView.updateWithLevel(CGFloat(normalizedValue)/2)
         } else {
             waveformView.updateWithLevel(0)
         }
         
-        // If theres a lot of stuff happening change the waveform color
+        // If theres a lot of stuff happening change the waveform properties
         
         if normalizedValue > 1.9 {
             waveformView.waveColor = UIColor.orangeColor()
-            waveformView.layer.transform = CATransform3DMakeScale(1,1.1,1.1)
+            waveformView.layer.transform = CATransform3DMakeScale(1.0,0.8,1.1)
+            waveformView.primaryWaveLineWidth = 5
         } else {
             waveformView.waveColor = UIColor.blackColor()
-               waveformView.layer.transform = CATransform3DMakeScale(1,0.8,1)
+            waveformView.layer.transform = CATransform3DMakeScale(1,0.8,1)
+            waveformView.primaryWaveLineWidth = 3
+
         }
         
         // Fade in Title
