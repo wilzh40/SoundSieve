@@ -27,7 +27,7 @@ class ChooseTrackView : MDCSwipeToChooseView {
         //self.constructInfoView()
 
        // self.constructNameLabel()
-        self.addBackground()
+      //  self.addBackground()
 
     }
     required init(coder aDecoder: NSCoder)

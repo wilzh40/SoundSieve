@@ -39,8 +39,8 @@ class Singleton {
     // Settings
     var settings: Settings = Settings()
     var token: String?
-    var genres: NSMutableArray = ["Dance & Edm","Trap","House","Ambient","Pop","Indie"]
-    var APIgenres: NSMutableArray = ["dance%20%26%20edm","trap","house","ambient","pop","indie"]
+    var genres: NSMutableArray = ["Dance & Edm","Trap","Hip Hop and Rap","House","Ambient","Pop","Indie"]
+    var APIgenres: NSMutableArray = ["dance%20%26%20edm","trap","hip%20hop%20%26%20rap","house","ambient","pop","indie"]
     
     /*
     var selectedSearchMethod : SearchMethod = .Random {
