@@ -289,6 +289,14 @@
 }
 
 
+- (void)willPresentActionSheet:(UIActionSheet *)actionSheet {
+    for (UIView *_currentView in actionSheet.subviews) {
+        if ([_currentView isKindOfClass:[UILabel class]]) {
+            [((UILabel *)_currentView) setFont:[UIFont fontWithName:@"Futura" size:17]];
+        }
+    }}
+
+
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

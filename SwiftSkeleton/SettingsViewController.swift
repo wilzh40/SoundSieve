@@ -61,6 +61,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "detailTextLabel.font")
         row.selectorOptions = Singleton.sharedInstance.genres as [AnyObject]
         row.value = Singleton.sharedInstance.genres.objectAtIndex(settings.selectedGenre)
+        
     
         section.addFormRow(row)
         
