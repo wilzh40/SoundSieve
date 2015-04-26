@@ -103,7 +103,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         options.onPan = { state -> Void in
             let frame = self.backCardViewFrame()
             self.backCardView?.frame = CGRectMake(frame.origin.x,
-                frame.origin.y - (state.thresholdRatio * 10),
+                frame.origin.y + (state.thresholdRatio * 10),
                 CGRectGetWidth(frame),
                 CGRectGetHeight(frame))
             

@@ -187,7 +187,10 @@ class ConnectionManager {
             
             Singleton.sharedInstance.audioPlayer.seekToTime(Double(time))
             println("Playing: \(track.title) at time: \(track.start_time/1000)")
-            self.queueStreamFromTrack(nextTrack)
+            
+            if Singleton.sharedInstance.settings.autoplay == true {
+                self.queueStreamFromTrack(nextTrack)
+            }
             
         }
         
