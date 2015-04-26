@@ -18,6 +18,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var xButton: UIButton!
     @IBOutlet weak var pausePlayButton: AnimatedStartButton!
+    @IBOutlet weak var waveformView: SiriWaveformView!
     
     let settings = Singleton.sharedInstance.settings
     let pulsingLayer = PulsingLayer()
@@ -28,12 +29,52 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     var backCardView: ChooseTrackView?
     var currentTrack: Track?
     
+    var animating: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ConnectionManager.sharedInstance.delegate = self
         Singleton.sharedInstance.audioPlayer.delegate = self
+        
+        // Start tracking audio
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "meterAudio", userInfo: nil, repeats: true)
         //self.view.backgroundColor = UIColor(red: 1.00, green: 0.95, blue: 0.85, alpha: 1.0)
     }
+    
+    func meterAudio() {
+        
+        // Animate waveform according to loudness while playing
+        
+        var normalizedValue = pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(0) / 20) + pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(1) / 20) - 0.002
+        if pausePlayButton.selected {
+            waveformView.updateWithLevel(CGFloat(normalizedValue))
+        } else {
+            waveformView.updateWithLevel(0)
+        }
+        
+        
+        if normalizedValue == 2.0 {
+            waveformView.waveColor = UIColor.orangeColor()
+        }
+        
+        // Fade in Title
+        
+        if normalizedValue == 0 {
+            animating = false
+            titleLabel?.alpha = 0.5
+            waveformView?.alpha = 0.2
+        } else {
+            if (!animating) {
+            UIView.animateWithDuration(1, animations: {
+                self.titleLabel.alpha = 1
+                self.waveformView?.alpha = 1
+            })
+                animating = true
+            }
+          
+        }
+    }
+    
     override func viewWillDisappear(animated:Bool) {
         super.viewWillDisappear(animated)
         self.view.userInteractionEnabled = false
@@ -81,12 +122,15 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
        
         pulsingLayer.position = pausePlayButton.center
         view.layer.insertSublayer(pulsingLayer, below: pausePlayButton.layer)
+         //view.addSubview(waveformView)
+       
         
         // Bring buttons to front
 
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
         self.view.bringSubviewToFront(pausePlayButton)
+        self.view.sendSubviewToBack(waveformView)
         xButton.adjustsImageWhenHighlighted = true
         checkButton.adjustsImageWhenHighlighted = true
     }

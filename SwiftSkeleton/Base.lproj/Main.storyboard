@@ -68,6 +68,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2QS-Ah-EeX" customClass="SiriWaveformView" customModule="SoundSieve" customModuleProvider="target">
+                                <rect key="frame" x="-5" y="100" width="330" height="297"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -88,12 +92,13 @@
                         <outlet property="checkButton" destination="5Pl-ng-FBc" id="Nxo-CS-hyz"/>
                         <outlet property="pausePlayButton" destination="TcY-ff-CKO" id="6f3-3w-VS3"/>
                         <outlet property="titleLabel" destination="WJ2-FF-t12" id="pYj-8B-Ar4"/>
+                        <outlet property="waveformView" destination="2QS-Ah-EeX" id="MUc-wA-QYI"/>
                         <outlet property="xButton" destination="Mwm-3n-ddD" id="jAi-iE-nko"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9lZ-QW-Vvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="799" y="240"/>
+            <point key="canvasLocation" x="823" y="240"/>
         </scene>
         <!--Genres View Controller-->
         <scene sceneID="J5x-gq-12a">
