@@ -59,6 +59,9 @@ class Singleton {
     var managedContext: NSManagedObjectContext?
     var entity: NSEntityDescription?
 
+    func visualize() {
+        
+    }
     
      func setupData() {
         
@@ -99,8 +102,19 @@ class Singleton {
         audioPlayer.meteringEnabled = true
         audioPlayer.volume = 1
         audioPlayer.equalizerEnabled = true
+        println(audioPlayer.frameFilters)
+        
+      
+        // Every 0.3 seconds we monitor the levels of the audio
+        
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "meterAudio", userInfo: nil, repeats: true)
+     
 
       
+    }
+    
+    @objc func meterAudio() {
+        println(audioPlayer.peakPowerInDecibelsForChannel(1))
     }
     
     func addTrackToSavedTracks(thisTrack: Track) {
