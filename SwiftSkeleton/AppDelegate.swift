@@ -66,6 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         left.view.layoutSubviews()
         right.view.layoutSubviews()
+        Singleton.sharedInstance.settingsVC?.updateUsername()
+        
+        
 
        // var left = storyBoard.instantiateViewControllerWithIdentifier("Left") as! UIViewController
        // var right = storyBoard.instantiateViewControllerWithIdentifier("Right")as! UIViewController

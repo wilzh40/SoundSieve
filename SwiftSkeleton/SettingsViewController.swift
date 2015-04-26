@@ -20,6 +20,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         static let preview = "preview"
         static let waveform = "waveform"
         static let account = "account"
+        static let credits = "credits"
     }
     
   /*  required init(coder aDecoder: NSCoder) {
@@ -120,7 +121,19 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         row.value = Singleton.sharedInstance.username
         row.action.formSelector = "connectSC"
         section.addFormRow(row)
+    // Credits
+        section = XLFormSectionDescriptor.formSectionWithTitle("Credits") as! XLFormSectionDescriptor
+        
+        form.addFormSection(section)
+        
+        // Account
+        let credits = "This app contains code from: StreamingKit (Thong Ngyuen), XLForms (Xmartlabs) "
+        row = XLFormRowDescriptor(tag: tag.credits, rowType: XLFormRowDescriptorTypeInfo, title: credits)
+        row.cellConfig.setObject(UIFont(name:"Futura",size:8.00)!, forKey: "textLabel.font")
+        
 
+
+        section.addFormRow(row)
         
         self.form = form;
         

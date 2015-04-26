@@ -299,6 +299,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         sender.selected = !sender.selected
         if(sender.selected) {
             singleton.audioPlayer.resume()
+            singleton.audioPlayer.unmute()
         } else {
             singleton.audioPlayer.pause()
         }
