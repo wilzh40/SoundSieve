@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-import AlamofireSwiftyJSON
+
 import OAuthSwift
 import UIKit
 import AVFoundation
@@ -39,9 +39,8 @@ class ConnectionManager {
         // The callback URL matches the one given on the soundsieve sc account
         // After the user logins Safari redirects it to "SoundSieve://" which opens the app natively
         // After successful authentication the openURL function in appDelegate is called
-        
-        oauthswift.authorizeWithCallbackURL( NSURL(string: "SoundSieve://oauth-callback")!, scope: "non-expiring", state: "", success: {
-            credential, response in
+        oauthswift.authorizeWithCallbackURL(NSURL(string: "SoundSieve://oauth-callback")!, scope: "non-expiring", state: "", success: {
+            credential, response, parameters in
             println("Soundcloud", message: "oauth_token:\(credential.oauth_token)")
             Singleton.sharedInstance.token = credential.oauth_token
             ConnectionManager.getUsername()

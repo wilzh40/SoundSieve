@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import DrawerController
 
 class CenterViewController: UIViewController, ConnectionProtocol {
     let singleton:Singleton = Singleton.sharedInstance
@@ -21,8 +22,8 @@ class CenterViewController: UIViewController, ConnectionProtocol {
         
     }
     func setupLeftMenuButton() {
-        let leftDrawerButton = DrawerBarButtonItem(target: self, action: "toggleMenu")
-        self.navigationItem.setLeftBarButtonItem(leftDrawerButton, animated: true)
+       // let leftDrawerButton = DrawerBarButtonItem(target: self, action: "toggleMenu")
+       // self.navigationItem.setLeftBarButtonItem(leftDrawerButton, animated: true)
         
     }
     func toggleMenu() {
