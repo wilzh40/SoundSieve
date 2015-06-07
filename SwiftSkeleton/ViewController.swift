@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AlamofireSwiftyJSON
 import Alamofire
 import SwiftyJSON
 

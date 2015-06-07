@@ -748,7 +748,6 @@
 				B841CFC11A9A969300B5D921 /* MagicalRecord */,
 				776A5A531A87344000D7B091 /* StreamingKit */,
 				77040AE61A86CA3E0065D260 /* MDCSwipeToChoose */,
-				77CEFE261A79D5CE001B0A02 /* DrawerController */,
 				776A5ABA1A87DDD700D7B091 /* SwiftSpinner.swift */,
 				7777C2571AECAEC100B300F9 /* LFTPulseAnimation.swift */,
 				7777C25D1AECB43800B300F9 /* PulsingLayer.swift */,
@@ -758,14 +757,6 @@
 			);
 			name = External;
 			sourceTree = "<group>";
-		};
-		77CEFE261A79D5CE001B0A02 /* DrawerController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = DrawerController;
-			path = External/DrawerController/DrawerController;
-			sourceTree = SOURCE_ROOT;
 		};
 		77CEFE2F1A79DD4D001B0A02 /* ViewControllers */ = {
 			isa = PBXGroup;
