@@ -33,7 +33,6 @@ class ConnectionManager {
             consumerSecret: Soundcloud["consumerSecret"]!,
             authorizeUrl:   "https://soundcloud.com/connect",
             responseType:   "token"
-            
         )
         
         // The callback URL matches the one given on the soundsieve sc account
@@ -151,11 +150,7 @@ class ConnectionManager {
                     Singleton.sharedInstance.tracks = tracks
                     ConnectionManager.sharedInstance.delegate?.didGetTracks!()
                 }
-                
-                
             })
-        
-        
     }
     
     class func getTrackStream (trackUrl:String) {
@@ -213,6 +208,19 @@ class ConnectionManager {
     }
     
     
+    class func unFavoriteTrack (track: Track) {
+        let URL = soundcloudURL + "me/favorites/" + String(track.id!)
+        let parameters = ["oauth_token": Singleton.sharedInstance.token!]
+        Alamofire.request(.DELETE, URL, parameters: parameters)
+            .response { (request, response, responseJSON, error) in
+                println(request)
+                println(response)
+                
+                if error != nil {
+                    println(error)
+                }
+        }
+    }
     
     class func playStreamFromTrack(track:Track, nextTrack:Track) {
         

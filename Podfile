@@ -1,4 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
+xcodeproj './SoundSieve.xcodeproj'
 use_frameworks!
 pod 'XLForm'
 pod 'OAuthSwift'

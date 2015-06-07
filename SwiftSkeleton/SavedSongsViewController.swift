@@ -123,6 +123,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            ConnectionManager.unFavoriteTrack(singleton.savedTracks[indexPath.row] as! Track);
             singleton.deleteSavedTrackAtIndex(indexPath.row)
             self.tableData = singleton.savedTracks
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
