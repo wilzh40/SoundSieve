@@ -506,6 +506,13 @@
 			path = StreamingKit;
 			sourceTree = "<group>";
 		};
+		7771B2581B23EB3D0027DC30 /* RMParallax */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = RMParallax;
+			sourceTree = "<group>";
+		};
 		778231041AEC2EFD00F6E332 /* XLForm */ = {
 			isa = PBXGroup;
 			children = (
@@ -744,6 +751,7 @@
 		77CEFE211A79D5C6001B0A02 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				7771B2581B23EB3D0027DC30 /* RMParallax */,
 				778231041AEC2EFD00F6E332 /* XLForm */,
 				B841CFC11A9A969300B5D921 /* MagicalRecord */,
 				776A5A531A87344000D7B091 /* StreamingKit */,
