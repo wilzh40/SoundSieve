@@ -41,14 +41,11 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.view.layoutSubviews()
         self.updateUsername()
-        self.evo_drawerController?.centerViewController?.view.userInteractionEnabled = false
+        self.evo_drawerController?.centerViewController?.view.userInteractionEnabled
         
           }
     
-    override func viewWillDisappear(animated: Bool) {
-        self.evo_drawerController?.centerViewController?.view.userInteractionEnabled = true
 
-    }
     
     func initializeForm() {
         
@@ -159,7 +156,8 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         self.reloadFormRow(self.form.formRowWithTag(tag.account))
 
     }
-    
+
+
     override func formRowDescriptorValueHasChanged(formRow: XLFormRowDescriptor!, oldValue: AnyObject!, newValue: AnyObject!) {
         
         // Called once a value is changed
@@ -167,7 +165,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
 
         var values = self.formValues() as Dictionary
         
-        if formRow.description == tag.genre {
+        if formRow.tag == tag.genre {
             // Get the index of the selection, works seemlessly with existing code
             
             settings.selectedGenre = Singleton.sharedInstance.genres.indexOfObject(values[tag.genre] as! String)
@@ -176,7 +174,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
             SwiftSpinner.show("Switching Genres")
         }
       
-        if formRow.description == tag.hotness {
+        if formRow.tag == tag.hotness {
             settings.hotness = values[tag.hotness] as! Bool
             ConnectionManager.getRandomTracks()
             SwiftSpinner.show("Switching Sorting")
