@@ -32,6 +32,9 @@
 		776A5A741A8738FE00D7B091 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776A5A721A8738FE00D7B091 /* AVKit.framework */; };
 		776A5A7C1A87A41100D7B091 /* GenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A5A7B1A87A41100D7B091 /* GenresViewController.swift */; };
 		776A5ABB1A87DDD700D7B091 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776A5ABA1A87DDD700D7B091 /* SwiftSpinner.swift */; };
+		7771B25C1B23EB8C0027DC30 /* RMParallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7771B25B1B23EB8C0027DC30 /* RMParallax.swift */; };
+		7771B25E1B23EC470027DC30 /* RMParallaxItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7771B25D1B23EC470027DC30 /* RMParallaxItem.swift */; };
+		7771B2601B23FC700027DC30 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7771B25F1B23FC700027DC30 /* WalkthroughViewController.swift */; };
 		7777C2581AECAEC100B300F9 /* LFTPulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7777C2571AECAEC100B300F9 /* LFTPulseAnimation.swift */; };
 		7777C25E1AECB43800B300F9 /* PulsingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7777C25D1AECB43800B300F9 /* PulsingLayer.swift */; };
 		7777C2601AECC18700B300F9 /* SiriWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7777C25F1AECC18700B300F9 /* SiriWaveformView.swift */; };
@@ -197,6 +200,9 @@
 		776A5A721A8738FE00D7B091 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		776A5A7B1A87A41100D7B091 /* GenresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresViewController.swift; sourceTree = "<group>"; };
 		776A5ABA1A87DDD700D7B091 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
+		7771B25B1B23EB8C0027DC30 /* RMParallax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMParallax.swift; sourceTree = "<group>"; };
+		7771B25D1B23EC470027DC30 /* RMParallaxItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMParallaxItem.swift; sourceTree = "<group>"; };
+		7771B25F1B23FC700027DC30 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		7777C2571AECAEC100B300F9 /* LFTPulseAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFTPulseAnimation.swift; sourceTree = "<group>"; };
 		7777C25D1AECB43800B300F9 /* PulsingLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsingLayer.swift; sourceTree = "<group>"; };
 		7777C25F1AECC18700B300F9 /* SiriWaveformView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiriWaveformView.swift; sourceTree = "<group>"; };
@@ -509,6 +515,8 @@
 		7771B2581B23EB3D0027DC30 /* RMParallax */ = {
 			isa = PBXGroup;
 			children = (
+				7771B25B1B23EB8C0027DC30 /* RMParallax.swift */,
+				7771B25D1B23EC470027DC30 /* RMParallaxItem.swift */,
 			);
 			name = RMParallax;
 			sourceTree = "<group>";
@@ -772,6 +780,7 @@
 				778084121A9A846D007CBD7F /* WebViewController.swift */,
 				776A5A7B1A87A41100D7B091 /* GenresViewController.swift */,
 				77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */,
+				7771B25F1B23FC700027DC30 /* WalkthroughViewController.swift */,
 				77CEFE2D1A79DD46001B0A02 /* SavedSongsViewController.swift */,
 				77BFE9D51A814C5F00F1AAC1 /* SettingsViewController.swift */,
 				77B856F71A79E4BB00A51186 /* MainViewController.swift */,
@@ -1109,6 +1118,7 @@
 				778231731AEC2EFD00F6E332 /* XLFormRightDetailCell.m in Sources */,
 				778231701AEC2EFD00F6E332 /* NSPredicate+XLFormAdditions.m in Sources */,
 				B841D0151A9A969300B5D921 /* MagicalRecord+Actions.m in Sources */,
+				7771B2601B23FC700027DC30 /* WalkthroughViewController.swift in Sources */,
 				77B856F81A79E4BB00A51186 /* MainViewController.swift in Sources */,
 				B841D00C1A9A969300B5D921 /* NSManagedObject+MagicalRequests.m in Sources */,
 				778231651AEC2EFD00F6E332 /* XLFormTextFieldCell.m in Sources */,
@@ -1117,6 +1127,7 @@
 				B841D0131A9A969300B5D921 /* NSPersistentStore+MagicalRecord.m in Sources */,
 				B841D0041A9A969300B5D921 /* NSNumber+MagicalDataImport.m in Sources */,
 				B835AA0B1AC48ABE00428971 /* Credentials.swift in Sources */,
+				7771B25E1B23EC470027DC30 /* RMParallaxItem.swift in Sources */,
 				778231681AEC2EFD00F6E332 /* XLFormOptionsViewController.m in Sources */,
 				7777C2581AECAEC100B300F9 /* LFTPulseAnimation.swift in Sources */,
 				776A5ABB1A87DDD700D7B091 /* SwiftSpinner.swift in Sources */,
@@ -1139,6 +1150,7 @@
 				778231741AEC2EFD00F6E332 /* XLFormRightImageButton.m in Sources */,
 				776A5A6E1A87344000D7B091 /* STKLocalFileDataSource.m in Sources */,
 				778231611AEC2EFD00F6E332 /* XLFormSelectorCell.m in Sources */,
+				7771B25C1B23EB8C0027DC30 /* RMParallax.swift in Sources */,
 				778231771AEC2EFD00F6E332 /* XLFormRegexValidator.m in Sources */,
 				B841D0091A9A969300B5D921 /* NSManagedObject+MagicalDataImport.m in Sources */,
 				77B856FE1A79EC1A00A51186 /* ConnectionManager.swift in Sources */,
