@@ -48,7 +48,12 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     override func viewWillAppear(animated: Bool) {
         self.reloadData()
         self.navigationController?.view.layoutSubviews()
+        self.evo_drawerController?.centerViewController?.view.userInteractionEnabled = false
         
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.evo_drawerController?.centerViewController?.view.userInteractionEnabled = true
         
     }
 

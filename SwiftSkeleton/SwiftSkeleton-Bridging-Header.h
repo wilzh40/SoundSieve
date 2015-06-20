@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 //#import <XLForm/XLForm.h>
 #import "MDCSwipeToChoose.h"
-#import "XLForm.h"
+//#import "XLForm.h"
 #import "STKAudioPlayer.h"
 #import "CoreData+MagicalRecord.h"
 
