@@ -127,13 +127,17 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         form.addFormSection(section)
         
         // Account
-        let credits = "This app contains code from: StreamingKit (Thong Ngyuen), XLForms (Xmartlabs) "
+     
+        let credits2 = "Wilson Zhao | Brian Ng | Kevin Zeng "
+        row = XLFormRowDescriptor(tag: tag.credits, rowType: XLFormRowDescriptorTypeInfo, title: credits2)
+        row.cellConfig.setObject(UIFont(name:"Futura",size:10.00)!, forKey: "textLabel.font")
+        section.addFormRow(row)
+        
+        let credits = "Uses StreamingKit (Thong Ngyuen), XLForms (Xmartlabs)"
         row = XLFormRowDescriptor(tag: tag.credits, rowType: XLFormRowDescriptorTypeInfo, title: credits)
         row.cellConfig.setObject(UIFont(name:"Futura",size:8.00)!, forKey: "textLabel.font")
-        
-
-
         section.addFormRow(row)
+        
         
         self.form = form;
         
