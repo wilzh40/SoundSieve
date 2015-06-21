@@ -38,6 +38,7 @@ class Settings: NSObject, NSCoding {
     var hotness: Bool = false
     var preview: Bool = true
     var waveform: Bool = true
+    var firstLaunch: Bool = true
 
    /* override init() {
         var selectedSearchMethod : SearchMethod = .Random
@@ -60,6 +61,7 @@ class Settings: NSObject, NSCoding {
         self.hotness = aDecoder.decodeBoolForKey("hotness")
         self.preview = aDecoder.decodeBoolForKey("preview")
         self.waveform = aDecoder.decodeBoolForKey("waveform")
+        self.firstLaunch = aDecoder.decodeBoolForKey("firstLaunch")
 
         
     }
@@ -77,6 +79,7 @@ class Settings: NSObject, NSCoding {
         aCoder.encodeBool(self.hotness, forKey: "hotness")
         aCoder.encodeBool(self.preview, forKey: "preview")
         aCoder.encodeBool(self.waveform, forKey: "waveform")
+        aCoder.encodeBool(self.firstLaunch, forKey: "firstLaunch")
 }
 }
 

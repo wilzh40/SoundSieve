@@ -32,14 +32,46 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     var animating: Bool = false
     
+//    override func prefersStatusBarHidden() -> Bool {
+//        return true
+//    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        settings.firstLaunch == true
+        // Check if its the first launch
+        if settings.firstLaunch == true {
+            //self.presentTutorial()
+        }
+      //  self.presentTutorial()
         ConnectionManager.sharedInstance.delegate = self
         Singleton.sharedInstance.audioPlayer.delegate = self
         
         // Start tracking audio
-        var timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "meterAudio", userInfo: nil, repeats: true)
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.03, target: self, selector: "meterAudio", userInfo: nil, repeats: true)
+         waveformView.layer.transform = CATransform3DMakeScale(1,0.8,1)
+
         //self.view.backgroundColor = UIColor(red: 1.00, green: 0.95, blue: 0.85, alpha: 1.0)
+    }
+    
+    func presentTutorial() {
+        
+        let item1 = RMParallaxItem(image: UIImage(named: "check")!, text: "SHARE LIGHTBOXES WITH YOUR TEAM")
+        let item2 = RMParallaxItem(image: UIImage(named: "Taylor.png")!, text: "FOLLOW WORLD CLASS PHOTOGRAPHERS")
+        let item3 = RMParallaxItem(image: UIImage(named: "Taylor.png")!, text: "EXPLORE OUR COLLECTION BY CATEGORY")
+        
+        let rmParallaxViewController = RMParallax(items: [item1, item2, item3], motion: false)
+        rmParallaxViewController.completionHandler = {
+            UIView.animateWithDuration(0.4, animations: { () -> Void in
+                rmParallaxViewController.view.alpha = 0.0
+            })
+        }
+        
+        // Adding parallax view controller.
+        self.addChildViewController(rmParallaxViewController)
+       // UIApplication.sharedApplication().addSubview(rmParallaxViewController.view)
+        rmParallaxViewController.didMoveToParentViewController(self)
     }
     
     func meterAudio() {
@@ -58,18 +90,18 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         if pausePlayButton.selected {
             waveformView.updateWithLevel(CGFloat(normalizedValue)/2)
         } else {
-            waveformView.updateWithLevel(0)
+            waveformView.updateWithLevel(0.01)
         }
         
         // If theres a lot of stuff happening change the waveform properties
         
         if normalizedValue > 1.9 {
             waveformView.waveColor = UIColor.orangeColor()
-            waveformView.layer.transform = CATransform3DMakeScale(1.0,0.8,1.1)
+           // waveformView.layer.transform = CATransform3DMakeScale(1.0,0.8,1.1)
             waveformView.primaryWaveLineWidth = 5
         } else {
             waveformView.waveColor = UIColor.blackColor()
-            waveformView.layer.transform = CATransform3DMakeScale(1,0.8,1)
+         //   waveformView.layer.transform = CATransform3DMakeScale(1,0.8,1)
             waveformView.primaryWaveLineWidth = 3
 
         }
