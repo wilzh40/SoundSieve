@@ -247,7 +247,7 @@ class ConnectionManager {
             
             
             if Singleton.sharedInstance.settings.autoplay == true {
-                self.queueStreamFromTrack(nextTrack)
+               // self.queueStreamFromTrack(nextTrack)
             }
             
         }

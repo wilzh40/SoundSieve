@@ -26,12 +26,13 @@ class WalkthroughViewController: UIViewController {
 
         
         let item1 = RMParallaxItem(image: UIImage(named: "Tut1")!, text: "BASICALLY TINDER FOR SOUNDCLOUD (SWIPE FOR MORE INFO)")
+        let item5 = RMParallaxItem(image: UIImage(named: "Tut5")!, text: "PREVIEW THE BEST PART OF THE SONG (BASED ON COMMENT DENSITY)")
         let item2 = RMParallaxItem(image: UIImage(named: "Tut2")!, text: "SWIPE LEFT TO SKIP THE SONG")
         let item3 = RMParallaxItem(image: UIImage(named: "Tut3")!, text: "SWIPE RIGHT IF YOU THINK ITS DOPE")
-        let item4 = RMParallaxItem(image: UIImage(named: "Tut4")!, text: "(AND FAV IT IF YOU LINKED YOUR SOUNDCLOUD ACCOUNT)")
+        let item4 = RMParallaxItem(image: UIImage(named: "Tut4")!, text: "(AND FAV IT IN SOUNDCLOUD)")
 
         
-        let rmpvc = RMParallax(items: [item1, item2, item3, item4], motion: false)
+        let rmpvc = RMParallax(items: [item1, item5, item2, item3, item4], motion: false)
 
         rmpvc.completionHandler = {
             UIView.animateWithDuration(0.4, animations: { () -> Void in
