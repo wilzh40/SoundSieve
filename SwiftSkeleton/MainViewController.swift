@@ -182,7 +182,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
         self.view.bringSubviewToFront(pausePlayButton)
-        self.view.bringSubviewToFront(waveformView)
+        //self.view.bringSubviewToFront(waveformView)
         waveformView.userInteractionEnabled = false
         xButton.adjustsImageWhenHighlighted = true
         checkButton.adjustsImageWhenHighlighted = true
