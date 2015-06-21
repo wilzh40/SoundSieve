@@ -181,6 +181,8 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
             
         }
         
+        ConnectionManager.sharedInstance.delegate?.updatePausePlayButton!(true)
+        
         settings.autoplay = values[tag.autoplay] as! Bool
         settings.duplicates = values[tag.duplicates] as! Bool
         

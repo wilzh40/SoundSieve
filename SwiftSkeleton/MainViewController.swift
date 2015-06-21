@@ -112,11 +112,14 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             animating = false
             titleLabel?.alpha = 0.5
             waveformView?.alpha = 0.2
+            //pausePlayButton?.alpha = 0.7
         } else {
             if (!animating) {
             UIView.animateWithDuration(1, animations: {
                 self.titleLabel.alpha = 1
                 self.waveformView?.alpha = 1
+                
+                //self.pausePlayButton?.alpha = 1
             })
                 animating = true
             }
@@ -179,7 +182,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
         self.view.bringSubviewToFront(pausePlayButton)
-        self.view.sendSubviewToBack(waveformView)
+        self.view.bringSubviewToFront(waveformView)
+        waveformView.userInteractionEnabled = false
         xButton.adjustsImageWhenHighlighted = true
         checkButton.adjustsImageWhenHighlighted = true
     }
@@ -330,6 +334,13 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             CGRectGetWidth(frontFrame),CGRectGetHeight(frontFrame))
         }
     
+    func updatePausePlayButton(play: Bool) {
+        if (play) {
+            pausePlayButton.selected = true
+        } else {
+            pausePlayButton.selected = false
+        }
+    }
     
     // Pause play function
     @IBAction func buttonPressed(sender: AnimatedStartButton) {
