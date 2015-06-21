@@ -19,6 +19,7 @@ let soundcloudURL = "http://api.soundcloud.com/"
 
 @objc protocol ConnectionProtocol {
     optional func didGetTracks()
+    optional func updatePausePlayButton(play: Bool)
 }
 class ConnectionManager {
     var delegate : ConnectionProtocol?
