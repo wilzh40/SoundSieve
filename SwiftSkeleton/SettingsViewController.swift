@@ -160,7 +160,11 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
     }
   
     func updateUsername(){
-        self.reloadFormRow(self.form.formRowWithTag(tag.account))
+        //self.reloadFormRow(self.form.formRowWithTag(tag.account))
+        self.updateFormRow(self.form.formRowWithTag(tag.account))
+        if let un = Singleton.sharedInstance.username {
+            self.form.formRowWithTag(tag.account).title = un
+        }
         self.tableView.reloadData()
         println(Singleton.sharedInstance.username)
 

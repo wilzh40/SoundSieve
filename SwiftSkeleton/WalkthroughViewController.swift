@@ -35,7 +35,7 @@ class WalkthroughViewController: UIViewController {
         let rmpvc = RMParallax(items: [item1, item5, item2, item3, item4], motion: false)
         
         rmpvc.completionHandler = {
-            UIView.animateWithDuration(0.4, animations: { () -> Void in
+            UIView.animateWithDuration(0.1, animations: { () -> Void in
                 rmpvc.view.alpha = 0.0
                 
                 self.loadApp()
@@ -133,7 +133,7 @@ class WalkthroughViewController: UIViewController {
         
         // self.window?.rootViewController = drawerCon
         // self.window?.makeKeyAndVisible()
-        self.presentViewController(drawerCon, animated: true, completion: nil)
+        self.presentViewController(drawerCon, animated: false, completion: nil)
         
         SwiftSpinner.show("Initializing...")
         
