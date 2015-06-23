@@ -42,9 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // Connect to soundcloud to get OAuth Token if the user hasn't already
             
-            if Singleton.sharedInstance.token == nil {
-                ConnectionManager.authenticateSC()
-            } else {
+//        //    if Singleton.sharedInstance.token == nil {
+//                ConnectionManager.authenticateSC()
+//            } else {
                 // Load the lists of tracks
                 switch (Singleton.sharedInstance.settings.trackSource) {
                 case .Stream:
@@ -53,8 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     ConnectionManager.getRandomTracks()
                     
                 }
-            }
-            
+//            }
+        
             
             // Connect to soundcloud to get OAuth Token if the user hasn't already
             /* if Singleton.sharedInstance.token == nil {
@@ -73,13 +73,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             
             // Add the refs for singleton
-            Singleton.sharedInstance.settingsVC = left.childViewControllers[0] as? SettingsViewController
-            Singleton.sharedInstance.savedSongsVC = right.childViewControllers[0] as? SavedSongsViewController
+            // Singleton.sharedInstance.settingsVC = left.childViewControllers[0] as? SettingsViewController
+            // Singleton.sharedInstance.savedSongsVC = right.childViewControllers[0] as? SavedSongsViewController
             
             left.view.layoutSubviews()
             right.view.layoutSubviews()
-            Singleton.sharedInstance.settingsVC?.updateUsername()
-            
             
             
             // var left = storyBoard.instantiateViewControllerWithIdentifier("Left") as! UIViewController
@@ -88,6 +86,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var drawerCon = DrawerController(centerViewController: centerController, leftDrawerViewController: left, rightDrawerViewController:right)
             drawerCon.openDrawerGestureModeMask = OpenDrawerGestureMode.BezelPanningCenterView
             drawerCon.closeDrawerGestureModeMask = CloseDrawerGestureMode.PanningCenterView
+            
+            Singleton.sharedInstance.settingsVC = (drawerCon.leftDrawerViewController?.childViewControllers[0] as! SettingsViewController)
+            Singleton.sharedInstance.savedSongsVC = (drawerCon.rightDrawerViewController?.childViewControllers[0] as! SavedSongsViewController)
+            Singleton.sharedInstance.settingsVC!.updateUsername()
+            
+            
             self.window?.rootViewController = drawerCon
             self.window?.makeKeyAndVisible()
             SwiftSpinner.show("Initializing...")

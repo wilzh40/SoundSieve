@@ -23,17 +23,17 @@ class WalkthroughViewController: UIViewController {
         button.setTitle("Button", forState: UIControlState.Normal)
         button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(button) */
-
         
-        let item1 = RMParallaxItem(image: UIImage(named: "Tut1")!, text: "BASICALLY TINDER FOR SOUNDCLOUD (SWIPE FOR MORE INFO)")
+        
+        let item1 = RMParallaxItem(image: UIImage(named: "Tut1")!, text: "BASICALLY TINDER FOR SOUNDCLOUD® (SWIPE FOR MORE INFO)")
         let item5 = RMParallaxItem(image: UIImage(named: "Tut5")!, text: "PREVIEW THE BEST PART OF THE SONG (BASED ON COMMENT DENSITY)")
         let item2 = RMParallaxItem(image: UIImage(named: "Tut2")!, text: "SWIPE LEFT TO SKIP THE SONG")
         let item3 = RMParallaxItem(image: UIImage(named: "Tut3")!, text: "SWIPE RIGHT IF YOU THINK ITS DOPE")
-        let item4 = RMParallaxItem(image: UIImage(named: "Tut4")!, text: "(AND FAV IT IN SOUNDCLOUD)")
-
+        let item4 = RMParallaxItem(image: UIImage(named: "Tut4")!, text: "(AND FAV IT IF YOU LINKED YOUR SOUNDCLOUD ACCOUNT)")
+        
         
         let rmpvc = RMParallax(items: [item1, item5, item2, item3, item4], motion: false)
-
+        
         rmpvc.completionHandler = {
             UIView.animateWithDuration(0.4, animations: { () -> Void in
                 rmpvc.view.alpha = 0.0
@@ -50,7 +50,7 @@ class WalkthroughViewController: UIViewController {
         rmpvc.didMoveToParentViewController(self)
     }
     
-
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
@@ -70,20 +70,25 @@ class WalkthroughViewController: UIViewController {
         
         // Connect to soundcloud to get OAuth Token if the user hasn't already
         
-        if Singleton.sharedInstance.token == nil {
-            ConnectionManager.authenticateSC()
-        } else {
-            // Load the lists of tracks
-            switch (Singleton.sharedInstance.settings.trackSource) {
+//        if Singleton.sharedInstance.token == nil {
+//            ConnectionManager.authenticateSC()
+//        } else {
+//            // Load the lists of tracks
+//            switch (Singleton.sharedInstance.settings.trackSource) {
+//            case .Stream:
+//                ConnectionManager.getUserStream()
+//            case .Explore:
+//                ConnectionManager.getRandomTracks()
+//                
+//            }
+//        }
+        
+        switch (Singleton.sharedInstance.settings.trackSource) {
             case .Stream:
                 ConnectionManager.getUserStream()
             case .Explore:
                 ConnectionManager.getRandomTracks()
-                
-            }
         }
-        
-        
         // Connect to soundcloud to get OAuth Token if the user hasn't already
         /* if Singleton.sharedInstance.token == nil {
         ConnectionManager.authenticateSC()
@@ -103,9 +108,9 @@ class WalkthroughViewController: UIViewController {
         var right = UINavigationController(rootViewController:SavedSongsViewController())
         
         
-        // Add the refs for singleton
-        Singleton.sharedInstance.settingsVC = left.childViewControllers[0] as? SettingsViewController
-        Singleton.sharedInstance.savedSongsVC = right.childViewControllers[0] as? SavedSongsViewController
+       
+        // Singleton.sharedInstance.settingsVC = left.childViewControllers[0] as? SettingsViewController
+        // Singleton.sharedInstance.savedSongsVC = right.childViewControllers[0] as? SavedSongsViewController
         
         left.view.layoutSubviews()
         right.view.layoutSubviews()
@@ -119,11 +124,18 @@ class WalkthroughViewController: UIViewController {
         var drawerCon = DrawerController(centerViewController: centerController, leftDrawerViewController: left, rightDrawerViewController:right)
         drawerCon.openDrawerGestureModeMask = OpenDrawerGestureMode.BezelPanningCenterView
         drawerCon.closeDrawerGestureModeMask = CloseDrawerGestureMode.PanningCenterView
-       // self.window?.rootViewController = drawerCon
-       // self.window?.makeKeyAndVisible()
+        
+         // Add the refs for singleton
+        
+        Singleton.sharedInstance.settingsVC = (drawerCon.leftDrawerViewController?.childViewControllers[0] as! SettingsViewController)
+        Singleton.sharedInstance.savedSongsVC = (drawerCon.rightDrawerViewController?.childViewControllers[0] as! SavedSongsViewController)
+        Singleton.sharedInstance.settingsVC!.updateUsername()
+        
+        // self.window?.rootViewController = drawerCon
+        // self.window?.makeKeyAndVisible()
         self.presentViewController(drawerCon, animated: true, completion: nil)
         
         SwiftSpinner.show("Initializing...")
-
+        
     }
 }

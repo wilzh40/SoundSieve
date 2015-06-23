@@ -83,9 +83,11 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
     func setupRMParallax() {
         let bs: CGFloat = 200
         self.dismissButton = HTPressableButton(frame: CGRectMake(self.view.frame.size.width / 2.0 - (bs / 2.0), self.view.frame.size.height - 20.0 - 40, bs, 40), buttonStyle: HTPressableButtonStyle.Rounded)
-        self.dismissButton.setTitle("Connect with SoundCloud", forState: UIControlState.Normal)
-        self.dismissButton.buttonColor = UIColor.ht_carrotColor()
-        self.dismissButton.shadowColor = UIColor.ht_pumpkinColor()
+        self.dismissButton.setTitle("Let's go!", forState: UIControlState.Normal)
+        self.dismissButton.titleLabel?.textColor = UIColor.whiteColor()
+        self.dismissButton.buttonColor = UIColor.ht_bitterSweetColor()
+        self.dismissButton.shadowColor = UIColor.ht_bitterSweetDarkColor()
+        
         self.dismissButton.shadowHeight = 5;
 
         self.dismissButton.titleLabel?.font = UIFont(name:"Futura",size:12.00)

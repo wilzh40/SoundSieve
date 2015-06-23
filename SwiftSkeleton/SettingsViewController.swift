@@ -120,8 +120,15 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         form.addFormSection(section)
         
         // Account
-        row = XLFormRowDescriptor(tag: tag.account, rowType: XLFormRowDescriptorTypeButton, title: Singleton.sharedInstance.username)
+        if let un = Singleton.sharedInstance.username {
+            row = XLFormRowDescriptor(tag: tag.account, rowType: XLFormRowDescriptorTypeButton, title: Singleton.sharedInstance.username)
+        } else {
+             row = XLFormRowDescriptor(tag: tag.account, rowType: XLFormRowDescriptorTypeButton, title: "Connect with SoundCloud")
+        }
+        row.cellConfig.setObject(UIColor.ht_bitterSweetDarkColor(), forKey: "backgroundColor")
+    
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
+        row.cellConfig.setObject(UIColor.whiteColor(), forKey: "textLabel.color")
         row.value = Singleton.sharedInstance.username
         row.action.formSelector = "connectSC"
         section.addFormRow(row)
@@ -154,6 +161,8 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
   
     func updateUsername(){
         self.reloadFormRow(self.form.formRowWithTag(tag.account))
+        self.tableView.reloadData()
+        println(Singleton.sharedInstance.username)
 
     }
 

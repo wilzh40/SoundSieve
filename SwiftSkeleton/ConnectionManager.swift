@@ -69,7 +69,7 @@ class ConnectionManager {
                     self.getRandomTracks()
                     
                 }
-                // Update the username
+                // Update the
                 Singleton.sharedInstance.settingsVC!.updateUsername()
                 
                 
