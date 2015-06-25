@@ -41,10 +41,15 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.view.layoutSubviews()
         self.updateUsername()
-        self.evo_drawerController?.centerViewController?.view.userInteractionEnabled
+        self.evo_drawerController?.centerViewController?.view.userInteractionEnabled = false
         
-          }
+    }
     
+    override func viewWillDisappear(animated: Bool) {
+        self.evo_drawerController?.centerViewController?.view.userInteractionEnabled = true
+        
+    }
+
 
     
     func initializeForm() {

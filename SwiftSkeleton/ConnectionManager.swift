@@ -244,10 +244,10 @@ class ConnectionManager {
             if Singleton.sharedInstance.settings.preview == true {
                 Singleton.sharedInstance.audioPlayer.seekToTime(Double(time))
                 println("Playing: \(track.title) at time: \(track.start_time/1000)")
-            }
-            
-            
-            if Singleton.sharedInstance.settings.autoplay == true {
+            } else if Singleton.sharedInstance.settings.autoplay == true {
+                
+                // Bug fix explanation: Swiping right with autoplay enabled, preview disabled, resulted in an infinite loop. That is because if preview is enabled there already is a function to ensure it skips under the delegate function in MainViewController
+                
                // self.queueStreamFromTrack(nextTrack)
             }
             

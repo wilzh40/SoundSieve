@@ -13,7 +13,7 @@ import CoreData
 import DrawerController
 
 class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, ConnectionProtocol,STKAudioPlayerDelegate{
-   
+    
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
@@ -32,10 +32,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     var animating: Bool = false
     
-//    override func prefersStatusBarHidden() -> Bool {
-//        return true
-//    }
-
+    //    override func prefersStatusBarHidden() -> Bool {
+    //        return true
+    //    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,14 +44,14 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         if settings.firstLaunch == true {
             //self.presentTutorial()
         }
-      //  self.presentTutorial()
+        //  self.presentTutorial()
         ConnectionManager.sharedInstance.delegate = self
         Singleton.sharedInstance.audioPlayer.delegate = self
         
         // Start tracking audio
         var timer = NSTimer.scheduledTimerWithTimeInterval(0.03, target: self, selector: "meterAudio", userInfo: nil, repeats: true)
-         waveformView.layer.transform = CATransform3DMakeScale(1,0.8,1)
-
+        waveformView.layer.transform = CATransform3DMakeScale(1,0.8,1)
+        
         //self.view.backgroundColor = UIColor(red: 1.00, green: 0.95, blue: 0.85, alpha: 1.0)
     }
     
@@ -70,7 +70,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         // Adding parallax view controller.
         self.addChildViewController(rmParallaxViewController)
-       // UIApplication.sharedApplication().addSubview(rmParallaxViewController.view)
+        // UIApplication.sharedApplication().addSubview(rmParallaxViewController.view)
         rmParallaxViewController.didMoveToParentViewController(self)
     }
     
@@ -97,13 +97,13 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         if normalizedValue > 1.9 {
             waveformView.waveColor = UIColor.ht_bitterSweetDarkColor()
-           // waveformView.layer.transform = CATransform3DMakeScale(1.0,0.8,1.1)
+            // waveformView.layer.transform = CATransform3DMakeScale(1.0,0.8,1.1)
             waveformView.primaryWaveLineWidth = 5
         } else {
             waveformView.waveColor = UIColor.blackColor()
-         //   waveformView.layer.transform = CATransform3DMakeScale(1,0.8,1)
+            //   waveformView.layer.transform = CATransform3DMakeScale(1,0.8,1)
             waveformView.primaryWaveLineWidth = 3
-
+            
         }
         
         // Fade in Title
@@ -115,15 +115,15 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             //pausePlayButton?.alpha = 0.7
         } else {
             if (!animating) {
-            UIView.animateWithDuration(1, animations: {
-                self.titleLabel.alpha = 1
-                self.waveformView?.alpha = 1
-                
-                //self.pausePlayButton?.alpha = 1
-            })
+                UIView.animateWithDuration(1, animations: {
+                    self.titleLabel.alpha = 1
+                    self.waveformView?.alpha = 1
+                    
+                    //self.pausePlayButton?.alpha = 1
+                })
                 animating = true
             }
-          
+            
         }
     }
     
@@ -151,12 +151,12 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         SwiftSpinner.hide()
         tracks = Singleton.sharedInstance.tracks
-
+        
         self.frontCardView = self.popTrackWithFrame(self.frontCardViewFrame())
         self.view.addSubview(self.frontCardView!)
         self.backCardView = self.popTrackWithFrame(self.backCardViewFrame())
         self.view.insertSubview(self.backCardView!, belowSubview: self.frontCardView!)
-       
+        
         currentTrack = self.frontCardView?.track!
         if let track = self.frontCardView?.track {
             if let nextTrack = self.backCardView?.track {
@@ -166,19 +166,19 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         }
         titleLabel.text = currentTrack?.title
         singleton.audioPlayer.pause()
-      
+        
         // Add pulse animation
         /*let pulseEffect = LFTPulseAnimation(repeatCount: Float.infinity, radius:20, position:pausePlayButton!.center)
         pausePlayButton.layer.insertSublayer(pulseEffect, below: pausePlayButton!.layer)*/
         
-       
+        
         //pulsingLayer.position = pausePlayButton.center
         //view.layer.insertSublayer(pulsingLayer, below: pausePlayButton.layer)
-         //view.addSubview(waveformView)
-       
+        //view.addSubview(waveformView)
+        
         
         // Bring buttons to front
-
+        
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
         self.view.bringSubviewToFront(pausePlayButton)
@@ -206,7 +206,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         options.nopeColor = UIColor.redColor()
         options.nopeText = "nah..."
         options.threshold = 160
-
+        
         options.onPan = { state -> Void in
             let frame = self.backCardViewFrame()
             self.backCardView?.frame = CGRectMake(frame.origin.x,
@@ -214,9 +214,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
                 CGRectGetWidth(frame),
                 CGRectGetHeight(frame))
             
-            if state.thresholdRatio == 1 && state.direction == MDCSwipeDirection.Left {
+            /*if state.thresholdRatio == 1 && state.direction == MDCSwipeDirection.Left {
             } else {
-            }
+            }*/
         }
         
         var view = ChooseTrackView(track:tracks.objectAtIndex(0) as! Track, frame: frame, options: options)
@@ -231,28 +231,28 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     // This is called when a user didn't fully swipe left or right.
     func viewDidCancelSwipe(view: UIView) -> Void{
-        println("Couldn't decide, huh?")
+        //println("Couldn't decide, huh?")
     }
     
     // Sent before a choice is made. Cancel the choice by returning `false`. Otherwise return `true`.
     func view(view: UIView, shouldBeChosenWithDirection: MDCSwipeDirection) -> Bool{
         return true
         /*if (shouldBeChosenWithDirection == MDCSwipeDirection.Left) {
-            return true;
+        return true;
         } else {
-            // Snap the view back and cancel the choice.
-            UIView.animateWithDuration(0.16, animations: { () -> Void in
-                view.transform = CGAffineTransformIdentity
-                view.center = view.superview!.center
-            })
-            return false;
+        // Snap the view back and cancel the choice.
+        UIView.animateWithDuration(0.16, animations: { () -> Void in
+        view.transform = CGAffineTransformIdentity
+        view.center = view.superview!.center
+        })
+        return false;
         }*/
     }
     
     // This is called then a user swipes the view fully left or right.
     func view(view: UIView, wasChosenWithDirection: MDCSwipeDirection) -> Void{
         
-   
+        
         currentTrack = self.frontCardView?.track!
         if wasChosenWithDirection == MDCSwipeDirection.Left {
             println("Track deleted!")
@@ -321,7 +321,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     }
     
     // View frames
-
+    
     func frontCardViewFrame() -> CGRect {
         let horizontalPadding: CGFloat = 20
         let topPadding: CGFloat = 100
@@ -334,7 +334,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         return CGRectMake(frontFrame.origin.x,
             frontFrame.origin.y + 10,
             CGRectGetWidth(frontFrame),CGRectGetHeight(frontFrame))
-        }
+    }
     
     func updatePausePlayButton(play: Bool) {
         if (play) {
@@ -354,7 +354,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             singleton.audioPlayer.pause()
         }
     }
-
+    
     // Right button
     @IBAction func checkButtonPressed(sender: UIButton) {
         UIView.animateWithDuration(0.3, animations:{
@@ -364,9 +364,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             sender.alpha = 1
         })
         self.evo_drawerController?.openDrawerSide(DrawerSide.Right, animated: true, completion: nil)
-
+        
     }
-
+    
     // Left button
     @IBAction func xButtonPressed(sender:UIButton) {
         UIView.animateWithDuration(0.3, animations:{
@@ -378,10 +378,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         self.evo_drawerController?.openDrawerSide(DrawerSide.Left, animated: true, completion: nil)
         //self.evo_drawerController?.leftDrawerViewController? as! GenresViewController
     }
-
-
+    
+    
     // Audio player delegate functions
-
+    
     func audioPlayer(audioPlayer: STKAudioPlayer!, didCancelQueuedItems queuedItems: [AnyObject]!) {
         println("Cancelled queued items")
     }
@@ -392,27 +392,37 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     func audioPlayer(audioPlayer: STKAudioPlayer!, didFinishPlayingQueueItemId queueItemId: NSObject!, withReason stopReason: STKAudioPlayerStopReason, andProgress progress: Double, andDuration duration: Double) {
         //println(stopReason.value)
+        //println(stopReason.value)
         // When the current song finishes play the next song
-        
-        if settings.autoplay == true {
-        
-            if let trackStartTime = self.frontCardView?.track?.start_time {
-                // Mute the track giving it time to skip ahead
-                Singleton.sharedInstance.audioPlayer.volume = 0
-                // Adjust the progresss if the track skipped ahead
+        if stopReason.value == 1 {
+            if settings.autoplay == true {
                 
-                var adjustedProgress: Double = progress
-                
-                if settings.preview == true {
-                    adjustedProgress = progress + Double(trackStartTime/1000)
-                }
-                
-                println("Progress: \(progress) adjustedProgress: \(adjustedProgress) Duration: \(duration) ")
-                if fabs(duration - adjustedProgress) < 1 {
-                    // If the song ends (or almost ends, its not extremely accurate) show the next card
-                    self.frontCardView?.removeFromSuperview()
-                    self.appearNextCard()
-
+                if settings.preview == true{
+                    
+                    if let trackStartTime = self.frontCardView?.track?.start_time {
+                        // Mute the track giving it time to skip ahead
+                        Singleton.sharedInstance.audioPlayer.volume = 0
+                        // Adjust the progresss if the track skipped ahead
+                        
+                        var adjustedProgress: Double = progress
+                        
+                        if settings.preview == true {
+                            adjustedProgress = progress + Double(trackStartTime/1000)
+                        }
+                        
+                        println("Progress: \(progress) adjustedProgress: \(adjustedProgress) Duration: \(duration) ")
+                        if fabs(duration - adjustedProgress) < 1 {
+                            // If the song ends (or almost ends, its not extremely accurate) show the next card
+                            self.frontCardView?.mdc_swipe(MDCSwipeDirection.Left)
+                            //self.frontCardView?.removeFromSuperview()
+                            //self.appearNextCard()
+                            
+                        }
+                    }
+                } else {
+                    self.frontCardView?.mdc_swipe(MDCSwipeDirection.Left)
+                    //self.frontCardView?.removeFromSuperview()
+                    //self.appearNextCard()
                 }
             }
         }
@@ -424,7 +434,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     }
     
     func audioPlayer(audioPlayer: STKAudioPlayer!, logInfo line: String!) {
-
+        
     }
     
     func audioPlayer(audioPlayer: STKAudioPlayer!, stateChanged state: STKAudioPlayerState, previousState: STKAudioPlayerState) {
