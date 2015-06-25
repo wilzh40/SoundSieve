@@ -96,7 +96,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         // If theres a lot of stuff happening change the waveform properties
         
         if normalizedValue > 1.9 {
-            waveformView.waveColor = UIColor.orangeColor()
+            waveformView.waveColor = UIColor.ht_bitterSweetDarkColor()
            // waveformView.layer.transform = CATransform3DMakeScale(1.0,0.8,1.1)
             waveformView.primaryWaveLineWidth = 5
         } else {
@@ -258,7 +258,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             println("Track deleted!")
         }else{
             println("Track saved!")
-            ConnectionManager.favoriteTrack(currentTrack!)
+            if let un = singleton.username {
+                ConnectionManager.favoriteTrack(currentTrack!)
+            }
             singleton.addTrackToSavedTracks(currentTrack!)
         }
         
@@ -398,7 +400,13 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
                 // Mute the track giving it time to skip ahead
                 Singleton.sharedInstance.audioPlayer.volume = 0
                 // Adjust the progresss if the track skipped ahead
-                var adjustedProgress: Double = progress + Double(trackStartTime/1000)
+                
+                var adjustedProgress: Double = progress
+                
+                if settings.preview == true {
+                    adjustedProgress = progress + Double(trackStartTime/1000)
+                }
+                
                 println("Progress: \(progress) adjustedProgress: \(adjustedProgress) Duration: \(duration) ")
                 if fabs(duration - adjustedProgress) < 1 {
                     // If the song ends (or almost ends, its not extremely accurate) show the next card

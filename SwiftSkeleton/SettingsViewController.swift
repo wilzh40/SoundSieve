@@ -77,6 +77,8 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         
         section = XLFormSectionDescriptor.formSectionWithTitle("Other Settings") as!XLFormSectionDescriptor
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
+        section.multivaluedRowTemplate = row
+        section.multivaluedRowTemplate.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
 
         form.addFormSection(section)
         
@@ -125,6 +127,8 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         } else {
              row = XLFormRowDescriptor(tag: tag.account, rowType: XLFormRowDescriptorTypeButton, title: "Connect with SoundCloud")
         }
+        row.cellConfigIfDisabled.setObject(UIColor.ht_bitterSweetColor(), forKey: "backgroundColor")
+
         row.cellConfig.setObject(UIColor.ht_bitterSweetDarkColor(), forKey: "backgroundColor")
     
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")

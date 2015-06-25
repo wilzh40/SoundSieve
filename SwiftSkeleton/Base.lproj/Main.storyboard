@@ -215,7 +215,7 @@
     <resources>
         <image name="list-square" width="410" height="410"/>
         <image name="music" width="410" height="410"/>
-        <image name="play_buttonblue" width="64" height="67"/>
+        <image name="play_buttonblue" width="178" height="187"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
