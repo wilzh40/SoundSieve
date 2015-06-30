@@ -31,7 +31,8 @@ class Settings: NSObject, NSCoding {
 
     
     // Bools
-
+    
+    var stream: Bool = false
     var trackSource: TrackSource = .Explore
     var autoplay: Bool  = true
     var duplicates: Bool = true
@@ -39,6 +40,7 @@ class Settings: NSObject, NSCoding {
     var preview: Bool = true
     var waveform: Bool = true
     var firstLaunch: Bool = true
+    
 
    /* override init() {
         var selectedSearchMethod : SearchMethod = .Random
@@ -56,6 +58,7 @@ class Settings: NSObject, NSCoding {
         
         //self.genre = aDecoder.decodeObjectForKey("genre") as! NSString
         
+        self.stream = aDecoder.decodeBoolForKey("stream")
         self.autoplay = aDecoder.decodeBoolForKey("autoplay")
         self.duplicates = aDecoder.decodeBoolForKey("duplicates")
         self.hotness = aDecoder.decodeBoolForKey("hotness")
@@ -80,6 +83,7 @@ class Settings: NSObject, NSCoding {
         aCoder.encodeBool(self.preview, forKey: "preview")
         aCoder.encodeBool(self.waveform, forKey: "waveform")
         aCoder.encodeBool(self.firstLaunch, forKey: "firstLaunch")
+        aCoder.encodeBool(self.stream, forKey: "stream")
 }
 }
 

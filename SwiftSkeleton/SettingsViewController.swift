@@ -22,6 +22,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         static let waveform = "waveform"
         static let account = "account"
         static let credits = "credits"
+        static let stream = "stream"
     }
     
   /*  required init(coder aDecoder: NSCoder) {
@@ -83,6 +84,11 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         
         // Switches
         
+        // Stream
+        row = XLFormRowDescriptor(tag: tag.stream, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Use User Stream")
+        row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
+        row.value = settings.stream
+        section.addFormRow(row)
         
         // Display Duplicates?
         row = XLFormRowDescriptor(tag: tag.duplicates, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Display Duplicates?")
@@ -179,6 +185,19 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
             ConnectionManager.getRandomTracks()
             SwiftSpinner.show("Switching Sorting")
             
+        }
+        
+        if formRow.tag == tag.stream {
+            settings.stream = values[tag.stream] as! Bool
+            if settings.stream == true {
+                settings.trackSource = .Stream
+                ConnectionManager.getUserStream()
+                SwiftSpinner.show("Switching to Stream")
+            } else {
+                settings.trackSource = .Explore
+                ConnectionManager.getRandomTracks()
+                SwiftSpinner.show("Switching to Explore")
+            }
         }
         
         ConnectionManager.sharedInstance.delegate?.updatePausePlayButton!(true)

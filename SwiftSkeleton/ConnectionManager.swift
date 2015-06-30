@@ -159,7 +159,10 @@ class ConnectionManager {
     }
     
     class func getUserStream () {
-        let URL = "https://api.soundcloud.com/me/activities?limit=100&oauth_token=" + Singleton.sharedInstance.token!
+        let URL = "https://api.soundcloud.com/me/activities?limit=50&oauth_token=" + Singleton.sharedInstance.token!
+        
+        var trackIds:String = ""
+        
         Alamofire.request(.GET, URL)
             .responseSwiftyJSON ({ (request, response, responseJSON, error) in
                 println(request)
@@ -170,25 +173,49 @@ class ConnectionManager {
                 } else {
                     
                     //println(responseJSON)
-                    var tracks: NSMutableArray = []
                     for (index: String, child: JSON) in responseJSON["collection"] {
                         if(child["origin"]["kind"].string! == "track") {
-                            var track = Track()
-                            track.title = child["origin"]["title"].string!
-                            //println(track.title)
-                            track.id = child["origin"]["id"].int!
-                            track.duration = child["origin"]["duration"].int
-                            track.genre = child["origin"]["genre"].string
-                            track.subtitle = child["origin"]["description"].string
-                            track.artwork_url = child["origin"]["artwork_url"].string
-                            track.permalink_url = child["origin"]["permalink_url"].string!
-                            track.stream_url = child["origin"]["stream_url"].string!
-                            track.start_time = 0
-                            tracks.addObject(track)
+                            trackIds = trackIds + String(child["origin"]["id"].int!) + ","
                         }
                     }
-                    Singleton.sharedInstance.tracks = tracks
-                    ConnectionManager.sharedInstance.delegate?.didGetTracks!()
+                    trackIds = trackIds.substringToIndex(advance(trackIds.endIndex, -1))
+                    
+                    println(trackIds)
+                    
+                    let URL2 = "http://soundsieve-backend.appspot.com/api/track?ids=" + trackIds
+                    
+                    Alamofire.request(.GET, URL2)
+                        .responseSwiftyJSON ({ (request, response, responseJSON, error) in
+                            println(request)
+                            
+                            if error != nil {
+                                println(error)
+                                SwiftSpinner.show("Failed to connect, waiting...", animated: false)
+                                
+                            } else {
+                                
+                                //println(responseJSON)
+                                var tracks: NSMutableArray = []
+                                for (index: String, child: JSON) in responseJSON {
+                                    var track = Track()
+                                    track.title = child["title"].string!
+                                    //println(track.title)
+                                    track.id = child["id"].int!
+                                    track.duration = child["duration"].int
+                                    track.genre = child["genre"].string
+                                    track.subtitle = child["description"].string
+                                    var tempStr = child["artwork_url"].string
+                                    tempStr = tempStr!.substringToIndex(advance(tempStr!.endIndex,-9)) + "t500x500.jpg"
+                                    track.artwork_url = tempStr!
+                                    track.permalink_url = child["permalink_url"].string!
+                                    track.stream_url = child["stream_url"].string!
+                                    track.start_time = child["start_time"].int! * 1000
+                                    tracks.addObject(track)
+                                }
+                                Singleton.sharedInstance.tracks = tracks
+                                ConnectionManager.sharedInstance.delegate?.didGetTracks!()
+                            }
+                        })
                 }
             })
     }

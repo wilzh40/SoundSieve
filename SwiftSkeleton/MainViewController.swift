@@ -373,6 +373,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         UIView.animateWithDuration(0.3, animations:{
             sender.alpha = 1
         })
+        self.frontCardView?.userInteractionEnabled = false
         self.evo_drawerController?.openDrawerSide(DrawerSide.Left, animated: true, completion: nil)
         //self.evo_drawerController?.leftDrawerViewController? as! GenresViewController
     }
