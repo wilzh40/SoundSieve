@@ -206,6 +206,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         options.nopeColor = UIColor.redColor()
         options.nopeText = "nah..."
         options.threshold = 160
+
         
         options.onPan = { state -> Void in
             let frame = self.backCardViewFrame()
@@ -235,7 +236,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     }
     
     // Sent before a choice is made. Cancel the choice by returning `false`. Otherwise return `true`.
-    func view(view: UIView, shouldBeChosenWithDirection: MDCSwipeDirection) -> Bool{
+    /*func view(view: UIView, shouldBeChosenWithDirection: MDCSwipeDirection) -> Bool{
         return true
         /*if (shouldBeChosenWithDirection == MDCSwipeDirection.Left) {
         return true;
@@ -247,7 +248,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         })
         return false;
         }*/
-    }
+    }*/
     
     // This is called then a user swipes the view fully left or right.
     func view(view: UIView, wasChosenWithDirection: MDCSwipeDirection) -> Void{
