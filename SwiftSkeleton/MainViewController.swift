@@ -186,6 +186,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         waveformView.userInteractionEnabled = false
         xButton.adjustsImageWhenHighlighted = true
         checkButton.adjustsImageWhenHighlighted = true
+        ConnectionManager.sharedInstance.delegate?.updatePausePlayButton!(true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -194,9 +195,14 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     func popTrackWithFrame(frame:CGRect) -> ChooseTrackView? {
         // Creates a new chooseTrackView from tracks, and pops that track off the list
-        if self.tracks.count == 0 {
-            println("No more tracks")
-            return nil
+        if self.tracks.count == 1 {
+            if settings.stream {
+                SwiftSpinner.show("Loading next songs...")
+                ConnectionManager.continueUserStream()
+            } else {
+                println("No more tracks")
+                return nil
+            }
         }
         
         var options = MDCSwipeToChooseViewOptions()
@@ -340,8 +346,11 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     func updatePausePlayButton(play: Bool) {
         if (play) {
             pausePlayButton.selected = true
+            singleton.audioPlayer.resume()
+            singleton.audioPlayer.unmute()
         } else {
             pausePlayButton.selected = false
+            singleton.audioPlayer.pause()
         }
     }
     

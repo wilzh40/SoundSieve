@@ -159,7 +159,8 @@ class ConnectionManager {
     }
     
     class func getUserStream () {
-        let URL = "https://api.soundcloud.com/me/activities?limit=50&oauth_token=" + Singleton.sharedInstance.token!
+        let limit = "8"
+        let URL = "https://api.soundcloud.com/me/activities?limit=" + limit + "&oauth_token=" + Singleton.sharedInstance.token!
         
         var trackIds:String = ""
         
@@ -178,6 +179,9 @@ class ConnectionManager {
                             trackIds = trackIds + String(child["origin"]["id"].int!) + ","
                         }
                     }
+                    
+                    Singleton.sharedInstance.userStreamNextHrefUrl = responseJSON["next_href"].string!
+                    
                     trackIds = trackIds.substringToIndex(advance(trackIds.endIndex, -1))
                     
                     println(trackIds)
@@ -212,6 +216,8 @@ class ConnectionManager {
                                     track.start_time = child["start_time"].int! * 1000
                                     tracks.addObject(track)
                                 }
+                                tracks.addObject(tracks.objectAtIndex(tracks.count-1) as! Track)
+                                tracks.addObject(tracks.objectAtIndex(tracks.count-1) as! Track)
                                 Singleton.sharedInstance.tracks = tracks
                                 ConnectionManager.sharedInstance.delegate?.didGetTracks!()
                             }
@@ -220,6 +226,72 @@ class ConnectionManager {
             })
     }
     
+    class func continueUserStream() {
+        let URL = Singleton.sharedInstance.userStreamNextHrefUrl!
+        //println(URL)
+        var trackIds:String = ""
+        
+        Alamofire.request(.GET, URL)
+            .responseSwiftyJSON ({ (request, response, responseJSON, error) in
+                println(request)
+                if error != nil {
+                    println(error)
+                    SwiftSpinner.show("Failed to connect, waiting...", animated: false)
+                    
+                } else {
+                    
+                    //println(responseJSON)
+                    for (index: String, child: JSON) in responseJSON["collection"] {
+                        if(child["origin"]["kind"].string! == "track") {
+                            trackIds = trackIds + String(child["origin"]["id"].int!) + ","
+                        }
+                    }
+                    
+                    Singleton.sharedInstance.userStreamNextHrefUrl = responseJSON["next_href"].string!
+                    
+                    trackIds = trackIds.substringToIndex(advance(trackIds.endIndex, -1))
+                    
+                    println(trackIds)
+                    
+                    let URL2 = "http://soundsieve-backend.appspot.com/api/track?ids=" + trackIds
+                    
+                    Alamofire.request(.GET, URL2)
+                        .responseSwiftyJSON ({ (request, response, responseJSON, error) in
+                            println(request)
+                            
+                            if error != nil {
+                                println(error)
+                                SwiftSpinner.show("Failed to connect, waiting...", animated: false)
+                                
+                            } else {
+                                
+                                //println(responseJSON)
+                                var tracks: NSMutableArray = []
+                                for (index: String, child: JSON) in responseJSON {
+                                    var track = Track()
+                                    track.title = child["title"].string!
+                                    //println(track.title)
+                                    track.id = child["id"].int!
+                                    track.duration = child["duration"].int
+                                    track.genre = child["genre"].string
+                                    track.subtitle = child["description"].string
+                                    var tempStr = child["artwork_url"].string
+                                    tempStr = tempStr!.substringToIndex(advance(tempStr!.endIndex,-9)) + "t500x500.jpg"
+                                    track.artwork_url = tempStr!
+                                    track.permalink_url = child["permalink_url"].string!
+                                    track.stream_url = child["stream_url"].string!
+                                    track.start_time = child["start_time"].int! * 1000
+                                    tracks.addObject(track)
+                                }
+                                tracks.addObject(tracks.objectAtIndex(tracks.count-1) as! Track)
+                                tracks.addObject(tracks.objectAtIndex(tracks.count-1) as! Track)
+                                Singleton.sharedInstance.tracks = tracks
+                                ConnectionManager.sharedInstance.delegate?.didGetTracks!()
+                            }
+                        })
+                }
+            })
+    }
     
     class func favoriteTrack (track: Track) {
         let URL = soundcloudURL + "me/favorites/" + String(track.id!)

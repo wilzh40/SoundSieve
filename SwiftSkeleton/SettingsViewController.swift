@@ -206,7 +206,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
             settings.hotness = values[tag.hotness] as! Bool
             ConnectionManager.getRandomTracks()
             SwiftSpinner.show("Switching Sorting")
-            
+            self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
         }
         
         if formRow.tag == tag.stream {
@@ -220,9 +220,11 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
                 ConnectionManager.getRandomTracks()
                 SwiftSpinner.show("Switching to Explore")
             }
+            self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+
         }
         
-        ConnectionManager.sharedInstance.delegate?.updatePausePlayButton!(true)
+        //ConnectionManager.sharedInstance.delegate?.updatePausePlayButton!(true)
         
         settings.autoplay = values[tag.autoplay] as! Bool
         settings.duplicates = values[tag.duplicates] as! Bool

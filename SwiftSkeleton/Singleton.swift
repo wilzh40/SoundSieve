@@ -65,6 +65,9 @@ class Singleton {
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var managedContext: NSManagedObjectContext?
     var entity: NSEntityDescription?
+    
+    //User Stream url
+    var userStreamNextHrefUrl:String?
 
     func visualize() {
         
