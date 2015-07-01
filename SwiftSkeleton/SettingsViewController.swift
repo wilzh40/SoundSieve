@@ -63,19 +63,29 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         var section : XLFormSectionDescriptor
         var row : XLFormRowDescriptor
         
-        form = XLFormDescriptor.formDescriptorWithTitle("Settings") as! XLFormDescriptor
-
-        section = XLFormSectionDescriptor.formSectionWithTitle("Genres") as! XLFormSectionDescriptor
+        form = XLFormDescriptor(title: "Settings") as! XLFormDescriptor
+        
+    // Stream
+        
+        section = XLFormSectionDescriptor.formSectionWithTitle("Stream") as! XLFormSectionDescriptor
         form.addFormSection(section)
         
+        row = XLFormRowDescriptor(tag: tag.stream, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Use User Stream")
+        row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
+        row.value = settings.stream
+        row.disabled = (Singleton.sharedInstance.token == nil)
+        section.addFormRow(row)
+        
     // Genres
+        
+        section = XLFormSectionDescriptor.formSectionWithTitle("Genres") as! XLFormSectionDescriptor
+        form.addFormSection(section)
 
         row = XLFormRowDescriptor(tag: tag.genre, rowType: XLFormRowDescriptorTypeSelectorActionSheet, title: "Genre")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "detailTextLabel.font")
         row.selectorOptions = Singleton.sharedInstance.genres as [AnyObject]
         row.value = Singleton.sharedInstance.genres.objectAtIndex(settings.selectedGenre)
-        
     
         section.addFormRow(row)
         
@@ -90,12 +100,6 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         
         
         // Switches
-        
-        // Stream
-        row = XLFormRowDescriptor(tag: tag.stream, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Use User Stream")
-        row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
-        row.value = settings.stream
-        section.addFormRow(row)
         
         // Display Duplicates?
         row = XLFormRowDescriptor(tag: tag.duplicates, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Display Duplicates?")
@@ -164,7 +168,6 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         row.cellConfig.setObject(UIFont(name:"Futura",size:8.00)!, forKey: "textLabel.font")
         section.addFormRow(row)
         
-        
         self.form = form;
         
     }
@@ -172,6 +175,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
     func connectSC() {
         println("Connecting account")
         ConnectionManager.authenticateSC()
+        self.form.formRowWithTag(tag.stream).disabled = false
     }
   
     func updateUsername(){
@@ -192,6 +196,12 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         // Delegate function
 
         var values = self.formValues() as Dictionary
+        
+        settings.autoplay = values[tag.autoplay] as! Bool
+        settings.duplicates = values[tag.duplicates] as! Bool
+        
+        settings.preview = values[tag.preview] as! Bool
+        settings.waveform = values[tag.waveform] as! Bool
         
         if formRow.tag == tag.genre {
             // Get the index of the selection, works seemlessly with existing code
@@ -221,16 +231,10 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
                 SwiftSpinner.show("Switching to Explore")
             }
             self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
-
+            self.form.formRowWithTag(tag.genre).disabled = settings.stream
+            self.form.formRowWithTag(tag.hotness).disabled = settings.stream
         }
-        
         //ConnectionManager.sharedInstance.delegate?.updatePausePlayButton!(true)
-        
-        settings.autoplay = values[tag.autoplay] as! Bool
-        settings.duplicates = values[tag.duplicates] as! Bool
-        
-        settings.preview = values[tag.preview] as! Bool
-        settings.waveform = values[tag.waveform] as! Bool
         
         print(self.formValues())
 
