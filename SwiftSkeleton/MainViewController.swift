@@ -324,8 +324,12 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         // Play new song and queue next song
         if let track = self.frontCardView?.track {
             if let nextTrack = self.backCardView?.track {
+                //If last track, don't play
                 if tracks.count != 0 {
                     ConnectionManager.playStreamFromTrack(track,nextTrack:nextTrack)
+                } else {
+                    //Stop next song from playing b/c app is loading next few songs from stream
+                    updatePausePlayButton(false)
                 }
             }
         }
