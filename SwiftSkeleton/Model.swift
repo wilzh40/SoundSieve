@@ -17,7 +17,7 @@ class Track: NSObject {
     var id: Int?
     var duration: Int?
     var stream_url: String
-
+    var user: String
     var start_time: Int
     var permalink_url: String
 
@@ -29,6 +29,7 @@ class Track: NSObject {
     
     override init() {
         self.title = "ExampleTitle"
+        self.user = "ExampleUser"
         self.id = 0
         self.duration = 0
         self.start_time = 0
