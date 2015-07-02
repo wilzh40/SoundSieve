@@ -184,6 +184,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         waveformView.userInteractionEnabled = false
         xButton.adjustsImageWhenHighlighted = true
         checkButton.adjustsImageWhenHighlighted = true
+        
+        //Play the song
         ConnectionManager.sharedInstance.delegate?.updatePausePlayButton!(true)
     }
     
@@ -196,7 +198,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         if self.tracks.count == 1 {
             if settings.stream {
                 SwiftSpinner.show("Loading next songs...")
-                ConnectionManager.continueUserStream()
+                ConnectionManager.getUserStream(false)
             } else {
                 println("No more tracks")
                 return nil

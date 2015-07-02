@@ -64,7 +64,7 @@ class ConnectionManager {
                 // Either get user stream or random tracks, based on the setting
                 switch (Singleton.sharedInstance.settings.trackSource) {
                 case .Stream:
-                    self.getUserStream()
+                    self.getUserStream(true)
                 case .Explore:
                     self.getRandomTracks()
                     
@@ -158,13 +158,23 @@ class ConnectionManager {
         
     }
     
-    class func getUserStream () {
+    class func getUserStream (first:Bool) {
         
+        //Set number of tracks in one request
         let limit = 8
-        let URL = "https://api.soundcloud.com/me/activities?limit=" + String(limit) + "&oauth_token=" + Singleton.sharedInstance.token!
+    
+        var URL = ""
+        //Construct Url based on whether this is the first time user stream is requested or if it is a continuation
+        if first {
+            URL = "https://api.soundcloud.com/me/activities?limit=" + String(limit) + "&oauth_token=" + Singleton.sharedInstance.token!
+        } else {
+            URL = Singleton.sharedInstance.userStreamNextHrefUrl!
+        }
         
+        //Create initial string to hold future trackIds
         var trackIds: String = ""
         
+        //Request from url
         Alamofire.request(.GET, URL)
             .responseSwiftyJSON ({ (request, response, responseJSON, error) in
                 println(request)
@@ -174,16 +184,23 @@ class ConnectionManager {
                     
                 } else {
                     //println(responseJSON)
+                    
+                    //Pull song ids from response json and add them to string, seperated by commas
                     for (index: String, child: JSON) in responseJSON["collection"] {
                         if(child["origin"]["kind"].string! == "track") {
                             trackIds = trackIds + String(child["origin"]["id"].int!) + ","
                         }
                     }
                     
+                    //Grab and store next_href string for next set of songs
                     Singleton.sharedInstance.userStreamNextHrefUrl = responseJSON["next_href"].string!
-                    trackIds = trackIds.substringToIndex(advance(trackIds.endIndex, -1))
-                    println(trackIds)
                     
+                    //Fix to fencepost issue (delete additional comment at the end)
+                    trackIds = trackIds.substringToIndex(advance(trackIds.endIndex, -1))
+
+                    //println(trackIds)
+                    
+                    //Construct second Url that is actually used to fetch song data for the ids and the start time
                     let URL2 = "http://soundsieve-backend.appspot.com/api/track?ids=" + trackIds
                     
                     Alamofire.request(.GET, URL2)
@@ -196,7 +213,7 @@ class ConnectionManager {
                                 
                             } else {
                                 
-                                //println(responseJSON)
+                                //Filling in corresponding data for track
                                 var tracks: NSMutableArray = []
                                 for (index: String, child: JSON) in responseJSON {
                                     var track = Track()
@@ -206,83 +223,24 @@ class ConnectionManager {
                                     track.duration = child["duration"].int
                                     track.genre = child["genre"].string
                                     track.subtitle = child["description"].string
-                                    var tempStr = child["artwork_url"].string
-                                    tempStr = tempStr!.substringToIndex(advance(tempStr!.endIndex,-9)) + "t500x500.jpg"
-                                    track.artwork_url = tempStr!
+                                    if let s = child["artwork_url"].string {
+                                        var tempStr = child["artwork_url"].string
+                                        tempStr = tempStr!.substringToIndex(advance(tempStr!.endIndex,-9)) + "t500x500.jpg"
+                                        
+                                        track.artwork_url = tempStr!
+                                    }
+                     
                                     track.permalink_url = child["permalink_url"].string!
                                     track.stream_url = child["stream_url"].string!
                                     track.start_time = child["start_time"].int! * 1000
                                     tracks.addObject(track)
                                 }
-                                tracks.addObject(tracks.objectAtIndex(tracks.count-1) as! Track)
-                                tracks.addObject(tracks.objectAtIndex(tracks.count-1) as! Track)
-                                Singleton.sharedInstance.tracks = tracks
-                                ConnectionManager.sharedInstance.delegate?.didGetTracks!()
-                            }
-                        })
-                }
-            })
-    }
-    
-    class func continueUserStream() {
-        let URL = Singleton.sharedInstance.userStreamNextHrefUrl!
-        //println(URL)
-        var trackIds:String = ""
-        
-        Alamofire.request(.GET, URL)
-            .responseSwiftyJSON ({ (request, response, responseJSON, error) in
-                println(request)
-                if error != nil {
-                    println(error)
-                    SwiftSpinner.show("Failed to connect, waiting...", animated: false)
-                    
-                } else {
-                    
-                    //println(responseJSON)
-                    for (index: String, child: JSON) in responseJSON["collection"] {
-                        if(child["origin"]["kind"].string! == "track") {
-                            trackIds = trackIds + String(child["origin"]["id"].int!) + ","
-                        }
-                    }
-                    
-                    Singleton.sharedInstance.userStreamNextHrefUrl = responseJSON["next_href"].string!
-                    
-                    trackIds = trackIds.substringToIndex(advance(trackIds.endIndex, -1))
-                    
-                    println(trackIds)
-                    
-                    let URL2 = "http://soundsieve-backend.appspot.com/api/track?ids=" + trackIds
-                    
-                    Alamofire.request(.GET, URL2)
-                        .responseSwiftyJSON ({ (request, response, responseJSON, error) in
-                            println(request)
-                            
-                            if error != nil {
-                                println(error)
-                                SwiftSpinner.show("Failed to connect, waiting...", animated: false)
                                 
-                            } else {
+                                //Hacky-ish fix. Adds two songs to the end so that all the songs can be played before requesting the next few
+                                tracks.addObject(tracks.objectAtIndex(tracks.count-1) as! Track)
+                                tracks.addObject(tracks.objectAtIndex(tracks.count-1) as! Track)
                                 
-                                //println(responseJSON)
-                                var tracks: NSMutableArray = []
-                                for (index: String, child: JSON) in responseJSON {
-                                    var track = Track()
-                                    track.title = child["title"].string!
-                                    //println(track.title)
-                                    track.id = child["id"].int!
-                                    track.duration = child["duration"].int
-                                    track.genre = child["genre"].string
-                                    track.subtitle = child["description"].string
-                                    var tempStr = child["artwork_url"].string
-                                    tempStr = tempStr!.substringToIndex(advance(tempStr!.endIndex,-9)) + "t500x500.jpg"
-                                    track.artwork_url = tempStr!
-                                    track.permalink_url = child["permalink_url"].string!
-                                    track.stream_url = child["stream_url"].string!
-                                    track.start_time = child["start_time"].int! * 1000
-                                    tracks.addObject(track)
-                                }
-                                tracks.addObject(tracks.objectAtIndex(tracks.count-1) as! Track)
-                                tracks.addObject(tracks.objectAtIndex(tracks.count-1) as! Track)
+                                
                                 Singleton.sharedInstance.tracks = tracks
                                 ConnectionManager.sharedInstance.delegate?.didGetTracks!()
                             }

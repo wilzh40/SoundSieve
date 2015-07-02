@@ -25,7 +25,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         static let stream = "stream"
     }
     
-  /*  required init(coder aDecoder: NSCoder) {
+    /* required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         self.initializeForm()
     }
@@ -64,6 +64,27 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         var row : XLFormRowDescriptor
         
         form = XLFormDescriptor(title: "Settings") as XLFormDescriptor
+        
+        // User Account
+        section = XLFormSectionDescriptor.formSectionWithTitle("Soundcloud Account") as XLFormSectionDescriptor
+        
+        form.addFormSection(section)
+        
+        // Account
+        if let un = Singleton.sharedInstance.username {
+            row = XLFormRowDescriptor(tag: tag.account, rowType: XLFormRowDescriptorTypeButton, title: Singleton.sharedInstance.username)
+        } else {
+            row = XLFormRowDescriptor(tag: tag.account, rowType: XLFormRowDescriptorTypeButton, title: "Connect with SoundCloud")
+        }
+        row.cellConfigIfDisabled.setObject(UIColor.ht_bitterSweetColor(), forKey: "backgroundColor")
+        
+        row.cellConfig.setObject(UIColor.ht_bitterSweetDarkColor(), forKey: "backgroundColor")
+        
+        row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
+        row.cellConfig.setObject(UIColor.whiteColor(), forKey: "textLabel.color")
+        row.value = Singleton.sharedInstance.username
+        row.action.formSelector = "connectSC"
+        section.addFormRow(row)
         
     // Stream
         
@@ -131,27 +152,8 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         row.value = settings.waveform
         section.addFormRow(row)
         
-    // User Account
-        section = XLFormSectionDescriptor.formSectionWithTitle("Soundcloud Account") as XLFormSectionDescriptor
-        
-        form.addFormSection(section)
-        
-        // Account
-        if let un = Singleton.sharedInstance.username {
-            row = XLFormRowDescriptor(tag: tag.account, rowType: XLFormRowDescriptorTypeButton, title: Singleton.sharedInstance.username)
-        } else {
-             row = XLFormRowDescriptor(tag: tag.account, rowType: XLFormRowDescriptorTypeButton, title: "Connect with SoundCloud")
-        }
-        row.cellConfigIfDisabled.setObject(UIColor.ht_bitterSweetColor(), forKey: "backgroundColor")
-
-        row.cellConfig.setObject(UIColor.ht_bitterSweetDarkColor(), forKey: "backgroundColor")
-    
-        row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
-        row.cellConfig.setObject(UIColor.whiteColor(), forKey: "textLabel.color")
-        row.value = Singleton.sharedInstance.username
-        row.action.formSelector = "connectSC"
-        section.addFormRow(row)
     // Credits
+        
         section = XLFormSectionDescriptor.formSectionWithTitle("Credits") as XLFormSectionDescriptor
         
         form.addFormSection(section)
@@ -194,8 +196,10 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         
         // Called once a value is changed
         // Delegate function
-
+        
         var values = self.formValues() as Dictionary
+        
+        //Update autoplay, duplicates, preview, waveform values
         
         settings.autoplay = values[tag.autoplay] as! Bool
         settings.duplicates = values[tag.duplicates] as! Bool
@@ -223,7 +227,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
             settings.stream = values[tag.stream] as! Bool
             if settings.stream == true {
                 settings.trackSource = .Stream
-                ConnectionManager.getUserStream()
+                ConnectionManager.getUserStream(true)
                 SwiftSpinner.show("Switching to Stream")
             } else {
                 settings.trackSource = .Explore
@@ -231,6 +235,8 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
                 SwiftSpinner.show("Switching to Explore")
             }
             self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+            
+            //Disable genre and hotness according to state of stream
             self.form.formRowWithTag(tag.genre).disabled = settings.stream
             self.form.formRowWithTag(tag.hotness).disabled = settings.stream
         }
