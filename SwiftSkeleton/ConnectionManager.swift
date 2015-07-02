@@ -307,6 +307,8 @@ class ConnectionManager {
                // self.queueStreamFromTrack(nextTrack)
             }
             
+            //Autoplay functionality
+            ConnectionManager.sharedInstance.delegate?.updatePausePlayButton!(Singleton.sharedInstance.settings.autoplay)
         }
         
         

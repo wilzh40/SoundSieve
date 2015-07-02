@@ -309,8 +309,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
                 //If last track, don't play
                 if tracks.count != 0 {
                     ConnectionManager.playStreamFromTrack(track,nextTrack:nextTrack)
+                    
+                    //Autoplay functionality
                 } else {
-                    //Stop next song from playing b/c app is loading next few songs from stream
+                    //In the case that it is the last song, stop next song from playing b/c app is loading next few songs from stream
                     updatePausePlayButton(false)
                 }
             }
