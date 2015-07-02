@@ -25,7 +25,7 @@ class ChooseTrackView : MDCSwipeToChooseView {
         self.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleBottomMargin
         
         loadingAnimation = UCZProgressView(frame: self.bounds)
-        
+        self.showLoadingAnimation()
         
         ImageLoader.sharedLoader.imageForUrl(track.artwork_url!, completionHandler:{(image: UIImage?, url: String) in
             self.imageView!.image = image
@@ -46,7 +46,7 @@ class ChooseTrackView : MDCSwipeToChooseView {
     
     
     // Called when the song is loaded/playing to hide the loading animation
-    func showLoadingAnimation () {  
+    func showLoadingAnimation () {
         self.loadingAnimation!.alpha = 1.0
         self.addSubview(loadingAnimation!)
     }
