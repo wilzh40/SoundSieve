@@ -15,7 +15,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
  
 
     func setupData() {
-        self.tableData = singleton.savedTracks
+        self.tableData = NSMutableArray(array: singleton.savedTracks.reverseObjectEnumerator().allObjects).mutableCopy() as! NSMutableArray
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
         self.navigationController?.navigationBar.topItem?.title = "Saved Songs"
     }
@@ -129,7 +129,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     }
     
     func reloadData() {
-        self.tableData = singleton.savedTracks
+        self.tableData =  NSMutableArray(array: singleton.savedTracks.reverseObjectEnumerator().allObjects).mutableCopy() as! NSMutableArray
         self.tableView.reloadData()
     }
     
