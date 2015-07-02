@@ -129,14 +129,12 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     override func viewWillDisappear(animated:Bool) {
         super.viewWillDisappear(animated)
-        self.view.userInteractionEnabled = false
-        self.frontCardView?.userInteractionEnabled = false
+ 
         println("Center View Will Disappear")
     }
     override func viewWillAppear(animated:Bool) {
         super.viewWillAppear(animated)
-        self.view.userInteractionEnabled = true
-        self.frontCardView?.userInteractionEnabled = true
+      
         println("Center View Will Appear")
     }
     
@@ -385,7 +383,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         UIView.animateWithDuration(0.3, animations:{
             sender.alpha = 1
         })
-        self.frontCardView?.userInteractionEnabled = false
+        
         self.evo_drawerController?.openDrawerSide(DrawerSide.Left, animated: true, completion: nil)
         //self.evo_drawerController?.leftDrawerViewController? as! GenresViewController
     }
