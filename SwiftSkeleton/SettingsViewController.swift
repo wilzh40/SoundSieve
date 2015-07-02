@@ -63,11 +63,11 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         var section : XLFormSectionDescriptor
         var row : XLFormRowDescriptor
         
-        form = XLFormDescriptor(title: "Settings") as! XLFormDescriptor
+        form = XLFormDescriptor(title: "Settings") as XLFormDescriptor
         
     // Stream
         
-        section = XLFormSectionDescriptor.formSectionWithTitle("Stream") as! XLFormSectionDescriptor
+        section = XLFormSectionDescriptor.formSectionWithTitle("Stream") as XLFormSectionDescriptor
         form.addFormSection(section)
         
         row = XLFormRowDescriptor(tag: tag.stream, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Use User Stream")
@@ -78,7 +78,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         
     // Genres
         
-        section = XLFormSectionDescriptor.formSectionWithTitle("Genres") as! XLFormSectionDescriptor
+        section = XLFormSectionDescriptor.formSectionWithTitle("Genres") as XLFormSectionDescriptor
         form.addFormSection(section)
 
         row = XLFormRowDescriptor(tag: tag.genre, rowType: XLFormRowDescriptorTypeSelectorActionSheet, title: "Genre")
@@ -91,7 +91,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         
     // Other settings
         
-        section = XLFormSectionDescriptor.formSectionWithTitle("Other Settings") as!XLFormSectionDescriptor
+        section = XLFormSectionDescriptor.formSectionWithTitle("Other Settings") as XLFormSectionDescriptor
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         section.multivaluedRowTemplate = row
         section.multivaluedRowTemplate.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
@@ -132,7 +132,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         section.addFormRow(row)
         
     // User Account
-        section = XLFormSectionDescriptor.formSectionWithTitle("Soundcloud Account") as!XLFormSectionDescriptor
+        section = XLFormSectionDescriptor.formSectionWithTitle("Soundcloud Account") as XLFormSectionDescriptor
         
         form.addFormSection(section)
         
@@ -152,7 +152,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         row.action.formSelector = "connectSC"
         section.addFormRow(row)
     // Credits
-        section = XLFormSectionDescriptor.formSectionWithTitle("Credits") as! XLFormSectionDescriptor
+        section = XLFormSectionDescriptor.formSectionWithTitle("Credits") as XLFormSectionDescriptor
         
         form.addFormSection(section)
         
@@ -236,7 +236,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         }
         //ConnectionManager.sharedInstance.delegate?.updatePausePlayButton!(true)
         
-        print(self.formValues())
+        //print(self.formValues())
 
     }
     

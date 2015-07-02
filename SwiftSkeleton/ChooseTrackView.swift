@@ -15,6 +15,7 @@ class ChooseTrackView : MDCSwipeToChooseView {
     var track:Track?
     
     var infoView:UIView?
+    var loadingAnimation: UCZProgressView!
 
     
     init(track:Track, frame:CGRect, options:MDCSwipeToChooseViewOptions) {
@@ -23,30 +24,43 @@ class ChooseTrackView : MDCSwipeToChooseView {
         super.init(frame: frame, options: options)
         self.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleBottomMargin
         
-        let loadingAnimation = UCZProgressView(frame: self.bounds)
-        self.addSubview(loadingAnimation)
+        loadingAnimation = UCZProgressView(frame: self.bounds)
+        
         
         ImageLoader.sharedLoader.imageForUrl(track.artwork_url!, completionHandler:{(image: UIImage?, url: String) in
             self.imageView!.image = image
             self.imageView!.alpha = 0
-            loadingAnimation.removeFromSuperview()
+            self.loadingAnimation.blurEffect = UIBlurEffect(style: .ExtraLight)
             UIView.animateWithDuration(0.3, animations:{
                 self.imageView!.alpha = 1
             
             })
         })
-        
-        
 
-        
-
-       
         //self.constructInfoView()
 
        // self.constructNameLabel()
       //  self.addBackground()
 
     }
+    
+    
+    // Called when the song is loaded/playing to hide the loading animation
+    func showLoadingAnimation () {  
+        self.loadingAnimation!.alpha = 1.0
+        self.addSubview(loadingAnimation!)
+    }
+    func hideLoadingAnimation () {
+      
+        UIView.animateWithDuration(0.8, animations: {
+            self.loadingAnimation!.alpha = 0.0
+            }, completion: { finished in
+                self.loadingAnimation.removeFromSuperview()
+        })
+        
+    }
+    
+    
     required init(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)

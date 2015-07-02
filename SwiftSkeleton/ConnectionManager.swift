@@ -159,10 +159,11 @@ class ConnectionManager {
     }
     
     class func getUserStream () {
-        let limit = "8"
-        let URL = "https://api.soundcloud.com/me/activities?limit=" + limit + "&oauth_token=" + Singleton.sharedInstance.token!
         
-        var trackIds:String = ""
+        let limit = 8
+        let URL = "https://api.soundcloud.com/me/activities?limit=" + String(limit) + "&oauth_token=" + Singleton.sharedInstance.token!
+        
+        var trackIds: String = ""
         
         Alamofire.request(.GET, URL)
             .responseSwiftyJSON ({ (request, response, responseJSON, error) in
@@ -172,7 +173,6 @@ class ConnectionManager {
                     SwiftSpinner.show("Failed to connect, waiting...", animated: false)
                     
                 } else {
-                    
                     //println(responseJSON)
                     for (index: String, child: JSON) in responseJSON["collection"] {
                         if(child["origin"]["kind"].string! == "track") {
@@ -181,9 +181,7 @@ class ConnectionManager {
                     }
                     
                     Singleton.sharedInstance.userStreamNextHrefUrl = responseJSON["next_href"].string!
-                    
                     trackIds = trackIds.substringToIndex(advance(trackIds.endIndex, -1))
-                    
                     println(trackIds)
                     
                     let URL2 = "http://soundsieve-backend.appspot.com/api/track?ids=" + trackIds

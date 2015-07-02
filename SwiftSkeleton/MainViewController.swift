@@ -115,12 +115,12 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             //pausePlayButton?.alpha = 0.7
         } else {
             if (!animating) {
+                self.frontCardView?.hideLoadingAnimation()
                 UIView.animateWithDuration(1, animations: {
                     self.titleLabel.alpha = 1
                     self.waveformView?.alpha = 1
                     
-                    //self.pausePlayButton?.alpha = 1
-                })
+                    })
                 animating = true
             }
             
