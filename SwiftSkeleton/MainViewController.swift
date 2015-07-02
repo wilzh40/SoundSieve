@@ -162,7 +162,6 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         if let track = self.frontCardView?.track {
             if let nextTrack = self.backCardView?.track {
                 ConnectionManager.playStreamFromTrack(track,nextTrack:nextTrack)
-                
             }
         }
         titleLabel.text = currentTrack?.title
@@ -230,9 +229,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         }
         
         var view = ChooseTrackView(track:tracks.objectAtIndex(0) as! Track, frame: frame, options: options)
-        if tracks.count == 0 {
-            SwiftSpinner.show("Uh Oh! No more songs...", animated:false)
-        }
+        
         tracks.removeObjectAtIndex(0)
         //view.imageView.image = UIImage(named: "photo.png")
         
@@ -324,8 +321,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         // Play new song and queue next song
         if let track = self.frontCardView?.track {
             if let nextTrack = self.backCardView?.track {
-                ConnectionManager.playStreamFromTrack(track,nextTrack:nextTrack)
-                
+                if tracks.count != 0 {
+                    ConnectionManager.playStreamFromTrack(track,nextTrack:nextTrack)
+                }
             }
         }
     }
