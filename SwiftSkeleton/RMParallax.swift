@@ -95,6 +95,13 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
         self.dismissButton.addTarget(self, action: "closeButtonSelected:", forControlEvents: UIControlEvents.TouchUpInside)
        // self.dismissButton.layer.backgroundColor = UIColor.whiteColor().CGColor
         
+        
+        // Disable the dismiss button until you reach the end of the tutorial
+        
+        self.dismissButton.alpha = 0
+        self.dismissButton.userInteractionEnabled = false
+        
+        
         self.scrollView = UIScrollView(frame: self.view.frame)
         self.scrollView.showsHorizontalScrollIndicator = false;
         self.scrollView.pagingEnabled = true;
@@ -194,6 +201,15 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
         }
         
         self.currentPageNumber = Int(scrollView.contentOffset.x) / Int(scrollView.frame.size.width)
+        
+        
+        // If the page number reaches the end then display the button
+        if self.currentPageNumber == items.count - 1 {
+            self.dismissButton.userInteractionEnabled = true
+            UIView.animateWithDuration(0.3, animations: {
+                self.dismissButton.alpha = 1.0
+            }, completion: nil)
+        }
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
