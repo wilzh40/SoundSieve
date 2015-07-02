@@ -8,6 +8,7 @@
 
 import Foundation
 import UCZProgressView
+import MDCSwipeToChoose
 
 let imageLabelWidth:Float = 42.0
 

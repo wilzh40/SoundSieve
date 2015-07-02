@@ -11,6 +11,7 @@ import UIKit
 import QuartzCore
 import CoreData
 import DrawerController
+import MDCSwipeToChoose
 
 class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, ConnectionProtocol,STKAudioPlayerDelegate{
     
@@ -210,17 +211,19 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         var options = MDCSwipeToChooseViewOptions()
         options.delegate = self
-        options.likedText = "dope!"
-        options.likedColor = UIColor.whiteColor()
-        options.nopeColor = UIColor.redColor()
-        options.nopeText = "nah..."
-        options.threshold = 160
+       // options.likedText = "dope!"
+        options.likedColor = UIColor.clearColor()
+        options.nopeColor = UIColor.clearColor()
+        //options.nopeText = "nah...
+        options.likedText = ""
+        options.nopeText = ""
+        options.threshold = 160 
 
         
         options.onPan = { state -> Void in
             let frame = self.backCardViewFrame()
             self.backCardView?.frame = CGRectMake(frame.origin.x,
-                frame.origin.y + (state.thresholdRatio * 10),
+                frame.origin.y - (state.thresholdRatio * 10),
                 CGRectGetWidth(frame),
                 CGRectGetHeight(frame))
             
