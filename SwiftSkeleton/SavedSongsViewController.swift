@@ -15,7 +15,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
  
 
     func setupData() {
-        self.tableData = singleton.savedTracks
+        self.tableData = NSMutableArray(array: singleton.savedTracks.reverseObjectEnumerator().allObjects).mutableCopy() as! NSMutableArray
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
         self.navigationController?.navigationBar.topItem?.title = "Saved Songs"
     }
@@ -70,7 +70,19 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         let track:Track = tableData[indexPath.row] as! Track
         let cell: SongCell = SongCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "protoCell",urlString: track.artwork_url!)
         cell.textLabel?.text = track.title
-        cell.textLabel?.font = UIFont(name:"Futura",size:13.00)
+        cell.textLabel?.font = UIFont(name:"Futura",size:11.00)
+        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        cell.textLabel?.numberOfLines = 2
+        
+        // IF there is an artist display it
+        
+        if let artist = track.subtitle {
+            cell.detailTextLabel?.text = track.subtitle
+            cell.detailTextLabel?.font = UIFont(name:"Futura",size:8.00)
+            cell.detailTextLabel?.textColor = UIColor.grayColor()
+
+        }
+        
         //cell.imageView!.image = ConnectionManager.getImageFromURL(track.artwork_url!)
         
         // Opti efforts
@@ -117,7 +129,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     }
     
     func reloadData() {
-        self.tableData = singleton.savedTracks
+        self.tableData =  NSMutableArray(array: singleton.savedTracks.reverseObjectEnumerator().allObjects).mutableCopy() as! NSMutableArray
         self.tableView.reloadData()
     }
     

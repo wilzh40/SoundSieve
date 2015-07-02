@@ -76,18 +76,40 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     func meterAudio() {
         
+        var normalizedValue = pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(0) / 20) + pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(1) / 20) - 0.002
+        
+        // Fade in Title
+        
+        if normalizedValue == 0 {
+            animating = false
+            titleLabel?.alpha = 0.5
+            waveformView?.alpha = 0.2
+            //pausePlayButton?.alpha = 0.7
+        } else {
+            if (!animating) {
+                self.frontCardView?.hideLoadingAnimation()
+                UIView.animateWithDuration(1, animations: {
+                    self.titleLabel.alpha = 1
+                    self.waveformView?.alpha = 1
+                    
+                })
+                animating = true
+            }
+        }
+
         // Animate waveform according to loudness while playing
         
         if !settings.waveform {
             // If there's no waveform just make it opaque
             waveformView.alpha = 0
+            
+            // And screw the rest of the function here
             return
         } else {
             waveformView.alpha = 1
         }
         
-        var normalizedValue = pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(0) / 20) + pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(1) / 20) - 0.002
-        if pausePlayButton.selected {
+              if pausePlayButton.selected {
             waveformView.updateWithLevel(CGFloat(normalizedValue)/2)
         } else {
             waveformView.updateWithLevel(0.01)
@@ -106,25 +128,6 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             
         }
         
-        // Fade in Title
-        
-        if normalizedValue == 0 {
-            animating = false
-            titleLabel?.alpha = 0.5
-            waveformView?.alpha = 0.2
-            //pausePlayButton?.alpha = 0.7
-        } else {
-            if (!animating) {
-                self.frontCardView?.hideLoadingAnimation()
-                UIView.animateWithDuration(1, animations: {
-                    self.titleLabel.alpha = 1
-                    self.waveformView?.alpha = 1
-                    
-                    })
-                animating = true
-            }
-            
-        }
     }
     
     override func viewWillDisappear(animated:Bool) {
