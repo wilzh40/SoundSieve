@@ -71,6 +71,13 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         let cell: SongCell = SongCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "protoCell",urlString: track.artwork_url!)
         cell.textLabel?.text = track.title
         cell.textLabel?.font = UIFont(name:"Futura",size:13.00)
+        
+        if let artist = track.subtitle {
+            cell.detailTextLabel?.text = track.subtitle
+            cell.detailTextLabel?.font = UIFont(name:"Futura",size:13.00)
+
+        }
+        
         //cell.imageView!.image = ConnectionManager.getImageFromURL(track.artwork_url!)
         
         // Opti efforts
