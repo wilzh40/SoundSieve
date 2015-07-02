@@ -56,24 +56,6 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         //self.view.backgroundColor = UIColor(red: 1.00, green: 0.95, blue: 0.85, alpha: 1.0)
     }
     
-    func presentTutorial() {
-        
-        let item1 = RMParallaxItem(image: UIImage(named: "check")!, text: "SHARE LIGHTBOXES WITH YOUR TEAM")
-        let item2 = RMParallaxItem(image: UIImage(named: "Taylor.png")!, text: "FOLLOW WORLD CLASS PHOTOGRAPHERS")
-        let item3 = RMParallaxItem(image: UIImage(named: "Taylor.png")!, text: "EXPLORE OUR COLLECTION BY CATEGORY")
-        
-        let rmParallaxViewController = RMParallax(items: [item1, item2, item3], motion: false)
-        rmParallaxViewController.completionHandler = {
-            UIView.animateWithDuration(0.4, animations: { () -> Void in
-                rmParallaxViewController.view.alpha = 0.0
-            })
-        }
-        
-        // Adding parallax view controller.
-        self.addChildViewController(rmParallaxViewController)
-        // UIApplication.sharedApplication().addSubview(rmParallaxViewController.view)
-        rmParallaxViewController.didMoveToParentViewController(self)
-    }
     
     func meterAudio() {
         

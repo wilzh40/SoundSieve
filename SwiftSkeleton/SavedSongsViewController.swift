@@ -75,13 +75,13 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         cell.textLabel?.numberOfLines = 2
         
         // IF there is an artist display it
-        
-        if let artist = track.subtitle {
-            cell.detailTextLabel?.text = track.subtitle
-            cell.detailTextLabel?.font = UIFont(name:"Futura",size:8.00)
-            cell.detailTextLabel?.textColor = UIColor.grayColor()
+        /*
+        cell.detailTextLabel?.text = track.user
+        cell.detailTextLabel?.font = UIFont(name:"Futura",size:8.00)
+        cell.detailTextLabel?.textColor = UIColor.grayColor()
+*/
 
-        }
+      
         
         //cell.imageView!.image = ConnectionManager.getImageFromURL(track.artwork_url!)
         
