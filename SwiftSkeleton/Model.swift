@@ -34,9 +34,9 @@ class Track: NSObject {
         self.start_time = 0
         self.stream_url = "exampleUrl"
         self.permalink_url = "exampleUrl"
-        self.artwork_url = "http://indie-france.olympe.in/apps/images/soundcloud.png"
+        //self.artwork_url = "http://indie-france.olympe.in/apps/images/soundcloud.png"
         self.genre = "nothing"
-        self.subtitle = "nothing"
+        //self.subtitle = "nothing"
     }
 }
 
