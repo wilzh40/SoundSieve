@@ -248,7 +248,7 @@ class ConnectionManager {
                                         }
                                         if tracks.count == 0 {
                                             // If there's no more tracks abort mission
-                                            SwiftSpinner.show("All songs played, Grabbing Next Few Songs...")
+                                            SwiftSpinner.show("Sifting through duplicates...")
                                             self.getUserStream(false)
                                             return
                                         }
