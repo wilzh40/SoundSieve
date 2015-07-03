@@ -138,9 +138,7 @@ class ConnectionManager {
                                 tracks.addObject(track)
                             }
                             if tracks.count == 0 {
-                                
                                 // If there's no more tracks abort mission
-                                
                                 SwiftSpinner.show("Uh Oh! No more songs...", animated:false)
                                 return
                             }
@@ -160,6 +158,13 @@ class ConnectionManager {
     }
     
     class func getUserStream (first:Bool) {
+        
+        //make a temp array of played tracks' ids
+        var playedTracksArray = [Int]()
+        for aTrack in Singleton.sharedInstance.playedTracks{
+            let track = aTrack as! Track
+            playedTracksArray.append(track.id!);
+        }
         
         //Set number of tracks in one request
         let limit = 8
@@ -234,7 +239,22 @@ class ConnectionManager {
                                     track.permalink_url = child["permalink_url"].string!
                                     track.stream_url = child["stream_url"].string!
                                     track.start_time = child["start_time"].int! * 1000
-                                    tracks.addObject(track)
+                                    
+                                    if Singleton.sharedInstance.settings.duplicates == false {
+                                        // If duplicates are not allowed
+                                        if find(playedTracksArray, track.id!) == nil {
+                                            // Check if the id is in played tracks; if it isn't add it to the collection
+                                            tracks.addObject(track)
+                                        }
+                                        if tracks.count == 0 {
+                                            // If there's no more tracks abort mission
+                                            SwiftSpinner.show("All songs played, Grabbing Next Few Songs...")
+                                            self.getUserStream(false)
+                                            return
+                                        }
+                                    } else {
+                                        tracks.addObject(track)
+                                    }
                                 }
                                 
                                 //Hacky-ish fix. Adds two songs to the end so that all the songs can be played before requesting the next few

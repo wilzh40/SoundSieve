@@ -184,6 +184,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             if settings.stream {
                 SwiftSpinner.show("Loading next songs...")
                 ConnectionManager.getUserStream(false)
+                if tracks.count == 0 {
+                    ConnectionManager.getUserStream(false)
+                }
             } else {
                 println("No more tracks")
                 return nil
