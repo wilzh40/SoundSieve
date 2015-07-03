@@ -154,7 +154,7 @@ class Singleton {
         track.setValue(thisTrack.permalink_url, forKey: "link")
         track.setValue(thisTrack.artwork_url, forKey: "artwork_url")
         track.setValue(thisTrack.id, forKey: "id");
-        //track.setValue(thisTrack.user, forKey: "user")
+        track.setValue(thisTrack.user, forKey: "user")
     
         // Check for errors, if it cannot save
         var error: NSError?
@@ -208,7 +208,11 @@ class Singleton {
             track.permalink_url = coreTrack.valueForKey("link")as! String
             track.artwork_url = coreTrack.valueForKey("artwork_url") as? String
             track.id = coreTrack.valueForKey("id") as! Int
-           // track.user = coreTrack.valueForKey("user") as! String
+            if let user = coreTrack.valueForKey("user") {
+                track.user = user as! String
+            } else {
+                track.user = "ExampleUser"
+            }
             self.savedTracks.addObject(track)
         }
     }
