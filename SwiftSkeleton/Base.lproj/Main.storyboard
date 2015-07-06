@@ -52,7 +52,7 @@
                                     <constraint firstAttribute="width" constant="75" id="ZhB-Nz-yu4"/>
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="play_buttonblue">
+                                <state key="normal" image="orangePlayButton">
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -215,7 +215,7 @@
     <resources>
         <image name="list-square" width="410" height="410"/>
         <image name="music" width="410" height="410"/>
-        <image name="play_buttonblue" width="178" height="187"/>
+        <image name="orangePlayButton" width="100" height="100"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
