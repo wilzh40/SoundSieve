@@ -184,7 +184,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
     func connectSC() {
         println("Connecting account")
         ConnectionManager.authenticateSC()
-        self.form.formRowWithTag(tag.stream).disabled = false
+     
     }
   
     func updateUsername(){
@@ -192,6 +192,10 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         self.updateFormRow(self.form.formRowWithTag(tag.account))
         if let un = Singleton.sharedInstance.username {
             self.form.formRowWithTag(tag.account).title = un
+            self.form.formRowWithTag(tag.stream).disabled = false
+        } else {
+            self.form.formRowWithTag(tag.stream).disabled = true
+
         }
         self.tableView.reloadData()
         println(Singleton.sharedInstance.username)
@@ -222,9 +226,6 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
                 SwiftSpinner.show("Showing Duplicates")
                 
                 if settings.stream {
-
-                    // HELP BUG: NOT ALWAYS TRUE????
-
                     ConnectionManager.getUserStream(true)
                 } else {
                     ConnectionManager.getRandomTracks()
@@ -232,8 +233,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
             } else {
                 SwiftSpinner.show("Removing Duplicates")
                 if settings.stream {
-                    
-                    // HELP BUG: NOT ALWAYS TRUE???
+        
                     ConnectionManager.getUserStream(true)
                 } else {
                     ConnectionManager.getRandomTracks()
