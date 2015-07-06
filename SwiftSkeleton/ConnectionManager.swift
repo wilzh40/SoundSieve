@@ -115,7 +115,7 @@ class ConnectionManager {
                     
                 } else {
                     
-                    println(responseJSON)
+                    //println(responseJSON)
                     var tracks: NSMutableArray = []
                     for (index: String, child: JSON) in responseJSON {
                         var track = Track()
@@ -224,6 +224,7 @@ class ConnectionManager {
                                 for (index: String, child: JSON) in responseJSON {
                                     var track = Track()
                                     track.title = child["title"].string!
+                                    track.user = child["user"]["username"].string!
                                     //println(track.title)
                                     track.id = child["id"].int!
                                     track.duration = child["duration"].int

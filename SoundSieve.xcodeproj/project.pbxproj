@@ -221,6 +221,7 @@
 		B841CFFF1A9A969300B5D921 /* MagicalRecordShorthand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalRecordShorthand.h; sourceTree = "<group>"; };
 		B841D0001A9A969300B5D921 /* CoreData+MagicalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreData+MagicalRecord.h"; sourceTree = "<group>"; };
 		B86276C81A86FEF3004EEF50 /* AnimatedStartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedStartButton.swift; sourceTree = "<group>"; };
+		B8E22A5B1B461E2A00043B9B /* SwiftSkeletonV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftSkeletonV2.xcdatamodel; sourceTree = "<group>"; };
 		C9BA15AE8D72823CAC69A682 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -987,9 +988,10 @@
 		77CEFCEF1A79C041001B0A02 /* SwiftSkeleton.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				B8E22A5B1B461E2A00043B9B /* SwiftSkeletonV2.xcdatamodel */,
 				77CEFCF01A79C041001B0A02 /* SwiftSkeleton.xcdatamodel */,
 			);
-			currentVersion = 77CEFCF01A79C041001B0A02 /* SwiftSkeleton.xcdatamodel */;
+			currentVersion = B8E22A5B1B461E2A00043B9B /* SwiftSkeletonV2.xcdatamodel */;
 			path = SwiftSkeleton.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

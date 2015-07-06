@@ -75,11 +75,9 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         cell.textLabel?.numberOfLines = 2
         
         // IF there is an artist display it
-        /*
         cell.detailTextLabel?.text = track.user
         cell.detailTextLabel?.font = UIFont(name:"Futura",size:8.00)
         cell.detailTextLabel?.textColor = UIColor.grayColor()
-*/
 
       
         
