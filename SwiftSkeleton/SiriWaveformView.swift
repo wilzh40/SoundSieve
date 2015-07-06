@@ -17,7 +17,7 @@ let pi = M_PI
     private var _amplitude: CGFloat = 0.0
     
     @IBInspectable var waveColor = UIColor.blackColor()
-    @IBInspectable var numberOfWaves = 5
+    @IBInspectable var numberOfWaves = 1
     @IBInspectable var primaryWaveLineWidth: CGFloat = 3.0
     @IBInspectable var secondaryWaveLineWidth: CGFloat = 1.0
     @IBInspectable var idleAmplitude: CGFloat = 0.01

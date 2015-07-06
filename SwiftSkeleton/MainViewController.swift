@@ -227,22 +227,13 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     // This is called when a user didn't fully swipe left or right.
     func viewDidCancelSwipe(view: UIView) -> Void{
         //println("Couldn't decide, huh?")
+        
     }
     
     // Sent before a choice is made. Cancel the choice by returning `false`. Otherwise return `true`.
-    /*func view(view: UIView, shouldBeChosenWithDirection: MDCSwipeDirection) -> Bool{
+     func view(view: UIView, shouldBeChosenWithDirection: MDCSwipeDirection) -> Bool{
         return true
-        /*if (shouldBeChosenWithDirection == MDCSwipeDirection.Left) {
-        return true;
-        } else {
-        // Snap the view back and cancel the choice.
-        UIView.animateWithDuration(0.16, animations: { () -> Void in
-        view.transform = CGAffineTransformIdentity
-        view.center = view.superview!.center
-        })
-        return false;
-        }*/
-    }*/
+    }
     
     // This is called then a user swipes the view fully left or right.
     func view(view: UIView, wasChosenWithDirection: MDCSwipeDirection) -> Void{
@@ -398,7 +389,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     func audioPlayer(audioPlayer: STKAudioPlayer!, didFinishPlayingQueueItemId queueItemId: NSObject!, withReason stopReason: STKAudioPlayerStopReason, andProgress progress: Double, andDuration duration: Double) {
         //println(stopReason.value)
-        //println(stopReason.value)
+     
         // When the current song finishes play the next song
         if stopReason.value == 1 {
             if settings.autoplay == true {

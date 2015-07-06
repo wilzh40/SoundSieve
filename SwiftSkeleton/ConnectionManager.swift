@@ -137,7 +137,7 @@ class ConnectionManager {
                                 // Check if the id is in played tracks; if it isn't add it to the collection
                                 tracks.addObject(track)
                             }
-                            if tracks.count == 0 {
+                            if tracks.count <= 1 {
                                 // If there's no more tracks abort mission
                                 SwiftSpinner.show("Uh Oh! No more songs...", animated:false)
                                 return

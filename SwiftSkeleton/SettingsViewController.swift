@@ -202,10 +202,39 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         //Update autoplay, duplicates, preview, waveform values
         
         settings.autoplay = values[tag.autoplay] as! Bool
-        settings.duplicates = values[tag.duplicates] as! Bool
         
         settings.preview = values[tag.preview] as! Bool
         settings.waveform = values[tag.waveform] as! Bool
+        
+        if formRow.tag == tag.duplicates {
+            //If duplicates, get random tracks
+            
+            settings.duplicates = values[tag.duplicates] as! Bool
+            
+            if settings.duplicates {
+                SwiftSpinner.show("Showing Duplicates")
+                
+                if settings.stream {
+
+                    // HELP BUG: NOT ALWAYS TRUE????
+
+                    ConnectionManager.getUserStream(true)
+                } else {
+                    ConnectionManager.getRandomTracks()
+                }
+            } else {
+                SwiftSpinner.show("Removing Duplicates")
+                if settings.stream {
+                    
+                    // HELP BUG: NOT ALWAYS TRUE???
+                    ConnectionManager.getUserStream(true)
+                } else {
+                    ConnectionManager.getRandomTracks()
+                }
+            }
+            self.evo_drawerController?.closeDrawerAnimated(true, completion: nil)
+            
+        }
         
         if formRow.tag == tag.genre {
             // Get the index of the selection, works seemlessly with existing code
