@@ -51,7 +51,14 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         
     }
 
-
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        // Makes the section headers the correct font
+        if view.isKindOfClass(UITableViewHeaderFooterView) {
+            if let header = view as? UITableViewHeaderFooterView {
+                header.textLabel.font = UIFont(name: "Futura", size: 12.00)
+            }
+        }
+    }
     
     func initializeForm() {
         
