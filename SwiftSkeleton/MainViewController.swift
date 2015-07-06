@@ -149,7 +149,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             noMoreTracksLabel.text = "Enable duplicates or wait for tomorrow!"
             
             self.view.addSubview(noMoreTracksLabel)
-            self.view.bringSubviewToFront(noMoreTracksLabel)
+            //self.view.bringSubviewToFront(noMoreTracksLabel)
             
             self.titleLabel?.text = "No more tracks :("
             Singleton.sharedInstance.audioPlayer.stop()
@@ -218,6 +218,17 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
                 
                 println("No more tracks")
                 // Return a dummy view
+                noMoreTracksLabel = UILabel(frame: self.view.bounds)
+                noMoreTracksLabel.font = UIFont(name: "Futura", size: CGFloat(15))
+                noMoreTracksLabel.textAlignment = .Center;
+                noMoreTracksLabel.text = "Enable duplicates or wait for tomorrow!"
+                
+                self.view.addSubview(noMoreTracksLabel)
+                //self.view.bringSubviewToFront(noMoreTracksLabel)
+                
+                self.titleLabel?.text = "No more tracks :("
+                Singleton.sharedInstance.audioPlayer.stop()
+
                 return ChooseTrackView(track: Track(), frame: self.frontCardViewFrame(), options: MDCSwipeToChooseViewOptions())
             }
         }

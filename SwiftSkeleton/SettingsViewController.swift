@@ -98,10 +98,12 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         section = XLFormSectionDescriptor.formSectionWithTitle("Stream") as XLFormSectionDescriptor
         form.addFormSection(section)
         
+        
         row = XLFormRowDescriptor(tag: tag.stream, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Use User Stream")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.value = settings.stream
         row.disabled = (Singleton.sharedInstance.token == nil)
+        
         section.addFormRow(row)
         
     // Genres
