@@ -26,6 +26,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     let pulsingLayer = PulsingLayer()
     
     
+    var noMoreTracksLabel: UILabel!
+    var lastTrack: ChooseTrackView!
     var tracks:NSMutableArray = []
     var frontCardView: ChooseTrackView?
     var backCardView: ChooseTrackView?
@@ -132,9 +134,29 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         self.backCardView?.removeFromSuperview()
         
         // Init Code
-        
         SwiftSpinner.hide()
+        
+        
         tracks = Singleton.sharedInstance.tracks
+        
+        
+        // If there's no more tracks just stop and drop everything
+        if self.tracks.count <= 1 {
+            self.frontCardView = ChooseTrackView(track: Track(), frame: self.frontCardViewFrame(), options: MDCSwipeToChooseViewOptions())
+            noMoreTracksLabel = UILabel(frame: self.view.bounds)
+            noMoreTracksLabel.font = UIFont(name: "Futura", size: CGFloat(15))
+            noMoreTracksLabel.textAlignment = .Center;
+            noMoreTracksLabel.text = "Enable duplicates or wait for tomorrow!"
+            
+            self.view.addSubview(noMoreTracksLabel)
+            self.view.bringSubviewToFront(noMoreTracksLabel)
+            
+            self.titleLabel?.text = "No more tracks :("
+            Singleton.sharedInstance.audioPlayer.stop()
+            
+            return
+            
+        }
         
         self.frontCardView = self.popTrackWithFrame(self.frontCardViewFrame())
         self.view.addSubview(self.frontCardView!)
@@ -180,7 +202,12 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     func popTrackWithFrame(frame:CGRect) -> ChooseTrackView? {
         // Creates a new chooseTrackView from tracks, and pops that track off the list
+        
+        // For duplicates, what happens when we run out tracks?
+        // If there's still one track remaining,
         if self.tracks.count == 1 {
+            
+            // Change the stream settings later
             if settings.stream {
                 SwiftSpinner.show("Loading next songs...")
                 ConnectionManager.getUserStream(false)
@@ -188,8 +215,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
                     ConnectionManager.getUserStream(false)
                 }
             } else {
+                
                 println("No more tracks")
-                return nil
+                // Return a dummy view
+                return ChooseTrackView(track: Track(), frame: self.frontCardViewFrame(), options: MDCSwipeToChooseViewOptions())
             }
         }
         

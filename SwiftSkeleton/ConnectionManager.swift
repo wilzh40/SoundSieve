@@ -139,9 +139,13 @@ class ConnectionManager {
                             }
                             if tracks.count <= 1 {
                                 // If there's no more tracks abort mission
-                                SwiftSpinner.show("Uh Oh! No more songs...", animated:false)
-                                return
+                                //SwiftSpinner.show("Uh Oh! No more songs...", animated:false)
+                                //var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("enableDuplicates"), userInfo: nil, repeats: true)
+                                
+
+                                //return
                             }
+                            
                         } else {
                             tracks.addObject(track)
                         }
@@ -152,6 +156,10 @@ class ConnectionManager {
                 }
             })
     }
+    
+    
+
+    
     
     class func getTrackStream (trackUrl:String) {
         

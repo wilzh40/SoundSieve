@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource, SavedSongsDelegate {
-      let singleton:Singleton = Singleton.sharedInstance
-      var tableData:NSMutableArray = ["Error"]
- 
-
+    let singleton:Singleton = Singleton.sharedInstance
+    var tableData:NSMutableArray = ["Error"]
+    
+    
     func setupData() {
         self.tableData = NSMutableArray(array: singleton.savedTracks.reverseObjectEnumerator().allObjects).mutableCopy() as! NSMutableArray
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
@@ -30,17 +30,17 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         self.tableView.endUpdates()
         println("Data Cleared")
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupData()
         
         Singleton.sharedInstance.delegate = self
-      //  ConnectionManager.testNetworking()
-
+        //  ConnectionManager.testNetworking()
+        
         let barButton = UIBarButtonItem(barButtonSystemItem:.Trash, target: self, action: Selector("clearData"))
-
+        
         self.navigationItem.setRightBarButtonItem(barButton, animated: true)
         
     }
@@ -56,7 +56,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         self.evo_drawerController?.centerViewController?.view.userInteractionEnabled = true
         
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
     }
@@ -64,9 +64,9 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 50;
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-  
+        
         let track:Track = tableData[indexPath.row] as! Track
         let cell: SongCell = SongCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "protoCell",urlString: track.artwork_url!)
         cell.textLabel?.text = track.title
@@ -75,22 +75,25 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         cell.textLabel?.numberOfLines = 2
         
         // IF there is an artist display it
-        cell.detailTextLabel?.text = track.user
-        cell.detailTextLabel?.font = UIFont(name:"Futura",size:8.00)
-        cell.detailTextLabel?.textColor = UIColor.grayColor()
-
-      
+        
+        // HACKY way when track.use has no data
+        if track.user != "ExampleUser" {
+            cell.detailTextLabel?.text = track.user
+            cell.detailTextLabel?.font = UIFont(name:"Futura",size:8.00)
+            cell.detailTextLabel?.textColor = UIColor.grayColor()
+        }
+        
         
         //cell.imageView!.image = ConnectionManager.getImageFromURL(track.artwork_url!)
         
         // Opti efforts
-              cell.layer.shouldRasterize = false
-       // cell.layer.rasterizationScale = UIScreen.mainScreen().scale
+        cell.layer.shouldRasterize = false
+        // cell.layer.rasterizationScale = UIScreen.mainScreen().scale
         
         return cell
     }
     
-
+    
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Change the center view controller
@@ -100,14 +103,14 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         url = NSURL(string:track.permalink_url)!
         UIApplication.sharedApplication().openURL(url)
     }
-
+    
     override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         if indexPath.row == singleton.savedTracks {
             return false
         }
         return true
     }
-   
+    
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         if indexPath.row == singleton.savedTracks {
             return nil
@@ -121,9 +124,9 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         }
         
         let track = singleton.savedTracks[indexPath.row] as! Track
-     
-
-      
+        
+        
+        
     }
     
     func reloadData() {
@@ -136,7 +139,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-
+        
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             ConnectionManager.unFavoriteTrack(singleton.savedTracks[indexPath.row] as! Track);
             singleton.deleteSavedTrackAtIndex(indexPath.row)
