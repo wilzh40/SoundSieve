@@ -200,11 +200,11 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         // For duplicates, what happens when we run out tracks?
         // If there's still one track remaining,
-        if Singleton.sharedInstance.tracks.count <= 10 && settings.stream {
+        if Singleton.sharedInstance.tracks.count < 8 && settings.stream {
             if Singleton.sharedInstance.tracks.count == 1 {
                 SwiftSpinner.show("Loading next songs...")
             }
-                //ConnectionManager.getNextStreamTrackIds()
+                ConnectionManager.bufferNextStreamTracks()
         }
         
         if Singleton.sharedInstance.tracks.count == 1 && settings.stream == false {
