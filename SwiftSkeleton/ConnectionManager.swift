@@ -435,11 +435,18 @@ class ConnectionManager {
                     
                     Singleton.sharedInstance.tracks = tracks
                     ConnectionManager.sharedInstance.delegate?.didGetTracks!()
+                    self.bufferNextStreamTracks()
                 }
             })
     }
     
     class func bufferNextStreamTracks() {
+        //If an instance of the metod is already running, no need to start another
+        if (Singleton.sharedInstance.streamIsBuffering) {
+            return
+        }
+        
+        Singleton.sharedInstance.streamIsBuffering = true
         //retrieve played tracks
         var playedTracksArray = [Int]()
         for aTrack in Singleton.sharedInstance.playedTracks{
@@ -491,9 +498,14 @@ class ConnectionManager {
                     } else {
                         self.addBufferedTrackToQueue()
                     }
-                    if (Singleton.sharedInstance
+                    if (Singleton.sharedInstance.tracks.count < 8) {
+                        self.bufferNextStreamTracks()
+                    }
                 }
             })
+        
+        //Finished buffering
+        Singleton.sharedInstance.streamIsBuffering = false
     }
     
     class func addBufferedTrackToQueue() {

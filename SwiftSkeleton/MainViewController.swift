@@ -204,7 +204,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             if Singleton.sharedInstance.tracks.count == 1 {
                 SwiftSpinner.show("Loading next songs...")
             }
-                ConnectionManager.bufferNextStreamTracks()
+            ConnectionManager.bufferNextStreamTracks()
         }
         
         if Singleton.sharedInstance.tracks.count == 1 && settings.stream == false {
