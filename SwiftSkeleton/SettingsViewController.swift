@@ -163,16 +163,19 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         let credits2 = "Wilson Zhao | Brian Ng | Kevin Zeng "
         row = XLFormRowDescriptor(tag: tag.credits, rowType: XLFormRowDescriptorTypeInfo, title: credits2)
         row.cellConfig.setObject(UIFont(name:"Futura",size:10.00)!, forKey: "textLabel.font")
+
         section.addFormRow(row)
         
         let credits = "Uses StreamingKit (Thong Ngyuen), XLForms (Xmartlabs)"
         row = XLFormRowDescriptor(tag: tag.credits, rowType: XLFormRowDescriptorTypeInfo, title: credits)
         row.cellConfig.setObject(UIFont(name:"Futura",size:8.00)!, forKey: "textLabel.font")
+        
         section.addFormRow(row)
         
         self.form = form;
         
     }
+    
 
     func connectSC() {
         println("Connecting account")
@@ -190,7 +193,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         println(Singleton.sharedInstance.username)
 
     }
-
+   
 
     override func formRowDescriptorValueHasChanged(formRow: XLFormRowDescriptor!, oldValue: AnyObject!, newValue: AnyObject!) {
         
@@ -202,7 +205,6 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         //Update autoplay, duplicates, preview, waveform values
         
         settings.autoplay = values[tag.autoplay] as! Bool
-        
         settings.preview = values[tag.preview] as! Bool
         settings.waveform = values[tag.waveform] as! Bool
         

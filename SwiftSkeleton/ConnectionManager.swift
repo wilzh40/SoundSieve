@@ -23,8 +23,10 @@ let soundcloudURL = "http://api.soundcloud.com/"
 }
 class ConnectionManager {
     var delegate : ConnectionProtocol?
-    
     let settings = Singleton.sharedInstance.settings
+    
+
+    
     
     // Authenticate SC -> Safari login -> Call back to app -> Get token -> Get username -> Save data -> reload
     
@@ -157,10 +159,10 @@ class ConnectionManager {
             })
     }
     
+    // Limit songs for stream
+    static let limit = 100
+    
     class func initializeStream () {
-        let limit = 100
-        //get 250 track ids
-        
         //Clear array
         Singleton.sharedInstance.idsArray.removeAllObjects()
         
@@ -235,7 +237,7 @@ class ConnectionManager {
         //Change the limit to 1
         let u1 = href_url!.substringToIndex(advance(href_url!.startIndex, 47)) //first half up to the first "="
         let u2 = href_url!.substringFromIndex(advance(href_url!.startIndex, 50)) // from the & to the end
-        let URL = u1 + "100" + u2
+        let URL = u1 + String(limit) + u2
         
         println(URL)
         
