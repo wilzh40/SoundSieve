@@ -158,7 +158,7 @@ class ConnectionManager {
     }
     
     class func initializeStream () {
-        let limit = 250
+        let limit = 100
         //get 250 track ids
         
         //Clear array
@@ -235,7 +235,7 @@ class ConnectionManager {
         //Change the limit to 1
         let u1 = href_url!.substringToIndex(advance(href_url!.startIndex, 47)) //first half up to the first "="
         let u2 = href_url!.substringFromIndex(advance(href_url!.startIndex, 50)) // from the & to the end
-        let URL = u1 + "250" + u2
+        let URL = u1 + "100" + u2
         
         println(URL)
         
