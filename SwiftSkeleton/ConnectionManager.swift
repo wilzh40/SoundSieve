@@ -46,7 +46,7 @@ class ConnectionManager {
             println("Soundcloud", message: "oauth_token:\(credential.oauth_token)")
             Singleton.sharedInstance.token = credential.oauth_token
             ConnectionManager.getUsername()
-            
+            ConnectionManager.initializeStream(false)
             }, failure: {(error:NSError!) -> Void in
                 SwiftSpinner.show("Failed to connect, waiting...", animated: false)
                 println(error.localizedDescription)
