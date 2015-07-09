@@ -213,6 +213,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             ConnectionManager.loadAndAddNextTrackToQueue()
         }
         
+        if (Singleton.sharedInstance.idsArray.count < Singleton.sharedInstance.idsArrayLimit/4 || Singleton.sharedInstance.idsArrayWithoutDuplicates.count < Singleton.sharedInstance.idsArrayLimit/4) && settings.stream {
+            ConnectionManager.getNextStreamTrackIds(false)
+        }
+        
         if Singleton.sharedInstance.tracks.count == 1 && settings.stream == false {
             println("No more tracks")
             // Return a dummy view

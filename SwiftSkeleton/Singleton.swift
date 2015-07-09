@@ -69,8 +69,11 @@ class Singleton {
     //User Stream Stuff
     var userStreamNextHrefUrl:String?
     var idsArray: NSMutableArray = []
+    var idsArrayWithoutDuplicates: NSMutableArray = []
     var nextTrackIdToBeBuffered: Int?
     var streamIsBuffering: Bool = false
+    var idsArrayLimit:Int = 100
+    var idsArrayIndex:Int = 0
 
     func visualize() {
         
