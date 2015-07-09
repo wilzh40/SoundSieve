@@ -216,7 +216,8 @@ class Singleton {
             } else {
                 track.user = "ExampleUser"
             }
-            self.savedTracks.addObject(track)
+            
+            self.savedTracks.insertObject(track, atIndex: 0)
         }
     }
     
