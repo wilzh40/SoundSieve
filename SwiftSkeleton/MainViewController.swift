@@ -29,7 +29,6 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     var noMoreTracksLabel: UILabel!
     var lastTrack: ChooseTrackView!
-    var tracks:NSMutableArray = []
     var frontCardView: ChooseTrackView?
     var backCardView: ChooseTrackView?
     var currentTrack: Track?
@@ -139,12 +138,8 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         // Init Code
         SwiftSpinner.hide()
         
-        
-        tracks = Singleton.sharedInstance.tracks
-        
-        
         // If there's no more tracks just stop and drop everything
-        if self.tracks.count <= 1 {
+        if Singleton.sharedInstance.tracks.count <= 1 {
             self.frontCardView = ChooseTrackView(track: Track(), frame: self.frontCardViewFrame(), options: MDCSwipeToChooseViewOptions())
             noMoreTracksLabel = UILabel(frame: self.view.bounds)
             noMoreTracksLabel.font = UIFont(name: "Futura", size: CGFloat(15))
@@ -210,32 +205,14 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         // For duplicates, what happens when we run out tracks?
         // If there's still one track remaining,
-        if self.tracks.count == 1 {
-            
-            // Change the stream settings later
-            if settings.stream {
-                SwiftSpinner.show("Loading next songs...")
-                ConnectionManager.getUserStream(false)
-                if tracks.count == 0 {
-                    ConnectionManager.getUserStream(false)
-                }
-            } else {
-                
-                println("No more tracks")
-                // Return a dummy view
-                noMoreTracksLabel = UILabel(frame: self.view.bounds)
-                noMoreTracksLabel.font = UIFont(name: "Futura", size: CGFloat(15))
-                noMoreTracksLabel.textAlignment = .Center;
-                noMoreTracksLabel.text = "Enable duplicates or wait for tomorrow!"
-                
-                self.view.addSubview(noMoreTracksLabel)
-                //self.view.bringSubviewToFront(noMoreTracksLabel)
-                
-                self.titleLabel?.text = "No more tracks :("
-                Singleton.sharedInstance.audioPlayer.stop()
-
-                return ChooseTrackView(track: Track(), frame: self.frontCardViewFrame(), options: MDCSwipeToChooseViewOptions())
-            }
+        if Singleton.sharedInstance.tracks.count < 8 && settings.stream {
+            ConnectionManager.loadAndAddNextTrackToQueue()
+        }
+        
+        if Singleton.sharedInstance.tracks.count == 1 && settings.stream == false {
+            println("No more tracks")
+            // Return a dummy view
+            return ChooseTrackView(track: Track(), frame: self.frontCardViewFrame(), options: MDCSwipeToChooseViewOptions())
         }
         
         var options = MDCSwipeToChooseViewOptions()
@@ -261,9 +238,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             }*/
         }
         
-        var view = ChooseTrackView(track:tracks.objectAtIndex(0) as! Track, frame: frame, options: options)
+        var view = ChooseTrackView(track:Singleton.sharedInstance.tracks.objectAtIndex(0) as! Track, frame: frame, options: options)
         
-        tracks.removeObjectAtIndex(0)
+        Singleton.sharedInstance.tracks.removeObjectAtIndex(0)
         //view.imageView.image = UIImage(named: "photo.png")
         
         return view
@@ -353,7 +330,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         if let track = self.frontCardView?.track {
             if let nextTrack = self.backCardView?.track {
                 //If last track, don't play
-                if tracks.count != 0 {
+                if Singleton.sharedInstance.tracks.count != 0 {
                     ConnectionManager.playStreamFromTrack(track,nextTrack:nextTrack)
                     
                     //Autoplay functionality

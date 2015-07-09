@@ -66,8 +66,11 @@ class Singleton {
     var managedContext: NSManagedObjectContext?
     var entity: NSEntityDescription?
     
-    //User Stream url
+    //User Stream Stuff
     var userStreamNextHrefUrl:String?
+    var idsArray: NSMutableArray = []
+    var nextTrackIdToBeBuffered: Int?
+    var streamIsBuffering: Bool = false
 
     func visualize() {
         

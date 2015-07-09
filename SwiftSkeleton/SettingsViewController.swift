@@ -132,31 +132,31 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         // Switches
         
         // Display Duplicates?
-        row = XLFormRowDescriptor(tag: tag.duplicates, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Display Duplicates?")
+        row = XLFormRowDescriptor(tag: tag.duplicates, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Display Duplicates")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.value = settings.duplicates
         section.addFormRow(row)
         
         // Autoplay?
-        row = XLFormRowDescriptor(tag: tag.autoplay, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Autoplay?")
+        row = XLFormRowDescriptor(tag: tag.autoplay, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Autoplay")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.value = settings.autoplay
         section.addFormRow(row)
         
         // Hotness?
-        row = XLFormRowDescriptor(tag: tag.hotness, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Sort by Hotness?")
+        row = XLFormRowDescriptor(tag: tag.hotness, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Sort by Hotness")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.value = settings.hotness
         section.addFormRow(row)
 
         // Preview Song?
-        row = XLFormRowDescriptor(tag: tag.preview, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Preview song?")
+        row = XLFormRowDescriptor(tag: tag.preview, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Preview song")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.value = settings.preview
         section.addFormRow(row)
         
         // Display Waveform
-        row = XLFormRowDescriptor(tag: tag.waveform, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Display Waveform?")
+        row = XLFormRowDescriptor(tag: tag.waveform, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Display Waveform")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.value = settings.waveform
         section.addFormRow(row)
@@ -172,16 +172,19 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         let credits2 = "Wilson Zhao | Brian Ng | Kevin Zeng "
         row = XLFormRowDescriptor(tag: tag.credits, rowType: XLFormRowDescriptorTypeInfo, title: credits2)
         row.cellConfig.setObject(UIFont(name:"Futura",size:10.00)!, forKey: "textLabel.font")
+
         section.addFormRow(row)
         
         let credits = "Uses StreamingKit (Thong Ngyuen), XLForms (Xmartlabs)"
         row = XLFormRowDescriptor(tag: tag.credits, rowType: XLFormRowDescriptorTypeInfo, title: credits)
         row.cellConfig.setObject(UIFont(name:"Futura",size:8.00)!, forKey: "textLabel.font")
+        
         section.addFormRow(row)
         
         self.form = form;
         
     }
+    
 
     func connectSC() {
         println("Connecting account")
@@ -203,7 +206,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         println(Singleton.sharedInstance.username)
 
     }
-
+   
 
     override func formRowDescriptorValueHasChanged(formRow: XLFormRowDescriptor!, oldValue: AnyObject!, newValue: AnyObject!) {
         
@@ -215,7 +218,6 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         //Update autoplay, duplicates, preview, waveform values
         
         settings.autoplay = values[tag.autoplay] as! Bool
-        
         settings.preview = values[tag.preview] as! Bool
         settings.waveform = values[tag.waveform] as! Bool
         
@@ -228,15 +230,14 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
                 SwiftSpinner.show("Showing Duplicates")
                 
                 if settings.stream {
-                    ConnectionManager.getUserStream(true)
+                    ConnectionManager.initializeStream()
                 } else {
                     ConnectionManager.getRandomTracks()
                 }
             } else {
                 SwiftSpinner.show("Removing Duplicates")
                 if settings.stream {
-        
-                    ConnectionManager.getUserStream(true)
+                    ConnectionManager.initializeStream()
                 } else {
                     ConnectionManager.getRandomTracks()
                 }
@@ -265,7 +266,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
             settings.stream = values[tag.stream] as! Bool
             if settings.stream == true {
                 settings.trackSource = .Stream
-                ConnectionManager.getUserStream(true)
+                ConnectionManager.initializeStream()
                 SwiftSpinner.show("Switching to Stream")
             } else {
                 settings.trackSource = .Explore
