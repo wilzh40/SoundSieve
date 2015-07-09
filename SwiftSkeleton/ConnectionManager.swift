@@ -303,8 +303,24 @@ class ConnectionManager {
         //Start at beginning of array
         Singleton.sharedInstance.idsArrayIndex = 0
         
-        //Construct trackIds String for Url
         
+        //playedTracks
+        var playedTracksArray = [Int]()
+        for aTrack in Singleton.sharedInstance.playedTracks{
+            let track = aTrack as! Track
+            playedTracksArray.append(track.id!);
+        }
+        
+        //filter withoutDuplicates array
+        for var i = 0; i < Singleton.sharedInstance.idsArrayWithoutDuplicates.count; ++i {
+            let id = Singleton.sharedInstance.idsArrayWithoutDuplicates.objectAtIndex(i) as! Int
+            if find(playedTracksArray, id) != nil {
+                Singleton.sharedInstance.idsArrayWithoutDuplicates.removeObjectAtIndex(i)
+                i--
+            }
+        }
+        
+        //Construct trackIds String for Url
         var trackIds = ""
         
         let initialSongs = 8
