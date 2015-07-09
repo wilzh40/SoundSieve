@@ -51,7 +51,14 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         
     }
 
-
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        // Makes the section headers the correct font
+        if view.isKindOfClass(UITableViewHeaderFooterView) {
+            if let header = view as? UITableViewHeaderFooterView {
+                header.textLabel.font = UIFont(name: "Futura", size: 12.00)
+            }
+        }
+    }
     
     func initializeForm() {
         
@@ -91,10 +98,12 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         section = XLFormSectionDescriptor.formSectionWithTitle("Stream") as XLFormSectionDescriptor
         form.addFormSection(section)
         
+        
         row = XLFormRowDescriptor(tag: tag.stream, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Use User Stream")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.value = settings.stream
         row.disabled = (Singleton.sharedInstance.token == nil)
+        
         section.addFormRow(row)
         
     // Genres
@@ -177,7 +186,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
     func connectSC() {
         println("Connecting account")
         ConnectionManager.authenticateSC()
-        self.form.formRowWithTag(tag.stream).disabled = false
+     
     }
   
     func updateUsername(){
@@ -185,6 +194,10 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         self.updateFormRow(self.form.formRowWithTag(tag.account))
         if let un = Singleton.sharedInstance.username {
             self.form.formRowWithTag(tag.account).title = un
+            self.form.formRowWithTag(tag.stream).disabled = false
+        } else {
+            self.form.formRowWithTag(tag.stream).disabled = true
+
         }
         self.tableView.reloadData()
         println(Singleton.sharedInstance.username)

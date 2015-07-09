@@ -144,7 +144,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             noMoreTracksLabel.text = "Enable duplicates or wait for tomorrow!"
             
             self.view.addSubview(noMoreTracksLabel)
-            self.view.bringSubviewToFront(noMoreTracksLabel)
+            //self.view.bringSubviewToFront(noMoreTracksLabel)
             
             self.titleLabel?.text = "No more tracks :("
             Singleton.sharedInstance.audioPlayer.stop()
@@ -201,9 +201,6 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         // For duplicates, what happens when we run out tracks?
         // If there's still one track remaining,
         if Singleton.sharedInstance.tracks.count < 8 && settings.stream {
-            if Singleton.sharedInstance.tracks.count == 1 {
-                SwiftSpinner.show("Loading next songs...")
-            }
             ConnectionManager.loadAndAddNextTrackToQueue()
         }
         
