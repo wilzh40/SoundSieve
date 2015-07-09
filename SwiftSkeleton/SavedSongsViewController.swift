@@ -99,7 +99,8 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         // Change the center view controller
         // self.tableView.reloadData()
         var url : NSURL
-        let track = singleton.savedTracks[indexPath.row] as! Track
+        let reversedArray = NSMutableArray(array: singleton.savedTracks.reverseObjectEnumerator().allObjects).mutableCopy() as! NSMutableArray
+        let track = reversedArray[indexPath.row] as! Track
         url = NSURL(string:track.permalink_url)!
         UIApplication.sharedApplication().openURL(url)
     }
