@@ -48,7 +48,7 @@ class ChooseTrackView : MDCSwipeToChooseView {
     
     // Called when the song is loaded/playing to hide the loading animation
     func showLoadingAnimation () {
-        self.loadingAnimation!.alpha = 1.0
+        self.loadingAnimation!.alpha = 0.5
         self.addSubview(loadingAnimation!)
     }
     func hideLoadingAnimation () {
