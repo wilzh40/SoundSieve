@@ -46,7 +46,7 @@ class ConnectionManager {
             println("Soundcloud", message: "oauth_token:\(credential.oauth_token)")
             Singleton.sharedInstance.token = credential.oauth_token
             ConnectionManager.getUsername()
-            
+            ConnectionManager.initializeStream(false)
             }, failure: {(error:NSError!) -> Void in
                 SwiftSpinner.show("Failed to connect, waiting...", animated: false)
                 println(error.localizedDescription)
@@ -73,8 +73,6 @@ class ConnectionManager {
                 }
                 // Update the
                 Singleton.sharedInstance.settingsVC!.updateUsername()
-                
-                
                 if error != nil {
                     println(error)
                 }
@@ -143,8 +141,6 @@ class ConnectionManager {
                                 // If there's no more tracks abort mission
                                 //SwiftSpinner.show("Uh Oh! No more songs...", animated:false)
                                 //var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("enableDuplicates"), userInfo: nil, repeats: true)
-                                
-                                
                                 //return
                             }
                             
@@ -160,7 +156,6 @@ class ConnectionManager {
     }
     
     // Limit songs for stream
-    static let limit = 100
     
     //InitializeStream loads the song ids, call with TRUE if you want to play the stream after or FALSE if you just want to load the ids
     
@@ -181,8 +176,8 @@ class ConnectionManager {
         //Set number of tracks in one request
         
         //Construct Url based on whether this is the first time user stream is requested or if it is a continuation
-        let URL = "https://api.soundcloud.com/me/activities?limit=" + String(limit) + "&oauth_token=" + Singleton.sharedInstance.token!
-        
+        let URL = "https://api.soundcloud.com/me/activities?limit=" + String(Singleton.sharedInstance.idsArrayLimit) + "&oauth_token=" + Singleton.sharedInstance.token!
+
         //Create initial string to hold future trackIds
         
         //Request from url
@@ -200,18 +195,13 @@ class ConnectionManager {
                     for (index: String, child: JSON) in responseJSON["collection"] {
                         if(child["origin"]["kind"].string! == "track") {
                             let id = child["origin"]["id"].int!
-                            if Singleton.sharedInstance.settings.duplicates == false {
-                                // If duplicates are not allowed
-                                if find(playedTracksArray, id) == nil && find(localIdsArray, id) == nil {
+                            if find(localIdsArray, id) == nil {
+                                    if find(playedTracksArray, id) == nil {
                                     // Check if the id is in played tracks or if the id is already in idsArray if it isn't add it to the collection
-                                    Singleton.sharedInstance.idsArray.addObject(id)
-                                    localIdsArray.append(id)
+                                    Singleton.sharedInstance.idsArrayWithoutDuplicates.addObject(id)
                                 }
-                            } else {
-                                if find(localIdsArray, id) == nil {
-                                    Singleton.sharedInstance.idsArray.addObject(id)
-                                    localIdsArray.append(id)
-                                }
+                                localIdsArray.append(id)
+                                Singleton.sharedInstance.idsArray.addObject(id)
                             }
                         }
                     }
@@ -219,8 +209,8 @@ class ConnectionManager {
                     //Grab and store next_href string for next set of songs
                     Singleton.sharedInstance.userStreamNextHrefUrl = responseJSON["next_href"].string!
                     
-                    //If not enough tracks due to duplicates
-                    if (Singleton.sharedInstance.idsArray.count < 100) {
+                    //If duplicates array has not enough tracks due to duplicates
+                    if (Singleton.sharedInstance.idsArrayWithoutDuplicates.count < Singleton.sharedInstance.idsArrayLimit) {
                         //Grab JUST the next song
                         if (play) {
                             self.getNextStreamTrackIds(true)
@@ -245,7 +235,7 @@ class ConnectionManager {
         //Change the limit to 1
         let u1 = href_url!.substringToIndex(advance(href_url!.startIndex, 47)) //first half up to the first "="
         let u2 = href_url!.substringFromIndex(advance(href_url!.startIndex, 50)) // from the & to the end
-        let URL = u1 + String(limit) + u2
+        let URL = u1 + String(Singleton.sharedInstance.idsArrayLimit) + u2
         
         println(URL)
         
@@ -255,6 +245,9 @@ class ConnectionManager {
             let track = aTrack as! Track
             playedTracksArray.append(track.id!);
         }
+        
+        //make temp array that is a replica of idsArray to prevent the same song on stream
+        var localIdsArray = [Int]()
         
         Alamofire.request(.GET, URL)
             .responseSwiftyJSON ({ (request, response, responseJSON, error) in
@@ -273,36 +266,43 @@ class ConnectionManager {
                     for (index: String, child: JSON) in responseJSON["collection"] {
                         if(child["origin"]["kind"].string! == "track") {
                             let id = child["origin"]["id"].int!
-                            if Singleton.sharedInstance.settings.duplicates == false {
+                            if find(localIdsArray, id) == nil {
                                 // If duplicates are not allowed
                                 if find(playedTracksArray, id) == nil {
                                     // Check if the id is in played tracks; if it isn't add it to the collection
-                                    Singleton.sharedInstance.idsArray.addObject(id)
+                                    Singleton.sharedInstance.idsArrayWithoutDuplicates.addObject(id)
                                 }
-                            } else {
+                                localIdsArray.append(id)
                                 Singleton.sharedInstance.idsArray.addObject(id)
                             }
                         }
                     }
                 
                 //If not enough tracks due to duplicates
-                if (Singleton.sharedInstance.idsArray.count < 250) {
-                    //Grab more songs
-                    if (play) {
+                    if (Singleton.sharedInstance.idsArrayWithoutDuplicates.count < Singleton.sharedInstance.idsArrayLimit) {
+                        //Grab more songs
+                        if (play) {
                         self.getNextStreamTrackIds(true)
+                        } else {
+                            self.getNextStreamTrackIds(false)
+                        }
                     } else {
-                        self.getNextStreamTrackIds(false)
+                        if (play) {
+                            self.loadAndAddInitialTracksInIdsArray()
+                        }
                     }
-                } else {
-                    if (play) {
-                        self.loadAndAddInitialTracksInIdsArray()
-                    }
-                }
+                    println("-----------------NUMBER OF TRACKS-----------------")
+                    println(Singleton.sharedInstance.idsArray.count)
+                    println("------------NUMBER OF TRACKS WITHOUT DUPLICATES-------------")
+                    println(Singleton.sharedInstance.idsArrayWithoutDuplicates.count)
             }
         })
     }
     
     class func loadAndAddInitialTracksInIdsArray() {
+        //Start at beginning of array
+        Singleton.sharedInstance.idsArrayIndex = 0
+        
         //Construct trackIds String for Url
         
         var trackIds = ""
@@ -311,14 +311,19 @@ class ConnectionManager {
         
         //only load initialSongs
         for var i = 0; i < initialSongs; ++i {
-            var temp = Singleton.sharedInstance.idsArray.objectAtIndex(0) as! Int
+            var temp:Int
+            if (Singleton.sharedInstance.settings.duplicates == true) {
+                temp = Singleton.sharedInstance.idsArray.objectAtIndex(Singleton.sharedInstance.idsArrayIndex) as! Int
+            } else {
+                temp = Singleton.sharedInstance.idsArrayWithoutDuplicates.objectAtIndex(Singleton.sharedInstance.idsArrayIndex) as! Int
+            }
             trackIds = trackIds + String(temp) + ","
             
-            //remove loaded song from idsArray
-            Singleton.sharedInstance.idsArray.removeObjectAtIndex(0)
+            //move the index up one
+            Singleton.sharedInstance.idsArrayIndex++
         }
         
-        //Fix to fencepost issue (delete additional comment at the end)
+        //Fix fencepost issue (delete additional comma at the end)
         trackIds = trackIds.substringToIndex(advance(trackIds.endIndex, -1))
         
         println(trackIds)
@@ -365,11 +370,15 @@ class ConnectionManager {
     }
     
     class func loadAndAddNextTrackToQueue() {
-        
-        let temp = Singleton.sharedInstance.idsArray.objectAtIndex(0) as! Int
+        var temp:Int
+        if (Singleton.sharedInstance.settings.duplicates) {
+            temp = Singleton.sharedInstance.idsArray.objectAtIndex(Singleton.sharedInstance.idsArrayIndex) as! Int
+        } else {
+            temp = Singleton.sharedInstance.idsArrayWithoutDuplicates.objectAtIndex(Singleton.sharedInstance.idsArrayIndex) as! Int
+        }
         
         //remove loaded song from idsArray
-        Singleton.sharedInstance.idsArray.removeObjectAtIndex(0)
+        Singleton.sharedInstance.idsArrayIndex++
         
         let URL2 = "http://soundsieve-backend.appspot.com/api/track?ids=" + String(temp)
         

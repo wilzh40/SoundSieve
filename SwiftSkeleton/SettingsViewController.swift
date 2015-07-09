@@ -230,14 +230,14 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
                 SwiftSpinner.show("Showing Duplicates")
                 
                 if settings.stream {
-                    ConnectionManager.initializeStream(true)
+                    ConnectionManager.loadAndAddInitialTracksInIdsArray()
                 } else {
                     ConnectionManager.getRandomTracks()
                 }
             } else {
                 SwiftSpinner.show("Removing Duplicates")
                 if settings.stream {
-                    ConnectionManager.initializeStream(true)
+                    ConnectionManager.loadAndAddInitialTracksInIdsArray()
                 } else {
                     ConnectionManager.getRandomTracks()
                 }
