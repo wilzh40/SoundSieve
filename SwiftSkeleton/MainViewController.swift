@@ -17,6 +17,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var xButton: UIButton!
     @IBOutlet weak var pausePlayButton: AnimatedStartButton!
@@ -187,6 +188,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
         self.view.bringSubviewToFront(pausePlayButton)
+        self.view.bringSubviewToFront(userLabel)
         //self.view.bringSubviewToFront(waveformView)
         waveformView.userInteractionEnabled = false
         xButton.adjustsImageWhenHighlighted = true
