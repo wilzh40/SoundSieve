@@ -356,9 +356,9 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     // View frames
     
     func frontCardViewFrame() -> CGRect {
-        let horizontalPadding: CGFloat = 20
-        let topPadding: CGFloat = 100
-        let bottomPadding: CGFloat = 200
+        let horizontalPadding: CGFloat = 16
+        let topPadding: CGFloat = 120
+        let bottomPadding: CGFloat = 220
         return CGRectMake(horizontalPadding, topPadding,CGRectGetWidth(self.view.frame) - (horizontalPadding*2),
             CGRectGetHeight(self.view.frame) - bottomPadding)
     }
