@@ -25,7 +25,7 @@ class ConnectionManager {
     var delegate : ConnectionProtocol?
     let settings = Singleton.sharedInstance.settings
     
-
+    
     
     
     // Authenticate SC -> Safari login -> Call back to app -> Get token -> Get username -> Save data -> reload
@@ -144,7 +144,7 @@ class ConnectionManager {
                                 //SwiftSpinner.show("Uh Oh! No more songs...", animated:false)
                                 //var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("enableDuplicates"), userInfo: nil, repeats: true)
                                 
-
+                                
                                 //return
                             }
                             
@@ -177,7 +177,7 @@ class ConnectionManager {
         var localIdsArray = [Int]()
         
         //Set number of tracks in one request
-    
+        
         //Construct Url based on whether this is the first time user stream is requested or if it is a continuation
         let URL = "https://api.soundcloud.com/me/activities?limit=" + String(limit) + "&oauth_token=" + Singleton.sharedInstance.token!
         
@@ -249,43 +249,43 @@ class ConnectionManager {
         }
         
         Alamofire.request(.GET, URL)
-        .responseSwiftyJSON ({ (request, response, responseJSON, error) in
-            println(request)
-            if error != nil {
-                println(error)
-                SwiftSpinner.show("Failed to connect, waiting...", animated: false)
-                
-            } else {
-                //println(responseJSON)
-                
-                //Grab and store next_href string for next set of songs
-                Singleton.sharedInstance.userStreamNextHrefUrl = responseJSON["next_href"].string!
-                
-                //Pull song ids from response json and add them to string, seperated by commas
-                for (index: String, child: JSON) in responseJSON["collection"] {
-                    if(child["origin"]["kind"].string! == "track") {
-                        let id = child["origin"]["id"].int!
-                        if Singleton.sharedInstance.settings.duplicates == false {
-                            // If duplicates are not allowed
-                            if find(playedTracksArray, id) == nil {
-                                // Check if the id is in played tracks; if it isn't add it to the collection
+            .responseSwiftyJSON ({ (request, response, responseJSON, error) in
+                println(request)
+                if error != nil {
+                    println(error)
+                    SwiftSpinner.show("Failed to connect, waiting...", animated: false)
+                    
+                } else {
+                    //println(responseJSON)
+                    
+                    //Grab and store next_href string for next set of songs
+                    Singleton.sharedInstance.userStreamNextHrefUrl = responseJSON["next_href"].string!
+                    
+                    //Pull song ids from response json and add them to string, seperated by commas
+                    for (index: String, child: JSON) in responseJSON["collection"] {
+                        if(child["origin"]["kind"].string! == "track") {
+                            let id = child["origin"]["id"].int!
+                            if Singleton.sharedInstance.settings.duplicates == false {
+                                // If duplicates are not allowed
+                                if find(playedTracksArray, id) == nil {
+                                    // Check if the id is in played tracks; if it isn't add it to the collection
+                                    Singleton.sharedInstance.idsArray.addObject(id)
+                                }
+                            } else {
                                 Singleton.sharedInstance.idsArray.addObject(id)
                             }
-                        } else {
-                            Singleton.sharedInstance.idsArray.addObject(id)
                         }
                     }
+                    
+                    //If not enough tracks due to duplicates
+                    if (Singleton.sharedInstance.idsArray.count < 250) {
+                        //Grab more songs
+                        self.getNextStreamTrackIds()
+                    } else {
+                        self.loadAndAddInitialTracksInIdsArray()
+                    }
                 }
-                
-                //If not enough tracks due to duplicates
-                if (Singleton.sharedInstance.idsArray.count < 250) {
-                    //Grab more songs
-                    self.getNextStreamTrackIds()
-                } else {
-                    self.loadAndAddInitialTracksInIdsArray()
-                }
-            }
-        })
+            })
     }
     
     class func loadAndAddInitialTracksInIdsArray() {
@@ -349,7 +349,7 @@ class ConnectionManager {
                 }
             })
     }
-
+    
     class func loadAndAddNextTrackToQueue() {
         
         let temp = Singleton.sharedInstance.idsArray.objectAtIndex(0) as! Int
@@ -411,15 +411,17 @@ class ConnectionManager {
     
     class func unFavoriteTrack (track: Track) {
         let URL = soundcloudURL + "me/favorites/" + String(track.id!)
-        let parameters = ["oauth_token": Singleton.sharedInstance.token!]
-        Alamofire.request(.DELETE, URL, parameters: parameters)
-            .response { (request, response, responseJSON, error) in
-                println(request)
-                println(response)
-                
-                if error != nil {
-                    println(error)
-                }
+        if let token = Singleton.sharedInstance.token {
+            let parameters = ["oauth_token": token]
+            Alamofire.request(.DELETE, URL, parameters: parameters)
+                .response { (request, response, responseJSON, error) in
+                    println(request)
+                    println(response)
+                    
+                    if error != nil {
+                        println(error)
+                    }
+            }
         }
     }
     
@@ -448,7 +450,7 @@ class ConnectionManager {
                 
                 // Bug fix explanation: Swiping right with autoplay enabled, preview disabled, resulted in an infinite loop. That is because if preview is enabled there already is a function to ensure it skips under the delegate function in MainViewController
                 
-               // self.queueStreamFromTrack(nextTrack)
+                // self.queueStreamFromTrack(nextTrack)
             }
             
             //Autoplay functionality

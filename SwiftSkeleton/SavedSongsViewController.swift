@@ -15,7 +15,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     
     
     func setupData() {
-        self.tableData = NSMutableArray(array: singleton.savedTracks.reverseObjectEnumerator().allObjects).mutableCopy() as! NSMutableArray
+        self.tableData = singleton.savedTracks
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName:UIFont(name:"Futura",size:20.00)!]
         self.navigationController?.navigationBar.topItem?.title = "Saved Songs"
     }
@@ -99,8 +99,8 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         // Change the center view controller
         // self.tableView.reloadData()
         var url : NSURL
-        let reversedArray = NSMutableArray(array: singleton.savedTracks.reverseObjectEnumerator().allObjects).mutableCopy() as! NSMutableArray
-        let track = reversedArray[indexPath.row] as! Track
+        //let reversedArray = NSMutableArray(array: singleton.savedTracks.reverseObjectEnumerator().allObjects).mutableCopy() as! NSMutableArray
+        let track = singleton.savedTracks[indexPath.row] as! Track
         url = NSURL(string:track.permalink_url)!
         UIApplication.sharedApplication().openURL(url)
     }
@@ -131,7 +131,9 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     }
     
     func reloadData() {
-        self.tableData =  NSMutableArray(array: singleton.savedTracks.reverseObjectEnumerator().allObjects).mutableCopy() as! NSMutableArray
+        self.tableData = singleton.savedTracks
+            
+            //NSMutableArray(array: singleton.savedTracks.reverseObjectEnumerator().allObjects).mutableCopy() as! NSMutableArray
         self.tableView.reloadData()
     }
     
@@ -143,7 +145,8 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             ConnectionManager.unFavoriteTrack(singleton.savedTracks[indexPath.row] as! Track);
-            singleton.deleteSavedTrackAtIndex(indexPath.row)
+            // To account for the reversed order of the array
+            singleton.deleteSavedTrackAtIndex(singleton.savedTracks.count - indexPath.row - 1)
             self.tableData = singleton.savedTracks
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         }
