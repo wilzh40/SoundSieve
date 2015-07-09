@@ -66,7 +66,7 @@ class ConnectionManager {
                 // Either get user stream or random tracks, based on the setting
                 switch (Singleton.sharedInstance.settings.trackSource) {
                 case .Stream:
-                    self.initializeStream()
+                    self.initializeStream(true)
                 case .Explore:
                     self.getRandomTracks()
                     
@@ -162,7 +162,9 @@ class ConnectionManager {
     // Limit songs for stream
     static let limit = 100
     
-    class func initializeStream () {
+    //InitializeStream loads the song ids, call with TRUE if you want to play the stream after or FALSE if you just want to load the ids
+    
+    class func initializeStream(play: Bool) {
         //Clear array
         Singleton.sharedInstance.idsArray.removeAllObjects()
         
@@ -220,16 +222,22 @@ class ConnectionManager {
                     //If not enough tracks due to duplicates
                     if (Singleton.sharedInstance.idsArray.count < 100) {
                         //Grab JUST the next song
-                        self.getNextStreamTrackIds()
+                        if (play) {
+                            self.getNextStreamTrackIds(true)
+                        } else {
+                            self.getNextStreamTrackIds(false)
+                        }
                     } else {
-                        self.loadAndAddInitialTracksInIdsArray()
+                        if (play) {
+                            self.loadAndAddInitialTracksInIdsArray()
+                        }
                     }
                 }
             })
     }
     
-    //recursive fucntion to insure x amount of songs at beginning if duplicates are off
-    class func getNextStreamTrackIds() {
+    //recursive fucntion to insure x amount of songs at beginning if duplicates are off, argument is same meaning as last func
+    class func getNextStreamTrackIds(play: Bool) {
         //example url that is passed as argument (for reference) : https://api.soundcloud.com/me/activities?limit=1&amp;cursor=41d566d9-4840-0000-63c7-80891af6f5e8
         
         let href_url = Singleton.sharedInstance.userStreamNextHrefUrl
@@ -280,9 +288,15 @@ class ConnectionManager {
                 //If not enough tracks due to duplicates
                 if (Singleton.sharedInstance.idsArray.count < 250) {
                     //Grab more songs
-                    self.getNextStreamTrackIds()
+                    if (play) {
+                        self.getNextStreamTrackIds(true)
+                    } else {
+                        self.getNextStreamTrackIds(false)
+                    }
                 } else {
-                    self.loadAndAddInitialTracksInIdsArray()
+                    if (play) {
+                        self.loadAndAddInitialTracksInIdsArray()
+                    }
                 }
             }
         })

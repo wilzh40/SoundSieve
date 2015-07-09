@@ -85,7 +85,7 @@ class WalkthroughViewController: UIViewController {
         
         switch (Singleton.sharedInstance.settings.trackSource) {
             case .Stream:
-                ConnectionManager.initializeStream()
+                ConnectionManager.initializeStream(true)
             case .Explore:
                 ConnectionManager.getRandomTracks()
         }

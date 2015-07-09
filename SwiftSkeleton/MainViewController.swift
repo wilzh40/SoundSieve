@@ -56,6 +56,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         waveformView.layer.transform = CATransform3DMakeScale(1,0.8,1)
         
         //self.view.backgroundColor = UIColor(red: 1.00, green: 0.95, blue: 0.85, alpha: 1.0)
+        //load ID's
+        if (Singleton.sharedInstance.username != nil) {
+            ConnectionManager.initializeStream(false)
+        }
     }
     
     

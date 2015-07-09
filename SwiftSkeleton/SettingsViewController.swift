@@ -230,14 +230,14 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
                 SwiftSpinner.show("Showing Duplicates")
                 
                 if settings.stream {
-                    ConnectionManager.initializeStream()
+                    ConnectionManager.initializeStream(true)
                 } else {
                     ConnectionManager.getRandomTracks()
                 }
             } else {
                 SwiftSpinner.show("Removing Duplicates")
                 if settings.stream {
-                    ConnectionManager.initializeStream()
+                    ConnectionManager.initializeStream(true)
                 } else {
                     ConnectionManager.getRandomTracks()
                 }
@@ -266,7 +266,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
             settings.stream = values[tag.stream] as! Bool
             if settings.stream == true {
                 settings.trackSource = .Stream
-                ConnectionManager.initializeStream()
+                ConnectionManager.loadAndAddInitialTracksInIdsArray()
                 SwiftSpinner.show("Switching to Stream")
             } else {
                 settings.trackSource = .Explore

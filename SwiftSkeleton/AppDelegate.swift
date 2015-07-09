@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // Load the lists of tracks
                 switch (Singleton.sharedInstance.settings.trackSource) {
                 case .Stream:
-                    ConnectionManager.initializeStream()
+                    ConnectionManager.initializeStream(true)
                 case .Explore:
                     ConnectionManager.getRandomTracks()
                     
