@@ -15,8 +15,9 @@ class SongCell: UITableViewCell  {
     
     init(style: UITableViewCellStyle, reuseIdentifier: String?, urlString: String) {
         
-        
+       
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+         self.imageView!.image = UIImage(contentsOfFile:"placeHolderArt")
         ImageLoader.sharedLoader.imageForUrl(urlString, completionHandler:{(image: UIImage?, url: String) in
             self.imageView!.image = image
             self.setNeedsLayout()

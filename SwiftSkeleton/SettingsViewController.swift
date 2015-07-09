@@ -132,31 +132,31 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         // Switches
         
         // Display Duplicates?
-        row = XLFormRowDescriptor(tag: tag.duplicates, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Display Duplicates?")
+        row = XLFormRowDescriptor(tag: tag.duplicates, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Display Duplicates")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.value = settings.duplicates
         section.addFormRow(row)
         
         // Autoplay?
-        row = XLFormRowDescriptor(tag: tag.autoplay, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Autoplay?")
+        row = XLFormRowDescriptor(tag: tag.autoplay, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Autoplay")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.value = settings.autoplay
         section.addFormRow(row)
         
         // Hotness?
-        row = XLFormRowDescriptor(tag: tag.hotness, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Sort by Hotness?")
+        row = XLFormRowDescriptor(tag: tag.hotness, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Sort by Hotness")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.value = settings.hotness
         section.addFormRow(row)
 
         // Preview Song?
-        row = XLFormRowDescriptor(tag: tag.preview, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Preview song?")
+        row = XLFormRowDescriptor(tag: tag.preview, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Preview song")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.value = settings.preview
         section.addFormRow(row)
         
         // Display Waveform
-        row = XLFormRowDescriptor(tag: tag.waveform, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Display Waveform?")
+        row = XLFormRowDescriptor(tag: tag.waveform, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Display Waveform")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.value = settings.waveform
         section.addFormRow(row)
