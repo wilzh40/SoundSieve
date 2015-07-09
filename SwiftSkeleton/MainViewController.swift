@@ -69,6 +69,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         if normalizedValue == 0 {
             animating = false
             titleLabel?.alpha = 0.5
+            userLabel?.alpha = 0
             waveformView?.alpha = 0.2
             //pausePlayButton?.alpha = 0.7
         } else {
@@ -77,6 +78,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
                 UIView.animateWithDuration(1, animations: {
                     self.titleLabel.alpha = 1
                     self.waveformView?.alpha = 1
+                    self.userLabel.alpha = 1
                     
                 })
                 animating = true
@@ -171,6 +173,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             }
         }
         titleLabel.text = currentTrack?.title
+        userLabel.text = currentTrack?.user
         singleton.audioPlayer.pause()
         
         // Add pulse animation
@@ -188,7 +191,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         self.view.bringSubviewToFront(xButton)
         self.view.bringSubviewToFront(checkButton)
         self.view.bringSubviewToFront(pausePlayButton)
-        self.view.bringSubviewToFront(userLabel)
+        //self.view.bringSubviewToFront(userLabel)
         //self.view.bringSubviewToFront(waveformView)
         waveformView.userInteractionEnabled = false
         xButton.adjustsImageWhenHighlighted = true
@@ -302,13 +305,20 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         
         titleLabel.text = self.frontCardView?.track?.title
+        userLabel.text = self.frontCardView?.track?.user
         
         // Animate the text
         titleLabel.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
         titleLabel.alpha = 0
+        userLabel.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+        userLabel.alpha = 0
+        
         UIView.animateWithDuration(0.25, animations: {
             self.titleLabel.layer.transform = CATransform3DMakeScale(1,1,1)
             self.titleLabel.alpha = 1
+            self.userLabel.layer.transform = CATransform3DMakeScale(1,1,1)
+            self.userLabel.alpha = 1
+            
         })
         
         // Bring the backCard up
