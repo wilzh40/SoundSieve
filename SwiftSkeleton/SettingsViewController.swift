@@ -116,6 +116,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "detailTextLabel.font")
         row.selectorOptions = Singleton.sharedInstance.genres as [AnyObject]
         row.value = Singleton.sharedInstance.genres.objectAtIndex(settings.selectedGenre)
+        row.disabled = settings.stream
     
         section.addFormRow(row)
         
@@ -147,6 +148,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         row = XLFormRowDescriptor(tag: tag.hotness, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Sort by Hotness")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.value = settings.hotness
+        row.disabled = settings.stream
         section.addFormRow(row)
 
         // Preview Song?
