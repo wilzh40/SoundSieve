@@ -229,12 +229,12 @@ class ConnectionManager {
     //recursive fucntion to insure x amount of songs at beginning if duplicates are off, argument is same meaning as last func
     class func getNextStreamTrackIds(play: Bool) {
         //example url that is passed as argument (for reference) : https://api.soundcloud.com/me/activities?limit=1&amp;cursor=41d566d9-4840-0000-63c7-80891af6f5e8
-        
-        let href_url = Singleton.sharedInstance.userStreamNextHrefUrl
+    
+        let href_url = Singleton.sharedInstance.userStreamNextHrefUrl! + "&oauth_token=" + Singleton.sharedInstance.token!
         
         //Change the limit to 1
-        let u1 = href_url!.substringToIndex(advance(href_url!.startIndex, 47)) //first half up to the first "="
-        let u2 = href_url!.substringFromIndex(advance(href_url!.startIndex, 50)) // from the & to the end
+        let u1 = href_url.substringToIndex(advance(href_url.startIndex, 47)) //first half up to the first "="
+        let u2 = href_url.substringFromIndex(advance(href_url.startIndex, 50)) // from the & to the end
         let URL = u1 + String(Singleton.sharedInstance.idsArrayLimit) + u2
         
         println(URL)
@@ -260,7 +260,12 @@ class ConnectionManager {
                     //println(responseJSON)
                     
                     //Grab and store next_href string for next set of songs
-                    Singleton.sharedInstance.userStreamNextHrefUrl = responseJSON["next_href"].string!
+                    if (responseJSON["next_href"].string == nil) {
+                        println("----------------next_href could not be retrieved----------------")
+                        return
+                    } else {
+                        Singleton.sharedInstance.userStreamNextHrefUrl = responseJSON["next_href"].string!
+                    }
                     
                     //Pull song ids from response json and add them to string, seperated by commas
                     for (index: String, child: JSON) in responseJSON["collection"] {
