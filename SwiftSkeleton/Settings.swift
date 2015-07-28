@@ -40,6 +40,7 @@ class Settings: NSObject, NSCoding {
     var preview: Bool = true
     var waveform: Bool = true
     var firstLaunch: Bool = true
+    var waveformInFront: Bool = false
     
 
    /* override init() {
@@ -64,6 +65,7 @@ class Settings: NSObject, NSCoding {
         self.hotness = aDecoder.decodeBoolForKey("hotness")
         self.preview = aDecoder.decodeBoolForKey("preview")
         self.waveform = aDecoder.decodeBoolForKey("waveform")
+        self.waveformInFront = aDecoder.decodeBoolForKey("waveformInFront")
         self.firstLaunch = aDecoder.decodeBoolForKey("firstLaunch")
 
         
@@ -82,6 +84,7 @@ class Settings: NSObject, NSCoding {
         aCoder.encodeBool(self.hotness, forKey: "hotness")
         aCoder.encodeBool(self.preview, forKey: "preview")
         aCoder.encodeBool(self.waveform, forKey: "waveform")
+        aCoder.encodeBool(self.waveformInFront, forKey: "waveformInFront")
         aCoder.encodeBool(self.firstLaunch, forKey: "firstLaunch")
         aCoder.encodeBool(self.stream, forKey: "stream")
 }
