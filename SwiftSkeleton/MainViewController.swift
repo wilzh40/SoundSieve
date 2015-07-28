@@ -106,6 +106,11 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             waveformView.updateWithLevel(0.01)
         }
         
+        if settings.waveformInFront {
+            self.view.bringSubviewToFront(waveformView)
+        } else {
+            self.view.sendSubviewToBack(waveformView)
+        }
         // If theres a lot of stuff happening change the waveform properties
         
         if normalizedValue > 1.9 {

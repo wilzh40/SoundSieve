@@ -20,6 +20,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         static let hotness = "hotness"
         static let preview = "preview"
         static let waveform = "waveform"
+        static let waveformInFront = "waveformInFront"
         static let account = "account"
         static let credits = "credits"
         static let stream = "stream"
@@ -157,10 +158,25 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         row.value = settings.preview
         section.addFormRow(row)
         
+        //Waveform settings
+        section = XLFormSectionDescriptor.formSectionWithTitle("Waveform Settings") as XLFormSectionDescriptor
+        row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
+        section.multivaluedRowTemplate = row
+        section.multivaluedRowTemplate.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
+        
+        form.addFormSection(section)
+        
         // Display Waveform
         row = XLFormRowDescriptor(tag: tag.waveform, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Display Waveform")
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.value = settings.waveform
+        section.addFormRow(row)
+        
+        //Waveform in Front
+        row = XLFormRowDescriptor(tag: tag.waveformInFront, rowType: XLFormRowDescriptorTypeBooleanSwitch, title: "Waveform in Front")
+        row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
+        row.value = settings.waveformInFront
+        row.disabled = !settings.waveform
         section.addFormRow(row)
         
     // Credits
@@ -222,7 +238,9 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         settings.autoplay = values[tag.autoplay] as! Bool
         settings.preview = values[tag.preview] as! Bool
         settings.waveform = values[tag.waveform] as! Bool
-        
+        settings.waveformInFront = values[tag.waveformInFront] as! Bool
+        self.form.formRowWithTag(tag.waveformInFront).disabled = !settings.waveform
+        self.reloadFormRow(self.form.formRowWithTag(tag.waveformInFront))
         if formRow.tag == tag.duplicates {
             //If duplicates, get random tracks
             
