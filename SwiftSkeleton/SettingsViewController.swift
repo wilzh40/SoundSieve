@@ -121,9 +121,9 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
     
         section.addFormRow(row)
         
-    // Other settings
+    // Core settings
         
-        section = XLFormSectionDescriptor.formSectionWithTitle("Other Settings") as XLFormSectionDescriptor
+        section = XLFormSectionDescriptor.formSectionWithTitle("Core Settings") as XLFormSectionDescriptor
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         section.multivaluedRowTemplate = row
         section.multivaluedRowTemplate.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")

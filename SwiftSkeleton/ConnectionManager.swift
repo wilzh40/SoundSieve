@@ -366,22 +366,24 @@ class ConnectionManager {
                     var tracks: NSMutableArray = []
                     for (index: String, child: JSON) in responseJSON {
                         var track = Track()
-                        track.title = child["title"].string!
-                        track.user = child["user"]["username"].string!
-                        //println(track.title)
-                        track.id = child["id"].int!
-                        track.duration = child["duration"].int
-                        track.genre = child["genre"].string
-                        track.subtitle = child["description"].string
-                        if let s = child["artwork_url"].string {
-                            var tempStr = child["artwork_url"].string
-                            tempStr = tempStr!.substringToIndex(advance(tempStr!.endIndex,-9)) + "t500x500.jpg"
-                            track.artwork_url = tempStr!
+                        if child["streamable"].bool == true {
+                            track.title = child["title"].string!
+                            track.user = child["user"]["username"].string!
+                            //println(track.title)
+                            track.id = child["id"].int!
+                            track.duration = child["duration"].int
+                            track.genre = child["genre"].string
+                            track.subtitle = child["description"].string
+                            if let s = child["artwork_url"].string {
+                                var tempStr = child["artwork_url"].string
+                                tempStr = tempStr!.substringToIndex(advance(tempStr!.endIndex,-9)) + "t500x500.jpg"
+                                track.artwork_url = tempStr!
+                            }
+                            track.permalink_url = child["permalink_url"].string!
+                            track.stream_url = child["stream_url"].string!
+                            track.start_time = child["start_time"].int! * 1000
+                            tracks.addObject(track)
                         }
-                        track.permalink_url = child["permalink_url"].string!
-                        track.stream_url = child["stream_url"].string!
-                        track.start_time = child["start_time"].int! * 1000
-                        tracks.addObject(track)
                     }
                     
                     Singleton.sharedInstance.tracks = tracks
