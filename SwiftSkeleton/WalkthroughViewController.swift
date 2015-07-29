@@ -25,8 +25,8 @@ class WalkthroughViewController: UIViewController {
         self.view.addSubview(button) */
         
         
-        let item1 = RMParallaxItem(image: UIImage(named: "Tut1")!, text: "BASICALLY TINDER FOR SOUNDCLOUD® (SWIPE FOR MORE INFO)")
-        let item2 = RMParallaxItem(image: UIImage(named: "Tut2")!, text: "PREVIEW THE BEST PART OF THE SONG (BASED ON COMMENT DENSITY)")
+        let item1 = RMParallaxItem(image: UIImage(named: "Tut1")!, text: "BASICALLY TINDER FOR SOUNDCLOUD (SWIPE FOR MORE INFO)")
+        let item2 = RMParallaxItem(image: UIImage(named: "Tut2")!, text: "PREVIEW THE BEST PART OF THE SONG")
         let item3 = RMParallaxItem(image: UIImage(named: "Tut3")!, text: "SWIPE! RIGHT IF YOU LIKE IT, LEFT IF YOU DON'T!")
         let item4 = RMParallaxItem(image: UIImage(named: "Tut4")!, text: "SAVE SONGS FOR EASY ACCESS")
         let item5 = RMParallaxItem(image: UIImage(named: "Tut5")!, text: "CONNECT YOUR ACCOUNT TO SIFT THROUGH YOUR SOUNDCLOUD STREAM (AND LIKE SAVED SONGS)")

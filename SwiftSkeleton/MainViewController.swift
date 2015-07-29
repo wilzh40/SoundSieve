@@ -78,7 +78,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         } else {
             if (!animating) {
                 self.frontCardView?.hideLoadingAnimation()
-                UIView.animateWithDuration(1, animations: {
+                UIView.animateWithDuration(0.8, animations: {
                     self.titleLabel.alpha = 1
                     self.waveformView?.alpha = 1
                     self.userLabel.alpha = 1
@@ -92,12 +92,12 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         if !settings.waveform {
             // If there's no waveform just make it opaque
-            waveformView.alpha = 0
+            waveformView.hidden = true
             
             // And screw the rest of the function here
             return
         } else {
-            waveformView.alpha = 1
+            waveformView.hidden = false
         }
         
               if pausePlayButton.selected {

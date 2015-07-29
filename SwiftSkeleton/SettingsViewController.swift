@@ -189,13 +189,26 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
      
         let credits2 = "Wilson Zhao | Brian Ng | Kevin Zeng "
         row = XLFormRowDescriptor(tag: tag.credits, rowType: XLFormRowDescriptorTypeInfo, title: credits2)
-        row.cellConfig.setObject(UIFont(name:"Futura",size:10.00)!, forKey: "textLabel.font")
+        row.cellConfig.setObject(UIFont(name:"Futura",size:12.00)!, forKey: "textLabel.font")
 
         section.addFormRow(row)
         
-        let credits = "Uses StreamingKit (Thong Ngyuen), XLForms (Xmartlabs)"
+        let credits = "Uses StreamingKit (Thong Ngyuen), AnimatedStartButton (Kevin Vanderlugt)"
         row = XLFormRowDescriptor(tag: tag.credits, rowType: XLFormRowDescriptorTypeInfo, title: credits)
-        row.cellConfig.setObject(UIFont(name:"Futura",size:8.00)!, forKey: "textLabel.font")
+        row.cellConfig.setObject(UIFont(name:"Futura",size:7.00)!, forKey: "textLabel.font")
+        
+        section.addFormRow(row)
+        
+        let credits3 = "Pods: RMParallax, XLForms, Alamofire, SwiftyJSON, SwiftSpinner"
+        row = XLFormRowDescriptor(tag: tag.credits, rowType: XLFormRowDescriptorTypeInfo, title: credits3)
+        row.cellConfig.setObject(UIFont(name:"Futura",size:7.00)!, forKey: "textLabel.font")
+        
+        section.addFormRow(row)
+        
+        
+        let credits4 = "MDCSwipeToChoose, UCZProgressView, OAuthSwift, HTPressableButton"
+        row = XLFormRowDescriptor(tag: tag.credits, rowType: XLFormRowDescriptorTypeInfo, title: credits4)
+        row.cellConfig.setObject(UIFont(name:"Futura",size:7.00)!, forKey: "textLabel.font")
         
         section.addFormRow(row)
         
