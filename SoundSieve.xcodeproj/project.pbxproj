@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15CAAFFD569B62AD7669DD8C /* Pods_SoundSieve.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6A3D8A4DEB5D188B46C258 /* Pods_SoundSieve.framework */; };
 		1A718F881F10A3358937449E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BA15AE8D72823CAC69A682 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7767E4371B23B0BC00BA06D6 /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7767E4361B23B0BC00BA06D6 /* Alamofire-SwiftyJSON.swift */; };
 		776A5A671A87344000D7B091 /* NSMutableArray+STKAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A5A551A87344000D7B091 /* NSMutableArray+STKAudioPlayer.m */; };
@@ -105,6 +106,8 @@
 /* Begin PBXFileReference section */
 		0CCCEF2408E13C1C212F6BEE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		1D089C3C774583F20ACD19C7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4B34301DCECE8765703F18E1 /* Pods-SoundSieve.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundSieve.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoundSieve/Pods-SoundSieve.debug.xcconfig"; sourceTree = "<group>"; };
+		6B6A3D8A4DEB5D188B46C258 /* Pods_SoundSieve.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoundSieve.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77040B111A86CB540065D260 /* SwiftSkeleton-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SwiftSkeleton-Bridging-Header.h"; path = "SwiftSkeleton/SwiftSkeleton-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		7767E4361B23B0BC00BA06D6 /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
 		776A5A541A87344000D7B091 /* NSMutableArray+STKAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+STKAudioPlayer.h"; sourceTree = "<group>"; };
@@ -161,6 +164,7 @@
 		77E17D551AED95F4008E9D2D /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		77E17D5D1AEDA3B4008E9D2D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SoundSieve/Images.xcassets; sourceTree = "<group>"; };
 		77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
+		A1180360228D71B5A2F26CBA /* Pods-SoundSieve.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundSieve.release.xcconfig"; path = "Pods/Target Support Files/Pods-SoundSieve/Pods-SoundSieve.release.xcconfig"; sourceTree = "<group>"; };
 		B835AA0A1AC48ABE00428971 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		B841CFC41A9A969300B5D921 /* MagicalImportFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalImportFunctions.h; sourceTree = "<group>"; };
 		B841CFC51A9A969300B5D921 /* MagicalImportFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicalImportFunctions.m; sourceTree = "<group>"; };
@@ -233,6 +237,7 @@
 				776A5A731A8738FE00D7B091 /* AVFoundation.framework in Frameworks */,
 				776A5A741A8738FE00D7B091 /* AVKit.framework in Frameworks */,
 				1A718F881F10A3358937449E /* Pods.framework in Frameworks */,
+				15CAAFFD569B62AD7669DD8C /* Pods_SoundSieve.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				C9BA15AE8D72823CAC69A682 /* Pods.framework */,
+				6B6A3D8A4DEB5D188B46C258 /* Pods_SoundSieve.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -422,6 +428,8 @@
 			children = (
 				0CCCEF2408E13C1C212F6BEE /* Pods.debug.xcconfig */,
 				1D089C3C774583F20ACD19C7 /* Pods.release.xcconfig */,
+				4B34301DCECE8765703F18E1 /* Pods-SoundSieve.debug.xcconfig */,
+				A1180360228D71B5A2F26CBA /* Pods-SoundSieve.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -538,13 +546,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77CEFD0A1A79C041001B0A02 /* Build configuration list for PBXNativeTarget "SoundSieve" */;
 			buildPhases = (
-				F80C5A6700CAD6DD5A62EAC5 /* Check Pods Manifest.lock */,
+				F80C5A6700CAD6DD5A62EAC5 /* [CP] Check Pods Manifest.lock */,
 				77CEFCE41A79C041001B0A02 /* Sources */,
 				77CEFCE51A79C041001B0A02 /* Frameworks */,
 				77CEFCE61A79C041001B0A02 /* Resources */,
 				778230651AEC073B00F6E332 /* Embed Frameworks */,
-				452FE6A5D56C48D2A70E916E /* Embed Pods Frameworks */,
-				1E52FBA2DFDEAE83188C1AC2 /* Copy Pods Resources */,
+				452FE6A5D56C48D2A70E916E /* [CP] Embed Pods Frameworks */,
+				1E52FBA2DFDEAE83188C1AC2 /* [CP] Copy Pods Resources */,
 				776BE0E81B6978F3007245A2 /* ShellScript */,
 			);
 			buildRules = (
@@ -580,6 +588,7 @@
 		77CEFCE01A79C041001B0A02 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Innogen;
 				TargetAttributes = {
@@ -641,34 +650,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1E52FBA2DFDEAE83188C1AC2 /* Copy Pods Resources */ = {
+		1E52FBA2DFDEAE83188C1AC2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoundSieve/Pods-SoundSieve-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		452FE6A5D56C48D2A70E916E /* Embed Pods Frameworks */ = {
+		452FE6A5D56C48D2A70E916E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoundSieve/Pods-SoundSieve-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		776BE0E81B6978F3007245A2 /* ShellScript */ = {
@@ -684,14 +693,14 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" 14463f608c9965894ce8816c1439bc69e33cdee0 e464a27f11342a77092545b090679f28ebab88bf896aebb8e7d4db4a10bf3f25";
 		};
-		F80C5A6700CAD6DD5A62EAC5 /* Check Pods Manifest.lock */ = {
+		F80C5A6700CAD6DD5A62EAC5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -887,7 +896,7 @@
 		};
 		77CEFD0B1A79C041001B0A02 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0CCCEF2408E13C1C212F6BEE /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 4B34301DCECE8765703F18E1 /* Pods-SoundSieve.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -911,7 +920,7 @@
 		};
 		77CEFD0C1A79C041001B0A02 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D089C3C774583F20ACD19C7 /* Pods.release.xcconfig */;
+			baseConfigurationReference = A1180360228D71B5A2F26CBA /* Pods-SoundSieve.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

@@ -1,13 +1,16 @@
 source 'https://github.com/CocoaPods/Specs.git'
 xcodeproj './SoundSieve.xcodeproj'
 use_frameworks!
-pod 'XLForm', '3.0.0'
-pod 'OAuthSwift'
-pod 'Alamofire'
-pod 'SwiftyJSON'
-pod 'DrawerController'
-pod 'HTPressableButton'
-pod 'UCZProgressView'
-pod 'MDCSwipeToChoose'
-pod 'Fabric'
-pod 'Crashlytics'
+
+target 'SoundSieve' do
+	pod 'XLForm', '3.0.0'
+	pod 'OAuthSwift'
+	pod 'Alamofire'
+	pod 'SwiftyJSON'
+	pod 'DrawerController'
+	pod 'HTPressableButton'
+	pod 'UCZProgressView'
+	pod 'MDCSwipeToChoose'
+	pod 'Fabric'
+	pod 'Crashlytics'
+end
