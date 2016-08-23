@@ -13,7 +13,7 @@ import CoreData
 import DrawerController
 import MDCSwipeToChoose
 
-class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, ConnectionProtocol,STKAudioPlayerDelegate{
+class MainViewController: CenterViewController, MDCSwipeToChooseDelegate,STKAudioPlayerDelegate{
     
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -42,7 +42,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        settings.firstLaunch == true
+        settings.firstLaunch = true
         // Check if its the first launch
         if settings.firstLaunch == true {
             //self.presentTutorial()
@@ -52,7 +52,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         Singleton.sharedInstance.audioPlayer.delegate = self
         
         // Start tracking audio
-        var timer = NSTimer.scheduledTimerWithTimeInterval(0.03, target: self, selector: "meterAudio", userInfo: nil, repeats: true)
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.03, target: self, selector: #selector(MainViewController.meterAudio), userInfo: nil, repeats: true)
         waveformView.layer.transform = CATransform3DMakeScale(1,0.8,1)
         
         //self.view.backgroundColor = UIColor(red: 1.00, green: 0.95, blue: 0.85, alpha: 1.0)
@@ -65,7 +65,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     
     func meterAudio() {
         
-        var normalizedValue = pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(0) / 20) + pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(1) / 20) - 0.002
+        let normalizedValue = pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(0) / 20) + pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(1) / 20) - 0.002
         
         // Fade in Title
         
@@ -129,12 +129,12 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     override func viewWillDisappear(animated:Bool) {
         super.viewWillDisappear(animated)
  
-        println("Center View Will Disappear")
+        print("Center View Will Disappear")
     }
     override func viewWillAppear(animated:Bool) {
         super.viewWillAppear(animated)
       
-        println("Center View Will Appear")
+        print("Center View Will Appear")
     }
     
     // Called when app recieves the list of songs from Kevin's backend
@@ -223,12 +223,12 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         }
         
         if Singleton.sharedInstance.tracks.count == 1 && settings.stream == false {
-            println("No more tracks")
+            print("No more tracks")
             // Return a dummy view
             return ChooseTrackView(track: Track(), frame: self.frontCardViewFrame(), options: MDCSwipeToChooseViewOptions())
         }
         
-        var options = MDCSwipeToChooseViewOptions()
+        let options = MDCSwipeToChooseViewOptions()
         options.delegate = self
        // options.likedText = "dope!"
         options.likedColor = UIColor.clearColor()
@@ -251,7 +251,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
             }*/
         }
         
-        var view = ChooseTrackView(track:Singleton.sharedInstance.tracks.objectAtIndex(0) as! Track, frame: frame, options: options)
+        let view = ChooseTrackView(track:Singleton.sharedInstance.tracks.objectAtIndex(0) as! Track, frame: frame, options: options)
         
         Singleton.sharedInstance.tracks.removeObjectAtIndex(0)
         //view.imageView.image = UIImage(named: "photo.png")
@@ -276,10 +276,10 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
         
         currentTrack = self.frontCardView?.track!
         if wasChosenWithDirection == MDCSwipeDirection.Left {
-            println("Track deleted!")
+            print("Track deleted!")
         }else{
-            println("Track saved!")
-            if let un = singleton.username {
+            print("Track saved!")
+            if singleton.username != nil {
                 ConnectionManager.favoriteTrack(currentTrack!)
             }
             singleton.addTrackToSavedTracks(currentTrack!)
@@ -422,18 +422,18 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     // Audio player delegate functions
     
     func audioPlayer(audioPlayer: STKAudioPlayer!, didCancelQueuedItems queuedItems: [AnyObject]!) {
-        println("Cancelled queued items")
+        print("Cancelled queued items")
     }
     
     func audioPlayer(audioPlayer: STKAudioPlayer!, didFinishBufferingSourceWithQueueItemId queueItemId: NSObject!) {
-        println("Finished buffering source ID: \(queueItemId)")
+        print("Finished buffering source ID: \(queueItemId)")
     }
     
     func audioPlayer(audioPlayer: STKAudioPlayer!, didFinishPlayingQueueItemId queueItemId: NSObject!, withReason stopReason: STKAudioPlayerStopReason, andProgress progress: Double, andDuration duration: Double) {
         //println(stopReason.value)
      
         // When the current song finishes play the next song
-        if stopReason.value == 1 {
+        if stopReason.rawValue == 1 {
             if settings.autoplay == true {
                 
                 if settings.preview == true{
@@ -449,7 +449,7 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
                             adjustedProgress = progress + Double(trackStartTime/1000)
                         }
                         
-                        println("Progress: \(progress) adjustedProgress: \(adjustedProgress) Duration: \(duration) ")
+                        print("Progress: \(progress) adjustedProgress: \(adjustedProgress) Duration: \(duration) ")
                         if fabs(duration - adjustedProgress) < 1 {
                             // If the song ends (or almost ends, its not extremely accurate) show the next card
                             self.frontCardView?.mdc_swipe(MDCSwipeDirection.Left)
@@ -481,6 +481,6 @@ class MainViewController: CenterViewController, MDCSwipeToChooseDelegate, Connec
     }
     
     func audioPlayer(audioPlayer: STKAudioPlayer!, unexpectedError errorCode: STKAudioPlayerErrorCode) {
-        println(STKAudioPlayerErrorCode)
+        print(STKAudioPlayerErrorCode)
     }
 }

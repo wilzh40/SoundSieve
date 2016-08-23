@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class GenresViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource  {
+class GenresViewController: UITableViewController  {
 
     let singleton:Singleton = Singleton.sharedInstance
     var tableData:NSMutableArray = ["Error"]

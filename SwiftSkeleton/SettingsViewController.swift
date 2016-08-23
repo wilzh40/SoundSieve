@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import XLForm
-class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
+class SettingsViewController:  XLFormViewController {
     
     let settings = Singleton.sharedInstance.settings
     
@@ -56,7 +56,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         // Makes the section headers the correct font
         if view.isKindOfClass(UITableViewHeaderFooterView) {
             if let header = view as? UITableViewHeaderFooterView {
-                header.textLabel.font = UIFont(name: "Futura", size: 12.00)
+                header.textLabel!.font = UIFont(name: "Futura", size: 12.00)
             }
         }
     }
@@ -79,7 +79,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         form.addFormSection(section)
         
         // Account
-        if let un = Singleton.sharedInstance.username {
+        if Singleton.sharedInstance.username != nil {
             row = XLFormRowDescriptor(tag: tag.account, rowType: XLFormRowDescriptorTypeButton, title: Singleton.sharedInstance.username)
         } else {
             row = XLFormRowDescriptor(tag: tag.account, rowType: XLFormRowDescriptorTypeButton, title: "Connect with SoundCloud")
@@ -91,7 +91,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
         row.cellConfig.setObject(UIFont(name:"Futura",size:15.00)!, forKey: "textLabel.font")
         row.cellConfig.setObject(UIColor.whiteColor(), forKey: "textLabel.color")
         row.value = Singleton.sharedInstance.username
-        row.action.formSelector = "connectSC"
+        row.action.formSelector = #selector(SettingsViewController.connectSC)
         section.addFormRow(row)
         
     // Stream
@@ -218,7 +218,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
     
 
     func connectSC() {
-        println("Connecting account")
+        print("Connecting account")
         ConnectionManager.authenticateSC()
      
     }
@@ -234,7 +234,7 @@ class SettingsViewController:  XLFormViewController, XLFormDescriptorDelegate {
 
         }
         self.tableView.reloadData()
-        println(Singleton.sharedInstance.username)
+        print(Singleton.sharedInstance.username)
 
     }
    

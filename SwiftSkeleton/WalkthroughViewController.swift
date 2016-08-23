@@ -99,13 +99,13 @@ class WalkthroughViewController: UIViewController {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         
-        var storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
-        var centerController = storyBoard.instantiateViewControllerWithIdentifier("Center") as! UIViewController
+        let centerController = storyBoard.instantiateViewControllerWithIdentifier("Center")
         
         
-        var left = UINavigationController(rootViewController:SettingsViewController())
-        var right = UINavigationController(rootViewController:SavedSongsViewController())
+        let left = UINavigationController(rootViewController:SettingsViewController())
+        let right = UINavigationController(rootViewController:SavedSongsViewController())
         
         
        
@@ -121,7 +121,7 @@ class WalkthroughViewController: UIViewController {
         // var left = storyBoard.instantiateViewControllerWithIdentifier("Left") as! UIViewController
         // var right = storyBoard.instantiateViewControllerWithIdentifier("Right")as! UIViewController
         
-        var drawerCon = DrawerController(centerViewController: centerController, leftDrawerViewController: left, rightDrawerViewController:right)
+        let drawerCon = DrawerController(centerViewController: centerController, leftDrawerViewController: left, rightDrawerViewController:right)
         drawerCon.openDrawerGestureModeMask = OpenDrawerGestureMode.BezelPanningCenterView
         drawerCon.closeDrawerGestureModeMask = CloseDrawerGestureMode.PanningCenterView
         

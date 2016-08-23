@@ -38,8 +38,8 @@ class AnimatedStartButton : UIButton {
     var top: CAShapeLayer! = CAShapeLayer()
     var bottom: CAShapeLayer! = CAShapeLayer()
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
         self.setupPaths()
     }
     
@@ -61,7 +61,7 @@ class AnimatedStartButton : UIButton {
             layer.lineCap = kCALineCapSquare
             layer.masksToBounds = true
             
-            let strokingPath = CGPathCreateCopyByStrokingPath(layer.path, nil, lineWidth*2, kCGLineCapSquare, kCGLineJoinMiter, 0)
+            let strokingPath = CGPathCreateCopyByStrokingPath(layer.path, nil, lineWidth*2, CGLineCap.Square, CGLineJoin.Miter, 0)
             layer.bounds = CGPathGetPathBoundingBox(strokingPath)
             layer.actions = [
                 "strokeStart": NSNull(),
@@ -109,10 +109,10 @@ extension CALayer {
         let copy = animation.copy() as! CABasicAnimation
         
         if copy.fromValue == nil {
-            copy.fromValue = self.presentationLayer().valueForKeyPath(copy.keyPath)
+            copy.fromValue = self.presentationLayer()!.valueForKeyPath(copy.keyPath!)
         }
         
         self.addAnimation(copy, forKey: copy.keyPath)
-        self.setValue(copy.toValue, forKeyPath:copy.keyPath)
+        self.setValue(copy.toValue, forKeyPath:copy.keyPath!)
     }
 }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A718F881F10A3358937449E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BA15AE8D72823CAC69A682 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		590814B777531E50533A2425 /* Pods_SoundSieve.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A9662199CC09905C09BF2C /* Pods_SoundSieve.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7767E4371B23B0BC00BA06D6 /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7767E4361B23B0BC00BA06D6 /* Alamofire-SwiftyJSON.swift */; };
 		776A5A671A87344000D7B091 /* NSMutableArray+STKAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A5A551A87344000D7B091 /* NSMutableArray+STKAudioPlayer.m */; };
 		776A5A681A87344000D7B091 /* STKAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 776A5A571A87344000D7B091 /* STKAudioPlayer.m */; };
@@ -42,6 +42,26 @@
 		77CEFCFB1A79C041001B0A02 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77CEFCF91A79C041001B0A02 /* LaunchScreen.xib */; };
 		77CEFE2C1A79D78B001B0A02 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFE2B1A79D78B001B0A02 /* Singleton.swift */; };
 		77CEFE2E1A79DD46001B0A02 /* SavedSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CEFE2D1A79DD46001B0A02 /* SavedSongsViewController.swift */; };
+		77DC21F71D6BD3F90035EC6A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21DE1D6BD2910035EC6A /* Alamofire.framework */; };
+		77DC21F81D6BD3F90035EC6A /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21DE1D6BD2910035EC6A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77DC21F91D6BD3F90035EC6A /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21DF1D6BD2910035EC6A /* AlamofireSwiftyJSON.framework */; };
+		77DC21FA1D6BD3F90035EC6A /* AlamofireSwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21DF1D6BD2910035EC6A /* AlamofireSwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77DC21FB1D6BD3F90035EC6A /* DrawerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21E01D6BD2910035EC6A /* DrawerController.framework */; };
+		77DC21FC1D6BD3F90035EC6A /* DrawerController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21E01D6BD2910035EC6A /* DrawerController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77DC21FD1D6BD3F90035EC6A /* HTPressableButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21E11D6BD2910035EC6A /* HTPressableButton.framework */; };
+		77DC21FE1D6BD3F90035EC6A /* HTPressableButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21E11D6BD2910035EC6A /* HTPressableButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77DC21FF1D6BD3F90035EC6A /* MDCSwipeToChoose.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21E21D6BD2910035EC6A /* MDCSwipeToChoose.framework */; };
+		77DC22001D6BD3F90035EC6A /* MDCSwipeToChoose.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21E21D6BD2910035EC6A /* MDCSwipeToChoose.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77DC22011D6BD3F90035EC6A /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21E31D6BD2910035EC6A /* OAuthSwift.framework */; };
+		77DC22021D6BD3F90035EC6A /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21E31D6BD2910035EC6A /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77DC22031D6BD3F90035EC6A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21E41D6BD2910035EC6A /* SwiftyJSON.framework */; };
+		77DC22041D6BD3F90035EC6A /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21E41D6BD2910035EC6A /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77DC22051D6BD3F90035EC6A /* UCZProgressView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21E51D6BD2910035EC6A /* UCZProgressView.framework */; };
+		77DC22061D6BD3F90035EC6A /* UCZProgressView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21E51D6BD2910035EC6A /* UCZProgressView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77DC22071D6BD3F90035EC6A /* XLForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21E61D6BD2910035EC6A /* XLForm.framework */; };
+		77DC22081D6BD3F90035EC6A /* XLForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77DC21E61D6BD2910035EC6A /* XLForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		77DC220B1D6BD3F90035EC6A /* Pods_SoundSieve.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A9662199CC09905C09BF2C /* Pods_SoundSieve.framework */; };
+		77DC220C1D6BD3F90035EC6A /* Pods_SoundSieve.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E4A9662199CC09905C09BF2C /* Pods_SoundSieve.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		77DDCDA21A86D93A0062B83F /* ChooseTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DDCDA11A86D93A0062B83F /* ChooseTrackView.swift */; };
 		77DDCDA51A86E02E0062B83F /* Taylor.png in Resources */ = {isa = PBXBuildFile; fileRef = 77DDCDA41A86E02E0062B83F /* Taylor.png */; };
 		77E17D521AED9229008E9D2D /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E17D511AED9229008E9D2D /* ImageLoader.swift */; };
@@ -90,12 +110,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		778230651AEC073B00F6E332 /* Embed Frameworks */ = {
+		77DC220D1D6BD3F90035EC6A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				77DC21FE1D6BD3F90035EC6A /* HTPressableButton.framework in Embed Frameworks */,
+				77DC21F81D6BD3F90035EC6A /* Alamofire.framework in Embed Frameworks */,
+				77DC22021D6BD3F90035EC6A /* OAuthSwift.framework in Embed Frameworks */,
+				77DC21FC1D6BD3F90035EC6A /* DrawerController.framework in Embed Frameworks */,
+				77DC22081D6BD3F90035EC6A /* XLForm.framework in Embed Frameworks */,
+				77DC22041D6BD3F90035EC6A /* SwiftyJSON.framework in Embed Frameworks */,
+				77DC22001D6BD3F90035EC6A /* MDCSwipeToChoose.framework in Embed Frameworks */,
+				77DC220C1D6BD3F90035EC6A /* Pods_SoundSieve.framework in Embed Frameworks */,
+				77DC21FA1D6BD3F90035EC6A /* AlamofireSwiftyJSON.framework in Embed Frameworks */,
+				77DC22061D6BD3F90035EC6A /* UCZProgressView.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,8 +133,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0CCCEF2408E13C1C212F6BEE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		1D089C3C774583F20ACD19C7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		77040B111A86CB540065D260 /* SwiftSkeleton-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SwiftSkeleton-Bridging-Header.h"; path = "SwiftSkeleton/SwiftSkeleton-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		7767E4361B23B0BC00BA06D6 /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
 		776A5A541A87344000D7B091 /* NSMutableArray+STKAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+STKAudioPlayer.h"; sourceTree = "<group>"; };
@@ -155,12 +183,22 @@
 		77CEFD061A79C041001B0A02 /* SwiftSkeletonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSkeletonTests.swift; sourceTree = "<group>"; };
 		77CEFE2B1A79D78B001B0A02 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		77CEFE2D1A79DD46001B0A02 /* SavedSongsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedSongsViewController.swift; sourceTree = "<group>"; };
+		77DC21DE1D6BD2910035EC6A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SoundSieve-hgpypirosbzmlwavpnzcvczipgal/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		77DC21DF1D6BD2910035EC6A /* AlamofireSwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireSwiftyJSON.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SoundSieve-hgpypirosbzmlwavpnzcvczipgal/Build/Products/Debug-iphonesimulator/AlamofireSwiftyJSON/AlamofireSwiftyJSON.framework"; sourceTree = "<group>"; };
+		77DC21E01D6BD2910035EC6A /* DrawerController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DrawerController.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SoundSieve-hgpypirosbzmlwavpnzcvczipgal/Build/Products/Debug-iphonesimulator/DrawerController/DrawerController.framework"; sourceTree = "<group>"; };
+		77DC21E11D6BD2910035EC6A /* HTPressableButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HTPressableButton.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SoundSieve-hgpypirosbzmlwavpnzcvczipgal/Build/Products/Debug-iphonesimulator/HTPressableButton/HTPressableButton.framework"; sourceTree = "<group>"; };
+		77DC21E21D6BD2910035EC6A /* MDCSwipeToChoose.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MDCSwipeToChoose.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SoundSieve-hgpypirosbzmlwavpnzcvczipgal/Build/Products/Debug-iphonesimulator/MDCSwipeToChoose/MDCSwipeToChoose.framework"; sourceTree = "<group>"; };
+		77DC21E31D6BD2910035EC6A /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SoundSieve-hgpypirosbzmlwavpnzcvczipgal/Build/Products/Debug-iphonesimulator/OAuthSwift/OAuthSwift.framework"; sourceTree = "<group>"; };
+		77DC21E41D6BD2910035EC6A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SoundSieve-hgpypirosbzmlwavpnzcvczipgal/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		77DC21E51D6BD2910035EC6A /* UCZProgressView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UCZProgressView.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SoundSieve-hgpypirosbzmlwavpnzcvczipgal/Build/Products/Debug-iphonesimulator/UCZProgressView/UCZProgressView.framework"; sourceTree = "<group>"; };
+		77DC21E61D6BD2910035EC6A /* XLForm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLForm.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SoundSieve-hgpypirosbzmlwavpnzcvczipgal/Build/Products/Debug-iphonesimulator/XLForm/XLForm.framework"; sourceTree = "<group>"; };
 		77DDCDA11A86D93A0062B83F /* ChooseTrackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTrackView.swift; sourceTree = "<group>"; };
 		77DDCDA41A86E02E0062B83F /* Taylor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Taylor.png; sourceTree = "<group>"; };
 		77E17D511AED9229008E9D2D /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		77E17D551AED95F4008E9D2D /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		77E17D5D1AEDA3B4008E9D2D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SoundSieve/Images.xcassets; sourceTree = "<group>"; };
 		77E2B73D1A7C16CC00E3C4BC /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
+		B48335752F91CB11B053CB86 /* Pods-SoundSieve.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundSieve.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SoundSieve/Pods-SoundSieve.debug.xcconfig"; sourceTree = "<group>"; };
 		B835AA0A1AC48ABE00428971 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		B841CFC41A9A969300B5D921 /* MagicalImportFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalImportFunctions.h; sourceTree = "<group>"; };
 		B841CFC51A9A969300B5D921 /* MagicalImportFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicalImportFunctions.m; sourceTree = "<group>"; };
@@ -223,6 +261,8 @@
 		B86276C81A86FEF3004EEF50 /* AnimatedStartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedStartButton.swift; sourceTree = "<group>"; };
 		B8E22A5B1B461E2A00043B9B /* SwiftSkeletonV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftSkeletonV2.xcdatamodel; sourceTree = "<group>"; };
 		C9BA15AE8D72823CAC69A682 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4A9662199CC09905C09BF2C /* Pods_SoundSieve.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoundSieve.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E78EB9500AA442EF822CDF7C /* Pods-SoundSieve.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundSieve.release.xcconfig"; path = "Pods/Target Support Files/Pods-SoundSieve/Pods-SoundSieve.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,8 +271,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				776A5A731A8738FE00D7B091 /* AVFoundation.framework in Frameworks */,
+				77DC220B1D6BD3F90035EC6A /* Pods_SoundSieve.framework in Frameworks */,
+				77DC21FB1D6BD3F90035EC6A /* DrawerController.framework in Frameworks */,
+				77DC22011D6BD3F90035EC6A /* OAuthSwift.framework in Frameworks */,
 				776A5A741A8738FE00D7B091 /* AVKit.framework in Frameworks */,
-				1A718F881F10A3358937449E /* Pods.framework in Frameworks */,
+				77DC22071D6BD3F90035EC6A /* XLForm.framework in Frameworks */,
+				77DC22031D6BD3F90035EC6A /* SwiftyJSON.framework in Frameworks */,
+				77DC22051D6BD3F90035EC6A /* UCZProgressView.framework in Frameworks */,
+				590814B777531E50533A2425 /* Pods_SoundSieve.framework in Frameworks */,
+				77DC21FD1D6BD3F90035EC6A /* HTPressableButton.framework in Frameworks */,
+				77DC21F71D6BD3F90035EC6A /* Alamofire.framework in Frameworks */,
+				77DC21FF1D6BD3F90035EC6A /* MDCSwipeToChoose.framework in Frameworks */,
+				77DC21F91D6BD3F90035EC6A /* AlamofireSwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,9 +299,28 @@
 		1BD75E8B9209B12CD2266DD2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				77DC21DE1D6BD2910035EC6A /* Alamofire.framework */,
+				77DC21DF1D6BD2910035EC6A /* AlamofireSwiftyJSON.framework */,
+				77DC21E01D6BD2910035EC6A /* DrawerController.framework */,
+				77DC21E11D6BD2910035EC6A /* HTPressableButton.framework */,
+				77DC21E21D6BD2910035EC6A /* MDCSwipeToChoose.framework */,
+				77DC21E31D6BD2910035EC6A /* OAuthSwift.framework */,
+				77DC21E41D6BD2910035EC6A /* SwiftyJSON.framework */,
+				77DC21E51D6BD2910035EC6A /* UCZProgressView.framework */,
+				77DC21E61D6BD2910035EC6A /* XLForm.framework */,
 				C9BA15AE8D72823CAC69A682 /* Pods.framework */,
+				E4A9662199CC09905C09BF2C /* Pods_SoundSieve.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3E602196D53D91823B80E417 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B48335752F91CB11B053CB86 /* Pods-SoundSieve.debug.xcconfig */,
+				E78EB9500AA442EF822CDF7C /* Pods-SoundSieve.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		776A5A531A87344000D7B091 /* StreamingKit */ = {
@@ -319,8 +388,8 @@
 				77CEFCEA1A79C041001B0A02 /* SwiftSkeleton */,
 				77CEFD031A79C041001B0A02 /* SwiftSkeletonTests */,
 				77CEFCE91A79C041001B0A02 /* Products */,
-				82D181DBC9A726250F0CB08D /* Pods */,
 				1BD75E8B9209B12CD2266DD2 /* Frameworks */,
+				3E602196D53D91823B80E417 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -415,15 +484,6 @@
 				77E17D551AED95F4008E9D2D /* SongCell.swift */,
 			);
 			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		82D181DBC9A726250F0CB08D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0CCCEF2408E13C1C212F6BEE /* Pods.debug.xcconfig */,
-				1D089C3C774583F20ACD19C7 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		B841CFC11A9A969300B5D921 /* MagicalRecord */ = {
@@ -538,14 +598,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77CEFD0A1A79C041001B0A02 /* Build configuration list for PBXNativeTarget "SoundSieve" */;
 			buildPhases = (
-				F80C5A6700CAD6DD5A62EAC5 /* Check Pods Manifest.lock */,
-				77CEFCE41A79C041001B0A02 /* Sources */,
+				F80C5A6700CAD6DD5A62EAC5 /* [CP] Check Pods Manifest.lock */,
 				77CEFCE51A79C041001B0A02 /* Frameworks */,
 				77CEFCE61A79C041001B0A02 /* Resources */,
-				778230651AEC073B00F6E332 /* Embed Frameworks */,
-				452FE6A5D56C48D2A70E916E /* Embed Pods Frameworks */,
-				1E52FBA2DFDEAE83188C1AC2 /* Copy Pods Resources */,
+				77CEFCE41A79C041001B0A02 /* Sources */,
+				452FE6A5D56C48D2A70E916E /* [CP] Embed Pods Frameworks */,
+				1E52FBA2DFDEAE83188C1AC2 /* [CP] Copy Pods Resources */,
 				776BE0E81B6978F3007245A2 /* ShellScript */,
+				77DC220D1D6BD3F90035EC6A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -580,7 +640,9 @@
 		77CEFCE01A79C041001B0A02 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0730;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Innogen;
 				TargetAttributes = {
 					77CEFCE71A79C041001B0A02 = {
@@ -641,34 +703,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1E52FBA2DFDEAE83188C1AC2 /* Copy Pods Resources */ = {
+		1E52FBA2DFDEAE83188C1AC2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoundSieve/Pods-SoundSieve-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		452FE6A5D56C48D2A70E916E /* Embed Pods Frameworks */ = {
+		452FE6A5D56C48D2A70E916E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SoundSieve/Pods-SoundSieve-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		776BE0E81B6978F3007245A2 /* ShellScript */ = {
@@ -682,16 +744,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" 14463f608c9965894ce8816c1439bc69e33cdee0 e464a27f11342a77092545b090679f28ebab88bf896aebb8e7d4db4a10bf3f25";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 14463f608c9965894ce8816c1439bc69e33cdee0 e464a27f11342a77092545b090679f28ebab88bf896aebb8e7d4db4a10bf3f25";
 		};
-		F80C5A6700CAD6DD5A62EAC5 /* Check Pods Manifest.lock */ = {
+		F80C5A6700CAD6DD5A62EAC5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -828,6 +890,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -887,21 +950,16 @@
 		};
 		77CEFD0B1A79C041001B0A02 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0CCCEF2408E13C1C212F6BEE /* Pods.debug.xcconfig */;
+			baseConfigurationReference = B48335752F91CB11B053CB86 /* Pods-SoundSieve.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/SwiftSkeleton-geqcqdpcpaxbcocjeqfawoquzhhf/Build/Products/Debug-iphoneos",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/SwiftSkeleton-bxkqakgmzxltviempxlbqfrgfsfq/Build/Products/Debug-iphoneos",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/SoundSieve-bxslriznrrubnkayqycbcqkufmzg/Build/Products/Debug-iphoneos",
-				);
 				INFOPLIST_FILE = SwiftSkeleton/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "WZ.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SoundSieve;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSkeleton/SwiftSkeleton-Bridging-Header.h";
@@ -911,21 +969,17 @@
 		};
 		77CEFD0C1A79C041001B0A02 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D089C3C774583F20ACD19C7 /* Pods.release.xcconfig */;
+			baseConfigurationReference = E78EB9500AA442EF822CDF7C /* Pods-SoundSieve.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/SwiftSkeleton-geqcqdpcpaxbcocjeqfawoquzhhf/Build/Products/Debug-iphoneos",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/SwiftSkeleton-bxkqakgmzxltviempxlbqfrgfsfq/Build/Products/Debug-iphoneos",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/SoundSieve-bxslriznrrubnkayqycbcqkufmzg/Build/Products/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SwiftSkeleton/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "WZ.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SoundSieve;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSkeleton/SwiftSkeleton-Bridging-Header.h";
@@ -946,6 +1000,7 @@
 				);
 				INFOPLIST_FILE = SwiftSkeletonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "WZ.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SoundSieveTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftSkeleton.app/SwiftSkeleton";
 			};
@@ -961,6 +1016,7 @@
 				);
 				INFOPLIST_FILE = SwiftSkeletonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "WZ.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SoundSieveTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftSkeleton.app/SwiftSkeleton";
 			};

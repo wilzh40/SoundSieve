@@ -67,7 +67,7 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
         self.motion = motion
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("Use init with items, motion.")
     }
     
@@ -92,7 +92,7 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
 
         self.dismissButton.titleLabel?.font = UIFont(name:"Futura",size:12.00)
         //self.dismissButton.setImage(UIImage(named: "cross"), forState: UIControlState.Normal)
-        self.dismissButton.addTarget(self, action: "closeButtonSelected:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.dismissButton.addTarget(self, action: #selector(RMParallax.closeButtonSelected(_:)), forControlEvents: UIControlEvents.TouchUpInside)
        // self.dismissButton.layer.backgroundColor = UIColor.whiteColor().CGColor
         
         
@@ -113,7 +113,7 @@ class RMParallax : UIViewController, UIScrollViewDelegate {
         self.view.addSubview(self.scrollView)
         self.view.insertSubview(self.dismissButton, aboveSubview: self.scrollView)
         
-        for (index, item) in enumerate(self.items) {
+        for (index, item) in self.items.enumerate() {
             let diff: CGFloat = 0.0
             let frame = CGRectMake((self.view.frame.size.width * CGFloat(index)), 0.0, self.viewWidth, self.view.frame.size.height)
             let subview = UIView(frame: frame)

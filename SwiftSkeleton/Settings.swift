@@ -51,7 +51,7 @@ class Settings: NSObject, NSCoding {
     override init() {
         
     }
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         self.selectedSearchMethod = SearchMethod(rawValue: aDecoder.decodeIntegerForKey("selectedSearchMethod"))!
         self.startTime = StartTimeOptions(rawValue: aDecoder.decodeIntegerForKey("startTime"))!
         self.selectedGenre = aDecoder.decodeIntegerForKey("selectedGenre")

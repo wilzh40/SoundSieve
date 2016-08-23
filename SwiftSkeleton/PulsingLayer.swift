@@ -52,8 +52,8 @@ class PulsingLayer: CALayer {
         
         self.backgroundColor =  UIColor(red: 0.0, green: 0.478, blue: 1.0, alpha: 1).CGColor;
         
-        var tempPos = self.position;
-        var diameter = self.radius * 2;
+        let tempPos = self.position;
+        let diameter = self.radius * 2;
         self.bounds = CGRectMake(0, 0, diameter, diameter);
         self.cornerRadius = self.radius;
         self.position = tempPos;
@@ -68,7 +68,7 @@ class PulsingLayer: CALayer {
                 self.addAnimation(self.animationGroup, forKey: "pulse")
                 
                 // Then add a timer that meters the audio
-                var timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "meterAudio", userInfo: nil, repeats: true)
+                _ = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(PulsingLayer.meterAudio), userInfo: nil, repeats: true)
             })
             
         })
@@ -83,10 +83,10 @@ class PulsingLayer: CALayer {
             self.addAnimation(self.animationGroup, forKey:nil)
         }*/
         
-        var normalizedValue = pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(0) / 20) + pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(1) / 20)
+        let normalizedValue = pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(0) / 20) + pow(10, singleton.audioPlayer.averagePowerInDecibelsForChannel(1) / 20)
         //println(normalizedValue)
         if normalizedValue > self.threshold*2{
-            intervalsSinceLastBeat++
+            intervalsSinceLastBeat += 1
             if intervalsSinceLastBeat > intervalThreshold {
                 self.setupAnimationGroup()
                 self.addAnimation(self.animationGroup, forKey:nil)
@@ -95,7 +95,7 @@ class PulsingLayer: CALayer {
         }
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -107,25 +107,25 @@ class PulsingLayer: CALayer {
         self.animationGroup.fillMode = kCAFillModeForwards;
         self.animationGroup.delegate = self
         
-        var defaultCurve = CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
+        let defaultCurve = CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
         self.animationGroup.timingFunction = defaultCurve
         
-        var scaleAnimation = CABasicAnimation(keyPath: "transform.scale.xy")
+        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale.xy")
         scaleAnimation.fromValue = self.fromValueForRadius
         scaleAnimation.toValue = 1.0;
         scaleAnimation.duration = self.animationDuration;
         
-        var opacityAnimation = CAKeyframeAnimation(keyPath: "opacity")
+        let opacityAnimation = CAKeyframeAnimation(keyPath: "opacity")
         opacityAnimation.values = [self.fromValueForAlpha, 0.45, 0]
         opacityAnimation.keyTimes = [0, self.keyTimeForHalfOpacity, 1]
         opacityAnimation.duration = self.animationDuration
         opacityAnimation.removedOnCompletion = false
         
-        var animations = [scaleAnimation, opacityAnimation]
+        let animations = [scaleAnimation, opacityAnimation]
         self.animationGroup.animations = animations
     }
     
-    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
         //self.removeFromSuperlayer()
     }
 }

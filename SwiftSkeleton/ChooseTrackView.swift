@@ -23,7 +23,7 @@ class ChooseTrackView : MDCSwipeToChooseView {
         self.track = track
         
         super.init(frame: frame, options: options)
-        self.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleBottomMargin
+        self.autoresizingMask = [UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleBottomMargin]
         
         loadingAnimation = UCZProgressView(frame: self.bounds)
         self.showLoadingAnimation()
@@ -62,15 +62,15 @@ class ChooseTrackView : MDCSwipeToChooseView {
     }
     
     
-    required init(coder aDecoder: NSCoder)
+    required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
     
     }
     
     func constructNameLabel() {
-       var leftPadding:CGFloat = 12
-        var topPadding:CGFloat = 50
+       let leftPadding:CGFloat = 12
+        let topPadding:CGFloat = 50
         frame = CGRectMake(leftPadding,
            topPadding,
             CGRectGetWidth(self.bounds),
@@ -84,10 +84,10 @@ class ChooseTrackView : MDCSwipeToChooseView {
     }
     
     func addBackground() {
-        self.layer.borderColor = UIColor.grayColor().CGColor!
-        self.layer.shadowColor = UIColor.blackColor().CGColor!
+        self.layer.borderColor = UIColor.grayColor().CGColor
+        self.layer.shadowColor = UIColor.blackColor().CGColor
         //self.backgroundColor = UIColor.blackColor()
-        var gradientMaskLayer:CAGradientLayer = CAGradientLayer()
+        let gradientMaskLayer:CAGradientLayer = CAGradientLayer()
         gradientMaskLayer.frame = self.bounds
         gradientMaskLayer.colors = [UIColor.whiteColor().CGColor, UIColor.blackColor().CGColor,UIColor.blackColor().CGColor,UIColor.clearColor().CGColor]
 
@@ -96,15 +96,15 @@ class ChooseTrackView : MDCSwipeToChooseView {
     }
     
     func constructInfoView() {
-        var bottomHeight: CGFloat = 60
-        var bottomFrame = CGRectMake(0,
+        let bottomHeight: CGFloat = 60
+        let bottomFrame = CGRectMake(0,
             CGRectGetHeight(self.bounds) - bottomHeight,
             CGRectGetWidth(self.bounds),
             bottomHeight)
         infoView = UIView(frame: bottomFrame)
         infoView?.backgroundColor = UIColor.whiteColor()
         infoView?.clipsToBounds = true
-        infoView?.autoresizingMask = UIViewAutoresizing.FlexibleWidth | .FlexibleTopMargin
+        infoView?.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, .FlexibleTopMargin]
         self.addSubview(infoView!)
     }
 

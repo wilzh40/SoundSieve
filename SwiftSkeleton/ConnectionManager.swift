@@ -14,13 +14,14 @@ import OAuthSwift
 import UIKit
 import AVFoundation
 
-let baseURL = "http://soundsieve-kzeng.rhcloud.com/api/"
+let baseURL = "https://soundsieve-kzeng.rhcloud.com/api/"
 let soundcloudURL = "http://api.soundcloud.com/"
 
 @objc protocol ConnectionProtocol {
     optional func didGetTracks()
     optional func updatePausePlayButton(play: Bool)
 }
+
 class ConnectionManager {
     var delegate : ConnectionProtocol?
     let settings = Singleton.sharedInstance.settings
@@ -43,13 +44,13 @@ class ConnectionManager {
         // After successful authentication the openURL function in appDelegate is called
         oauthswift.authorizeWithCallbackURL(NSURL(string: "SoundSieve://oauth-callback")!, scope: "non-expiring", state: "", success: {
             credential, response, parameters in
-            println("Soundcloud", message: "oauth_token:\(credential.oauth_token)")
+            print("Soundcloud oauth_token:\(credential.oauth_token)")
             Singleton.sharedInstance.token = credential.oauth_token
             ConnectionManager.getUsername()
             ConnectionManager.initializeStream(false)
             }, failure: {(error:NSError!) -> Void in
                 SwiftSpinner.show("Failed to connect, waiting...", animated: false)
-                println(error.localizedDescription)
+                print(error.localizedDescription)
         })
         
     }
@@ -58,10 +59,10 @@ class ConnectionManager {
         let URL = soundcloudURL + "me/"
         let parameters = ["oauth_token": Singleton.sharedInstance.token!]
         Alamofire.request(.GET, URL, parameters:parameters )
-            .responseSwiftyJSON ({ (request, response, responseJSON, error) in
-                println(request)
-                println(response)
-                Singleton.sharedInstance.username = responseJSON["username"].string!
+            .responseSwiftyJSON { response in
+                print(response.request)
+                print(response.response)
+                Singleton.sharedInstance.username = response.result.value!["username"].string!
                 Singleton.sharedInstance.saveData()
                 // Either get user stream or random tracks, based on the setting
                 switch (Singleton.sharedInstance.settings.trackSource) {
@@ -73,10 +74,10 @@ class ConnectionManager {
                 }
                 // Update the
                 Singleton.sharedInstance.settingsVC!.updateUsername()
-                if error != nil {
-                    println(error)
+                if response.result.error != nil {
+                    print(response.result.error)
                 }
-            })
+            }
     }
     
     class func getRandomTracks() {
@@ -106,21 +107,21 @@ class ConnectionManager {
         let URL = baseURL + searchMethod + "?genres=" + selectedGenre
         
         Alamofire.request(.GET, URL )
-            .responseSwiftyJSON ({ (request, response, responseJSON, error) in
-                println(request)
+            .responseSwiftyJSON { response in
+                print(response.request)
                 
-                if error != nil {
-                    println(error)
+                if response.result.error != nil {
+                    print(response.result.error)
                     SwiftSpinner.show("Failed to connect, waiting...", animated: false)
                     
                 } else {
                     
-                    //println(responseJSON)
-                    var tracks: NSMutableArray = []
-                    for (index: String, child: JSON) in responseJSON {
-                        var track = Track()
+                    //print(responseJSON)
+                    let tracks: NSMutableArray = []
+                    for (_, child): (String, JSON) in response.result.value! {
+                        let track = Track()
                         track.title = child["title"].string!
-                        //println(track.title)
+                        //print(track.title)
                         track.user = child["user"]["username"].string!
                         track.id = child["id"].int!
                         track.duration = child["duration"].int
@@ -133,7 +134,7 @@ class ConnectionManager {
                         
                         if Singleton.sharedInstance.settings.duplicates == false {
                             // If duplicates are not allowed
-                            if find(playedTracksArray, track.id!) == nil {
+                            if playedTracksArray.indexOf(track.id!) == nil {
                                 // Check if the id is in played tracks; if it isn't add it to the collection
                                 tracks.addObject(track)
                             }
@@ -152,7 +153,7 @@ class ConnectionManager {
                     Singleton.sharedInstance.tracks = tracks
                     ConnectionManager.sharedInstance.delegate?.didGetTracks!()
                 }
-            })
+            }
     }
     
     // Limit songs for stream
@@ -182,21 +183,22 @@ class ConnectionManager {
         
         //Request from url
         Alamofire.request(.GET, URL)
-            .responseSwiftyJSON ({ (request, response, responseJSON, error) in
-                println(request)
-                if error != nil {
-                    println(error)
+            .responseSwiftyJSON { response in
+                print(response.request)
+                if response.result.error != nil {
+                    print(response.result.error)
                     SwiftSpinner.show("Failed to connect, waiting...", animated: false)
                     
                 } else {
-                    //println(responseJSON)
-                    
+                    //print(responseJSON)
+                    let responseJSON = response.result.value!
+
                     //Pull song ids from response json and add them to string, seperated by commas
-                    for (index: String, child: JSON) in responseJSON["collection"] {
+                    for (_, child): (String, JSON) in responseJSON["collection"] {
                         if(child["origin"]["kind"].string! == "track") {
                             let id = child["origin"]["id"].int!
-                            if find(localIdsArray, id) == nil {
-                                    if find(playedTracksArray, id) == nil {
+                            if localIdsArray.indexOf(id) == nil {
+                                    if playedTracksArray.indexOf(id) == nil {
                                     // Check if the id is in played tracks or if the id is already in idsArray if it isn't add it to the collection
                                     Singleton.sharedInstance.idsArrayWithoutDuplicates.addObject(id)
                                 }
@@ -207,7 +209,7 @@ class ConnectionManager {
                     }
                     
                     //Grab and store next_href string for next set of songs
-                    Singleton.sharedInstance.userStreamNextHrefUrl = responseJSON["next_href"].string!
+                    Singleton.sharedInstance.userStreamNextHrefUrl = response.result.value!["next_href"].string!
                     
                     //If duplicates array has not enough tracks due to duplicates
                     if (Singleton.sharedInstance.idsArrayWithoutDuplicates.count < Singleton.sharedInstance.idsArrayLimit) {
@@ -223,7 +225,7 @@ class ConnectionManager {
                         }
                     }
                 }
-            })
+            }
     }
     
     //recursive fucntion to insure x amount of songs at beginning if duplicates are off, argument is same meaning as last func
@@ -233,11 +235,11 @@ class ConnectionManager {
         let href_url = Singleton.sharedInstance.userStreamNextHrefUrl! + "&oauth_token=" + Singleton.sharedInstance.token!
         
         //Change the limit to 1
-        let u1 = href_url.substringToIndex(advance(href_url.startIndex, 47)) //first half up to the first "="
-        let u2 = href_url.substringFromIndex(advance(href_url.startIndex, 50)) // from the & to the end
+        let u1 = href_url.substringToIndex(href_url.startIndex.advancedBy(47)) //first half up to the first "="
+        let u2 = href_url.substringFromIndex(href_url.startIndex.advancedBy(50)) // from the & to the end
         let URL = u1 + String(Singleton.sharedInstance.idsArrayLimit) + u2
         
-        println(URL)
+        print(URL)
         
         //make a temp array of played tracks' ids
         var playedTracksArray = [Int]()
@@ -250,30 +252,30 @@ class ConnectionManager {
         var localIdsArray = [Int]()
         
         Alamofire.request(.GET, URL)
-            .responseSwiftyJSON ({ (request, response, responseJSON, error) in
-                println(request)
-                if error != nil {
-                    println(error)
+            .responseSwiftyJSON{response in
+                print(response.request)
+                if response.result.error != nil {
+                    print(response.result.error)
                     SwiftSpinner.show("Failed to connect, waiting...", animated: false)
                     
                 } else {
-                    //println(responseJSON)
-                    
+                    //print(responseJSON)
+                    let responseJSON = response.result.value!
                     //Grab and store next_href string for next set of songs
                     if (responseJSON["next_href"].string == nil) {
-                        println("----------------next_href could not be retrieved----------------")
+                        print("----------------next_href could not be retrieved----------------")
                         return
                     } else {
                         Singleton.sharedInstance.userStreamNextHrefUrl = responseJSON["next_href"].string!
                     }
                     
                     //Pull song ids from response json and add them to string, seperated by commas
-                    for (index: String, child: JSON) in responseJSON["collection"] {
+                    for (_, child): (String, JSON) in responseJSON["collection"] {
                         if(child["origin"]["kind"].string! == "track") {
                             let id = child["origin"]["id"].int!
-                            if find(localIdsArray, id) == nil {
+                            if localIdsArray.indexOf(id) == nil {
                                 // If duplicates are not allowed
-                                if find(playedTracksArray, id) == nil {
+                                if playedTracksArray.indexOf(id) == nil {
                                     // Check if the id is in played tracks; if it isn't add it to the collection
                                     Singleton.sharedInstance.idsArrayWithoutDuplicates.addObject(id)
                                 }
@@ -296,12 +298,12 @@ class ConnectionManager {
                             self.loadAndAddInitialTracksInIdsArray()
                         }
                     }
-                    println("-----------------NUMBER OF TRACKS-----------------")
-                    println(Singleton.sharedInstance.idsArray.count)
-                    println("------------NUMBER OF TRACKS WITHOUT DUPLICATES-------------")
-                    println(Singleton.sharedInstance.idsArrayWithoutDuplicates.count)
+                    print("-----------------NUMBER OF TRACKS-----------------")
+                    print(Singleton.sharedInstance.idsArray.count)
+                    print("------------NUMBER OF TRACKS WITHOUT DUPLICATES-------------")
+                    print(Singleton.sharedInstance.idsArrayWithoutDuplicates.count)
             }
-        })
+        }
     }
     
     class func loadAndAddInitialTracksInIdsArray() {
@@ -317,11 +319,11 @@ class ConnectionManager {
         }
         
         //filter withoutDuplicates array
-        for var i = 0; i < Singleton.sharedInstance.idsArrayWithoutDuplicates.count; ++i {
+        for var i = 0; i < Singleton.sharedInstance.idsArrayWithoutDuplicates.count; i += 1 {
             let id = Singleton.sharedInstance.idsArrayWithoutDuplicates.objectAtIndex(i) as! Int
-            if find(playedTracksArray, id) != nil {
+            if playedTracksArray.indexOf(id) != nil {
                 Singleton.sharedInstance.idsArrayWithoutDuplicates.removeObjectAtIndex(i)
-                i--
+                i -= 1
             }
         }
         
@@ -331,7 +333,7 @@ class ConnectionManager {
         let initialSongs = 8
         
         //only load initialSongs
-        for var i = 0; i < initialSongs; ++i {
+        for i in 0 ..< initialSongs {
             var temp:Int
             if (Singleton.sharedInstance.settings.duplicates == true) {
                 temp = Singleton.sharedInstance.idsArray.objectAtIndex(Singleton.sharedInstance.idsArrayIndex) as! Int
@@ -341,42 +343,42 @@ class ConnectionManager {
             trackIds = trackIds + String(temp) + ","
             
             //move the index up one
-            Singleton.sharedInstance.idsArrayIndex++
+            Singleton.sharedInstance.idsArrayIndex += 1
         }
         
         //Fix fencepost issue (delete additional comma at the end)
-        trackIds = trackIds.substringToIndex(advance(trackIds.endIndex, -1))
+        trackIds = trackIds.substringToIndex(trackIds.endIndex.advancedBy(-1))
         
-        println(trackIds)
+        print(trackIds)
         
         //Construct second Url that is actually used to fetch song data for the ids and the start time
         let URL2 = "http://soundsieve-backend.appspot.com/api/track?ids=" + trackIds
         
         Alamofire.request(.GET, URL2)
-            .responseSwiftyJSON ({ (request, response, responseJSON, error) in
-                println(request)
+            .responseSwiftyJSON { response in
+                print(response.request)
                 
-                if error != nil {
-                    println(error)
+                if response.result.error != nil {
+                    print(response.result.error)
                     SwiftSpinner.show("Failed to connect, waiting...", animated: false)
                     
                 } else {
                     
                     //Filling in corresponding data for track
                     var tracks: NSMutableArray = []
-                    for (index: String, child: JSON) in responseJSON {
-                        var track = Track()
+                    for (_, child): (String, JSON) in response.result.value! {
+                        let track = Track()
                         if child["streamable"].bool == true {
                             track.title = child["title"].string!
                             track.user = child["user"]["username"].string!
-                            //println(track.title)
+                            //print(track.title)
                             track.id = child["id"].int!
                             track.duration = child["duration"].int
                             track.genre = child["genre"].string
                             track.subtitle = child["description"].string
-                            if let s = child["artwork_url"].string {
+                            if child["artwork_url"].string != nil {
                                 var tempStr = child["artwork_url"].string
-                                tempStr = tempStr!.substringToIndex(advance(tempStr!.endIndex,-9)) + "t500x500.jpg"
+                                tempStr = tempStr!.substringToIndex(tempStr!.endIndex.advancedBy(-9)) + "t500x500.jpg"
                                 track.artwork_url = tempStr!
                             }
                             track.permalink_url = child["permalink_url"].string!
@@ -389,7 +391,7 @@ class ConnectionManager {
                     Singleton.sharedInstance.tracks = tracks
                     ConnectionManager.sharedInstance.delegate?.didGetTracks!()
                 }
-            })
+            }
     }
     
     class func loadAndAddNextTrackToQueue() {
@@ -401,35 +403,36 @@ class ConnectionManager {
         }
         
         //remove loaded song from idsArray
-        Singleton.sharedInstance.idsArrayIndex++
+        Singleton.sharedInstance.idsArrayIndex += 1
         
         let URL2 = "http://soundsieve-backend.appspot.com/api/track?ids=" + String(temp)
         
         Alamofire.request(.GET, URL2)
-            .responseSwiftyJSON ({ (request, response, responseJSON, error) in
-                println(request)
+            .responseSwiftyJSON { response in
+                print(response.request)
                 
-                if error != nil {
-                    println(error)
+                if response.result.error != nil {
+                    print(response.result.error)
                     SwiftSpinner.show("Failed to connect, waiting...", animated: false)
                     
                 } else {
-                    
+                    let responseJSON = response.result.value!
+
                     //Filling in corresponding data for track
                     var tracks: NSMutableArray = []
-                    for (index: String, child: JSON) in responseJSON {
-                        var track = Track()
+                    for (_, child): (String, JSON) in responseJSON {
+                        let track = Track()
                         track.title = child["title"].string!
                         track.user = child["user"]["username"].string!
-                        //println(track.title)
+                        //print(track.title)
                         track.id = child["id"].int!
                         track.duration = child["duration"].int
                         track.genre = child["genre"].string
                         track.subtitle = child["description"].string
-                        if let s = child["artwork_url"].string {
+                        if child["artwork_url"].string != nil {
                             var tempStr = child["artwork_url"].string
-                            tempStr = tempStr!.substringToIndex(advance(tempStr!.endIndex,-9)) + "t500x500.jpg"
-                            track.artwork_url = tempStr!
+                            tempStr = tempStr!.substringToIndex(tempStr!.endIndex.advancedBy((-9))) + "t500x500.jpg";
+                                track.artwork_url = tempStr!;
                         }
                         track.permalink_url = child["permalink_url"].string!
                         track.stream_url = child["stream_url"].string!
@@ -437,7 +440,7 @@ class ConnectionManager {
                         Singleton.sharedInstance.tracks.addObject(track)
                     }
                 }
-            })
+            }
     }
     
     class func favoriteTrack (track: Track) {
@@ -445,11 +448,11 @@ class ConnectionManager {
         let parameters = ["oauth_token": Singleton.sharedInstance.token!]
         Alamofire.request(.PUT, URL, parameters: parameters)
             .response { (request, response, responseJSON, error) in
-                println(request)
-                println(response)
+                print(request)
+                print(response)
                 
                 if error != nil {
-                    println(error)
+                    print(error)
                 }
         }
     }
@@ -461,11 +464,11 @@ class ConnectionManager {
             let parameters = ["oauth_token": token]
             Alamofire.request(.DELETE, URL, parameters: parameters)
                 .response { (request, response, responseJSON, error) in
-                    println(request)
-                    println(response)
+                    print(request)
+                    print(response)
                     
                     if error != nil {
-                        println(error)
+                        print(error)
                     }
             }
         }
@@ -475,7 +478,7 @@ class ConnectionManager {
         
         let client_id = Soundcloud["consumerKey"]!
         let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time/1000)
-        var time = track.start_time/1000
+        let time = track.start_time/1000
         
         
         Singleton.sharedInstance.audioPlayer.play(streamURL)
@@ -491,7 +494,7 @@ class ConnectionManager {
             
             if Singleton.sharedInstance.settings.preview == true {
                 Singleton.sharedInstance.audioPlayer.seekToTime(Double(time))
-                println("Playing: \(track.title) at time: \(track.start_time/1000)")
+                print("Playing: \(track.title) at time: \(track.start_time/1000)")
             } else if Singleton.sharedInstance.settings.autoplay == true {
                 
                 // Bug fix explanation: Swiping right with autoplay enabled, preview disabled, resulted in an infinite loop. That is because if preview is enabled there already is a function to ensure it skips under the delegate function in MainViewController
@@ -514,13 +517,12 @@ class ConnectionManager {
             
             let client_id = Soundcloud["consumerKey"]!
             let streamURL = track.stream_url + "?client_id=" + client_id + "#t=" + String(track.start_time/1000)
-            var time = track.start_time/1000
+            _ = track.start_time/1000
             Singleton.sharedInstance.audioPlayer.queue(streamURL)
             
-            println("Queued: \(Singleton.sharedInstance.audioPlayer.currentlyPlayingQueueItemId())")
-            // println(Singleton.sharedInstance.audioPlayer.mostRecentlyQueuedStillPendingItem)
+            print("Queued: \(Singleton.sharedInstance.audioPlayer.currentlyPlayingQueueItemId())")
+            // print(Singleton.sharedInstance.audioPlayer.mostRecentlyQueuedStillPendingItem)
         }
-        
     }
     
     class func testNetworking() {
@@ -528,14 +530,14 @@ class ConnectionManager {
         
         // Testting an http networking client for swift!
         Alamofire.request(.GET, URL, parameters: ["foo": "bar"])
-            .responseSwiftyJSON ({ (request, response, responseJSON, error) in
-                //println(request)
-                //println(responseJSON["args"])
-                if error != nil {
-                    println(error)
+            .responseSwiftyJSON { response in
+                //print(request)
+                //print(responseJSON["args"])
+                if response.result.error != nil {
+                    print(response.result.error)
                 }
                 
-            })
+            }
         
         
     }

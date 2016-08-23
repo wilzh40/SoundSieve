@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource, SavedSongsDelegate {
+class SavedSongsViewController: UITableViewController, SavedSongsDelegate {
     let singleton:Singleton = Singleton.sharedInstance
     var tableData:NSMutableArray = ["Error"]
     
@@ -22,13 +22,13 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
     
     func clearData () {
         self.tableView.beginUpdates()
-        for var i = 0; i < tableData.count; ++i {
+        for i in 0 ..< tableData.count {
             let indexPath = NSIndexPath(forRow: i, inSection: 0)
-            self.tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         }
         singleton.clearSavedTracks()
         self.tableView.endUpdates()
-        println("Data Cleared")
+        print("Data Cleared", terminator: "")
     }
     
     
@@ -39,7 +39,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         Singleton.sharedInstance.delegate = self
         //  ConnectionManager.testNetworking()
         
-        let barButton = UIBarButtonItem(barButtonSystemItem:.Trash, target: self, action: Selector("clearData"))
+        let barButton = UIBarButtonItem(barButtonSystemItem:.Trash, target: self, action: #selector(SavedSongsViewController.clearData))
         
         self.navigationItem.setRightBarButtonItem(barButton, animated: true)
         
@@ -124,7 +124,7 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
             cell.backgroundColor = UIColor.grayColor()
         }
         
-        let track = singleton.savedTracks[indexPath.row] as! Track
+        _ = singleton.savedTracks[indexPath.row] as! Track
         
         
         
@@ -146,7 +146,6 @@ class SavedSongsViewController: UITableViewController, UITableViewDelegate, UITa
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             ConnectionManager.unFavoriteTrack(singleton.savedTracks[indexPath.row] as! Track);
             // To account for the reversed order of the array
-            singleton.deleteSavedTrackAtIndex(singleton.savedTracks.count - indexPath.row - 1)
             self.tableData = singleton.savedTracks
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         }
